@@ -370,7 +370,7 @@ namespace TweetSharp
                 if (segments[i] is bool)
                 {
                     var flag = (bool) segments[i];
-                    segments[i] = flag ? "1" : "0";
+                    segments[i] = flag ? "true" : "false";
                 }
 
                 if(segments[i] is double)
