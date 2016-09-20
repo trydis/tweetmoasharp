@@ -24,24 +24,25 @@ namespace TweetSharp
 		public bool? TrimUser { get; set; }  
 		public bool? ContributorDetails { get; set; }  
 		public bool? IncludeEntities { get; set; } 			
-	}			
- 
-    		
-	public class ListTweetsOnUserTimelineOptions
-	{ 
-		public long? UserId { get; set; }  
-		public string ScreenName { get; set; }  
-		public long? SinceId { get; set; }  
-		public int? Count { get; set; }  
-		public long? MaxId { get; set; }  
-		public bool? TrimUser { get; set; }  
-		public bool? ExcludeReplies { get; set; }  
-		public bool? ContributorDetails { get; set; }  
-		public bool? IncludeRts { get; set; } 			
-	}			
- 
-    		
-	public class ListTweetsOnHomeTimelineOptions
+	}
+
+
+    public class ListTweetsOnUserTimelineOptions
+    {
+        public long? UserId { get; set; }
+        public string ScreenName { get; set; }
+        public long? SinceId { get; set; }
+        public int? Count { get; set; }
+        public long? MaxId { get; set; }
+        public bool? TrimUser { get; set; }
+        public bool? ExcludeReplies { get; set; }
+        public bool? ContributorDetails { get; set; }
+        public bool? IncludeRts { get; set; }
+        public string TweetMode { get; set; }
+    }
+
+
+    public class ListTweetsOnHomeTimelineOptions
 	{ 
 		public int? Count { get; set; }  
 		public long? SinceId { get; set; }  
@@ -60,8 +61,9 @@ namespace TweetSharp
 		public long? MaxId { get; set; }  
 		public bool? TrimUser { get; set; }  
 		public bool? IncludeEntities { get; set; }  
-		public bool? IncludeUserEntities { get; set; } 			
-	}			
+		public bool? IncludeUserEntities { get; set; }
+        public string TweetMode { get; set; }
+    }			
  
     		
 	public class RetweetsOptions
@@ -77,8 +79,9 @@ namespace TweetSharp
 		public long Id { get; set; }  
 		public bool? TrimUser { get; set; }  
 		public bool? IncludeMyRetweet { get; set; }  
-		public bool? IncludeEntities { get; set; } 			
-	}			
+		public bool? IncludeEntities { get; set; }
+        public string TweetMode { get; set; }
+    }			
  
     		
 	public class DeleteTweetOptions
@@ -2653,9 +2656,10 @@ namespace TweetSharp
 			var exclude_replies = options.ExcludeReplies;
 			var contributor_details = options.ContributorDetails;
 			var include_rts = options.IncludeRts;
+		    var tweet_mode = options.TweetMode;
 				
 			
-			return WithHammock<IEnumerable<TwitterStatus>>(_client, "statuses/user_timeline", FormatAsString, "?user_id=", user_id, "&screen_name=", screen_name, "&since_id=", since_id, "&count=", count, "&max_id=", max_id, "&trim_user=", trim_user, "&exclude_replies=", exclude_replies, "&contributor_details=", contributor_details, "&include_rts=", include_rts);
+			return WithHammock<IEnumerable<TwitterStatus>>(_client, "statuses/user_timeline", FormatAsString, "?user_id=", user_id, "&screen_name=", screen_name, "&since_id=", since_id, "&count=", count, "&max_id=", max_id, "&trim_user=", trim_user, "&exclude_replies=", exclude_replies, "&contributor_details=", contributor_details, "&include_rts=", include_rts, "&tweet_mode=", tweet_mode);
 		}
 
         
@@ -2705,9 +2709,9 @@ namespace TweetSharp
 			var trim_user = options.TrimUser;
 			var include_my_retweet = options.IncludeMyRetweet;
 			var include_entities = options.IncludeEntities;
-				
-			
-			return WithHammock<TwitterStatus>(_client, "statuses/show/{id}", FormatAsString, "?id=", id, "&trim_user=", trim_user, "&include_my_retweet=", include_my_retweet, "&include_entities=", include_entities);
+		    var tweet_mode = options.TweetMode;
+
+            return WithHammock<TwitterStatus>(_client, "statuses/show/{id}", FormatAsString, "?id=", id, "&trim_user=", trim_user, "&include_my_retweet=", include_my_retweet, "&include_entities=", include_entities, "&tweet_mode=", tweet_mode);
 		}
 
         
@@ -7875,8 +7879,9 @@ namespace TweetSharp
 			var exclude_replies = options.ExcludeReplies;
 			var contributor_details = options.ContributorDetails;
 			var include_rts = options.IncludeRts;
-			
-			return WithHammockTask<IEnumerable<TwitterStatus>>(_client, "statuses/user_timeline", FormatAsString, "?user_id=", user_id, "&screen_name=", screen_name, "&since_id=", since_id, "&count=", count, "&max_id=", max_id, "&trim_user=", trim_user, "&exclude_replies=", exclude_replies, "&contributor_details=", contributor_details, "&include_rts=", include_rts);
+            var tweet_mode = options.TweetMode;
+
+            return WithHammockTask<IEnumerable<TwitterStatus>>(_client, "statuses/user_timeline", FormatAsString, "?user_id=", user_id, "&screen_name=", screen_name, "&since_id=", since_id, "&count=", count, "&max_id=", max_id, "&trim_user=", trim_user, "&exclude_replies=", exclude_replies, "&contributor_details=", contributor_details, "&include_rts=", include_rts, "&tweet_mode=", tweet_mode);
 		}
         
 		public virtual  Task<TwitterAsyncResult<IEnumerable<TwitterStatus>>> ListTweetsOnHomeTimelineAsync(ListTweetsOnHomeTimelineOptions options)
@@ -7919,8 +7924,9 @@ namespace TweetSharp
 			var trim_user = options.TrimUser;
 			var include_my_retweet = options.IncludeMyRetweet;
 			var include_entities = options.IncludeEntities;
-			
-			return WithHammockTask<TwitterStatus>(_client, "statuses/show/{id}", FormatAsString, "?id=", id, "&trim_user=", trim_user, "&include_my_retweet=", include_my_retweet, "&include_entities=", include_entities);
+            var tweet_mode = options.TweetMode;
+            
+            return WithHammockTask<TwitterStatus>(_client, "statuses/show/{id}", FormatAsString, "?id=", id, "&trim_user=", trim_user, "&include_my_retweet=", include_my_retweet, "&include_entities=", include_entities, "&tweet_mode=", tweet_mode);
 		}
         
 		public virtual  Task<TwitterAsyncResult<TwitterStatus>> DeleteTweetAsync(DeleteTweetOptions options)

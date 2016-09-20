@@ -2,7 +2,7 @@
 IEnumerable<TwitterStatus>, "statuses/retweets/{id}", Retweets, long id, int? count, bool? trim_user
 
 // https://dev.twitter.com/docs/api/1.1/get/statuses/show/%3Aid
-TwitterStatus, "statuses/show/{id}", GetTweet, long id, bool? trim_user, bool? include_my_retweet, bool? include_entities
+TwitterStatus, "statuses/show/{id}", GetTweet, long id, bool? trim_user, bool? include_my_retweet, bool? include_entities, string tweet_mode
 
 // https://dev.twitter.com/docs/api/1.1/post/statuses/destroy/%3Aid
 TwitterStatus, "statuses/destroy/{id}":POST, DeleteTweet, long id, bool trim_user
