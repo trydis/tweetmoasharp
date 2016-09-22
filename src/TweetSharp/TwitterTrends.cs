@@ -8,57 +8,57 @@ using Newtonsoft.Json;
 namespace TweetSharp
 {
 #if !SILVERLIGHT && !WINRT
-    [Serializable]
+	[Serializable]
 #endif
 #if !Smartphone && !NET20
 	[DataContract]
 #endif
-    [JsonObject(MemberSerialization.OptIn)]
-    public class TwitterTrends : PropertyChangedBase, ITwitterModel, IEnumerable<TwitterTrend>
-    {
-        private List<TwitterTrend> _trends;
+	[JsonObject(MemberSerialization.OptIn)]
+	public class TwitterTrends : PropertyChangedBase, ITwitterModel, IEnumerable<TwitterTrend>
+	{
+		private List<TwitterTrend> _trends;
 
 #if !Smartphone && !NET20
         [DataMember]
 #endif
-        public virtual List<TwitterTrend> Trends
-        {
-            get { return _trends; }
-            set
-            {
-                if (_trends == value)
-                {
-                    return;
-                }
+		public virtual List<TwitterTrend> Trends
+		{
+			get { return _trends; }
+			set
+			{
+				if (_trends == value)
+				{
+					return;
+				}
 
-                _trends = value;
-                OnPropertyChanged("Trends");
-            }
-        }
+				_trends = value;
+				OnPropertyChanged("Trends");
+			}
+		}
 
 #if !Smartphone && !NET20
         [DataMember]
 #endif
-        public virtual string RawSource { get; set; }
+		public virtual string RawSource { get; set; }
 
-        public virtual IEnumerator<TwitterTrend> GetEnumerator()
-        {
-            return Trends.GetEnumerator();
-        }
+		public virtual IEnumerator<TwitterTrend> GetEnumerator()
+		{
+			return Trends.GetEnumerator();
+		}
 
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            return GetEnumerator();
-        }
+		IEnumerator IEnumerable.GetEnumerator()
+		{
+			return GetEnumerator();
+		}
 
-        public TwitterTrends()
-        {
-            Initialize();
-        }
+		public TwitterTrends()
+		{
+			Initialize();
+		}
 
-        private void Initialize()
-        {
-            Trends = new List<TwitterTrend>(0);
-        }
-    }
+		private void Initialize()
+		{
+			Trends = new List<TwitterTrend>(0);
+		}
+	}
 }

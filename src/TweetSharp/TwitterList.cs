@@ -20,30 +20,30 @@ namespace TweetSharp
 	 */
 
 #if !SILVERLIGHT && !WINRT
-    /// <summary>
-    /// Represents a user-curated list of Twitter members, 
-    /// that other users can subscribe to and see the aggregated 
-    /// list of member tweets in a dedicated timeline.
-    /// </summary>
-    [Serializable]
+	/// <summary>
+	/// Represents a user-curated list of Twitter members, 
+	/// that other users can subscribe to and see the aggregated 
+	/// list of member tweets in a dedicated timeline.
+	/// </summary>
+	[Serializable]
 #endif
 #if !Smartphone && !NET20
 	[DataContract]
 #endif
-    [JsonObject(MemberSerialization.OptIn)]
-    public class TwitterList : PropertyChangedBase, ITwitterModel
-    {
-        private long _id;
-        private string _name;
-        private string _fullName;
-        private string _slug;
-        private string _description;
-        private DateTime _createdAt;
-        private int _subscriberCount;
-        private int _memberCount;
-        private string _uri;
-        private string _mode;
-        private TwitterUser _user;
+	[JsonObject(MemberSerialization.OptIn)]
+	public class TwitterList : PropertyChangedBase, ITwitterModel
+	{
+		private long _id;
+		private string _name;
+		private string _fullName;
+		private string _slug;
+		private string _description;
+		private DateTime _createdAt;
+		private int _subscriberCount;
+		private int _memberCount;
+		private string _uri;
+		private string _mode;
+		private TwitterUser _user;
 
 #if !Smartphone && !NET20
         /// <summary>
@@ -52,20 +52,20 @@ namespace TweetSharp
         /// <value>The list ID.</value>
         [DataMember]
 #endif
-        public virtual long Id
-        {
-            get { return _id; }
-            set
-            {
-                if (_id == value)
-                {
-                    return;
-                }
+		public virtual long Id
+		{
+			get { return _id; }
+			set
+			{
+				if (_id == value)
+				{
+					return;
+				}
 
-                _id = value;
-                OnPropertyChanged("Id");
-            }
-        }
+				_id = value;
+				OnPropertyChanged("Id");
+			}
+		}
 
 #if !Smartphone && !NET20
         /// <summary>
@@ -74,20 +74,20 @@ namespace TweetSharp
         /// <value>The name.</value>
         [DataMember]
 #endif
-        public virtual string Name
-        {
-            get { return _name; }
-            set
-            {
-                if (_name == value)
-                {
-                    return;
-                }
+		public virtual string Name
+		{
+			get { return _name; }
+			set
+			{
+				if (_name == value)
+				{
+					return;
+				}
 
-                _name = value;
-                OnPropertyChanged("Name");
-            }
-        }
+				_name = value;
+				OnPropertyChanged("Name");
+			}
+		}
 
 #if !Smartphone && !NET20
         /// <summary>
@@ -96,20 +96,20 @@ namespace TweetSharp
         /// <value>The full name of the list.</value>
         [DataMember]
 #endif
-        public virtual string FullName
-        {
-            get { return _fullName; }
-            set
-            {
-                if (_fullName == value)
-                {
-                    return;
-                }
+		public virtual string FullName
+		{
+			get { return _fullName; }
+			set
+			{
+				if (_fullName == value)
+				{
+					return;
+				}
 
-                _fullName = value;
-                OnPropertyChanged("FullName");
-            }
-        }
+				_fullName = value;
+				OnPropertyChanged("FullName");
+			}
+		}
 
 #if !Smartphone && !NET20
         /// <summary>
@@ -118,21 +118,21 @@ namespace TweetSharp
         /// <value>The list description.</value>
         [DataMember]
 #endif
-        public virtual string Description
-        {
-            get { return _description; }
-            set
-            {
-                if (_description == value)
-                {
-                    return;
-                }
+		public virtual string Description
+		{
+			get { return _description; }
+			set
+			{
+				if (_description == value)
+				{
+					return;
+				}
 
-                _description = value;
-                OnPropertyChanged("Description");
-            }
-        }
-        
+				_description = value;
+				OnPropertyChanged("Description");
+			}
+		}
+
 #if !Smartphone && !NET20
         /// <summary>
         /// Gets or sets the list URL slug.
@@ -140,20 +140,20 @@ namespace TweetSharp
         /// <value>The list slug.</value>
         [DataMember]
 #endif
-        public virtual string Slug
-        {
-            get { return _slug; }
-            set
-            {
-                if (_slug == value)
-                {
-                    return;
-                }
+		public virtual string Slug
+		{
+			get { return _slug; }
+			set
+			{
+				if (_slug == value)
+				{
+					return;
+				}
 
-                _slug = value;
-                OnPropertyChanged("Slug");
-            }
-        }
+				_slug = value;
+				OnPropertyChanged("Slug");
+			}
+		}
 
 #if !Smartphone && !NET20
         /// <summary>
@@ -161,19 +161,19 @@ namespace TweetSharp
         /// </summary>
         [DataMember]
 #endif
-        public virtual DateTime CreatedAt
-        {
-            get { return _createdAt; }
-            set
-            {
-                if (_createdAt == value)
-                {
-                    return;
-                }
-                _createdAt = value;
-                OnPropertyChanged("CreatedAt");
-            }
-        }
+		public virtual DateTime CreatedAt
+		{
+			get { return _createdAt; }
+			set
+			{
+				if (_createdAt == value)
+				{
+					return;
+				}
+				_createdAt = value;
+				OnPropertyChanged("CreatedAt");
+			}
+		}
 
 
 #if !Smartphone && !NET20
@@ -184,20 +184,20 @@ namespace TweetSharp
         /// <value>The subscriber count.</value>
         [DataMember]
 #endif
-        public virtual int SubscriberCount
-        {
-            get { return _subscriberCount; }
-            set
-            {
-                if (_subscriberCount == value)
-                {
-                    return;
-                }
+		public virtual int SubscriberCount
+		{
+			get { return _subscriberCount; }
+			set
+			{
+				if (_subscriberCount == value)
+				{
+					return;
+				}
 
-                _subscriberCount = value;
-                OnPropertyChanged("SubscriberCount");
-            }
-        }
+				_subscriberCount = value;
+				OnPropertyChanged("SubscriberCount");
+			}
+		}
 
 #if !Smartphone && !NET20
         /// <summary>
@@ -207,20 +207,20 @@ namespace TweetSharp
         /// <value>The member count.</value>
         [DataMember]
 #endif
-        public virtual int MemberCount
-        {
-            get { return _memberCount; }
-            set
-            {
-                if (_memberCount == value)
-                {
-                    return;
-                }
+		public virtual int MemberCount
+		{
+			get { return _memberCount; }
+			set
+			{
+				if (_memberCount == value)
+				{
+					return;
+				}
 
-                _memberCount = value;
-                OnPropertyChanged("MemberCount");
-            }
-        }
+				_memberCount = value;
+				OnPropertyChanged("MemberCount");
+			}
+		}
 
 #if !Smartphone && !NET20
         /// <summary>
@@ -229,20 +229,20 @@ namespace TweetSharp
         /// <value>The URI of the list.</value>
         [DataMember]
 #endif
-        public virtual string Uri
-        {
-            get { return _uri; }
-            set
-            {
-                if (_uri == value)
-                {
-                    return;
-                }
+		public virtual string Uri
+		{
+			get { return _uri; }
+			set
+			{
+				if (_uri == value)
+				{
+					return;
+				}
 
-                _uri = value;
-                OnPropertyChanged("Uri");
-            }
-        }
+				_uri = value;
+				OnPropertyChanged("Uri");
+			}
+		}
 
 #if !Smartphone && !NET20
         /// <summary>
@@ -253,20 +253,20 @@ namespace TweetSharp
         /// <value>The mode.</value>
         [DataMember]
 #endif
-        public virtual string Mode
-        {
-            get { return _mode; }
-            set
-            {
-                if (_mode == value)
-                {
-                    return;
-                }
+		public virtual string Mode
+		{
+			get { return _mode; }
+			set
+			{
+				if (_mode == value)
+				{
+					return;
+				}
 
-                _mode = value;
-                OnPropertyChanged("Mode");
-            }
-        }
+				_mode = value;
+				OnPropertyChanged("Mode");
+			}
+		}
 
 #if !Smartphone && !NET20
         /// <summary>
@@ -275,24 +275,24 @@ namespace TweetSharp
         /// <value>The user.</value>
         [DataMember]
 #endif
-        public virtual TwitterUser User
-        {
-            get { return _user; }
-            set
-            {
-                if (_user == value)
-                {
-                    return;
-                }
+		public virtual TwitterUser User
+		{
+			get { return _user; }
+			set
+			{
+				if (_user == value)
+				{
+					return;
+				}
 
-                _user = value;
-                OnPropertyChanged("User");
-            }
-        }
+				_user = value;
+				OnPropertyChanged("User");
+			}
+		}
 
 #if !Smartphone && !NET20
         [DataMember]
 #endif
-        public virtual string RawSource { get; set; }
-    }
+		public virtual string RawSource { get; set; }
+	}
 }

@@ -7,7 +7,7 @@ using Newtonsoft.Json;
 namespace TweetSharp
 {
 #if !SILVERLIGHT && !WINRT
-    [Serializable]
+	[Serializable]
 #endif
 #if !Smartphone && !NET20
 	[DataContract]
@@ -15,10 +15,10 @@ namespace TweetSharp
 #endif
 	[JsonObject(MemberSerialization.OptIn)]
 	public class TwitterStatus : PropertyChangedBase,
-															 IComparable<TwitterStatus>,
-															 IEquatable<TwitterStatus>,
-															 ITwitterModel,
-															 ITweetable
+														 IComparable<TwitterStatus>,
+														 IEquatable<TwitterStatus>,
+														 ITwitterModel,
+														 ITweetable
 	{
 		private DateTime _createdDate;
 		private DateTime _retrievedAt;
@@ -32,7 +32,7 @@ namespace TweetSharp
 		private bool _isTruncated;
 		private string _source;
 		private string _text;
-        private string _fullText;
+		private string _fullText;
 		private TwitterUser _user;
 		private TwitterStatus _retweetedStatus;
 		private TwitterGeoLocation _location;
@@ -47,7 +47,7 @@ namespace TweetSharp
 		private long? _quotedStatusId;
 		private string _quotedStatusIdStr;
 		private TwitterStatus _quotedStatus;
-        private int[] _displayTextRange;
+		private int[] _displayTextRange;
 
 #if !Smartphone && !NET20
 		[DataMember]
@@ -336,40 +336,40 @@ namespace TweetSharp
 #if !Smartphone && !NET20
         [DataMember]
 #endif
-        public virtual string FullText
-        {
-            get { return _fullText; }
-            set
-            {
-                if (_text == value)
-                {
-                    return;
-                }
+		public virtual string FullText
+		{
+			get { return _fullText; }
+			set
+			{
+				if (_text == value)
+				{
+					return;
+				}
 
-                _fullText = value;
-                OnPropertyChanged("FullText");
-            }
-        }
+				_fullText = value;
+				OnPropertyChanged("FullText");
+			}
+		}
 
 #if !Smartphone && !NET20
         [DataMember]
 #endif
-        public virtual int[] DisplayTextRange
-        {
-            get { return _displayTextRange; }
-            set
-            {
-                if (_displayTextRange == value)
-                {
-                    return;
-                }
+		public virtual int[] DisplayTextRange
+		{
+			get { return _displayTextRange; }
+			set
+			{
+				if (_displayTextRange == value)
+				{
+					return;
+				}
 
-                _displayTextRange = value;
-                OnPropertyChanged("DisplayTextRange");
-            }
-        }
+				_displayTextRange = value;
+				OnPropertyChanged("DisplayTextRange");
+			}
+		}
 
-        private string _textAsHtml;
+		private string _textAsHtml;
 		public virtual string TextAsHtml
 		{
 			get
@@ -395,7 +395,7 @@ namespace TweetSharp
 #if WINRT
 				return _textDecoded ?? (_textDecoded = System.Net.WebUtility.HtmlDecode(Text));
 #elif !SILVERLIGHT && !WINDOWS_PHONE
-                return _textDecoded ?? (_textDecoded = System.Compat.Web.HttpUtility.HtmlDecode(Text));
+				return _textDecoded ?? (_textDecoded = System.Compat.Web.HttpUtility.HtmlDecode(Text));
 #elif WINDOWS_PHONE
                 return _textDecoded ?? (_textDecoded = System.Net.HttpUtility.HtmlDecode(Text));
 #else
@@ -685,6 +685,6 @@ namespace TweetSharp
 			var builder = new UriBuilder("https", "twitter.com");
 			builder.Path = String.Format("{0}/status/{1}", this.Author.ScreenName, this.Id);
 			return builder.Uri;
-    }
+		}
 	}
 }

@@ -79,14 +79,14 @@ namespace TweetSharp
 		}
 	}
 
-	#if !SILVERLIGHT && !WINRT
+#if !SILVERLIGHT && !WINRT
 	[Serializable]
 #endif
 #if !Smartphone && !NET20
 	[DataContract]
 #endif
 	[JsonObject(MemberSerialization.OptIn)]
-	public class TwitterVideoInfo 
+	public class TwitterVideoInfo
 	{
 
 		[JsonProperty("aspect_ratio")]

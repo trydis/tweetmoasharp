@@ -9,150 +9,150 @@ using NUnit.Framework;
 
 namespace TweetSharp.Tests.Service
 {
-    public partial class TwitterServiceTests
-    {
-        [Test]
-        public void Can_get_request_token()
-        {
-            var service = new TwitterService(_consumerKey, _consumerSecret);
-            var requestToken = service.GetRequestToken();
-            
-            AssertResultWas(service, HttpStatusCode.OK);
-            Assert.NotNull(requestToken);
-        }
+	public partial class TwitterServiceTests
+	{
+		[Test]
+		public void Can_get_request_token()
+		{
+			var service = new TwitterService(_consumerKey, _consumerSecret);
+			var requestToken = service.GetRequestToken();
 
-				[Test]
-				public async Task Can_get_request_token_async()
-				{
-					var service = new TwitterService(_consumerKey, _consumerSecret);
-					var result = await service.GetRequestTokenAsync();
-			
-					Assert.AreEqual(result.Response.StatusCode, HttpStatusCode.OK);
-					Assert.NotNull(result.Value);
-				}
+			AssertResultWas(service, HttpStatusCode.OK);
+			Assert.NotNull(requestToken);
+		}
 
-				[Test]
-        [Ignore("Not a sequential test.")]
-        public void Can_exchange_for_access_token()
-        {
-            var service = new TwitterService(_consumerKey, _consumerSecret);
-            var requestToken = service.GetRequestToken();
+		[Test]
+		public async Task Can_get_request_token_async()
+		{
+			var service = new TwitterService(_consumerKey, _consumerSecret);
+			var result = await service.GetRequestTokenAsync();
 
-            AssertResultWas(service, HttpStatusCode.OK);
-            Assert.NotNull(requestToken);
+			Assert.AreEqual(result.Response.StatusCode, HttpStatusCode.OK);
+			Assert.NotNull(result.Value);
+		}
 
-            var uri = service.GetAuthorizationUri(requestToken);
-            Process.Start(uri.ToString());
+		[Test]
+		[Ignore("Not a sequential test.")]
+		public void Can_exchange_for_access_token()
+		{
+			var service = new TwitterService(_consumerKey, _consumerSecret);
+			var requestToken = service.GetRequestToken();
 
-            Console.WriteLine("Press the any key when you have confirmation of your code transmission.");
-            var verifier = "1234567"; // <-- Debugger breakpoint and edit with the actual verifier
+			AssertResultWas(service, HttpStatusCode.OK);
+			Assert.NotNull(requestToken);
 
-            OAuthAccessToken accessToken = service.GetAccessToken(requestToken, verifier);
-            AssertResultWas(service, HttpStatusCode.OK);
-            Assert.IsNotNull(accessToken);
-        }
+			var uri = service.GetAuthorizationUri(requestToken);
+			Process.Start(uri.ToString());
 
-				[Test]
-				[Ignore("Not a sequential test.")]
-				public async Task Can_exchange_for_access_token_async()
-				{
-					var service = new TwitterService(_consumerKey, _consumerSecret);
-					var requestTokenResponse = await service.GetRequestTokenAsync();
+			Console.WriteLine("Press the any key when you have confirmation of your code transmission.");
+			var verifier = "1234567"; // <-- Debugger breakpoint and edit with the actual verifier
 
-					Assert.AreEqual(requestTokenResponse.Response.StatusCode, HttpStatusCode.OK);
-					Assert.NotNull(requestTokenResponse.Value);
+			OAuthAccessToken accessToken = service.GetAccessToken(requestToken, verifier);
+			AssertResultWas(service, HttpStatusCode.OK);
+			Assert.IsNotNull(accessToken);
+		}
 
-					var uri = service.GetAuthorizationUri(requestTokenResponse.Value);
-					Process.Start(uri.ToString());
+		[Test]
+		[Ignore("Not a sequential test.")]
+		public async Task Can_exchange_for_access_token_async()
+		{
+			var service = new TwitterService(_consumerKey, _consumerSecret);
+			var requestTokenResponse = await service.GetRequestTokenAsync();
 
-					Console.WriteLine("Press the any key when you have confirmation of your code transmission.");
-					var verifier = "1234567"; // <-- Debugger breakpoint and edit with the actual verifier
+			Assert.AreEqual(requestTokenResponse.Response.StatusCode, HttpStatusCode.OK);
+			Assert.NotNull(requestTokenResponse.Value);
 
-					var accessTokenResult = await service.GetAccessTokenAsync(requestTokenResponse.Value, verifier);
-					var accessToken = accessTokenResult.Value;
-					AssertResultWas(service, HttpStatusCode.OK);
-					Assert.IsNotNull(accessToken);
-				}
+			var uri = service.GetAuthorizationUri(requestTokenResponse.Value);
+			Process.Start(uri.ToString());
 
-				[Test]
-        [Ignore("Not a sequential test.")]
-        public void Can_make_protected_resource_request_with_access_token()
-        {
-            var service = new TwitterService(_consumerKey, _consumerSecret);
-            var request = service.GetRequestToken();
+			Console.WriteLine("Press the any key when you have confirmation of your code transmission.");
+			var verifier = "1234567"; // <-- Debugger breakpoint and edit with the actual verifier
 
-            AssertResultWas(service, HttpStatusCode.OK);
-            Assert.NotNull(request);
+			var accessTokenResult = await service.GetAccessTokenAsync(requestTokenResponse.Value, verifier);
+			var accessToken = accessTokenResult.Value;
+			AssertResultWas(service, HttpStatusCode.OK);
+			Assert.IsNotNull(accessToken);
+		}
 
-            var uri = service.GetAuthorizationUri(request);
-            Process.Start(uri.ToString());
+		[Test]
+		[Ignore("Not a sequential test.")]
+		public void Can_make_protected_resource_request_with_access_token()
+		{
+			var service = new TwitterService(_consumerKey, _consumerSecret);
+			var request = service.GetRequestToken();
 
-            Console.WriteLine("Press the any key when you have confirmation of your code transmission.");
-            var verifier = "1234567"; // <-- Debugger breakpoint and edit with the actual verifier
+			AssertResultWas(service, HttpStatusCode.OK);
+			Assert.NotNull(request);
 
-            var access = service.GetAccessToken(request, verifier);
-            AssertResultWas(service, HttpStatusCode.OK);
-            Assert.IsNotNull(access);
+			var uri = service.GetAuthorizationUri(request);
+			Process.Start(uri.ToString());
 
-            service.AuthenticateWith(access.Token, access.TokenSecret);
-            var mentions = service.ListTweetsMentioningMe(new ListTweetsMentioningMeOptions());
-            Assert.IsNotNull(mentions);
-            Assert.AreEqual(20, mentions.Count());
-        }
+			Console.WriteLine("Press the any key when you have confirmation of your code transmission.");
+			var verifier = "1234567"; // <-- Debugger breakpoint and edit with the actual verifier
 
-				[Test]
-				[Ignore("Not a sequential test.")]
-				public async Task Can_make_protected_resource_request_with_access_token_async()
-				{
-					var service = new TwitterService(_consumerKey, _consumerSecret);
-					var requestTokenResponse = await service.GetRequestTokenAsync();
-					var request = requestTokenResponse.Value;
+			var access = service.GetAccessToken(request, verifier);
+			AssertResultWas(service, HttpStatusCode.OK);
+			Assert.IsNotNull(access);
 
-					Assert.AreEqual(requestTokenResponse.Response.StatusCode, HttpStatusCode.OK);
-					Assert.NotNull(request);
+			service.AuthenticateWith(access.Token, access.TokenSecret);
+			var mentions = service.ListTweetsMentioningMe(new ListTweetsMentioningMeOptions());
+			Assert.IsNotNull(mentions);
+			Assert.AreEqual(20, mentions.Count());
+		}
 
-					var uri = service.GetAuthorizationUri(request);
-					Process.Start(uri.ToString());
+		[Test]
+		[Ignore("Not a sequential test.")]
+		public async Task Can_make_protected_resource_request_with_access_token_async()
+		{
+			var service = new TwitterService(_consumerKey, _consumerSecret);
+			var requestTokenResponse = await service.GetRequestTokenAsync();
+			var request = requestTokenResponse.Value;
 
-					Console.WriteLine("Press the any key when you have confirmation of your code transmission.");
-					var verifier = "1234567"; // <-- Debugger breakpoint and edit with the actual verifier
+			Assert.AreEqual(requestTokenResponse.Response.StatusCode, HttpStatusCode.OK);
+			Assert.NotNull(request);
 
-					var accessResult = await service.GetAccessTokenAsync(request, verifier);
-					var access = accessResult.Value;
-					Assert.AreEqual(accessResult.Response.StatusCode, HttpStatusCode.OK);
-					Assert.IsNotNull(access);
+			var uri = service.GetAuthorizationUri(request);
+			Process.Start(uri.ToString());
 
-					service.AuthenticateWith(access.Token, access.TokenSecret);
-					var mentions = service.ListTweetsMentioningMe(new ListTweetsMentioningMeOptions());
-					Assert.IsNotNull(mentions);
-					Assert.AreEqual(20, mentions.Count());
-				}
+			Console.WriteLine("Press the any key when you have confirmation of your code transmission.");
+			var verifier = "1234567"; // <-- Debugger breakpoint and edit with the actual verifier
 
-				[Test]
-        public void Can_tweet_with_protected_resource_info()
-        {
-            var service = new TwitterService(_consumerKey, _consumerSecret);
-            service.AuthenticateWith(_accessToken, _accessTokenSecret);
-            var status = service.SendTweet(new SendTweetOptions { Status = DateTime.Now.Ticks.ToString() });
-            Assert.IsNotNull(status);
-        }
+			var accessResult = await service.GetAccessTokenAsync(request, verifier);
+			var access = accessResult.Value;
+			Assert.AreEqual(accessResult.Response.StatusCode, HttpStatusCode.OK);
+			Assert.IsNotNull(access);
 
-        [Test]
-        public void Can_make_xauth_request()
-        {
-            TwitterService service = new TwitterService(_consumerKey, _consumerSecret);
-            OAuthAccessToken access = service.GetAccessTokenWithXAuth("username", "password");
-            Assert.Ignore("Test account isn't authorized for xAuth");
-        }
+			service.AuthenticateWith(access.Token, access.TokenSecret);
+			var mentions = service.ListTweetsMentioningMe(new ListTweetsMentioningMeOptions());
+			Assert.IsNotNull(mentions);
+			Assert.AreEqual(20, mentions.Count());
+		}
 
-				[Test]
-				public async Task Can_make_xauth_request_async()
-				{
-					TwitterService service = new TwitterService(_consumerKey, _consumerSecret);
-					var accessResponse = await service.GetAccessTokenWithXAuthAsync("username", "password");
-					var access = accessResponse.Value;
-          Assert.Ignore("Test account isn't authorized for xAuth");
-				}
+		[Test]
+		public void Can_tweet_with_protected_resource_info()
+		{
+			var service = new TwitterService(_consumerKey, _consumerSecret);
+			service.AuthenticateWith(_accessToken, _accessTokenSecret);
+			var status = service.SendTweet(new SendTweetOptions { Status = DateTime.Now.Ticks.ToString() });
+			Assert.IsNotNull(status);
+		}
+
+		[Test]
+		public void Can_make_xauth_request()
+		{
+			TwitterService service = new TwitterService(_consumerKey, _consumerSecret);
+			OAuthAccessToken access = service.GetAccessTokenWithXAuth("username", "password");
+			Assert.Ignore("Test account isn't authorized for xAuth");
+		}
+
+		[Test]
+		public async Task Can_make_xauth_request_async()
+		{
+			TwitterService service = new TwitterService(_consumerKey, _consumerSecret);
+			var accessResponse = await service.GetAccessTokenWithXAuthAsync("username", "password");
+			var access = accessResponse.Value;
+			Assert.Ignore("Test account isn't authorized for xAuth");
+		}
 
 		//Remmoved as TwitPic is now defunct and I haven't figured out another service to use instead.
 		//[Test]
@@ -173,12 +173,12 @@ namespace TweetSharp.Tests.Service
 		//	Assert.AreEqual(HttpStatusCode.OK, response.StatusCode);
 		//}
 
-				[Test]
-        public void Can_verify_credentials()
-        {
-            var service = GetAuthenticatedService();
-            var user = service.VerifyCredentials(new VerifyCredentialsOptions());
-            Assert.IsNotNull(user);
-        }
-    }
+		[Test]
+		public void Can_verify_credentials()
+		{
+			var service = GetAuthenticatedService();
+			var user = service.VerifyCredentials(new VerifyCredentialsOptions());
+			Assert.IsNotNull(user);
+		}
+	}
 }

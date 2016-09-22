@@ -19,7 +19,7 @@ namespace TweetSharp
 	{
 		private int _CharactersReservedPerMedia;
 		private int _DirectMessageCharacterLimit;
-    private int _MaxMediaPerUpload;
+		private int _MaxMediaPerUpload;
 		private int _ShortUrlLength;
 		private int _ShortUrlLengthHttps;
 		private int _PhotoSizeLimit;
@@ -330,5 +330,5 @@ namespace TweetSharp
 			}
 		}
 
-		}
+	}
 }

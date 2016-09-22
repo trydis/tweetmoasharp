@@ -8,105 +8,105 @@ using TweetSharp.Serialization;
 
 namespace TweetSharp
 {
-    public abstract class SerializerBase : Utf8Serializer, ISerializer, IDeserializer
-    {
-        private readonly Newtonsoft.Json.JsonSerializer _serializer;
-        
-        protected SerializerBase()
-            : this(new JsonSerializerSettings
-                       {
-                           MissingMemberHandling = MissingMemberHandling.Ignore,
-                           NullValueHandling = NullValueHandling.Ignore,
-                           DefaultValueHandling = DefaultValueHandling.Include,
-                           ContractResolver = new JsonConventionResolver(),
-                           Converters = new List<JsonConverter>
-                                            {
-                                                new TwitterDateTimeConverter(),
-                                                new TwitterWonkyBooleanConverter(),
-                                                new TwitterGeoConverter(),
-                                                new TwitterRateLimitResourceConverter()
-                                            }
-                       })
-        {
-            
-        }
+	public abstract class SerializerBase : Utf8Serializer, ISerializer, IDeserializer
+	{
+		private readonly Newtonsoft.Json.JsonSerializer _serializer;
 
-        protected SerializerBase(JsonSerializerSettings settings)
-        {
-            _serializer = new Newtonsoft.Json.JsonSerializer
-                              {
-                                  ConstructorHandling = settings.ConstructorHandling,
-                                  ContractResolver = settings.ContractResolver,
-                                  ObjectCreationHandling = settings.ObjectCreationHandling,
-                                  MissingMemberHandling = settings.MissingMemberHandling,
-                                  DefaultValueHandling = settings.DefaultValueHandling,
-                                  NullValueHandling = settings.NullValueHandling
-                              };
+		protected SerializerBase()
+				: this(new JsonSerializerSettings
+				{
+					MissingMemberHandling = MissingMemberHandling.Ignore,
+					NullValueHandling = NullValueHandling.Ignore,
+					DefaultValueHandling = DefaultValueHandling.Include,
+					ContractResolver = new JsonConventionResolver(),
+					Converters = new List<JsonConverter>
+																				{
+																								new TwitterDateTimeConverter(),
+																								new TwitterWonkyBooleanConverter(),
+																								new TwitterGeoConverter(),
+																								new TwitterRateLimitResourceConverter()
+																				}
+				})
+		{
 
-            foreach (var converter in settings.Converters)
-            {
-                _serializer.Converters.Add(converter);
-            }
-        }
+		}
 
-        public abstract T Deserialize<T>(RestResponseBase response);
-       
-        public abstract object Deserialize(RestResponseBase response, Type type);
-        
-        public virtual object DeserializeJson(string content, Type type)
-        {
-            using (var stringReader = new StringReader(content))
-            {
-                using (var jsonTextReader = new JsonTextReader(stringReader))
-                {
-                    var retVal = _serializer.Deserialize(jsonTextReader, type);
+		protected SerializerBase(JsonSerializerSettings settings)
+		{
+			_serializer = new Newtonsoft.Json.JsonSerializer
+			{
+				ConstructorHandling = settings.ConstructorHandling,
+				ContractResolver = settings.ContractResolver,
+				ObjectCreationHandling = settings.ObjectCreationHandling,
+				MissingMemberHandling = settings.MissingMemberHandling,
+				DefaultValueHandling = settings.DefaultValueHandling,
+				NullValueHandling = settings.NullValueHandling
+			};
 
-										var model = retVal as ITwitterModel;
-										if (model != null)
-											model.RawSource = content;
+			foreach (var converter in settings.Converters)
+			{
+				_serializer.Converters.Add(converter);
+			}
+		}
 
-										return retVal;
-                }
-            }
-        }
+		public abstract T Deserialize<T>(RestResponseBase response);
 
-        public virtual T DeserializeJson<T>(string content)
-        {
-            using (var stringReader = new StringReader(content))
-            {
-                using (var jsonTextReader = new JsonTextReader(stringReader))
-                {
-                    var retVal = _serializer.Deserialize<T>(jsonTextReader);
-										
-										var model = retVal as ITwitterModel;
-										if (model != null)
-											model.RawSource = content;
+		public abstract object Deserialize(RestResponseBase response, Type type);
 
-										return retVal;
-                }
-            }
-        }
-        
-        public virtual string SerializeJson(object instance, Type type)
-        {
-            using (var stringWriter = new StringWriter())
-            {
-                using (var jsonTextWriter = new JsonTextWriter(stringWriter))
-                {
-                    jsonTextWriter.Formatting = Formatting.Indented;
-                    jsonTextWriter.QuoteChar = '"';
+		public virtual object DeserializeJson(string content, Type type)
+		{
+			using (var stringReader = new StringReader(content))
+			{
+				using (var jsonTextReader = new JsonTextReader(stringReader))
+				{
+					var retVal = _serializer.Deserialize(jsonTextReader, type);
 
-                    _serializer.Serialize(jsonTextWriter, instance);
+					var model = retVal as ITwitterModel;
+					if (model != null)
+						model.RawSource = content;
 
-                    var result = stringWriter.ToString();
-                    return result;
-                }
-            }
-        }
+					return retVal;
+				}
+			}
+		}
 
-        public abstract string Serialize(object instance, Type type);
+		public virtual T DeserializeJson<T>(string content)
+		{
+			using (var stringReader = new StringReader(content))
+			{
+				using (var jsonTextReader = new JsonTextReader(stringReader))
+				{
+					var retVal = _serializer.Deserialize<T>(jsonTextReader);
 
-        public abstract string ContentType { get; }
+					var model = retVal as ITwitterModel;
+					if (model != null)
+						model.RawSource = content;
+
+					return retVal;
+				}
+			}
+		}
+
+		public virtual string SerializeJson(object instance, Type type)
+		{
+			using (var stringWriter = new StringWriter())
+			{
+				using (var jsonTextWriter = new JsonTextWriter(stringWriter))
+				{
+					jsonTextWriter.Formatting = Formatting.Indented;
+					jsonTextWriter.QuoteChar = '"';
+
+					_serializer.Serialize(jsonTextWriter, instance);
+
+					var result = stringWriter.ToString();
+					return result;
+				}
+			}
+		}
+
+		public abstract string Serialize(object instance, Type type);
+
+		public abstract string ContentType { get; }
 
 #if NET40
         public dynamic DeserializeDynamic(RestResponseBase response)
@@ -114,5 +114,5 @@ namespace TweetSharp
             throw new NotSupportedException();
         }
 #endif
-    }
+	}
 }

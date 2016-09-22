@@ -28,12 +28,12 @@ namespace TweetSharp
 	 */
 
 #if !SILVERLIGHT && !WINRT
-    [Serializable]
+	[Serializable]
 #endif
 	[JsonObject(MemberSerialization.OptIn)]
-    public class TwitterFriendship : PropertyChangedBase, ITwitterModel
-    {
-        private TwitterRelationship _relationship;
+	public class TwitterFriendship : PropertyChangedBase, ITwitterModel
+	{
+		private TwitterRelationship _relationship;
 
 #if !Smartphone && !NET20
         /// <summary>
@@ -42,27 +42,27 @@ namespace TweetSharp
         /// <value>The relationship.</value>
         [DataMember]
 #endif
-        [JsonProperty("relationship")]
-        public virtual TwitterRelationship Relationship
-        {
-            get { return _relationship; }
-            set
-            {
-                if (_relationship == value)
-                {
-                    return;
-                }
+		[JsonProperty("relationship")]
+		public virtual TwitterRelationship Relationship
+		{
+			get { return _relationship; }
+			set
+			{
+				if (_relationship == value)
+				{
+					return;
+				}
 
-                _relationship = value;
-                OnPropertyChanged("Relationship");
-            }
-        }
+				_relationship = value;
+				OnPropertyChanged("Relationship");
+			}
+		}
 
 #if !Smartphone && !NET20
         [DataMember]
 #endif
-        public virtual string RawSource { get; set; }
-    }
+		public virtual string RawSource { get; set; }
+	}
 
 	/* 
 	{
@@ -77,121 +77,121 @@ namespace TweetSharp
 	}
 	*/
 #if !SILVERLIGHT && !WINRT
-    [Serializable]
+	[Serializable]
 #endif
 	[JsonObject(MemberSerialization.OptIn)]
-    [DebuggerDisplay("{Name}:{string.Join(\",\", Connections)}")]
-    public class TwitterFriendshipLookup : PropertyChangedBase, ITwitterModel
-    {
-        private string _name;
-        private long _id;
-        private ICollection<string> _connections;
-        private string _screenName;
-    
-        public bool Following
-        {
-            get { return _connections.Contains("following"); }
-        }
+	[DebuggerDisplay("{Name}:{string.Join(\",\", Connections)}")]
+	public class TwitterFriendshipLookup : PropertyChangedBase, ITwitterModel
+	{
+		private string _name;
+		private long _id;
+		private ICollection<string> _connections;
+		private string _screenName;
 
-        public bool FollowingRequested
-        {
-            get { return _connections.Contains("following_requested"); }
-        }
+		public bool Following
+		{
+			get { return _connections.Contains("following"); }
+		}
 
-        public bool FollowedBy
-        {
-            get { return _connections.Contains("followed_by"); }
-        }
+		public bool FollowingRequested
+		{
+			get { return _connections.Contains("following_requested"); }
+		}
 
-        public bool None
-        {
-            get { return _connections.Contains("none"); }
-        }
+		public bool FollowedBy
+		{
+			get { return _connections.Contains("followed_by"); }
+		}
 
-        public TwitterFriendshipLookup()
-        {
-            _connections = new List<string>(4);
-        }
-        
-        [JsonProperty("name")]
+		public bool None
+		{
+			get { return _connections.Contains("none"); }
+		}
+
+		public TwitterFriendshipLookup()
+		{
+			_connections = new List<string>(4);
+		}
+
+		[JsonProperty("name")]
 #if !Smartphone && !NET20
         [DataMember]
 #endif
-        public virtual string Name
-        {
-            get { return _name; }
-            set
-            {
-                if (_name == value)
-                {
-                    return;
-                }
+		public virtual string Name
+		{
+			get { return _name; }
+			set
+			{
+				if (_name == value)
+				{
+					return;
+				}
 
-                _name = value;
-                OnPropertyChanged("Name");
-            }
-        }
+				_name = value;
+				OnPropertyChanged("Name");
+			}
+		}
 
-        [JsonProperty("connections")]
+		[JsonProperty("connections")]
 #if !Smartphone && !NET20
         [DataMember]
 #endif
-        public virtual ICollection<string> Connections
-        {
-            get { return _connections; }
-            set
-            {
-                if (_connections == value)
-                {
-                    return;
-                }
-                _connections = value;
-                OnPropertyChanged("Connections");
-            }
-        }
+		public virtual ICollection<string> Connections
+		{
+			get { return _connections; }
+			set
+			{
+				if (_connections == value)
+				{
+					return;
+				}
+				_connections = value;
+				OnPropertyChanged("Connections");
+			}
+		}
 
-        [JsonProperty("id")]
+		[JsonProperty("id")]
 #if !Smartphone && !NET20
         [DataMember]
 #endif
-        public virtual long Id
-        {
-            get { return _id; }
-            set
-            {
-                if (_id == value)
-                {
-                    return;
-                }
+		public virtual long Id
+		{
+			get { return _id; }
+			set
+			{
+				if (_id == value)
+				{
+					return;
+				}
 
-                _id = value;
-                OnPropertyChanged("Id");
-            }
-        }
+				_id = value;
+				OnPropertyChanged("Id");
+			}
+		}
 
-        [JsonProperty("screen_name")]
+		[JsonProperty("screen_name")]
 #if !Smartphone && !NET20
         [DataMember]
 #endif
-        public virtual string ScreenName
-        {
-            get { return _screenName; }
-            set
-            {
-                if (_screenName == value)
-                {
-                    return;
-                }
+		public virtual string ScreenName
+		{
+			get { return _screenName; }
+			set
+			{
+				if (_screenName == value)
+				{
+					return;
+				}
 
-                _screenName = value;
-                OnPropertyChanged("ScreenName");
-            }
-        }
+				_screenName = value;
+				OnPropertyChanged("ScreenName");
+			}
+		}
 
 #if !Smartphone && !NET20
         [DataMember]
 #endif
-        public virtual string RawSource { get; set; }
-    }
+		public virtual string RawSource { get; set; }
+	}
 
 }

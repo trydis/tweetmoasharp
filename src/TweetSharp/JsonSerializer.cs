@@ -173,7 +173,7 @@ namespace TweetSharp
 						return @event;
 					}
 
-          if (artifact["direct_message"] != null)
+					if (artifact["direct_message"] != null)
 					{
 						var json = artifact["direct_message"].ToString();
 						var dm = DeserializeSingle(json, typeof(TwitterDirectMessage)) as TwitterDirectMessage;
@@ -288,7 +288,7 @@ namespace TweetSharp
 					var ts = deserialized as TwitterStatus;
 					if (ts.RetrievedAt == DateTime.MinValue)
 						ts.RetrievedAt = now;
-        }
+				}
 			}
 
 			return deserialized;
@@ -297,8 +297,8 @@ namespace TweetSharp
 		private void UnionMultiplePhotos(TwitterStatus status)
 		{
 			if (status.ExtendedEntities == null) return;
-			
-			foreach (var extEntity in ( from s in status.ExtendedEntities where s.ExtendedEntityType == TwitterMediaType.Photo select s))
+
+			foreach (var extEntity in (from s in status.ExtendedEntities where s.ExtendedEntityType == TwitterMediaType.Photo select s))
 			{
 				if (!(from e in status.Entities.Media where e.StartIndex == extEntity.StartIndex && e.MediaUrl == extEntity.MediaUrl.ToString() select e).Any())
 				{
