@@ -263,6 +263,37 @@ namespace TweetSharp.Tests.Service
 		}
 
 		[Test]
+		public void Can_tweet_with_attachment_url()
+		{
+			var service = GetAuthenticatedService();
+			var status = _hero + DateTime.UtcNow.Ticks + " Tweet with attachment url from TweetSharp unit tests";
+			var tweet = service.SendTweet(new SendTweetOptions { Status = status, AttachmentUrl = "https://twitter.com/yortwdevtest/status/778901592632233985" });
+
+			AssertResultWas(service, HttpStatusCode.OK);
+			Assert.IsNotNull(tweet);
+			Assert.AreNotEqual(0, tweet.Id);
+		}
+
+		[Test]
+		public void Can_tweet_with_auto_reply()
+		{
+			var service = GetAuthenticatedService();
+			var status = _hero + DateTime.UtcNow.Ticks + " Tweet from TweetSharp unit tests";
+			var tweet = service.SendTweet(new SendTweetOptions { Status = status });
+
+			AssertResultWas(service, HttpStatusCode.OK);
+			Assert.IsNotNull(tweet);
+			Assert.AreNotEqual(0, tweet.Id);
+
+			var reply = service.SendTweet(new SendTweetOptions { Status = "This is a reply with auto populated reply metadata " + DateTime.UtcNow.Ticks.ToString(), AutoPopulateReplyMetadata = true, InReplyToStatusId= tweet.Id });
+
+			AssertResultWas(service, HttpStatusCode.OK);
+			Assert.IsNotNull(reply);
+			Assert.AreNotEqual(0, reply.Id);
+
+		}
+
+		[Test]
 		public void Can_tweet_accented_chars()
 		{
 			var service = GetAuthenticatedService();

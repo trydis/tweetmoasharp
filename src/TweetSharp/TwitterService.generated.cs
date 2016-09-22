@@ -108,7 +108,10 @@ namespace TweetSharp
 		public string PlaceId { get; set; }  
 		public bool? DisplayCoordinates { get; set; }  
 		public bool? TrimUser { get; set; }  
-		public IEnumerable<String> MediaIds { get; set; } 			
+		public IEnumerable<String> MediaIds { get; set; }  
+		public bool AutoPopulateReplyMetadata { get; set; }  
+		public string ExcludeReplyUserIds { get; set; }  
+		public string AttachmentUrl { get; set; } 			
 	}			
  
     		
@@ -3120,9 +3123,12 @@ namespace TweetSharp
 			var display_coordinates = options.DisplayCoordinates;
 			var trim_user = options.TrimUser;
 			var media_ids = options.MediaIds;
+			var auto_populate_reply_metadata = options.AutoPopulateReplyMetadata;
+			var exclude_reply_user_ids = options.ExcludeReplyUserIds;
+			var attachment_url = options.AttachmentUrl;
 				
 			
-			return WithHammock<TwitterStatus>(_client, WebMethod.Post, "statuses/update", FormatAsString, "?status=", status, "&in_reply_to_status_id=", in_reply_to_status_id, "&lat=", lat, "&long=", @long, "&place_id=", place_id, "&display_coordinates=", display_coordinates, "&trim_user=", trim_user, "&media_ids=", media_ids);
+			return WithHammock<TwitterStatus>(_client, WebMethod.Post, "statuses/update", FormatAsString, "?status=", status, "&in_reply_to_status_id=", in_reply_to_status_id, "&lat=", lat, "&long=", @long, "&place_id=", place_id, "&display_coordinates=", display_coordinates, "&trim_user=", trim_user, "&media_ids=", media_ids, "&auto_populate_reply_metadata=", auto_populate_reply_metadata, "&exclude_reply_user_ids=", exclude_reply_user_ids, "&attachment_url=", attachment_url);
 		}
 
 
@@ -4273,9 +4279,12 @@ namespace TweetSharp
 			var display_coordinates = options.DisplayCoordinates;
 			var trim_user = options.TrimUser;
 			var media_ids = options.MediaIds;
+			var auto_populate_reply_metadata = options.AutoPopulateReplyMetadata;
+			var exclude_reply_user_ids = options.ExcludeReplyUserIds;
+			var attachment_url = options.AttachmentUrl;
 				
 
-			return  WithHammock<TwitterStatus>(_client, WebMethod.Post, action, "statuses/update", FormatAsString, "?status=", status, "&in_reply_to_status_id=", in_reply_to_status_id, "&lat=", lat, "&long=", @long, "&place_id=", place_id, "&display_coordinates=", display_coordinates, "&trim_user=", trim_user, "&media_ids=", media_ids);
+			return  WithHammock<TwitterStatus>(_client, WebMethod.Post, action, "statuses/update", FormatAsString, "?status=", status, "&in_reply_to_status_id=", in_reply_to_status_id, "&lat=", lat, "&long=", @long, "&place_id=", place_id, "&display_coordinates=", display_coordinates, "&trim_user=", trim_user, "&media_ids=", media_ids, "&auto_populate_reply_metadata=", auto_populate_reply_metadata, "&exclude_reply_user_ids=", exclude_reply_user_ids, "&attachment_url=", attachment_url);
 		}
 
 
@@ -5426,9 +5435,12 @@ namespace TweetSharp
 			var display_coordinates = options.DisplayCoordinates;
 			var trim_user = options.TrimUser;
 			var media_ids = options.MediaIds;
+			var auto_populate_reply_metadata = options.AutoPopulateReplyMetadata;
+			var exclude_reply_user_ids = options.ExcludeReplyUserIds;
+			var attachment_url = options.AttachmentUrl;
 				
 
-			return BeginWithHammock<TwitterStatus>(_client, WebMethod.Post, "statuses/update", FormatAsString, "?status=", status, "&in_reply_to_status_id=", in_reply_to_status_id, "&lat=", lat, "&long=", @long, "&place_id=", place_id, "&display_coordinates=", display_coordinates, "&trim_user=", trim_user, "&media_ids=", media_ids);
+			return BeginWithHammock<TwitterStatus>(_client, WebMethod.Post, "statuses/update", FormatAsString, "?status=", status, "&in_reply_to_status_id=", in_reply_to_status_id, "&lat=", lat, "&long=", @long, "&place_id=", place_id, "&display_coordinates=", display_coordinates, "&trim_user=", trim_user, "&media_ids=", media_ids, "&auto_populate_reply_metadata=", auto_populate_reply_metadata, "&exclude_reply_user_ids=", exclude_reply_user_ids, "&attachment_url=", attachment_url);
 		}
 
 
@@ -7750,9 +7762,12 @@ namespace TweetSharp
 			var display_coordinates = options.DisplayCoordinates;
 			var trim_user = options.TrimUser;
 			var media_ids = options.MediaIds;
+			var auto_populate_reply_metadata = options.AutoPopulateReplyMetadata;
+			var exclude_reply_user_ids = options.ExcludeReplyUserIds;
+			var attachment_url = options.AttachmentUrl;
 			
 
-			WithHammock<TwitterStatus>(_client, WebMethod.Post, action, "statuses/update", FormatAsString, "?status=", status, "&in_reply_to_status_id=", in_reply_to_status_id, "&lat=", lat, "&long=", @long, "&place_id=", place_id, "&display_coordinates=", display_coordinates, "&trim_user=", trim_user, "&media_ids=", media_ids);
+			WithHammock<TwitterStatus>(_client, WebMethod.Post, action, "statuses/update", FormatAsString, "?status=", status, "&in_reply_to_status_id=", in_reply_to_status_id, "&lat=", lat, "&long=", @long, "&place_id=", place_id, "&display_coordinates=", display_coordinates, "&trim_user=", trim_user, "&media_ids=", media_ids, "&auto_populate_reply_metadata=", auto_populate_reply_metadata, "&exclude_reply_user_ids=", exclude_reply_user_ids, "&attachment_url=", attachment_url);
 		}
 
 
@@ -8895,9 +8910,12 @@ namespace TweetSharp
 			var display_coordinates = options.DisplayCoordinates;
 			var trim_user = options.TrimUser;
 			var media_ids = options.MediaIds;
+			var auto_populate_reply_metadata = options.AutoPopulateReplyMetadata;
+			var exclude_reply_user_ids = options.ExcludeReplyUserIds;
+			var attachment_url = options.AttachmentUrl;
 			
 
-			return WithHammockTask<TwitterStatus>(_client, WebMethod.Post, "statuses/update", FormatAsString, "?status=", status, "&in_reply_to_status_id=", in_reply_to_status_id, "&lat=", lat, "&long=", @long, "&place_id=", place_id, "&display_coordinates=", display_coordinates, "&trim_user=", trim_user, "&media_ids=", media_ids);
+			return WithHammockTask<TwitterStatus>(_client, WebMethod.Post, "statuses/update", FormatAsString, "?status=", status, "&in_reply_to_status_id=", in_reply_to_status_id, "&lat=", lat, "&long=", @long, "&place_id=", place_id, "&display_coordinates=", display_coordinates, "&trim_user=", trim_user, "&media_ids=", media_ids, "&auto_populate_reply_metadata=", auto_populate_reply_metadata, "&exclude_reply_user_ids=", exclude_reply_user_ids, "&attachment_url=", attachment_url);
 		}
 
         
