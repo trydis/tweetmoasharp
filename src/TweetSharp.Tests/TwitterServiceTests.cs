@@ -773,119 +773,119 @@ namespace TweetSharp.Tests.Service
 			}
 		}
 
-        [Test]
-        public void Can_get_tweet_default_tweet_mode()
-        {
-            var service = GetAuthenticatedService();
-            var options = new GetTweetOptions {Id = 778329152193781762};
-            TestSyncAndAsync(options, service.GetTweet, service.GetTweetAsync, tweet =>
-            {
-                Assert.IsNotNull(tweet);
-                Assert.IsNotNull(service.Response);
-                Assert.AreEqual(HttpStatusCode.OK, service.Response.StatusCode);
-                Assert.AreEqual(@"Upcoming changes to Tweets - Allows tweets more than 140 characters. Looking at extending TweetMoaSharp @yortw… https://t.co/M4WBDumXl9", tweet.Text);
-            });
-        }
+		[Test]
+		public void Can_get_tweet_default_tweet_mode()
+		{
+			var service = GetAuthenticatedService();
+			var options = new GetTweetOptions { Id = 778329152193781762 };
+			TestSyncAndAsync(options, service.GetTweet, service.GetTweetAsync, tweet =>
+			{
+				Assert.IsNotNull(tweet);
+				Assert.IsNotNull(service.Response);
+				Assert.AreEqual(HttpStatusCode.OK, service.Response.StatusCode);
+				Assert.AreEqual(@"Upcoming changes to Tweets - Allows tweets more than 140 characters. Looking at extending TweetMoaSharp @yortw… https://t.co/M4WBDumXl9", tweet.Text);
+			});
+		}
 
-        [Test]
-        public void Can_get_tweet_compat_tweet_mode()
-        {
-            var service = GetAuthenticatedService();
-            var options = new GetTweetOptions {Id = 778329152193781762, TweetMode = "compat"};
+		[Test]
+		public void Can_get_tweet_compat_tweet_mode()
+		{
+			var service = GetAuthenticatedService();
+			var options = new GetTweetOptions { Id = 778329152193781762, TweetMode = "compat" };
 
-            TestSyncAndAsync(options, service.GetTweet, service.GetTweetAsync, tweet =>
-            {
-                Assert.IsNotNull(tweet);
-                Assert.IsNotNull(service.Response);
-                Assert.AreEqual(HttpStatusCode.OK, service.Response.StatusCode);
-                Assert.AreEqual(@"Upcoming changes to Tweets - Allows tweets more than 140 characters. Looking at extending TweetMoaSharp @yortw… https://t.co/M4WBDumXl9", tweet.Text);
-            });
-        }
+			TestSyncAndAsync(options, service.GetTweet, service.GetTweetAsync, tweet =>
+			{
+				Assert.IsNotNull(tweet);
+				Assert.IsNotNull(service.Response);
+				Assert.AreEqual(HttpStatusCode.OK, service.Response.StatusCode);
+				Assert.AreEqual(@"Upcoming changes to Tweets - Allows tweets more than 140 characters. Looking at extending TweetMoaSharp @yortw… https://t.co/M4WBDumXl9", tweet.Text);
+			});
+		}
 
-        [Test]
+		[Test]
 		public void Can_get_tweet_extended_tweet_mode()
 		{
 			var service = GetAuthenticatedService();
-            var options = new GetTweetOptions {Id = 778329152193781762, TweetMode = "extended"};
+			var options = new GetTweetOptions { Id = 778329152193781762, TweetMode = "extended" };
 
-            TestSyncAndAsync(options, service.GetTweet, service.GetTweetAsync, tweet =>
-            { 
-                Assert.IsNotNull(tweet);
-			    Assert.IsNotNull(service.Response);
-			    Assert.AreEqual(HttpStatusCode.OK, service.Response.StatusCode);
-                Assert.IsNull(tweet.Text);
-                Assert.AreEqual(@"Upcoming changes to Tweets - Allows tweets more than 140 characters. Looking at extending TweetMoaSharp @yortw https://t.co/rJAbUfEK9a https://t.co/UwCfXRETR3", tweet.FullText);
-            });
-        }
+			TestSyncAndAsync(options, service.GetTweet, service.GetTweetAsync, tweet =>
+			{
+				Assert.IsNotNull(tweet);
+				Assert.IsNotNull(service.Response);
+				Assert.AreEqual(HttpStatusCode.OK, service.Response.StatusCode);
+				Assert.IsNull(tweet.Text);
+				Assert.AreEqual(@"Upcoming changes to Tweets - Allows tweets more than 140 characters. Looking at extending TweetMoaSharp @yortw https://t.co/rJAbUfEK9a https://t.co/UwCfXRETR3", tweet.FullText);
+			});
+		}
 
-        [Test]
-        public void Can_list_tweets_on_user_timeline_default_tweet_mode()
-        {
-            var service = GetAuthenticatedService();
-            var options = new ListTweetsOnUserTimelineOptions { ScreenName = "collinsauve", SinceId = 778329152193781761, MaxId = 778329152193781763 };
-            TestSyncAndAsync(options, service.ListTweetsOnUserTimeline, service.ListTweetsOnUserTimelineAsync, result =>
-            {
-                Assert.IsNotNull(result);
-                Assert.IsNotNull(service.Response);
-                Assert.AreEqual(HttpStatusCode.OK, service.Response.StatusCode);
+		[Test]
+		public void Can_list_tweets_on_user_timeline_default_tweet_mode()
+		{
+			var service = GetAuthenticatedService();
+			var options = new ListTweetsOnUserTimelineOptions { ScreenName = "collinsauve", SinceId = 778329152193781761, MaxId = 778329152193781763 };
+			TestSyncAndAsync(options, service.ListTweetsOnUserTimeline, service.ListTweetsOnUserTimelineAsync, result =>
+			{
+				Assert.IsNotNull(result);
+				Assert.IsNotNull(service.Response);
+				Assert.AreEqual(HttpStatusCode.OK, service.Response.StatusCode);
 
-                var tweets = result.ToArray();
-                Assert.AreEqual(1, tweets.Length);
+				var tweets = result.ToArray();
+				Assert.AreEqual(1, tweets.Length);
 
-                var tweet = tweets[0];
-                Assert.AreEqual(@"Upcoming changes to Tweets - Allows tweets more than 140 characters. Looking at extending TweetMoaSharp @yortw… https://t.co/M4WBDumXl9", tweet.Text);
-            });
-        }
+				var tweet = tweets[0];
+				Assert.AreEqual(@"Upcoming changes to Tweets - Allows tweets more than 140 characters. Looking at extending TweetMoaSharp @yortw… https://t.co/M4WBDumXl9", tweet.Text);
+			});
+		}
 
-        [Test]
-        public void Can_list_tweets_on_user_timeline_compat_tweet_mode()
-        {
-            var service = GetAuthenticatedService();
-            var options = new ListTweetsOnUserTimelineOptions { ScreenName = "collinsauve", SinceId = 778329152193781761, MaxId = 778329152193781763, TweetMode = "compat" };
-            TestSyncAndAsync(options, service.ListTweetsOnUserTimeline, service.ListTweetsOnUserTimelineAsync, result =>
-            { 
+		[Test]
+		public void Can_list_tweets_on_user_timeline_compat_tweet_mode()
+		{
+			var service = GetAuthenticatedService();
+			var options = new ListTweetsOnUserTimelineOptions { ScreenName = "collinsauve", SinceId = 778329152193781761, MaxId = 778329152193781763, TweetMode = "compat" };
+			TestSyncAndAsync(options, service.ListTweetsOnUserTimeline, service.ListTweetsOnUserTimelineAsync, result =>
+			{
 
-                Assert.IsNotNull(result);
-                Assert.IsNotNull(service.Response);
-                Assert.AreEqual(HttpStatusCode.OK, service.Response.StatusCode);
+				Assert.IsNotNull(result);
+				Assert.IsNotNull(service.Response);
+				Assert.AreEqual(HttpStatusCode.OK, service.Response.StatusCode);
 
-                var tweets = result.ToArray();
-                Assert.AreEqual(1, tweets.Length);
+				var tweets = result.ToArray();
+				Assert.AreEqual(1, tweets.Length);
 
-                var tweet = tweets[0];
-                Assert.AreEqual(@"Upcoming changes to Tweets - Allows tweets more than 140 characters. Looking at extending TweetMoaSharp @yortw… https://t.co/M4WBDumXl9", tweet.Text);
-            });
-        }
+				var tweet = tweets[0];
+				Assert.AreEqual(@"Upcoming changes to Tweets - Allows tweets more than 140 characters. Looking at extending TweetMoaSharp @yortw… https://t.co/M4WBDumXl9", tweet.Text);
+			});
+		}
 
-        [Test]
-        public void Can_list_tweets_on_user_timeline_extended_tweet_mode()
-        {
-            var service = GetAuthenticatedService();
-            var options = new ListTweetsOnUserTimelineOptions { ScreenName = "collinsauve", SinceId = 778329152193781761, MaxId = 778329152193781763, TweetMode = "extended" };
-            TestSyncAndAsync(options, service.ListTweetsOnUserTimeline, service.ListTweetsOnUserTimelineAsync, result =>
-            {
-                Assert.IsNotNull(result);
-                Assert.IsNotNull(service.Response);
-                Assert.AreEqual(HttpStatusCode.OK, service.Response.StatusCode);
+		[Test]
+		public void Can_list_tweets_on_user_timeline_extended_tweet_mode()
+		{
+			var service = GetAuthenticatedService();
+			var options = new ListTweetsOnUserTimelineOptions { ScreenName = "collinsauve", SinceId = 778329152193781761, MaxId = 778329152193781763, TweetMode = "extended" };
+			TestSyncAndAsync(options, service.ListTweetsOnUserTimeline, service.ListTweetsOnUserTimelineAsync, result =>
+			{
+				Assert.IsNotNull(result);
+				Assert.IsNotNull(service.Response);
+				Assert.AreEqual(HttpStatusCode.OK, service.Response.StatusCode);
 
-                var tweets = result.ToArray();
-                Assert.AreEqual(1, tweets.Length);
+				var tweets = result.ToArray();
+				Assert.AreEqual(1, tweets.Length);
 
-                var tweet = tweets[0];
-                Assert.AreEqual(@"Upcoming changes to Tweets - Allows tweets more than 140 characters. Looking at extending TweetMoaSharp @yortw https://t.co/rJAbUfEK9a https://t.co/UwCfXRETR3", tweet.FullText);
-            });
-        }
+				var tweet = tweets[0];
+				Assert.AreEqual(@"Upcoming changes to Tweets - Allows tweets more than 140 characters. Looking at extending TweetMoaSharp @yortw https://t.co/rJAbUfEK9a https://t.co/UwCfXRETR3", tweet.FullText);
+			});
+		}
 
-	    private static void TestSyncAndAsync<TOptions, TResult>(TOptions options, Func<TOptions, TResult> syncFunc, Func<TOptions, Task<TwitterAsyncResult<TResult>>> asyncFunc, Action<TResult> assertFunc)
-	    {
-	        var syncResult = syncFunc(options);
-	        assertFunc(syncResult);
-	        var asyncResultTask = asyncFunc(options);
-	        asyncResultTask.Wait();
-	        assertFunc(asyncResultTask.Result.Value);
-	    }
+		private static void TestSyncAndAsync<TOptions, TResult>(TOptions options, Func<TOptions, TResult> syncFunc, Func<TOptions, Task<TwitterAsyncResult<TResult>>> asyncFunc, Action<TResult> assertFunc)
+		{
+			var syncResult = syncFunc(options);
+			assertFunc(syncResult);
+			var asyncResultTask = asyncFunc(options);
+			asyncResultTask.Wait();
+			assertFunc(asyncResultTask.Result.Value);
+		}
 
-        [Test]
+		[Test]
 		public void Can_get_tweet_with_multiple_images()
 		{
 			var service = GetAuthenticatedService();
