@@ -33,6 +33,7 @@ namespace TweetSharp
 		public string Proxy { get; set; }
 		public bool IncludeEntities { get; set; }
 		public bool IncludeRetweets { get; set; }
+		public string TweetMode { get; set; }
 
 		public string UserAgent
 		{
@@ -96,6 +97,8 @@ namespace TweetSharp
 			_consumerKey = info.ConsumerKey;
 			_consumerSecret = info.ConsumerSecret;
 			IncludeEntities = info.IncludeEntities;
+			IncludeRetweets = info.IncludeRetweets;
+			TweetMode = info.TweetMode;
 
 			_info = info;
 		}
@@ -236,6 +239,7 @@ namespace TweetSharp
 		{
 			IncludeEntities = true;
 			IncludeRetweets = true;
+			TweetMode = TweetSharp.TweetMode.Compatibility;
 		}
 
 		private readonly Func<RestRequest> _noAuthQuery
@@ -408,6 +412,7 @@ namespace TweetSharp
 
 			const string includeEntities = "include_entities";
 			const string includeRetweets = "include_rts";
+			const string tweetMode = "tweet_mode";
 
 			if (IncludeEntities && !IsKeyAlreadySet(segments, includeEntities))
 			{
@@ -418,6 +423,11 @@ namespace TweetSharp
 			{
 				segments.Add(segments.Count() > 1 ? "&" + includeRetweets + "=" : "?" + includeRetweets + "=");
 				segments.Add("1");
+			}
+			if (!String.IsNullOrEmpty(TweetMode) && !IsKeyAlreadySet(segments, tweetMode))
+			{
+				segments.Add(segments.Count() > 1 ? "&" + tweetMode + "=" : "?" + tweetMode + "=");
+				segments.Add(TweetMode);
 			}
 
 			segments.Insert(0, path);

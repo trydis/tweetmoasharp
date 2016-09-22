@@ -15,5 +15,6 @@ namespace TweetSharp
 		public virtual string ConsumerSecret { get; set; }
 		public virtual bool IncludeEntities { get; set; }
 		public virtual bool IncludeRetweets { get; set; }
+		public virtual string TweetMode { get; set; } = TweetSharp.TweetMode.Compatibility;
 	}
 }

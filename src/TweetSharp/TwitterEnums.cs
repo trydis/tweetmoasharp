@@ -68,6 +68,10 @@ namespace TweetSharp
 
 	public class TwitterMediaCategory
 	{
+		private TwitterMediaCategory()
+		{
+		}
+
 		public const string Image = "tweet_image";
 		public const string AnimatedGif = "tweet_gif";
 		public const string Video = "tweet_video";
@@ -81,6 +85,11 @@ namespace TweetSharp
 	/// </remarks>
 	public class TweetMode
 	{
+
+		private TweetMode()
+		{
+		}
+
 		/// <summary>
 		/// Tweet payload will work with all existing integrations, regardless of tweet content.
 		/// </summary>

@@ -994,6 +994,19 @@ namespace TweetSharp.Tests.Service
 		}
 
 		[Test]
+		public void Can_get_tweet_uses_default_tweet_mode()
+		{
+			var service = GetAuthenticatedService();
+			service.TweetMode = TweetMode.Extended;
+			var tweet = service.GetTweet(new GetTweetOptions { Id = 10080880705929216 });
+
+			Assert.IsNotNull(tweet);
+			Assert.IsNotEmpty(tweet.FullText);
+			Assert.IsNotNull(service.Response);
+			Assert.AreEqual(HttpStatusCode.OK, service.Response.StatusCode);
+		}
+
+		[Test]
 		public void Can_get_quoted_tweet_async()
 		{
 			var service = GetAuthenticatedService();
