@@ -31,7 +31,8 @@ namespace TweetSharp
 		public long? MaxId { get; set; }  
 		public bool? TrimUser { get; set; }  
 		public bool? ContributorDetails { get; set; }  
-		public bool? IncludeEntities { get; set; } 			
+		public bool? IncludeEntities { get; set; }  
+		public string TweetMode { get; set; } 			
 	}			
  
     		
@@ -58,7 +59,8 @@ namespace TweetSharp
 		public bool? TrimUser { get; set; }  
 		public bool? ExcludeReplies { get; set; }  
 		public bool? ContributorDetails { get; set; }  
-		public bool? IncludeEntities { get; set; } 			
+		public bool? IncludeEntities { get; set; }  
+		public string TweetMode { get; set; } 			
 	}			
  
     		
@@ -78,7 +80,8 @@ namespace TweetSharp
 	{ 
 		public long Id { get; set; }  
 		public int? Count { get; set; }  
-		public bool? TrimUser { get; set; } 			
+		public bool? TrimUser { get; set; }  
+		public string TweetMode { get; set; } 			
 	}			
  
     		
@@ -512,7 +515,8 @@ namespace TweetSharp
 		public int? Count { get; set; }  
 		public long? SinceId { get; set; }  
 		public long? MaxId { get; set; }  
-		public bool? IncludeEntities { get; set; } 			
+		public bool? IncludeEntities { get; set; }  
+		public string TweetMode { get; set; } 			
 	}			
  
     		
@@ -3018,9 +3022,10 @@ namespace TweetSharp
 			var trim_user = options.TrimUser;
 			var contributor_details = options.ContributorDetails;
 			var include_entities = options.IncludeEntities;
+			var tweet_mode = options.TweetMode;
 				
 			
-			return WithHammock<IEnumerable<TwitterStatus>>(_client, "statuses/mentions_timeline", FormatAsString, "?count=", count, "&since_id=", since_id, "&max_id=", max_id, "&trim_user=", trim_user, "&contributor_details=", contributor_details, "&include_entities=", include_entities);
+			return WithHammock<IEnumerable<TwitterStatus>>(_client, "statuses/mentions_timeline", FormatAsString, "?count=", count, "&since_id=", since_id, "&max_id=", max_id, "&trim_user=", trim_user, "&contributor_details=", contributor_details, "&include_entities=", include_entities, "&tweet_mode=", tweet_mode);
 		}
 
 
@@ -3053,9 +3058,10 @@ namespace TweetSharp
 			var exclude_replies = options.ExcludeReplies;
 			var contributor_details = options.ContributorDetails;
 			var include_entities = options.IncludeEntities;
+			var tweet_mode = options.TweetMode;
 				
 			
-			return WithHammock<IEnumerable<TwitterStatus>>(_client, "statuses/home_timeline", FormatAsString, "?count=", count, "&since_id=", since_id, "&max_id=", max_id, "&trim_user=", trim_user, "&exclude_replies=", exclude_replies, "&contributor_details=", contributor_details, "&include_entities=", include_entities);
+			return WithHammock<IEnumerable<TwitterStatus>>(_client, "statuses/home_timeline", FormatAsString, "?count=", count, "&since_id=", since_id, "&max_id=", max_id, "&trim_user=", trim_user, "&exclude_replies=", exclude_replies, "&contributor_details=", contributor_details, "&include_entities=", include_entities, "&tweet_mode=", tweet_mode);
 		}
 
 
@@ -3081,9 +3087,10 @@ namespace TweetSharp
 			var id = options.Id;
 			var count = options.Count;
 			var trim_user = options.TrimUser;
+			var tweet_mode = options.TweetMode;
 				
 			
-			return WithHammock<IEnumerable<TwitterStatus>>(_client, "statuses/retweets/{id}", FormatAsString, "?id=", id, "&count=", count, "&trim_user=", trim_user);
+			return WithHammock<IEnumerable<TwitterStatus>>(_client, "statuses/retweets/{id}", FormatAsString, "?id=", id, "&count=", count, "&trim_user=", trim_user, "&tweet_mode=", tweet_mode);
 		}
 
 
@@ -3728,9 +3735,10 @@ namespace TweetSharp
 			var since_id = options.SinceId;
 			var max_id = options.MaxId;
 			var include_entities = options.IncludeEntities;
+			var tweet_mode = options.TweetMode;
 				
 			
-			return WithHammock<IEnumerable<TwitterStatus>>(_client, "favorites/list", FormatAsString, "?user_id=", user_id, "&screen_name=", screen_name, "&count=", count, "&since_id=", since_id, "&max_id=", max_id, "&include_entities=", include_entities);
+			return WithHammock<IEnumerable<TwitterStatus>>(_client, "favorites/list", FormatAsString, "?user_id=", user_id, "&screen_name=", screen_name, "&count=", count, "&since_id=", since_id, "&max_id=", max_id, "&include_entities=", include_entities, "&tweet_mode=", tweet_mode);
 		}
 
 
@@ -4174,9 +4182,10 @@ namespace TweetSharp
 			var trim_user = options.TrimUser;
 			var contributor_details = options.ContributorDetails;
 			var include_entities = options.IncludeEntities;
+			var tweet_mode = options.TweetMode;
 				
 
-			return  WithHammock<IEnumerable<TwitterStatus>>(_client, action, "statuses/mentions_timeline", FormatAsString, "?count=", count, "&since_id=", since_id, "&max_id=", max_id, "&trim_user=", trim_user, "&contributor_details=", contributor_details, "&include_entities=", include_entities);
+			return  WithHammock<IEnumerable<TwitterStatus>>(_client, action, "statuses/mentions_timeline", FormatAsString, "?count=", count, "&since_id=", since_id, "&max_id=", max_id, "&trim_user=", trim_user, "&contributor_details=", contributor_details, "&include_entities=", include_entities, "&tweet_mode=", tweet_mode);
 		}
 
 
@@ -4209,9 +4218,10 @@ namespace TweetSharp
 			var exclude_replies = options.ExcludeReplies;
 			var contributor_details = options.ContributorDetails;
 			var include_entities = options.IncludeEntities;
+			var tweet_mode = options.TweetMode;
 				
 
-			return  WithHammock<IEnumerable<TwitterStatus>>(_client, action, "statuses/home_timeline", FormatAsString, "?count=", count, "&since_id=", since_id, "&max_id=", max_id, "&trim_user=", trim_user, "&exclude_replies=", exclude_replies, "&contributor_details=", contributor_details, "&include_entities=", include_entities);
+			return  WithHammock<IEnumerable<TwitterStatus>>(_client, action, "statuses/home_timeline", FormatAsString, "?count=", count, "&since_id=", since_id, "&max_id=", max_id, "&trim_user=", trim_user, "&exclude_replies=", exclude_replies, "&contributor_details=", contributor_details, "&include_entities=", include_entities, "&tweet_mode=", tweet_mode);
 		}
 
 
@@ -4237,9 +4247,10 @@ namespace TweetSharp
 			var id = options.Id;
 			var count = options.Count;
 			var trim_user = options.TrimUser;
+			var tweet_mode = options.TweetMode;
 				
 
-			return  WithHammock<IEnumerable<TwitterStatus>>(_client, action, "statuses/retweets/{id}", FormatAsString, "?id=", id, "&count=", count, "&trim_user=", trim_user);
+			return  WithHammock<IEnumerable<TwitterStatus>>(_client, action, "statuses/retweets/{id}", FormatAsString, "?id=", id, "&count=", count, "&trim_user=", trim_user, "&tweet_mode=", tweet_mode);
 		}
 
 
@@ -4884,9 +4895,10 @@ namespace TweetSharp
 			var since_id = options.SinceId;
 			var max_id = options.MaxId;
 			var include_entities = options.IncludeEntities;
+			var tweet_mode = options.TweetMode;
 				
 
-			return  WithHammock<IEnumerable<TwitterStatus>>(_client, action, "favorites/list", FormatAsString, "?user_id=", user_id, "&screen_name=", screen_name, "&count=", count, "&since_id=", since_id, "&max_id=", max_id, "&include_entities=", include_entities);
+			return  WithHammock<IEnumerable<TwitterStatus>>(_client, action, "favorites/list", FormatAsString, "?user_id=", user_id, "&screen_name=", screen_name, "&count=", count, "&since_id=", since_id, "&max_id=", max_id, "&include_entities=", include_entities, "&tweet_mode=", tweet_mode);
 		}
 
 
@@ -5330,9 +5342,10 @@ namespace TweetSharp
 			var trim_user = options.TrimUser;
 			var contributor_details = options.ContributorDetails;
 			var include_entities = options.IncludeEntities;
+			var tweet_mode = options.TweetMode;
 				
 
-			return BeginWithHammock<IEnumerable<TwitterStatus>>(_client, WebMethod.Get, "statuses/mentions_timeline", FormatAsString, "?count=", count, "&since_id=", since_id, "&max_id=", max_id, "&trim_user=", trim_user, "&contributor_details=", contributor_details, "&include_entities=", include_entities);
+			return BeginWithHammock<IEnumerable<TwitterStatus>>(_client, WebMethod.Get, "statuses/mentions_timeline", FormatAsString, "?count=", count, "&since_id=", since_id, "&max_id=", max_id, "&trim_user=", trim_user, "&contributor_details=", contributor_details, "&include_entities=", include_entities, "&tweet_mode=", tweet_mode);
 		}
 
 
@@ -5365,9 +5378,10 @@ namespace TweetSharp
 			var exclude_replies = options.ExcludeReplies;
 			var contributor_details = options.ContributorDetails;
 			var include_entities = options.IncludeEntities;
+			var tweet_mode = options.TweetMode;
 				
 
-			return BeginWithHammock<IEnumerable<TwitterStatus>>(_client, WebMethod.Get, "statuses/home_timeline", FormatAsString, "?count=", count, "&since_id=", since_id, "&max_id=", max_id, "&trim_user=", trim_user, "&exclude_replies=", exclude_replies, "&contributor_details=", contributor_details, "&include_entities=", include_entities);
+			return BeginWithHammock<IEnumerable<TwitterStatus>>(_client, WebMethod.Get, "statuses/home_timeline", FormatAsString, "?count=", count, "&since_id=", since_id, "&max_id=", max_id, "&trim_user=", trim_user, "&exclude_replies=", exclude_replies, "&contributor_details=", contributor_details, "&include_entities=", include_entities, "&tweet_mode=", tweet_mode);
 		}
 
 
@@ -5393,9 +5407,10 @@ namespace TweetSharp
 			var id = options.Id;
 			var count = options.Count;
 			var trim_user = options.TrimUser;
+			var tweet_mode = options.TweetMode;
 				
 
-			return BeginWithHammock<IEnumerable<TwitterStatus>>(_client, WebMethod.Get, "statuses/retweets/{id}", FormatAsString, "?id=", id, "&count=", count, "&trim_user=", trim_user);
+			return BeginWithHammock<IEnumerable<TwitterStatus>>(_client, WebMethod.Get, "statuses/retweets/{id}", FormatAsString, "?id=", id, "&count=", count, "&trim_user=", trim_user, "&tweet_mode=", tweet_mode);
 		}
 
 
@@ -6040,9 +6055,10 @@ namespace TweetSharp
 			var since_id = options.SinceId;
 			var max_id = options.MaxId;
 			var include_entities = options.IncludeEntities;
+			var tweet_mode = options.TweetMode;
 				
 
-			return BeginWithHammock<IEnumerable<TwitterStatus>>(_client, WebMethod.Get, "favorites/list", FormatAsString, "?user_id=", user_id, "&screen_name=", screen_name, "&count=", count, "&since_id=", since_id, "&max_id=", max_id, "&include_entities=", include_entities);
+			return BeginWithHammock<IEnumerable<TwitterStatus>>(_client, WebMethod.Get, "favorites/list", FormatAsString, "?user_id=", user_id, "&screen_name=", screen_name, "&count=", count, "&since_id=", since_id, "&max_id=", max_id, "&include_entities=", include_entities, "&tweet_mode=", tweet_mode);
 		}
 
 
@@ -7657,9 +7673,10 @@ namespace TweetSharp
 			var trim_user = options.TrimUser;
 			var contributor_details = options.ContributorDetails;
 			var include_entities = options.IncludeEntities;
+			var tweet_mode = options.TweetMode;
 			
 
-			WithHammock<IEnumerable<TwitterStatus>>(_client, action, "statuses/mentions_timeline", FormatAsString, "?count=", count, "&since_id=", since_id, "&max_id=", max_id, "&trim_user=", trim_user, "&contributor_details=", contributor_details, "&include_entities=", include_entities);
+			WithHammock<IEnumerable<TwitterStatus>>(_client, action, "statuses/mentions_timeline", FormatAsString, "?count=", count, "&since_id=", since_id, "&max_id=", max_id, "&trim_user=", trim_user, "&contributor_details=", contributor_details, "&include_entities=", include_entities, "&tweet_mode=", tweet_mode);
 		}
 
 
@@ -7692,9 +7709,10 @@ namespace TweetSharp
 			var exclude_replies = options.ExcludeReplies;
 			var contributor_details = options.ContributorDetails;
 			var include_entities = options.IncludeEntities;
+			var tweet_mode = options.TweetMode;
 			
 
-			WithHammock<IEnumerable<TwitterStatus>>(_client, action, "statuses/home_timeline", FormatAsString, "?count=", count, "&since_id=", since_id, "&max_id=", max_id, "&trim_user=", trim_user, "&exclude_replies=", exclude_replies, "&contributor_details=", contributor_details, "&include_entities=", include_entities);
+			WithHammock<IEnumerable<TwitterStatus>>(_client, action, "statuses/home_timeline", FormatAsString, "?count=", count, "&since_id=", since_id, "&max_id=", max_id, "&trim_user=", trim_user, "&exclude_replies=", exclude_replies, "&contributor_details=", contributor_details, "&include_entities=", include_entities, "&tweet_mode=", tweet_mode);
 		}
 
 
@@ -7720,9 +7738,10 @@ namespace TweetSharp
 			var id = options.Id;
 			var count = options.Count;
 			var trim_user = options.TrimUser;
+			var tweet_mode = options.TweetMode;
 			
 
-			WithHammock<IEnumerable<TwitterStatus>>(_client, action, "statuses/retweets/{id}", FormatAsString, "?id=", id, "&count=", count, "&trim_user=", trim_user);
+			WithHammock<IEnumerable<TwitterStatus>>(_client, action, "statuses/retweets/{id}", FormatAsString, "?id=", id, "&count=", count, "&trim_user=", trim_user, "&tweet_mode=", tweet_mode);
 		}
 
 
@@ -8367,9 +8386,10 @@ namespace TweetSharp
 			var since_id = options.SinceId;
 			var max_id = options.MaxId;
 			var include_entities = options.IncludeEntities;
+			var tweet_mode = options.TweetMode;
 			
 
-			WithHammock<IEnumerable<TwitterStatus>>(_client, action, "favorites/list", FormatAsString, "?user_id=", user_id, "&screen_name=", screen_name, "&count=", count, "&since_id=", since_id, "&max_id=", max_id, "&include_entities=", include_entities);
+			WithHammock<IEnumerable<TwitterStatus>>(_client, action, "favorites/list", FormatAsString, "?user_id=", user_id, "&screen_name=", screen_name, "&count=", count, "&since_id=", since_id, "&max_id=", max_id, "&include_entities=", include_entities, "&tweet_mode=", tweet_mode);
 		}
 
 
@@ -8812,9 +8832,10 @@ namespace TweetSharp
 			var trim_user = options.TrimUser;
 			var contributor_details = options.ContributorDetails;
 			var include_entities = options.IncludeEntities;
+			var tweet_mode = options.TweetMode;
 			
 
-			return WithHammockTask<IEnumerable<TwitterStatus>>(_client, "statuses/mentions_timeline", FormatAsString, "?count=", count, "&since_id=", since_id, "&max_id=", max_id, "&trim_user=", trim_user, "&contributor_details=", contributor_details, "&include_entities=", include_entities);
+			return WithHammockTask<IEnumerable<TwitterStatus>>(_client, "statuses/mentions_timeline", FormatAsString, "?count=", count, "&since_id=", since_id, "&max_id=", max_id, "&trim_user=", trim_user, "&contributor_details=", contributor_details, "&include_entities=", include_entities, "&tweet_mode=", tweet_mode);
 		}
 
         
@@ -8845,9 +8866,10 @@ namespace TweetSharp
 			var exclude_replies = options.ExcludeReplies;
 			var contributor_details = options.ContributorDetails;
 			var include_entities = options.IncludeEntities;
+			var tweet_mode = options.TweetMode;
 			
 
-			return WithHammockTask<IEnumerable<TwitterStatus>>(_client, "statuses/home_timeline", FormatAsString, "?count=", count, "&since_id=", since_id, "&max_id=", max_id, "&trim_user=", trim_user, "&exclude_replies=", exclude_replies, "&contributor_details=", contributor_details, "&include_entities=", include_entities);
+			return WithHammockTask<IEnumerable<TwitterStatus>>(_client, "statuses/home_timeline", FormatAsString, "?count=", count, "&since_id=", since_id, "&max_id=", max_id, "&trim_user=", trim_user, "&exclude_replies=", exclude_replies, "&contributor_details=", contributor_details, "&include_entities=", include_entities, "&tweet_mode=", tweet_mode);
 		}
 
         
@@ -8871,9 +8893,10 @@ namespace TweetSharp
 			var id = options.Id;
 			var count = options.Count;
 			var trim_user = options.TrimUser;
+			var tweet_mode = options.TweetMode;
 			
 
-			return WithHammockTask<IEnumerable<TwitterStatus>>(_client, "statuses/retweets/{id}", FormatAsString, "?id=", id, "&count=", count, "&trim_user=", trim_user);
+			return WithHammockTask<IEnumerable<TwitterStatus>>(_client, "statuses/retweets/{id}", FormatAsString, "?id=", id, "&count=", count, "&trim_user=", trim_user, "&tweet_mode=", tweet_mode);
 		}
 
         
@@ -9466,9 +9489,10 @@ namespace TweetSharp
 			var since_id = options.SinceId;
 			var max_id = options.MaxId;
 			var include_entities = options.IncludeEntities;
+			var tweet_mode = options.TweetMode;
 			
 
-			return WithHammockTask<IEnumerable<TwitterStatus>>(_client, "favorites/list", FormatAsString, "?user_id=", user_id, "&screen_name=", screen_name, "&count=", count, "&since_id=", since_id, "&max_id=", max_id, "&include_entities=", include_entities);
+			return WithHammockTask<IEnumerable<TwitterStatus>>(_client, "favorites/list", FormatAsString, "?user_id=", user_id, "&screen_name=", screen_name, "&count=", count, "&since_id=", since_id, "&max_id=", max_id, "&include_entities=", include_entities, "&tweet_mode=", tweet_mode);
 		}
 
         

@@ -1,5 +1,5 @@
 ﻿// https://dev.twitter.com/docs/api/1.1/get/statuses/retweets/%3Aid
-IEnumerable<TwitterStatus>, "statuses/retweets/{id}", Retweets, long id, int? count, bool? trim_user
+IEnumerable<TwitterStatus>, "statuses/retweets/{id}", Retweets, long id, int? count, bool? trim_user, string tweet_mode
 
 // https://dev.twitter.com/docs/api/1.1/get/statuses/show/%3Aid
 TwitterStatus, "statuses/show/{id}", GetTweet, long id, bool? trim_user, bool? include_my_retweet, bool? include_entities, string tweet_mode
