@@ -32,6 +32,7 @@ namespace TweetSharp
 		private bool _isTruncated;
 		private string _source;
 		private string _text;
+        private string _fullText;
 		private TwitterUser _user;
 		private TwitterStatus _retweetedStatus;
 		private TwitterGeoLocation _location;
@@ -46,6 +47,7 @@ namespace TweetSharp
 		private long? _quotedStatusId;
 		private string _quotedStatusIdStr;
 		private TwitterStatus _quotedStatus;
+        private int[] _displayTextRange;
 
 #if !Smartphone && !NET20
 		[DataMember]
@@ -331,7 +333,43 @@ namespace TweetSharp
 			}
 		}
 
-		private string _textAsHtml;
+#if !Smartphone && !NET20
+        [DataMember]
+#endif
+        public virtual string FullText
+        {
+            get { return _fullText; }
+            set
+            {
+                if (_text == value)
+                {
+                    return;
+                }
+
+                _fullText = value;
+                OnPropertyChanged("FullText");
+            }
+        }
+
+#if !Smartphone && !NET20
+        [DataMember]
+#endif
+        public virtual int[] DisplayTextRange
+        {
+            get { return _displayTextRange; }
+            set
+            {
+                if (_displayTextRange == value)
+                {
+                    return;
+                }
+
+                _displayTextRange = value;
+                OnPropertyChanged("DisplayTextRange");
+            }
+        }
+
+        private string _textAsHtml;
 		public virtual string TextAsHtml
 		{
 			get
