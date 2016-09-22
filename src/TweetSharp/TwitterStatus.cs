@@ -48,6 +48,7 @@ namespace TweetSharp
 		private string _quotedStatusIdStr;
 		private TwitterStatus _quotedStatus;
 		private int[] _displayTextRange;
+		private ExtendedTweet _extendedTweet;
 
 #if !Smartphone && !NET20
 		[DataMember]
@@ -191,6 +192,24 @@ namespace TweetSharp
 
 				_quotedStatus = value;
 				OnPropertyChanged("QuotedStatus");
+			}
+		}
+
+#if !Smartphone && !NET20
+		[DataMember]
+#endif
+		public virtual ExtendedTweet ExtendedTweet
+		{
+			get { return _extendedTweet; }
+			set
+			{
+				if (_extendedTweet == value)
+				{
+					return;
+				}
+
+				_extendedTweet = value;
+				OnPropertyChanged("ExtendedTweet");
 			}
 		}
 
@@ -686,5 +705,25 @@ namespace TweetSharp
 			builder.Path = String.Format("{0}/status/{1}", this.Author.ScreenName, this.Id);
 			return builder.Uri;
 		}
+	}
+
+	public class ExtendedTweet
+	{
+#if !Smartphone && !NET20
+		[DataMember]
+#endif
+		public string FullText { get; set; }
+#if !Smartphone && !NET20
+		[DataMember]
+#endif
+		public string DisplayText { get; set; }
+#if !Smartphone && !NET20
+		[DataMember]
+#endif
+		public TwitterEntities Entities { get; set; }
+#if !Smartphone && !NET20
+		[DataMember]
+#endif
+		public TwitterExtendedEntities ExtendedEntities { get; set; }
 	}
 }

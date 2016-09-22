@@ -72,4 +72,23 @@ namespace TweetSharp
 		public const string AnimatedGif = "tweet_gif";
 		public const string Video = "tweet_video";
 	}
+
+	/// <summary>
+	/// Specifies how tweets are returned with regards to changes to the 140 character limit.
+	/// </summary>
+	/// <remarks>
+	/// <para>See https://dev.twitter.com/overview/api/upcoming-changes-to-tweets for more details.</para>
+	/// </remarks>
+	public class TweetMode
+	{
+		/// <summary>
+		/// Tweet payload will work with all existing integrations, regardless of tweet content.
+		/// </summary>
+		public const string Compatibility = "compat";
+		/// <summary>
+		/// Tweet payload contains all information to render tweets that contain more than 140 characters.
+		/// </summary>
+		public const string Extended = "extended";
+
+	}
 }

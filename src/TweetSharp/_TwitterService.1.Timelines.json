@@ -8,4 +8,4 @@ IEnumerable<TwitterStatus>, "statuses/user_timeline", ListTweetsOnUserTimeline, 
 IEnumerable<TwitterStatus>, "statuses/home_timeline", ListTweetsOnHomeTimeline, int? count, long? since_id, long? max_id, bool? trim_user, bool? exclude_replies, bool? contributor_details, bool? include_entities
 
 // https://dev.twitter.com/docs/api/1.1/get/statuses/retweets_of_me
-IEnumerable<TwitterStatus>, "statuses/retweets_of_me", ListRetweetsOfMyTweets, int? count, long? since_id, long? max_id, bool? trim_user, bool? include_entities, bool? include_user_entities 
+IEnumerable<TwitterStatus>, "statuses/retweets_of_me", ListRetweetsOfMyTweets, int? count, long? since_id, long? max_id, bool? trim_user, bool? include_entities, bool? include_user_entities, string tweet_mode

@@ -791,11 +791,12 @@ namespace TweetSharp.Tests.Service
 		public void Can_get_tweet_compat_tweet_mode()
 		{
 			var service = GetAuthenticatedService();
-			var options = new GetTweetOptions { Id = 778329152193781762, TweetMode = "compat" };
+			var options = new GetTweetOptions { Id = 778329152193781762, TweetMode = TweetMode.Compatibility };
 
 			TestSyncAndAsync(options, service.GetTweet, service.GetTweetAsync, tweet =>
 			{
 				Assert.IsNotNull(tweet);
+				Assert.IsNotEmpty(tweet.Text);
 				Assert.IsNotNull(service.Response);
 				Assert.AreEqual(HttpStatusCode.OK, service.Response.StatusCode);
 				Assert.AreEqual(@"Upcoming changes to Tweets - Allows tweets more than 140 characters. Looking at extending TweetMoaSharp @yortw… https://t.co/M4WBDumXl9", tweet.Text);
@@ -806,12 +807,15 @@ namespace TweetSharp.Tests.Service
 		public void Can_get_tweet_extended_tweet_mode()
 		{
 			var service = GetAuthenticatedService();
-			var options = new GetTweetOptions { Id = 778329152193781762, TweetMode = "extended" };
+			var options = new GetTweetOptions { Id = 778329152193781762, TweetMode = TweetMode.Extended };
 
 			TestSyncAndAsync(options, service.GetTweet, service.GetTweetAsync, tweet =>
 			{
 				Assert.IsNotNull(tweet);
 				Assert.IsNotNull(service.Response);
+				Assert.IsNotEmpty(tweet.FullText, "Full text was empty!");
+				Assert.IsNotNull(tweet.DisplayTextRange);
+				Assert.AreEqual(2, tweet.DisplayTextRange.Length);
 				Assert.AreEqual(HttpStatusCode.OK, service.Response.StatusCode);
 				Assert.IsNull(tweet.Text);
 				Assert.AreEqual(@"Upcoming changes to Tweets - Allows tweets more than 140 characters. Looking at extending TweetMoaSharp @yortw https://t.co/rJAbUfEK9a https://t.co/UwCfXRETR3", tweet.FullText);
