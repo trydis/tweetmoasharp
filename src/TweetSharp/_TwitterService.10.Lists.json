@@ -5,7 +5,7 @@ IEnumerable<TwitterList>, "lists/list", ListListsFor, long? user_id, string scre
 TwitterCursorList<TwitterList>, "lists/ownerships", ListOwnedListsFor, long? user_id, string screen_name, int? count, long? cursor 
 
 // https://dev.twitter.com/docs/api/1.1/get/lists/statuses
-IEnumerable<TwitterStatus>, "lists/statuses", ListTweetsOnList, long? list_id, string slug, string owner_screen_name, long? owner_id, long? since_id, long? max_id, int? count, bool? include_entities, bool? include_rts
+IEnumerable<TwitterStatus>, "lists/statuses", ListTweetsOnList, long? list_id, string slug, string owner_screen_name, long? owner_id, long? since_id, long? max_id, int? count, bool? include_entities, bool? include_rts, string tweet_mode
 
 // https://dev.twitter.com/docs/api/1.1/post/lists/members/destroy
 TwitterUser, "lists/members/destroy":POST, RemoveListMember, long? list_id, string slug, long? user_id, string screen_name, string owner_screen_name, long? owner_id

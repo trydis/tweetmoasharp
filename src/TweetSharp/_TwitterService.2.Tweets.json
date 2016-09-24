@@ -1,14 +1,14 @@
 ﻿// https://dev.twitter.com/docs/api/1.1/get/statuses/retweets/%3Aid
-IEnumerable<TwitterStatus>, "statuses/retweets/{id}", Retweets, long id, int? count, bool? trim_user
+IEnumerable<TwitterStatus>, "statuses/retweets/{id}", Retweets, long id, int? count, bool? trim_user, string tweet_mode
 
 // https://dev.twitter.com/docs/api/1.1/get/statuses/show/%3Aid
-TwitterStatus, "statuses/show/{id}", GetTweet, long id, bool? trim_user, bool? include_my_retweet, bool? include_entities
+TwitterStatus, "statuses/show/{id}", GetTweet, long id, bool? trim_user, bool? include_my_retweet, bool? include_entities, string tweet_mode
 
 // https://dev.twitter.com/docs/api/1.1/post/statuses/destroy/%3Aid
 TwitterStatus, "statuses/destroy/{id}":POST, DeleteTweet, long id, bool trim_user
 
 // https://dev.twitter.com/docs/api/1.1/post/statuses/update
-TwitterStatus, "statuses/update":POST, SendTweet, string status, long? in_reply_to_status_id, double? lat, double? @long, string place_id, bool? display_coordinates, bool? trim_user, IEnumerable<String> media_ids
+TwitterStatus, "statuses/update":POST, SendTweet, string status, long? in_reply_to_status_id, double? lat, double? @long, string place_id, bool? display_coordinates, bool? trim_user, IEnumerable<String> media_ids, bool auto_populate_reply_metadata, string exclude_reply_user_ids, string attachment_url
 
 // https://dev.twitter.com/docs/api/1.1/post/statuses/retweet/%3Aid
 TwitterStatus, "statuses/retweet/{id}":POST, Retweet, long id, bool? trim_user

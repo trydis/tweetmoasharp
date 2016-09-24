@@ -1,7 +1,7 @@
 namespace TweetSharp
 {
-    public interface ITwitterModel
-    {
-        string RawSource { get; set; }
-    }
+	public interface ITwitterModel
+	{
+		string RawSource { get; set; }
+	}
 }

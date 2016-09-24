@@ -46,7 +46,7 @@ namespace TweetSharp
 		public MediaProcessingInfo ProcessingInfo { get; set; }
 
 	}
- 
+
 	public class MediaProcessingInfo
 	{
 		[JsonProperty("state")]
