@@ -30,7 +30,7 @@ namespace TweetSharp.Tests.Service
 			var media = tweet.Entities.Media[0];
 			Assert.AreEqual("http://pbs.twimg.com/media/AcmnZAXCMAEaDD1.jpg", media.MediaUrl);
 			Assert.AreEqual("https://pbs.twimg.com/media/AcmnZAXCMAEaDD1.jpg", media.MediaUrlHttps);
-			Assert.AreEqual("http://twitter.com/sarah_hatton/status/128818112387756032/photo/1", media.ExpandedUrl);
+			Assert.AreEqual("https://twitter.com/sarah_hatton/status/128818112387756032/photo/1", media.ExpandedUrl);
 			Assert.AreEqual("pic.twitter.com/xCdS2Emt", media.DisplayUrl);
 			Assert.AreEqual(TwitterMediaType.Photo, media.MediaType);
 			Assert.AreEqual(69, media.Indices[0]);
