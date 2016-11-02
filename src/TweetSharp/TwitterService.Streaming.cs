@@ -2,6 +2,8 @@
 using Hammock;
 using Hammock.Streaming;
 using Hammock.Web;
+using System.Linq;
+using System.Collections.Generic;
 
 namespace TweetSharp
 {
@@ -125,10 +127,10 @@ namespace TweetSharp
 			if (!String.IsNullOrEmpty(options.Language))
 				request.AddParameter("language", options.Language);
 
-			if (options.Follow != null && options.Follow.Length > 0)
+			if (options.Follow != null && options.Follow.Any())
 				request.AddParameter("follow", ToCommaSeparatedString<long>(options.Follow));
 
-			if (options.Track != null && options.Track.Length > 0)
+			if (options.Track != null && options.Track.Any())
 				request.AddParameter("track", ToCommaSeparatedString<string>(options.Track));
 
 			if (options.Locations != null && options.Locations.Length > 0)
@@ -139,7 +141,7 @@ namespace TweetSharp
 			request.AddParameter("stringify_friend_id", options.StringifyFriendIds.ToString().ToLower());
 		}
 
-		private string ToCommaSeparatedString<T>(T[] values)
+		private string ToCommaSeparatedString<T>(IEnumerable<T> values)
 		{
 			var sb = new System.Text.StringBuilder();
 
@@ -154,7 +156,7 @@ namespace TweetSharp
 			return sb.ToString();
 		}
 
-		private string ToCommaSeparatedString(TwitterGeoLocation.GeoCoordinates[] values)
+		private string ToCommaSeparatedString(IEnumerable<TwitterGeoLocation.GeoCoordinates> values)
 		{
 			var sb = new System.Text.StringBuilder();
 

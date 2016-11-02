@@ -14,8 +14,8 @@ namespace TweetSharp
 		public bool StallWarnings { get; set; }
 		public StreamFilterLevel FilterLevel { get; set; }
 		public string Language { get; set; }
-		public long[] Follow { get; set; }
-		public string[] Track { get; set; }
+		public IEnumerable<long> Follow { get; set; }
+		public IEnumerable<string> Track { get; set; }
 		public TwitterGeoLocation.GeoCoordinates[] Locations { get; set; }
 		public StreamWith With { get; set; }
 		public bool StringifyFriendIds { get; set; }
