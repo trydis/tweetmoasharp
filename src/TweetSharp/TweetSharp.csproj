@@ -57,6 +57,7 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FilterStreamOptions.cs" />
     <Compile Include="Properties\AssemblyInfoVersion.cs" />
     <Compile Include="ITwitterService.cs" />
     <Compile Include="ObjectExtensions.cs" />

@@ -51,6 +51,9 @@
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
+    <Compile Include="..\TweetSharp\FilterStreamOptions.cs">
+      <Link>FilterStreamOptions.cs</Link>
+    </Compile>
     <Compile Include="..\TweetSharp\Globals.cs">
       <Link>Globals.cs</Link>
     </Compile>
