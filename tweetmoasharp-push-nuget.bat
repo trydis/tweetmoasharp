@@ -1,1 +1,1 @@
-".nuget\NuGet.exe" push TweetMoaSharp.3.0.0.24.nupkg -Source https://api.nuget.org/v3/index.json
+".nuget\NuGet.exe" push TweetMoaSharp.4.0.0.0.nupkg -Source https://api.nuget.org/v3/index.json

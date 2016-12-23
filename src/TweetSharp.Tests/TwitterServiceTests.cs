@@ -911,6 +911,22 @@ namespace TweetSharp.Tests.Service
 			});
 		}
 
+		[Test]
+		public void Can_list_muted_users()
+		{
+			var service = GetAuthenticatedService();
+			var options = new ListMutedUsersOptions { };
+			TestSyncAndAsync(options, service.ListMutedUsers, service.ListMutedUsersAsync, result =>
+			{
+				Assert.IsNotNull(result);
+				Assert.IsNotNull(service.Response);
+				Assert.AreEqual(HttpStatusCode.OK, service.Response.StatusCode);
+
+				var users = result.ToArray();
+				Assert.IsTrue(users.Length > 0);
+			});
+		}
+
 		private static void TestSyncAndAsync<TOptions, TResult>(TOptions options, Func<TOptions, TResult> syncFunc, Func<TOptions, Task<TwitterAsyncResult<TResult>>> asyncFunc, Action<TResult> assertFunc)
 		{
 			var syncResult = syncFunc(options);

@@ -1,12 +1,4 @@
-﻿
-
-
-
-
-
-
-
-/// <summary>
+﻿/// <summary>
 /// This code is generated. Any changes to it will be destroyed on subsequent generations. Use the DSL instead.
 /// </summary>
 
@@ -559,7 +551,8 @@ namespace TweetSharp
 		public long? MaxId { get; set; }  
 		public int? Count { get; set; }  
 		public bool? IncludeEntities { get; set; }  
-		public bool? IncludeRts { get; set; } 			
+		public bool? IncludeRts { get; set; }  
+		public string TweetMode { get; set; } 			
 	}			
  
     		
@@ -796,7 +789,6 @@ namespace TweetSharp
 		public string ScreenName { get; set; }  
 		public long? UserId { get; set; } 			
 	}			
-
 #endregion
 
 #region Interface
@@ -1001,7 +993,7 @@ namespace TweetSharp
 
  
         
-		TwitterCursorList<long> ListMutedUsers(ListMutedUsersOptions options);	
+		TwitterCursorList<TwitterUser> ListMutedUsers(ListMutedUsersOptions options);	
 
  
         
@@ -1163,386 +1155,292 @@ namespace TweetSharp
         
 		TwitterUser ReportSpam(ReportSpamOptions options);	
 
-
 		#endregion
 #endif
 
 #if !WINDOWS_PHONE
 		#region Asynchronous Methods (with IAsyncResult)
-
         
 		IAsyncResult GetConfiguration(Action<TwitterConfiguration, TwitterResponse>  action);
-
 
         
 		IAsyncResult ListTweetsMentioningMe(ListTweetsMentioningMeOptions options, Action<IEnumerable<TwitterStatus>, TwitterResponse>  action);
 
-
         
 		IAsyncResult ListTweetsOnUserTimeline(ListTweetsOnUserTimelineOptions options, Action<IEnumerable<TwitterStatus>, TwitterResponse>  action);
-
 
         
 		IAsyncResult ListTweetsOnHomeTimeline(ListTweetsOnHomeTimelineOptions options, Action<IEnumerable<TwitterStatus>, TwitterResponse>  action);
 
-
         
 		IAsyncResult ListRetweetsOfMyTweets(ListRetweetsOfMyTweetsOptions options, Action<IEnumerable<TwitterStatus>, TwitterResponse>  action);
-
 
         
 		IAsyncResult Retweets(RetweetsOptions options, Action<IEnumerable<TwitterStatus>, TwitterResponse>  action);
 
-
         
 		IAsyncResult GetTweet(GetTweetOptions options, Action<TwitterStatus, TwitterResponse>  action);
-
 
         
 		IAsyncResult DeleteTweet(DeleteTweetOptions options, Action<TwitterStatus, TwitterResponse>  action);
 
-
         
 		IAsyncResult SendTweet(SendTweetOptions options, Action<TwitterStatus, TwitterResponse>  action);
-
 
         
 		IAsyncResult Retweet(RetweetOptions options, Action<TwitterStatus, TwitterResponse>  action);
 
-
         [Obsolete("Twitter has declared this method obsolete; it may cease to function at any time. Check https://dev.twitter.com/docs/api#deprecated for alternatives.")]
 		IAsyncResult SendTweetWithMedia(SendTweetWithMediaOptions options, Action<TwitterStatus, TwitterResponse>  action);
-
 
         
 		IAsyncResult UploadMedia(UploadMediaOptions options, Action<TwitterUploadedMedia, TwitterResponse>  action);
 
-
         
 		IAsyncResult UploadMediaInit(UploadMediaInitOptions options, Action<TwitterChunkedMedia, TwitterResponse>  action);
-
 
         
 		IAsyncResult UploadMediaAppend(UploadMediaAppendOptions options, Action<TwitterResponse> action);
 
-
         
 		IAsyncResult UploadMediaFinalize(UploadMediaFinalizeOptions options, Action<UploadMediaResult, TwitterResponse>  action);
-
 
         
 		IAsyncResult UploadMediaCheckStatus(UploadMediaCheckStatusOptions options, Action<UploadMediaResult, TwitterResponse>  action);
 
-
         
 		IAsyncResult Search(SearchOptions options, Action<TwitterSearchResult, TwitterResponse>  action);
-
 
         
 		IAsyncResult ListDirectMessagesReceived(ListDirectMessagesReceivedOptions options, Action<IEnumerable<TwitterDirectMessage>, TwitterResponse>  action);
 
-
         
 		IAsyncResult ListDirectMessagesSent(ListDirectMessagesSentOptions options, Action<IEnumerable<TwitterDirectMessage>, TwitterResponse>  action);
-
 
         
 		IAsyncResult GetDirectMessage(GetDirectMessageOptions options, Action<TwitterDirectMessage, TwitterResponse>  action);
 
-
         
 		IAsyncResult DeleteDirectMessage(DeleteDirectMessageOptions options, Action<TwitterDirectMessage, TwitterResponse>  action);
-
 
         
 		IAsyncResult SendDirectMessage(SendDirectMessageOptions options, Action<TwitterDirectMessage, TwitterResponse>  action);
 
-
         
 		IAsyncResult ListFriendIdsOf(ListFriendIdsOfOptions options, Action<TwitterCursorList<long>, TwitterResponse>  action);
-
 
         
 		IAsyncResult ListFollowerIdsOf(ListFollowerIdsOfOptions options, Action<TwitterCursorList<long>, TwitterResponse>  action);
 
-
         
 		IAsyncResult ListFriendshipsFor(ListFriendshipsForOptions options, Action<IEnumerable<TwitterFriendshipLookup>, TwitterResponse>  action);
-
 
         
 		IAsyncResult GetIncomingFriendRequests(GetIncomingFriendRequestsOptions options, Action<TwitterCursorList<long>, TwitterResponse>  action);
 
-
         
 		IAsyncResult GetOutgoingFriendRequests(GetOutgoingFriendRequestsOptions options, Action<TwitterCursorList<long>, TwitterResponse>  action);
-
 
         
 		IAsyncResult FollowUser(FollowUserOptions options, Action<TwitterUser, TwitterResponse>  action);
 
-
         
 		IAsyncResult UnfollowUser(UnfollowUserOptions options, Action<TwitterUser, TwitterResponse>  action);
-
 
         
 		IAsyncResult UpdateFriendship(UpdateFriendshipOptions options, Action<TwitterFriendship, TwitterResponse>  action);
 
-
         
 		IAsyncResult GetFriendshipInfo(GetFriendshipInfoOptions options, Action<TwitterFriendship, TwitterResponse>  action);
-
 
         
 		IAsyncResult ListFriends(ListFriendsOptions options, Action<TwitterCursorList<TwitterUser>, TwitterResponse>  action);
 
-
         
 		IAsyncResult ListFollowers(ListFollowersOptions options, Action<TwitterCursorList<TwitterUser>, TwitterResponse>  action);
-
 
         
 		IAsyncResult GetAccountSettings(Action<TwitterAccount, TwitterResponse>  action);
 
-
         
 		IAsyncResult GetUserProfile(GetUserProfileOptions options, Action<TwitterUser, TwitterResponse>  action);
-
 
         
 		IAsyncResult VerifyCredentials(VerifyCredentialsOptions options, Action<TwitterUser, TwitterResponse>  action);
 
-
         
 		IAsyncResult UpdateAccountSettings(UpdateAccountSettingsOptions options, Action<TwitterAccount, TwitterResponse>  action);
-
 
         
 		IAsyncResult UpdateDeliveryDevice(UpdateDeliveryDeviceOptions options, Action<TwitterUser, TwitterResponse>  action);
 
-
         
 		IAsyncResult UpdateProfile(UpdateProfileOptions options, Action<TwitterUser, TwitterResponse>  action);
-
 
         
 		IAsyncResult UpdateProfileBackgroundImage(UpdateProfileBackgroundImageOptions options, Action<TwitterUser, TwitterResponse>  action);
 
-
         
 		IAsyncResult UpdateProfileColors(UpdateProfileColorsOptions options, Action<TwitterUser, TwitterResponse>  action);
-
 
         
 		IAsyncResult UpdateProfileImage(UpdateProfileImageOptions options, Action<TwitterUser, TwitterResponse>  action);
 
-
         
 		IAsyncResult ListBlockedUsers(ListBlockedUsersOptions options, Action<TwitterCursorList<TwitterUser>, TwitterResponse>  action);
-
 
         
 		IAsyncResult ListBlockedUserIds(ListBlockedUserIdsOptions options, Action<TwitterCursorList<long>, TwitterResponse>  action);
 
-
         
 		IAsyncResult BlockUser(BlockUserOptions options, Action<TwitterUser, TwitterResponse>  action);
-
 
         
 		IAsyncResult UnblockUser(UnblockUserOptions options, Action<TwitterUser, TwitterResponse>  action);
 
-
         
 		IAsyncResult MuteUser(MuteUserOptions options, Action<TwitterUser, TwitterResponse>  action);
-
 
         
 		IAsyncResult UnmuteUser(UnmuteUserOptions options, Action<TwitterUser, TwitterResponse>  action);
 
-
         
 		IAsyncResult ListMutedUserIds(ListMutedUserIdsOptions options, Action<TwitterCursorList<long>, TwitterResponse>  action);
 
-
         
-		IAsyncResult ListMutedUsers(ListMutedUsersOptions options, Action<TwitterCursorList<long>, TwitterResponse>  action);
-
+		IAsyncResult ListMutedUsers(ListMutedUsersOptions options, Action<TwitterCursorList<TwitterUser>, TwitterResponse>  action);
 
         
 		IAsyncResult ListUserProfilesFor(ListUserProfilesForOptions options, Action<IEnumerable<TwitterUser>, TwitterResponse>  action);
 
-
         
 		IAsyncResult GetUserProfileFor(GetUserProfileForOptions options, Action<TwitterUser, TwitterResponse>  action);
-
 
         
 		IAsyncResult SearchForUser(SearchForUserOptions options, Action<IEnumerable<TwitterUser>, TwitterResponse>  action);
 
-
         
 		IAsyncResult GetProfileBannerFor(GetProfileBannerForOptions options, Action<ProfileBanners, TwitterResponse>  action);
-
 
         
 		IAsyncResult ListSuggestedUsers(ListSuggestedUsersOptions options, Action<TwitterUserSuggestions, TwitterResponse>  action);
 
-
         
 		IAsyncResult ListSuggestedUserCategories(ListSuggestedUserCategoriesOptions options, Action<IEnumerable<TwitterUserSuggestions>, TwitterResponse>  action);
-
 
         
 		IAsyncResult GetSuggestedUserMembers(GetSuggestedUserMembersOptions options, Action<IEnumerable<TwitterUser>, TwitterResponse>  action);
 
-
         
 		IAsyncResult ListFavoriteTweets(ListFavoriteTweetsOptions options, Action<IEnumerable<TwitterStatus>, TwitterResponse>  action);
-
 
         
 		IAsyncResult UnfavoriteTweet(UnfavoriteTweetOptions options, Action<TwitterStatus, TwitterResponse>  action);
 
-
         
 		IAsyncResult FavoriteTweet(FavoriteTweetOptions options, Action<TwitterStatus, TwitterResponse>  action);
-
 
         
 		IAsyncResult ListListsFor(ListListsForOptions options, Action<IEnumerable<TwitterList>, TwitterResponse>  action);
 
-
         
 		IAsyncResult ListOwnedListsFor(ListOwnedListsForOptions options, Action<TwitterCursorList<TwitterList>, TwitterResponse>  action);
-
 
         
 		IAsyncResult ListTweetsOnList(ListTweetsOnListOptions options, Action<IEnumerable<TwitterStatus>, TwitterResponse>  action);
 
-
         
 		IAsyncResult RemoveListMember(RemoveListMemberOptions options, Action<TwitterUser, TwitterResponse>  action);
-
 
         
 		IAsyncResult ListListMembershipsFor(ListListMembershipsForOptions options, Action<TwitterCursorList<TwitterList>, TwitterResponse>  action);
 
-
         
 		IAsyncResult ListListSubscribers(ListListSubscribersOptions options, Action<TwitterCursorList<TwitterUser>, TwitterResponse>  action);
-
 
         
 		IAsyncResult FollowList(FollowListOptions options, Action<TwitterUser, TwitterResponse>  action);
 
-
         
 		IAsyncResult VerifyListSubscription(VerifyListSubscriptionOptions options, Action<TwitterUser, TwitterResponse>  action);
-
 
         
 		IAsyncResult UnfollowList(UnfollowListOptions options, Action<TwitterUser, TwitterResponse>  action);
 
-
         
 		IAsyncResult AddListMembers(AddListMembersOptions options, Action<TwitterList, TwitterResponse>  action);
-
 
         
 		IAsyncResult VerifyListMembership(VerifyListMembershipOptions options, Action<TwitterUser, TwitterResponse>  action);
 
-
         
 		IAsyncResult ListListMembers(ListListMembersOptions options, Action<TwitterCursorList<TwitterUser>, TwitterResponse>  action);
-
 
         
 		IAsyncResult AddListMember(AddListMemberOptions options, Action<TwitterUser, TwitterResponse>  action);
 
-
         
 		IAsyncResult DeleteList(DeleteListOptions options, Action<TwitterList, TwitterResponse>  action);
-
 
         
 		IAsyncResult UpdateList(UpdateListOptions options, Action<TwitterList, TwitterResponse>  action);
 
-
         
 		IAsyncResult CreateList(CreateListOptions options, Action<TwitterList, TwitterResponse>  action);
-
 
         
 		IAsyncResult GetList(GetListOptions options, Action<TwitterList, TwitterResponse>  action);
 
-
         
 		IAsyncResult ListSubscriptions(ListSubscriptionsOptions options, Action<TwitterCursorList<TwitterList>, TwitterResponse>  action);
-
 
         
 		IAsyncResult ListSavedSearches(Action<IEnumerable<TwitterSavedSearch>, TwitterResponse>  action);
 
-
         
 		IAsyncResult GetSavedSearch(GetSavedSearchOptions options, Action<TwitterSavedSearch, TwitterResponse>  action);
-
 
         
 		IAsyncResult CreateSavedSearch(CreateSavedSearchOptions options, Action<TwitterSavedSearch, TwitterResponse>  action);
 
-
         
 		IAsyncResult DeleteSavedSearch(DeleteSavedSearchOptions options, Action<TwitterSavedSearch, TwitterResponse>  action);
-
 
         
 		IAsyncResult GetPlace(GetPlaceOptions options, Action<TwitterPlace, TwitterResponse>  action);
 
-
         
 		IAsyncResult ReverseGeocode(ReverseGeocodeOptions options, Action<IEnumerable<TwitterPlace>, TwitterResponse>  action);
-
 
         
 		IAsyncResult GeoSearch(GeoSearchOptions options, Action<IEnumerable<TwitterPlace>, TwitterResponse>  action);
 
-
         
 		IAsyncResult ListLocalTrendsFor(ListLocalTrendsForOptions options, Action<TwitterTrends, TwitterResponse>  action);
-
 
         
 		IAsyncResult ListAvailableTrendsLocations(Action<IEnumerable<WhereOnEarthLocation>, TwitterResponse>  action);
 
-
         
 		IAsyncResult ListClosestTrendsLocations(ListClosestTrendsLocationsOptions options, Action<IEnumerable<WhereOnEarthLocation>, TwitterResponse>  action);
-
 
         
 		IAsyncResult GetRateLimitStatus(GetRateLimitStatusOptions options, Action<TwitterRateLimitStatusSummary, TwitterResponse>  action);
 
-
         
 		IAsyncResult ReportSpam(ReportSpamOptions options, Action<TwitterUser, TwitterResponse>  action);
-
 
 		#endregion
 #endif
 
 #if !WINDOWS_PHONE
 		#region Asynchronous Methods (with Begin/End pattern)
-
         
 		IAsyncResult BeginGetConfiguration();
 
 		TwitterConfiguration EndGetConfiguration(IAsyncResult result);		
 
 		TwitterConfiguration EndGetConfiguration(IAsyncResult result, TimeSpan timeout);
-
 
         
 		IAsyncResult BeginListTweetsMentioningMe(ListTweetsMentioningMeOptions options);
@@ -1551,14 +1449,12 @@ namespace TweetSharp
 
 		IEnumerable<TwitterStatus> EndListTweetsMentioningMe(IAsyncResult result, TimeSpan timeout);
 
-
         
 		IAsyncResult BeginListTweetsOnUserTimeline(ListTweetsOnUserTimelineOptions options);
 
 		IEnumerable<TwitterStatus> EndListTweetsOnUserTimeline(IAsyncResult result);		
 
 		IEnumerable<TwitterStatus> EndListTweetsOnUserTimeline(IAsyncResult result, TimeSpan timeout);
-
 
         
 		IAsyncResult BeginListTweetsOnHomeTimeline(ListTweetsOnHomeTimelineOptions options);
@@ -1567,14 +1463,12 @@ namespace TweetSharp
 
 		IEnumerable<TwitterStatus> EndListTweetsOnHomeTimeline(IAsyncResult result, TimeSpan timeout);
 
-
         
 		IAsyncResult BeginListRetweetsOfMyTweets(ListRetweetsOfMyTweetsOptions options);
 
 		IEnumerable<TwitterStatus> EndListRetweetsOfMyTweets(IAsyncResult result);		
 
 		IEnumerable<TwitterStatus> EndListRetweetsOfMyTweets(IAsyncResult result, TimeSpan timeout);
-
 
         
 		IAsyncResult BeginRetweets(RetweetsOptions options);
@@ -1583,14 +1477,12 @@ namespace TweetSharp
 
 		IEnumerable<TwitterStatus> EndRetweets(IAsyncResult result, TimeSpan timeout);
 
-
         
 		IAsyncResult BeginGetTweet(GetTweetOptions options);
 
 		TwitterStatus EndGetTweet(IAsyncResult result);		
 
 		TwitterStatus EndGetTweet(IAsyncResult result, TimeSpan timeout);
-
 
         
 		IAsyncResult BeginDeleteTweet(DeleteTweetOptions options);
@@ -1599,14 +1491,12 @@ namespace TweetSharp
 
 		TwitterStatus EndDeleteTweet(IAsyncResult result, TimeSpan timeout);
 
-
         
 		IAsyncResult BeginSendTweet(SendTweetOptions options);
 
 		TwitterStatus EndSendTweet(IAsyncResult result);		
 
 		TwitterStatus EndSendTweet(IAsyncResult result, TimeSpan timeout);
-
 
         
 		IAsyncResult BeginRetweet(RetweetOptions options);
@@ -1615,14 +1505,12 @@ namespace TweetSharp
 
 		TwitterStatus EndRetweet(IAsyncResult result, TimeSpan timeout);
 
-
         [Obsolete("Twitter has declared this method obsolete; it may cease to function at any time. Check https://dev.twitter.com/docs/api#deprecated for alternatives.")]
 		IAsyncResult BeginSendTweetWithMedia(SendTweetWithMediaOptions options);
 
 		TwitterStatus EndSendTweetWithMedia(IAsyncResult result);		
 
 		TwitterStatus EndSendTweetWithMedia(IAsyncResult result, TimeSpan timeout);
-
 
         
 		IAsyncResult BeginUploadMedia(UploadMediaOptions options);
@@ -1631,14 +1519,12 @@ namespace TweetSharp
 
 		TwitterUploadedMedia EndUploadMedia(IAsyncResult result, TimeSpan timeout);
 
-
         
 		IAsyncResult BeginUploadMediaInit(UploadMediaInitOptions options);
 
 		TwitterChunkedMedia EndUploadMediaInit(IAsyncResult result);		
 
 		TwitterChunkedMedia EndUploadMediaInit(IAsyncResult result, TimeSpan timeout);
-
 
         
 		IAsyncResult BeginUploadMediaAppend(UploadMediaAppendOptions options);
@@ -1647,14 +1533,12 @@ namespace TweetSharp
 
 		void EndUploadMediaAppend(IAsyncResult result, TimeSpan timeout);
 
-
         
 		IAsyncResult BeginUploadMediaFinalize(UploadMediaFinalizeOptions options);
 
 		UploadMediaResult EndUploadMediaFinalize(IAsyncResult result);		
 
 		UploadMediaResult EndUploadMediaFinalize(IAsyncResult result, TimeSpan timeout);
-
 
         
 		IAsyncResult BeginUploadMediaCheckStatus(UploadMediaCheckStatusOptions options);
@@ -1663,14 +1547,12 @@ namespace TweetSharp
 
 		UploadMediaResult EndUploadMediaCheckStatus(IAsyncResult result, TimeSpan timeout);
 
-
         
 		IAsyncResult BeginSearch(SearchOptions options);
 
 		TwitterSearchResult EndSearch(IAsyncResult result);		
 
 		TwitterSearchResult EndSearch(IAsyncResult result, TimeSpan timeout);
-
 
         
 		IAsyncResult BeginListDirectMessagesReceived(ListDirectMessagesReceivedOptions options);
@@ -1679,14 +1561,12 @@ namespace TweetSharp
 
 		IEnumerable<TwitterDirectMessage> EndListDirectMessagesReceived(IAsyncResult result, TimeSpan timeout);
 
-
         
 		IAsyncResult BeginListDirectMessagesSent(ListDirectMessagesSentOptions options);
 
 		IEnumerable<TwitterDirectMessage> EndListDirectMessagesSent(IAsyncResult result);		
 
 		IEnumerable<TwitterDirectMessage> EndListDirectMessagesSent(IAsyncResult result, TimeSpan timeout);
-
 
         
 		IAsyncResult BeginGetDirectMessage(GetDirectMessageOptions options);
@@ -1695,14 +1575,12 @@ namespace TweetSharp
 
 		TwitterDirectMessage EndGetDirectMessage(IAsyncResult result, TimeSpan timeout);
 
-
         
 		IAsyncResult BeginDeleteDirectMessage(DeleteDirectMessageOptions options);
 
 		TwitterDirectMessage EndDeleteDirectMessage(IAsyncResult result);		
 
 		TwitterDirectMessage EndDeleteDirectMessage(IAsyncResult result, TimeSpan timeout);
-
 
         
 		IAsyncResult BeginSendDirectMessage(SendDirectMessageOptions options);
@@ -1711,14 +1589,12 @@ namespace TweetSharp
 
 		TwitterDirectMessage EndSendDirectMessage(IAsyncResult result, TimeSpan timeout);
 
-
         
 		IAsyncResult BeginListFriendIdsOf(ListFriendIdsOfOptions options);
 
 		TwitterCursorList<long> EndListFriendIdsOf(IAsyncResult result);		
 
 		TwitterCursorList<long> EndListFriendIdsOf(IAsyncResult result, TimeSpan timeout);
-
 
         
 		IAsyncResult BeginListFollowerIdsOf(ListFollowerIdsOfOptions options);
@@ -1727,14 +1603,12 @@ namespace TweetSharp
 
 		TwitterCursorList<long> EndListFollowerIdsOf(IAsyncResult result, TimeSpan timeout);
 
-
         
 		IAsyncResult BeginListFriendshipsFor(ListFriendshipsForOptions options);
 
 		IEnumerable<TwitterFriendshipLookup> EndListFriendshipsFor(IAsyncResult result);		
 
 		IEnumerable<TwitterFriendshipLookup> EndListFriendshipsFor(IAsyncResult result, TimeSpan timeout);
-
 
         
 		IAsyncResult BeginGetIncomingFriendRequests(GetIncomingFriendRequestsOptions options);
@@ -1743,14 +1617,12 @@ namespace TweetSharp
 
 		TwitterCursorList<long> EndGetIncomingFriendRequests(IAsyncResult result, TimeSpan timeout);
 
-
         
 		IAsyncResult BeginGetOutgoingFriendRequests(GetOutgoingFriendRequestsOptions options);
 
 		TwitterCursorList<long> EndGetOutgoingFriendRequests(IAsyncResult result);		
 
 		TwitterCursorList<long> EndGetOutgoingFriendRequests(IAsyncResult result, TimeSpan timeout);
-
 
         
 		IAsyncResult BeginFollowUser(FollowUserOptions options);
@@ -1759,14 +1631,12 @@ namespace TweetSharp
 
 		TwitterUser EndFollowUser(IAsyncResult result, TimeSpan timeout);
 
-
         
 		IAsyncResult BeginUnfollowUser(UnfollowUserOptions options);
 
 		TwitterUser EndUnfollowUser(IAsyncResult result);		
 
 		TwitterUser EndUnfollowUser(IAsyncResult result, TimeSpan timeout);
-
 
         
 		IAsyncResult BeginUpdateFriendship(UpdateFriendshipOptions options);
@@ -1775,14 +1645,12 @@ namespace TweetSharp
 
 		TwitterFriendship EndUpdateFriendship(IAsyncResult result, TimeSpan timeout);
 
-
         
 		IAsyncResult BeginGetFriendshipInfo(GetFriendshipInfoOptions options);
 
 		TwitterFriendship EndGetFriendshipInfo(IAsyncResult result);		
 
 		TwitterFriendship EndGetFriendshipInfo(IAsyncResult result, TimeSpan timeout);
-
 
         
 		IAsyncResult BeginListFriends(ListFriendsOptions options);
@@ -1791,14 +1659,12 @@ namespace TweetSharp
 
 		TwitterCursorList<TwitterUser> EndListFriends(IAsyncResult result, TimeSpan timeout);
 
-
         
 		IAsyncResult BeginListFollowers(ListFollowersOptions options);
 
 		TwitterCursorList<TwitterUser> EndListFollowers(IAsyncResult result);		
 
 		TwitterCursorList<TwitterUser> EndListFollowers(IAsyncResult result, TimeSpan timeout);
-
 
         
 		IAsyncResult BeginGetAccountSettings();
@@ -1807,14 +1673,12 @@ namespace TweetSharp
 
 		TwitterAccount EndGetAccountSettings(IAsyncResult result, TimeSpan timeout);
 
-
         
 		IAsyncResult BeginGetUserProfile(GetUserProfileOptions options);
 
 		TwitterUser EndGetUserProfile(IAsyncResult result);		
 
 		TwitterUser EndGetUserProfile(IAsyncResult result, TimeSpan timeout);
-
 
         
 		IAsyncResult BeginVerifyCredentials(VerifyCredentialsOptions options);
@@ -1823,14 +1687,12 @@ namespace TweetSharp
 
 		TwitterUser EndVerifyCredentials(IAsyncResult result, TimeSpan timeout);
 
-
         
 		IAsyncResult BeginUpdateAccountSettings(UpdateAccountSettingsOptions options);
 
 		TwitterAccount EndUpdateAccountSettings(IAsyncResult result);		
 
 		TwitterAccount EndUpdateAccountSettings(IAsyncResult result, TimeSpan timeout);
-
 
         
 		IAsyncResult BeginUpdateDeliveryDevice(UpdateDeliveryDeviceOptions options);
@@ -1839,14 +1701,12 @@ namespace TweetSharp
 
 		TwitterUser EndUpdateDeliveryDevice(IAsyncResult result, TimeSpan timeout);
 
-
         
 		IAsyncResult BeginUpdateProfile(UpdateProfileOptions options);
 
 		TwitterUser EndUpdateProfile(IAsyncResult result);		
 
 		TwitterUser EndUpdateProfile(IAsyncResult result, TimeSpan timeout);
-
 
         
 		IAsyncResult BeginUpdateProfileBackgroundImage(UpdateProfileBackgroundImageOptions options);
@@ -1855,14 +1715,12 @@ namespace TweetSharp
 
 		TwitterUser EndUpdateProfileBackgroundImage(IAsyncResult result, TimeSpan timeout);
 
-
         
 		IAsyncResult BeginUpdateProfileColors(UpdateProfileColorsOptions options);
 
 		TwitterUser EndUpdateProfileColors(IAsyncResult result);		
 
 		TwitterUser EndUpdateProfileColors(IAsyncResult result, TimeSpan timeout);
-
 
         
 		IAsyncResult BeginUpdateProfileImage(UpdateProfileImageOptions options);
@@ -1871,14 +1729,12 @@ namespace TweetSharp
 
 		TwitterUser EndUpdateProfileImage(IAsyncResult result, TimeSpan timeout);
 
-
         
 		IAsyncResult BeginListBlockedUsers(ListBlockedUsersOptions options);
 
 		TwitterCursorList<TwitterUser> EndListBlockedUsers(IAsyncResult result);		
 
 		TwitterCursorList<TwitterUser> EndListBlockedUsers(IAsyncResult result, TimeSpan timeout);
-
 
         
 		IAsyncResult BeginListBlockedUserIds(ListBlockedUserIdsOptions options);
@@ -1887,14 +1743,12 @@ namespace TweetSharp
 
 		TwitterCursorList<long> EndListBlockedUserIds(IAsyncResult result, TimeSpan timeout);
 
-
         
 		IAsyncResult BeginBlockUser(BlockUserOptions options);
 
 		TwitterUser EndBlockUser(IAsyncResult result);		
 
 		TwitterUser EndBlockUser(IAsyncResult result, TimeSpan timeout);
-
 
         
 		IAsyncResult BeginUnblockUser(UnblockUserOptions options);
@@ -1903,14 +1757,12 @@ namespace TweetSharp
 
 		TwitterUser EndUnblockUser(IAsyncResult result, TimeSpan timeout);
 
-
         
 		IAsyncResult BeginMuteUser(MuteUserOptions options);
 
 		TwitterUser EndMuteUser(IAsyncResult result);		
 
 		TwitterUser EndMuteUser(IAsyncResult result, TimeSpan timeout);
-
 
         
 		IAsyncResult BeginUnmuteUser(UnmuteUserOptions options);
@@ -1919,7 +1771,6 @@ namespace TweetSharp
 
 		TwitterUser EndUnmuteUser(IAsyncResult result, TimeSpan timeout);
 
-
         
 		IAsyncResult BeginListMutedUserIds(ListMutedUserIdsOptions options);
 
@@ -1927,14 +1778,12 @@ namespace TweetSharp
 
 		TwitterCursorList<long> EndListMutedUserIds(IAsyncResult result, TimeSpan timeout);
 
-
         
 		IAsyncResult BeginListMutedUsers(ListMutedUsersOptions options);
 
-		TwitterCursorList<long> EndListMutedUsers(IAsyncResult result);		
+		TwitterCursorList<TwitterUser> EndListMutedUsers(IAsyncResult result);		
 
-		TwitterCursorList<long> EndListMutedUsers(IAsyncResult result, TimeSpan timeout);
-
+		TwitterCursorList<TwitterUser> EndListMutedUsers(IAsyncResult result, TimeSpan timeout);
 
         
 		IAsyncResult BeginListUserProfilesFor(ListUserProfilesForOptions options);
@@ -1943,14 +1792,12 @@ namespace TweetSharp
 
 		IEnumerable<TwitterUser> EndListUserProfilesFor(IAsyncResult result, TimeSpan timeout);
 
-
         
 		IAsyncResult BeginGetUserProfileFor(GetUserProfileForOptions options);
 
 		TwitterUser EndGetUserProfileFor(IAsyncResult result);		
 
 		TwitterUser EndGetUserProfileFor(IAsyncResult result, TimeSpan timeout);
-
 
         
 		IAsyncResult BeginSearchForUser(SearchForUserOptions options);
@@ -1959,14 +1806,12 @@ namespace TweetSharp
 
 		IEnumerable<TwitterUser> EndSearchForUser(IAsyncResult result, TimeSpan timeout);
 
-
         
 		IAsyncResult BeginGetProfileBannerFor(GetProfileBannerForOptions options);
 
 		ProfileBanners EndGetProfileBannerFor(IAsyncResult result);		
 
 		ProfileBanners EndGetProfileBannerFor(IAsyncResult result, TimeSpan timeout);
-
 
         
 		IAsyncResult BeginListSuggestedUsers(ListSuggestedUsersOptions options);
@@ -1975,14 +1820,12 @@ namespace TweetSharp
 
 		TwitterUserSuggestions EndListSuggestedUsers(IAsyncResult result, TimeSpan timeout);
 
-
         
 		IAsyncResult BeginListSuggestedUserCategories(ListSuggestedUserCategoriesOptions options);
 
 		IEnumerable<TwitterUserSuggestions> EndListSuggestedUserCategories(IAsyncResult result);		
 
 		IEnumerable<TwitterUserSuggestions> EndListSuggestedUserCategories(IAsyncResult result, TimeSpan timeout);
-
 
         
 		IAsyncResult BeginGetSuggestedUserMembers(GetSuggestedUserMembersOptions options);
@@ -1991,14 +1834,12 @@ namespace TweetSharp
 
 		IEnumerable<TwitterUser> EndGetSuggestedUserMembers(IAsyncResult result, TimeSpan timeout);
 
-
         
 		IAsyncResult BeginListFavoriteTweets(ListFavoriteTweetsOptions options);
 
 		IEnumerable<TwitterStatus> EndListFavoriteTweets(IAsyncResult result);		
 
 		IEnumerable<TwitterStatus> EndListFavoriteTweets(IAsyncResult result, TimeSpan timeout);
-
 
         
 		IAsyncResult BeginUnfavoriteTweet(UnfavoriteTweetOptions options);
@@ -2007,14 +1848,12 @@ namespace TweetSharp
 
 		TwitterStatus EndUnfavoriteTweet(IAsyncResult result, TimeSpan timeout);
 
-
         
 		IAsyncResult BeginFavoriteTweet(FavoriteTweetOptions options);
 
 		TwitterStatus EndFavoriteTweet(IAsyncResult result);		
 
 		TwitterStatus EndFavoriteTweet(IAsyncResult result, TimeSpan timeout);
-
 
         
 		IAsyncResult BeginListListsFor(ListListsForOptions options);
@@ -2023,14 +1862,12 @@ namespace TweetSharp
 
 		IEnumerable<TwitterList> EndListListsFor(IAsyncResult result, TimeSpan timeout);
 
-
         
 		IAsyncResult BeginListOwnedListsFor(ListOwnedListsForOptions options);
 
 		TwitterCursorList<TwitterList> EndListOwnedListsFor(IAsyncResult result);		
 
 		TwitterCursorList<TwitterList> EndListOwnedListsFor(IAsyncResult result, TimeSpan timeout);
-
 
         
 		IAsyncResult BeginListTweetsOnList(ListTweetsOnListOptions options);
@@ -2039,14 +1876,12 @@ namespace TweetSharp
 
 		IEnumerable<TwitterStatus> EndListTweetsOnList(IAsyncResult result, TimeSpan timeout);
 
-
         
 		IAsyncResult BeginRemoveListMember(RemoveListMemberOptions options);
 
 		TwitterUser EndRemoveListMember(IAsyncResult result);		
 
 		TwitterUser EndRemoveListMember(IAsyncResult result, TimeSpan timeout);
-
 
         
 		IAsyncResult BeginListListMembershipsFor(ListListMembershipsForOptions options);
@@ -2055,14 +1890,12 @@ namespace TweetSharp
 
 		TwitterCursorList<TwitterList> EndListListMembershipsFor(IAsyncResult result, TimeSpan timeout);
 
-
         
 		IAsyncResult BeginListListSubscribers(ListListSubscribersOptions options);
 
 		TwitterCursorList<TwitterUser> EndListListSubscribers(IAsyncResult result);		
 
 		TwitterCursorList<TwitterUser> EndListListSubscribers(IAsyncResult result, TimeSpan timeout);
-
 
         
 		IAsyncResult BeginFollowList(FollowListOptions options);
@@ -2071,14 +1904,12 @@ namespace TweetSharp
 
 		TwitterUser EndFollowList(IAsyncResult result, TimeSpan timeout);
 
-
         
 		IAsyncResult BeginVerifyListSubscription(VerifyListSubscriptionOptions options);
 
 		TwitterUser EndVerifyListSubscription(IAsyncResult result);		
 
 		TwitterUser EndVerifyListSubscription(IAsyncResult result, TimeSpan timeout);
-
 
         
 		IAsyncResult BeginUnfollowList(UnfollowListOptions options);
@@ -2087,14 +1918,12 @@ namespace TweetSharp
 
 		TwitterUser EndUnfollowList(IAsyncResult result, TimeSpan timeout);
 
-
         
 		IAsyncResult BeginAddListMembers(AddListMembersOptions options);
 
 		TwitterList EndAddListMembers(IAsyncResult result);		
 
 		TwitterList EndAddListMembers(IAsyncResult result, TimeSpan timeout);
-
 
         
 		IAsyncResult BeginVerifyListMembership(VerifyListMembershipOptions options);
@@ -2103,14 +1932,12 @@ namespace TweetSharp
 
 		TwitterUser EndVerifyListMembership(IAsyncResult result, TimeSpan timeout);
 
-
         
 		IAsyncResult BeginListListMembers(ListListMembersOptions options);
 
 		TwitterCursorList<TwitterUser> EndListListMembers(IAsyncResult result);		
 
 		TwitterCursorList<TwitterUser> EndListListMembers(IAsyncResult result, TimeSpan timeout);
-
 
         
 		IAsyncResult BeginAddListMember(AddListMemberOptions options);
@@ -2119,14 +1946,12 @@ namespace TweetSharp
 
 		TwitterUser EndAddListMember(IAsyncResult result, TimeSpan timeout);
 
-
         
 		IAsyncResult BeginDeleteList(DeleteListOptions options);
 
 		TwitterList EndDeleteList(IAsyncResult result);		
 
 		TwitterList EndDeleteList(IAsyncResult result, TimeSpan timeout);
-
 
         
 		IAsyncResult BeginUpdateList(UpdateListOptions options);
@@ -2135,14 +1960,12 @@ namespace TweetSharp
 
 		TwitterList EndUpdateList(IAsyncResult result, TimeSpan timeout);
 
-
         
 		IAsyncResult BeginCreateList(CreateListOptions options);
 
 		TwitterList EndCreateList(IAsyncResult result);		
 
 		TwitterList EndCreateList(IAsyncResult result, TimeSpan timeout);
-
 
         
 		IAsyncResult BeginGetList(GetListOptions options);
@@ -2151,14 +1974,12 @@ namespace TweetSharp
 
 		TwitterList EndGetList(IAsyncResult result, TimeSpan timeout);
 
-
         
 		IAsyncResult BeginListSubscriptions(ListSubscriptionsOptions options);
 
 		TwitterCursorList<TwitterList> EndListSubscriptions(IAsyncResult result);		
 
 		TwitterCursorList<TwitterList> EndListSubscriptions(IAsyncResult result, TimeSpan timeout);
-
 
         
 		IAsyncResult BeginListSavedSearches();
@@ -2167,14 +1988,12 @@ namespace TweetSharp
 
 		IEnumerable<TwitterSavedSearch> EndListSavedSearches(IAsyncResult result, TimeSpan timeout);
 
-
         
 		IAsyncResult BeginGetSavedSearch(GetSavedSearchOptions options);
 
 		TwitterSavedSearch EndGetSavedSearch(IAsyncResult result);		
 
 		TwitterSavedSearch EndGetSavedSearch(IAsyncResult result, TimeSpan timeout);
-
 
         
 		IAsyncResult BeginCreateSavedSearch(CreateSavedSearchOptions options);
@@ -2183,14 +2002,12 @@ namespace TweetSharp
 
 		TwitterSavedSearch EndCreateSavedSearch(IAsyncResult result, TimeSpan timeout);
 
-
         
 		IAsyncResult BeginDeleteSavedSearch(DeleteSavedSearchOptions options);
 
 		TwitterSavedSearch EndDeleteSavedSearch(IAsyncResult result);		
 
 		TwitterSavedSearch EndDeleteSavedSearch(IAsyncResult result, TimeSpan timeout);
-
 
         
 		IAsyncResult BeginGetPlace(GetPlaceOptions options);
@@ -2199,14 +2016,12 @@ namespace TweetSharp
 
 		TwitterPlace EndGetPlace(IAsyncResult result, TimeSpan timeout);
 
-
         
 		IAsyncResult BeginReverseGeocode(ReverseGeocodeOptions options);
 
 		IEnumerable<TwitterPlace> EndReverseGeocode(IAsyncResult result);		
 
 		IEnumerable<TwitterPlace> EndReverseGeocode(IAsyncResult result, TimeSpan timeout);
-
 
         
 		IAsyncResult BeginGeoSearch(GeoSearchOptions options);
@@ -2215,14 +2030,12 @@ namespace TweetSharp
 
 		IEnumerable<TwitterPlace> EndGeoSearch(IAsyncResult result, TimeSpan timeout);
 
-
         
 		IAsyncResult BeginListLocalTrendsFor(ListLocalTrendsForOptions options);
 
 		TwitterTrends EndListLocalTrendsFor(IAsyncResult result);		
 
 		TwitterTrends EndListLocalTrendsFor(IAsyncResult result, TimeSpan timeout);
-
 
         
 		IAsyncResult BeginListAvailableTrendsLocations();
@@ -2231,14 +2044,12 @@ namespace TweetSharp
 
 		IEnumerable<WhereOnEarthLocation> EndListAvailableTrendsLocations(IAsyncResult result, TimeSpan timeout);
 
-
         
 		IAsyncResult BeginListClosestTrendsLocations(ListClosestTrendsLocationsOptions options);
 
 		IEnumerable<WhereOnEarthLocation> EndListClosestTrendsLocations(IAsyncResult result);		
 
 		IEnumerable<WhereOnEarthLocation> EndListClosestTrendsLocations(IAsyncResult result, TimeSpan timeout);
-
 
         
 		IAsyncResult BeginGetRateLimitStatus(GetRateLimitStatusOptions options);
@@ -2247,7 +2058,6 @@ namespace TweetSharp
 
 		TwitterRateLimitStatusSummary EndGetRateLimitStatus(IAsyncResult result, TimeSpan timeout);
 
-
         
 		IAsyncResult BeginReportSpam(ReportSpamOptions options);
 
@@ -2255,739 +2065,556 @@ namespace TweetSharp
 
 		TwitterUser EndReportSpam(IAsyncResult result, TimeSpan timeout);
 
-
 		#endregion
 #endif
 	
 #if WINDOWS_PHONE
 		#region Asynchronous Methods (without IAsyncResult)
-
         
 		void GetConfiguration(Action<TwitterConfiguration, TwitterResponse>  action);
-
 
         
 		void ListTweetsMentioningMe(ListTweetsMentioningMeOptions options, Action<IEnumerable<TwitterStatus>, TwitterResponse>  action);
 
-
         
 		void ListTweetsOnUserTimeline(ListTweetsOnUserTimelineOptions options, Action<IEnumerable<TwitterStatus>, TwitterResponse>  action);
-
 
         
 		void ListTweetsOnHomeTimeline(ListTweetsOnHomeTimelineOptions options, Action<IEnumerable<TwitterStatus>, TwitterResponse>  action);
 
-
         
 		void ListRetweetsOfMyTweets(ListRetweetsOfMyTweetsOptions options, Action<IEnumerable<TwitterStatus>, TwitterResponse>  action);
-
 
         
 		void Retweets(RetweetsOptions options, Action<IEnumerable<TwitterStatus>, TwitterResponse>  action);
 
-
         
 		void GetTweet(GetTweetOptions options, Action<TwitterStatus, TwitterResponse>  action);
-
 
         
 		void DeleteTweet(DeleteTweetOptions options, Action<TwitterStatus, TwitterResponse>  action);
 
-
         
 		void SendTweet(SendTweetOptions options, Action<TwitterStatus, TwitterResponse>  action);
-
 
         
 		void Retweet(RetweetOptions options, Action<TwitterStatus, TwitterResponse>  action);
 
-
         [Obsolete("Twitter has declared this method obsolete; it may cease to function at any time. Check https://dev.twitter.com/docs/api#deprecated for alternatives.")]
 		void SendTweetWithMedia(SendTweetWithMediaOptions options, Action<TwitterStatus, TwitterResponse>  action);
-
 
         
 		void UploadMedia(UploadMediaOptions options, Action<TwitterUploadedMedia, TwitterResponse>  action);
 
-
         
 		void UploadMediaInit(UploadMediaInitOptions options, Action<TwitterChunkedMedia, TwitterResponse>  action);
-
 
         
 		void UploadMediaAppend(UploadMediaAppendOptions options, Action<TwitterResponse> action);
 
-
         
 		void UploadMediaFinalize(UploadMediaFinalizeOptions options, Action<UploadMediaResult, TwitterResponse>  action);
-
 
         
 		void UploadMediaCheckStatus(UploadMediaCheckStatusOptions options, Action<UploadMediaResult, TwitterResponse>  action);
 
-
         
 		void Search(SearchOptions options, Action<TwitterSearchResult, TwitterResponse>  action);
-
 
         
 		void ListDirectMessagesReceived(ListDirectMessagesReceivedOptions options, Action<IEnumerable<TwitterDirectMessage>, TwitterResponse>  action);
 
-
         
 		void ListDirectMessagesSent(ListDirectMessagesSentOptions options, Action<IEnumerable<TwitterDirectMessage>, TwitterResponse>  action);
-
 
         
 		void GetDirectMessage(GetDirectMessageOptions options, Action<TwitterDirectMessage, TwitterResponse>  action);
 
-
         
 		void DeleteDirectMessage(DeleteDirectMessageOptions options, Action<TwitterDirectMessage, TwitterResponse>  action);
-
 
         
 		void SendDirectMessage(SendDirectMessageOptions options, Action<TwitterDirectMessage, TwitterResponse>  action);
 
-
         
 		void ListFriendIdsOf(ListFriendIdsOfOptions options, Action<TwitterCursorList<long>, TwitterResponse>  action);
-
 
         
 		void ListFollowerIdsOf(ListFollowerIdsOfOptions options, Action<TwitterCursorList<long>, TwitterResponse>  action);
 
-
         
 		void ListFriendshipsFor(ListFriendshipsForOptions options, Action<IEnumerable<TwitterFriendshipLookup>, TwitterResponse>  action);
-
 
         
 		void GetIncomingFriendRequests(GetIncomingFriendRequestsOptions options, Action<TwitterCursorList<long>, TwitterResponse>  action);
 
-
         
 		void GetOutgoingFriendRequests(GetOutgoingFriendRequestsOptions options, Action<TwitterCursorList<long>, TwitterResponse>  action);
-
 
         
 		void FollowUser(FollowUserOptions options, Action<TwitterUser, TwitterResponse>  action);
 
-
         
 		void UnfollowUser(UnfollowUserOptions options, Action<TwitterUser, TwitterResponse>  action);
-
 
         
 		void UpdateFriendship(UpdateFriendshipOptions options, Action<TwitterFriendship, TwitterResponse>  action);
 
-
         
 		void GetFriendshipInfo(GetFriendshipInfoOptions options, Action<TwitterFriendship, TwitterResponse>  action);
-
 
         
 		void ListFriends(ListFriendsOptions options, Action<TwitterCursorList<TwitterUser>, TwitterResponse>  action);
 
-
         
 		void ListFollowers(ListFollowersOptions options, Action<TwitterCursorList<TwitterUser>, TwitterResponse>  action);
-
 
         
 		void GetAccountSettings(Action<TwitterAccount, TwitterResponse>  action);
 
-
         
 		void GetUserProfile(GetUserProfileOptions options, Action<TwitterUser, TwitterResponse>  action);
-
 
         
 		void VerifyCredentials(VerifyCredentialsOptions options, Action<TwitterUser, TwitterResponse>  action);
 
-
         
 		void UpdateAccountSettings(UpdateAccountSettingsOptions options, Action<TwitterAccount, TwitterResponse>  action);
-
 
         
 		void UpdateDeliveryDevice(UpdateDeliveryDeviceOptions options, Action<TwitterUser, TwitterResponse>  action);
 
-
         
 		void UpdateProfile(UpdateProfileOptions options, Action<TwitterUser, TwitterResponse>  action);
-
 
         
 		void UpdateProfileBackgroundImage(UpdateProfileBackgroundImageOptions options, Action<TwitterUser, TwitterResponse>  action);
 
-
         
 		void UpdateProfileColors(UpdateProfileColorsOptions options, Action<TwitterUser, TwitterResponse>  action);
-
 
         
 		void UpdateProfileImage(UpdateProfileImageOptions options, Action<TwitterUser, TwitterResponse>  action);
 
-
         
 		void ListBlockedUsers(ListBlockedUsersOptions options, Action<TwitterCursorList<TwitterUser>, TwitterResponse>  action);
-
 
         
 		void ListBlockedUserIds(ListBlockedUserIdsOptions options, Action<TwitterCursorList<long>, TwitterResponse>  action);
 
-
         
 		void BlockUser(BlockUserOptions options, Action<TwitterUser, TwitterResponse>  action);
-
 
         
 		void UnblockUser(UnblockUserOptions options, Action<TwitterUser, TwitterResponse>  action);
 
-
         
 		void MuteUser(MuteUserOptions options, Action<TwitterUser, TwitterResponse>  action);
-
 
         
 		void UnmuteUser(UnmuteUserOptions options, Action<TwitterUser, TwitterResponse>  action);
 
-
         
 		void ListMutedUserIds(ListMutedUserIdsOptions options, Action<TwitterCursorList<long>, TwitterResponse>  action);
 
-
         
-		void ListMutedUsers(ListMutedUsersOptions options, Action<TwitterCursorList<long>, TwitterResponse>  action);
-
+		void ListMutedUsers(ListMutedUsersOptions options, Action<TwitterCursorList<TwitterUser>, TwitterResponse>  action);
 
         
 		void ListUserProfilesFor(ListUserProfilesForOptions options, Action<IEnumerable<TwitterUser>, TwitterResponse>  action);
 
-
         
 		void GetUserProfileFor(GetUserProfileForOptions options, Action<TwitterUser, TwitterResponse>  action);
-
 
         
 		void SearchForUser(SearchForUserOptions options, Action<IEnumerable<TwitterUser>, TwitterResponse>  action);
 
-
         
 		void GetProfileBannerFor(GetProfileBannerForOptions options, Action<ProfileBanners, TwitterResponse>  action);
-
 
         
 		void ListSuggestedUsers(ListSuggestedUsersOptions options, Action<TwitterUserSuggestions, TwitterResponse>  action);
 
-
         
 		void ListSuggestedUserCategories(ListSuggestedUserCategoriesOptions options, Action<IEnumerable<TwitterUserSuggestions>, TwitterResponse>  action);
-
 
         
 		void GetSuggestedUserMembers(GetSuggestedUserMembersOptions options, Action<IEnumerable<TwitterUser>, TwitterResponse>  action);
 
-
         
 		void ListFavoriteTweets(ListFavoriteTweetsOptions options, Action<IEnumerable<TwitterStatus>, TwitterResponse>  action);
-
 
         
 		void UnfavoriteTweet(UnfavoriteTweetOptions options, Action<TwitterStatus, TwitterResponse>  action);
 
-
         
 		void FavoriteTweet(FavoriteTweetOptions options, Action<TwitterStatus, TwitterResponse>  action);
-
 
         
 		void ListListsFor(ListListsForOptions options, Action<IEnumerable<TwitterList>, TwitterResponse>  action);
 
-
         
 		void ListOwnedListsFor(ListOwnedListsForOptions options, Action<TwitterCursorList<TwitterList>, TwitterResponse>  action);
-
 
         
 		void ListTweetsOnList(ListTweetsOnListOptions options, Action<IEnumerable<TwitterStatus>, TwitterResponse>  action);
 
-
         
 		void RemoveListMember(RemoveListMemberOptions options, Action<TwitterUser, TwitterResponse>  action);
-
 
         
 		void ListListMembershipsFor(ListListMembershipsForOptions options, Action<TwitterCursorList<TwitterList>, TwitterResponse>  action);
 
-
         
 		void ListListSubscribers(ListListSubscribersOptions options, Action<TwitterCursorList<TwitterUser>, TwitterResponse>  action);
-
 
         
 		void FollowList(FollowListOptions options, Action<TwitterUser, TwitterResponse>  action);
 
-
         
 		void VerifyListSubscription(VerifyListSubscriptionOptions options, Action<TwitterUser, TwitterResponse>  action);
-
 
         
 		void UnfollowList(UnfollowListOptions options, Action<TwitterUser, TwitterResponse>  action);
 
-
         
 		void AddListMembers(AddListMembersOptions options, Action<TwitterList, TwitterResponse>  action);
-
 
         
 		void VerifyListMembership(VerifyListMembershipOptions options, Action<TwitterUser, TwitterResponse>  action);
 
-
         
 		void ListListMembers(ListListMembersOptions options, Action<TwitterCursorList<TwitterUser>, TwitterResponse>  action);
-
 
         
 		void AddListMember(AddListMemberOptions options, Action<TwitterUser, TwitterResponse>  action);
 
-
         
 		void DeleteList(DeleteListOptions options, Action<TwitterList, TwitterResponse>  action);
-
 
         
 		void UpdateList(UpdateListOptions options, Action<TwitterList, TwitterResponse>  action);
 
-
         
 		void CreateList(CreateListOptions options, Action<TwitterList, TwitterResponse>  action);
-
 
         
 		void GetList(GetListOptions options, Action<TwitterList, TwitterResponse>  action);
 
-
         
 		void ListSubscriptions(ListSubscriptionsOptions options, Action<TwitterCursorList<TwitterList>, TwitterResponse>  action);
-
 
         
 		void ListSavedSearches(Action<IEnumerable<TwitterSavedSearch>, TwitterResponse>  action);
 
-
         
 		void GetSavedSearch(GetSavedSearchOptions options, Action<TwitterSavedSearch, TwitterResponse>  action);
-
 
         
 		void CreateSavedSearch(CreateSavedSearchOptions options, Action<TwitterSavedSearch, TwitterResponse>  action);
 
-
         
 		void DeleteSavedSearch(DeleteSavedSearchOptions options, Action<TwitterSavedSearch, TwitterResponse>  action);
-
 
         
 		void GetPlace(GetPlaceOptions options, Action<TwitterPlace, TwitterResponse>  action);
 
-
         
 		void ReverseGeocode(ReverseGeocodeOptions options, Action<IEnumerable<TwitterPlace>, TwitterResponse>  action);
-
 
         
 		void GeoSearch(GeoSearchOptions options, Action<IEnumerable<TwitterPlace>, TwitterResponse>  action);
 
-
         
 		void ListLocalTrendsFor(ListLocalTrendsForOptions options, Action<TwitterTrends, TwitterResponse>  action);
-
 
         
 		void ListAvailableTrendsLocations(Action<IEnumerable<WhereOnEarthLocation>, TwitterResponse>  action);
 
-
         
 		void ListClosestTrendsLocations(ListClosestTrendsLocationsOptions options, Action<IEnumerable<WhereOnEarthLocation>, TwitterResponse>  action);
-
 
         
 		void GetRateLimitStatus(GetRateLimitStatusOptions options, Action<TwitterRateLimitStatusSummary, TwitterResponse>  action);
 
-
         
 		void ReportSpam(ReportSpamOptions options, Action<TwitterUser, TwitterResponse>  action);
-
 
 		#endregion
 #endif		
 
 #if PLATFORM_SUPPORTS_ASYNC_AWAIT
 		#region Async/Await Methods 
-
         
 
 		 Task<TwitterAsyncResult<TwitterConfiguration>> GetConfigurationAsync();
-
         
 
 		 Task<TwitterAsyncResult<IEnumerable<TwitterStatus>>> ListTweetsMentioningMeAsync(ListTweetsMentioningMeOptions options);
-
         
 
 		 Task<TwitterAsyncResult<IEnumerable<TwitterStatus>>> ListTweetsOnUserTimelineAsync(ListTweetsOnUserTimelineOptions options);
-
         
 
 		 Task<TwitterAsyncResult<IEnumerable<TwitterStatus>>> ListTweetsOnHomeTimelineAsync(ListTweetsOnHomeTimelineOptions options);
-
         
 
 		 Task<TwitterAsyncResult<IEnumerable<TwitterStatus>>> ListRetweetsOfMyTweetsAsync(ListRetweetsOfMyTweetsOptions options);
-
         
 
 		 Task<TwitterAsyncResult<IEnumerable<TwitterStatus>>> RetweetsAsync(RetweetsOptions options);
-
         
 
 		 Task<TwitterAsyncResult<TwitterStatus>> GetTweetAsync(GetTweetOptions options);
-
         
 
 		 Task<TwitterAsyncResult<TwitterStatus>> DeleteTweetAsync(DeleteTweetOptions options);
-
         
 
 		 Task<TwitterAsyncResult<TwitterStatus>> SendTweetAsync(SendTweetOptions options);
-
         
 
 		 Task<TwitterAsyncResult<TwitterStatus>> RetweetAsync(RetweetOptions options);
-
         [Obsolete("Twitter has declared this method obsolete; it may cease to function at any time. Check https://dev.twitter.com/docs/api#deprecated for alternatives.")]
 
 		 Task<TwitterAsyncResult<TwitterStatus>> SendTweetWithMediaAsync(SendTweetWithMediaOptions options);
-
         
 
 		 Task<TwitterAsyncResult<TwitterUploadedMedia>> UploadMediaAsync(UploadMediaOptions options);
-
         
 
 		 Task<TwitterAsyncResult<TwitterChunkedMedia>> UploadMediaInitAsync(UploadMediaInitOptions options);
-
         
 
 		 Task UploadMediaAppendAsync(UploadMediaAppendOptions options);
-
         
 
 		 Task<TwitterAsyncResult<UploadMediaResult>> UploadMediaFinalizeAsync(UploadMediaFinalizeOptions options);
-
         
 
 		 Task<TwitterAsyncResult<UploadMediaResult>> UploadMediaCheckStatusAsync(UploadMediaCheckStatusOptions options);
-
         
 
 		 Task<TwitterAsyncResult<TwitterSearchResult>> SearchAsync(SearchOptions options);
-
         
 
 		 Task<TwitterAsyncResult<IEnumerable<TwitterDirectMessage>>> ListDirectMessagesReceivedAsync(ListDirectMessagesReceivedOptions options);
-
         
 
 		 Task<TwitterAsyncResult<IEnumerable<TwitterDirectMessage>>> ListDirectMessagesSentAsync(ListDirectMessagesSentOptions options);
-
         
 
 		 Task<TwitterAsyncResult<TwitterDirectMessage>> GetDirectMessageAsync(GetDirectMessageOptions options);
-
         
 
 		 Task<TwitterAsyncResult<TwitterDirectMessage>> DeleteDirectMessageAsync(DeleteDirectMessageOptions options);
-
         
 
 		 Task<TwitterAsyncResult<TwitterDirectMessage>> SendDirectMessageAsync(SendDirectMessageOptions options);
-
         
 
 		 Task<TwitterAsyncResult<TwitterCursorList<long>>> ListFriendIdsOfAsync(ListFriendIdsOfOptions options);
-
         
 
 		 Task<TwitterAsyncResult<TwitterCursorList<long>>> ListFollowerIdsOfAsync(ListFollowerIdsOfOptions options);
-
         
 
 		 Task<TwitterAsyncResult<IEnumerable<TwitterFriendshipLookup>>> ListFriendshipsForAsync(ListFriendshipsForOptions options);
-
         
 
 		 Task<TwitterAsyncResult<TwitterCursorList<long>>> GetIncomingFriendRequestsAsync(GetIncomingFriendRequestsOptions options);
-
         
 
 		 Task<TwitterAsyncResult<TwitterCursorList<long>>> GetOutgoingFriendRequestsAsync(GetOutgoingFriendRequestsOptions options);
-
         
 
 		 Task<TwitterAsyncResult<TwitterUser>> FollowUserAsync(FollowUserOptions options);
-
         
 
 		 Task<TwitterAsyncResult<TwitterUser>> UnfollowUserAsync(UnfollowUserOptions options);
-
         
 
 		 Task<TwitterAsyncResult<TwitterFriendship>> UpdateFriendshipAsync(UpdateFriendshipOptions options);
-
         
 
 		 Task<TwitterAsyncResult<TwitterFriendship>> GetFriendshipInfoAsync(GetFriendshipInfoOptions options);
-
         
 
 		 Task<TwitterAsyncResult<TwitterCursorList<TwitterUser>>> ListFriendsAsync(ListFriendsOptions options);
-
         
 
 		 Task<TwitterAsyncResult<TwitterCursorList<TwitterUser>>> ListFollowersAsync(ListFollowersOptions options);
-
         
 
 		 Task<TwitterAsyncResult<TwitterAccount>> GetAccountSettingsAsync();
-
         
 
 		 Task<TwitterAsyncResult<TwitterUser>> GetUserProfileAsync(GetUserProfileOptions options);
-
         
 
 		 Task<TwitterAsyncResult<TwitterUser>> VerifyCredentialsAsync(VerifyCredentialsOptions options);
-
         
 
 		 Task<TwitterAsyncResult<TwitterAccount>> UpdateAccountSettingsAsync(UpdateAccountSettingsOptions options);
-
         
 
 		 Task<TwitterAsyncResult<TwitterUser>> UpdateDeliveryDeviceAsync(UpdateDeliveryDeviceOptions options);
-
         
 
 		 Task<TwitterAsyncResult<TwitterUser>> UpdateProfileAsync(UpdateProfileOptions options);
-
         
 
 		 Task<TwitterAsyncResult<TwitterUser>> UpdateProfileBackgroundImageAsync(UpdateProfileBackgroundImageOptions options);
-
         
 
 		 Task<TwitterAsyncResult<TwitterUser>> UpdateProfileColorsAsync(UpdateProfileColorsOptions options);
-
         
 
 		 Task<TwitterAsyncResult<TwitterUser>> UpdateProfileImageAsync(UpdateProfileImageOptions options);
-
         
 
 		 Task<TwitterAsyncResult<TwitterCursorList<TwitterUser>>> ListBlockedUsersAsync(ListBlockedUsersOptions options);
-
         
 
 		 Task<TwitterAsyncResult<TwitterCursorList<long>>> ListBlockedUserIdsAsync(ListBlockedUserIdsOptions options);
-
         
 
 		 Task<TwitterAsyncResult<TwitterUser>> BlockUserAsync(BlockUserOptions options);
-
         
 
 		 Task<TwitterAsyncResult<TwitterUser>> UnblockUserAsync(UnblockUserOptions options);
-
         
 
 		 Task<TwitterAsyncResult<TwitterUser>> MuteUserAsync(MuteUserOptions options);
-
         
 
 		 Task<TwitterAsyncResult<TwitterUser>> UnmuteUserAsync(UnmuteUserOptions options);
-
         
 
 		 Task<TwitterAsyncResult<TwitterCursorList<long>>> ListMutedUserIdsAsync(ListMutedUserIdsOptions options);
-
         
 
-		 Task<TwitterAsyncResult<TwitterCursorList<long>>> ListMutedUsersAsync(ListMutedUsersOptions options);
-
+		 Task<TwitterAsyncResult<TwitterCursorList<TwitterUser>>> ListMutedUsersAsync(ListMutedUsersOptions options);
         
 
 		 Task<TwitterAsyncResult<IEnumerable<TwitterUser>>> ListUserProfilesForAsync(ListUserProfilesForOptions options);
-
         
 
 		 Task<TwitterAsyncResult<TwitterUser>> GetUserProfileForAsync(GetUserProfileForOptions options);
-
         
 
 		 Task<TwitterAsyncResult<IEnumerable<TwitterUser>>> SearchForUserAsync(SearchForUserOptions options);
-
         
 
 		 Task<TwitterAsyncResult<ProfileBanners>> GetProfileBannerForAsync(GetProfileBannerForOptions options);
-
         
 
 		 Task<TwitterAsyncResult<TwitterUserSuggestions>> ListSuggestedUsersAsync(ListSuggestedUsersOptions options);
-
         
 
 		 Task<TwitterAsyncResult<IEnumerable<TwitterUserSuggestions>>> ListSuggestedUserCategoriesAsync(ListSuggestedUserCategoriesOptions options);
-
         
 
 		 Task<TwitterAsyncResult<IEnumerable<TwitterUser>>> GetSuggestedUserMembersAsync(GetSuggestedUserMembersOptions options);
-
         
 
 		 Task<TwitterAsyncResult<IEnumerable<TwitterStatus>>> ListFavoriteTweetsAsync(ListFavoriteTweetsOptions options);
-
         
 
 		 Task<TwitterAsyncResult<TwitterStatus>> UnfavoriteTweetAsync(UnfavoriteTweetOptions options);
-
         
 
 		 Task<TwitterAsyncResult<TwitterStatus>> FavoriteTweetAsync(FavoriteTweetOptions options);
-
         
 
 		 Task<TwitterAsyncResult<IEnumerable<TwitterList>>> ListListsForAsync(ListListsForOptions options);
-
         
 
 		 Task<TwitterAsyncResult<TwitterCursorList<TwitterList>>> ListOwnedListsForAsync(ListOwnedListsForOptions options);
-
         
 
 		 Task<TwitterAsyncResult<IEnumerable<TwitterStatus>>> ListTweetsOnListAsync(ListTweetsOnListOptions options);
-
         
 
 		 Task<TwitterAsyncResult<TwitterUser>> RemoveListMemberAsync(RemoveListMemberOptions options);
-
         
 
 		 Task<TwitterAsyncResult<TwitterCursorList<TwitterList>>> ListListMembershipsForAsync(ListListMembershipsForOptions options);
-
         
 
 		 Task<TwitterAsyncResult<TwitterCursorList<TwitterUser>>> ListListSubscribersAsync(ListListSubscribersOptions options);
-
         
 
 		 Task<TwitterAsyncResult<TwitterUser>> FollowListAsync(FollowListOptions options);
-
         
 
 		 Task<TwitterAsyncResult<TwitterUser>> VerifyListSubscriptionAsync(VerifyListSubscriptionOptions options);
-
         
 
 		 Task<TwitterAsyncResult<TwitterUser>> UnfollowListAsync(UnfollowListOptions options);
-
         
 
 		 Task<TwitterAsyncResult<TwitterList>> AddListMembersAsync(AddListMembersOptions options);
-
         
 
 		 Task<TwitterAsyncResult<TwitterUser>> VerifyListMembershipAsync(VerifyListMembershipOptions options);
-
         
 
 		 Task<TwitterAsyncResult<TwitterCursorList<TwitterUser>>> ListListMembersAsync(ListListMembersOptions options);
-
         
 
 		 Task<TwitterAsyncResult<TwitterUser>> AddListMemberAsync(AddListMemberOptions options);
-
         
 
 		 Task<TwitterAsyncResult<TwitterList>> DeleteListAsync(DeleteListOptions options);
-
         
 
 		 Task<TwitterAsyncResult<TwitterList>> UpdateListAsync(UpdateListOptions options);
-
         
 
 		 Task<TwitterAsyncResult<TwitterList>> CreateListAsync(CreateListOptions options);
-
         
 
 		 Task<TwitterAsyncResult<TwitterList>> GetListAsync(GetListOptions options);
-
         
 
 		 Task<TwitterAsyncResult<TwitterCursorList<TwitterList>>> ListSubscriptionsAsync(ListSubscriptionsOptions options);
-
         
 
 		 Task<TwitterAsyncResult<IEnumerable<TwitterSavedSearch>>> ListSavedSearchesAsync();
-
         
 
 		 Task<TwitterAsyncResult<TwitterSavedSearch>> GetSavedSearchAsync(GetSavedSearchOptions options);
-
         
 
 		 Task<TwitterAsyncResult<TwitterSavedSearch>> CreateSavedSearchAsync(CreateSavedSearchOptions options);
-
         
 
 		 Task<TwitterAsyncResult<TwitterSavedSearch>> DeleteSavedSearchAsync(DeleteSavedSearchOptions options);
-
         
 
 		 Task<TwitterAsyncResult<TwitterPlace>> GetPlaceAsync(GetPlaceOptions options);
-
         
 
 		 Task<TwitterAsyncResult<IEnumerable<TwitterPlace>>> ReverseGeocodeAsync(ReverseGeocodeOptions options);
-
         
 
 		 Task<TwitterAsyncResult<IEnumerable<TwitterPlace>>> GeoSearchAsync(GeoSearchOptions options);
-
         
 
 		 Task<TwitterAsyncResult<TwitterTrends>> ListLocalTrendsForAsync(ListLocalTrendsForOptions options);
-
         
 
 		 Task<TwitterAsyncResult<IEnumerable<WhereOnEarthLocation>>> ListAvailableTrendsLocationsAsync();
-
         
 
 		 Task<TwitterAsyncResult<IEnumerable<WhereOnEarthLocation>>> ListClosestTrendsLocationsAsync(ListClosestTrendsLocationsOptions options);
-
         
 
 		 Task<TwitterAsyncResult<TwitterRateLimitStatusSummary>> GetRateLimitStatusAsync(GetRateLimitStatusOptions options);
-
         
 
 		 Task<TwitterAsyncResult<TwitterUser>> ReportSpamAsync(ReportSpamOptions options);
-
 		#endregion
 #endif		
 
@@ -3003,7 +2630,6 @@ namespace TweetSharp
 	{	
 #if !SILVERLIGHT && !WINRT
 		#region Sequential Methods
-
         
 		public virtual TwitterConfiguration GetConfiguration()
 		{
@@ -3011,7 +2637,6 @@ namespace TweetSharp
 			
 			return WithHammock<TwitterConfiguration>(_client, "help/configuration", FormatAsString);
 		}
-
 
         
 		public virtual IEnumerable<TwitterStatus> ListTweetsMentioningMe(ListTweetsMentioningMeOptions options)
@@ -3027,7 +2652,6 @@ namespace TweetSharp
 			
 			return WithHammock<IEnumerable<TwitterStatus>>(_client, "statuses/mentions_timeline", FormatAsString, "?count=", count, "&since_id=", since_id, "&max_id=", max_id, "&trim_user=", trim_user, "&contributor_details=", contributor_details, "&include_entities=", include_entities, "&tweet_mode=", tweet_mode);
 		}
-
 
         
 		public virtual IEnumerable<TwitterStatus> ListTweetsOnUserTimeline(ListTweetsOnUserTimelineOptions options)
@@ -3047,7 +2671,6 @@ namespace TweetSharp
 			return WithHammock<IEnumerable<TwitterStatus>>(_client, "statuses/user_timeline", FormatAsString, "?user_id=", user_id, "&screen_name=", screen_name, "&since_id=", since_id, "&count=", count, "&max_id=", max_id, "&trim_user=", trim_user, "&exclude_replies=", exclude_replies, "&contributor_details=", contributor_details, "&include_rts=", include_rts, "&tweet_mode=", tweet_mode);
 		}
 
-
         
 		public virtual IEnumerable<TwitterStatus> ListTweetsOnHomeTimeline(ListTweetsOnHomeTimelineOptions options)
 		{
@@ -3064,7 +2687,6 @@ namespace TweetSharp
 			return WithHammock<IEnumerable<TwitterStatus>>(_client, "statuses/home_timeline", FormatAsString, "?count=", count, "&since_id=", since_id, "&max_id=", max_id, "&trim_user=", trim_user, "&exclude_replies=", exclude_replies, "&contributor_details=", contributor_details, "&include_entities=", include_entities, "&tweet_mode=", tweet_mode);
 		}
 
-
         
 		public virtual IEnumerable<TwitterStatus> ListRetweetsOfMyTweets(ListRetweetsOfMyTweetsOptions options)
 		{
@@ -3080,7 +2702,6 @@ namespace TweetSharp
 			return WithHammock<IEnumerable<TwitterStatus>>(_client, "statuses/retweets_of_me", FormatAsString, "?count=", count, "&since_id=", since_id, "&max_id=", max_id, "&trim_user=", trim_user, "&include_entities=", include_entities, "&include_user_entities=", include_user_entities, "&tweet_mode=", tweet_mode);
 		}
 
-
         
 		public virtual IEnumerable<TwitterStatus> Retweets(RetweetsOptions options)
 		{
@@ -3092,7 +2713,6 @@ namespace TweetSharp
 			
 			return WithHammock<IEnumerable<TwitterStatus>>(_client, "statuses/retweets/{id}", FormatAsString, "?id=", id, "&count=", count, "&trim_user=", trim_user, "&tweet_mode=", tweet_mode);
 		}
-
 
         
 		public virtual TwitterStatus GetTweet(GetTweetOptions options)
@@ -3107,7 +2727,6 @@ namespace TweetSharp
 			return WithHammock<TwitterStatus>(_client, "statuses/show/{id}", FormatAsString, "?id=", id, "&trim_user=", trim_user, "&include_my_retweet=", include_my_retweet, "&include_entities=", include_entities, "&tweet_mode=", tweet_mode);
 		}
 
-
         
 		public virtual TwitterStatus DeleteTweet(DeleteTweetOptions options)
 		{
@@ -3117,7 +2736,6 @@ namespace TweetSharp
 			
 			return WithHammock<TwitterStatus>(_client, WebMethod.Post, "statuses/destroy/{id}", FormatAsString, "?id=", id, "&trim_user=", trim_user);
 		}
-
 
         
 		public virtual TwitterStatus SendTweet(SendTweetOptions options)
@@ -3138,7 +2756,6 @@ namespace TweetSharp
 			return WithHammock<TwitterStatus>(_client, WebMethod.Post, "statuses/update", FormatAsString, "?status=", status, "&in_reply_to_status_id=", in_reply_to_status_id, "&lat=", lat, "&long=", @long, "&place_id=", place_id, "&display_coordinates=", display_coordinates, "&trim_user=", trim_user, "&media_ids=", media_ids, "&auto_populate_reply_metadata=", auto_populate_reply_metadata, "&exclude_reply_user_ids=", exclude_reply_user_ids, "&attachment_url=", attachment_url);
 		}
 
-
         
 		public virtual TwitterStatus Retweet(RetweetOptions options)
 		{
@@ -3148,7 +2765,6 @@ namespace TweetSharp
 			
 			return WithHammock<TwitterStatus>(_client, WebMethod.Post, "statuses/retweet/{id}", FormatAsString, "?id=", id, "&trim_user=", trim_user);
 		}
-
 
         [Obsolete("Twitter has declared this method obsolete; it may cease to function at any time. Check https://dev.twitter.com/docs/api#deprecated for alternatives.")]
 		public virtual TwitterStatus SendTweetWithMedia(SendTweetWithMediaOptions options)
@@ -3166,7 +2782,6 @@ namespace TweetSharp
 			return WithHammock<TwitterStatus>(_client, WebMethod.Post, "statuses/update_with_media", images, FormatAsString, "?status=", status, "&possibly_sensitive=", possibly_sensitive, "&in_reply_to_status_id=", in_reply_to_status_id, "&lat=", lat, "&long=", @long, "&place_id=", place_id, "&display_coordinates=", display_coordinates);
 		}
 
-
         
 		public virtual TwitterUploadedMedia UploadMedia(UploadMediaOptions options)
 		{
@@ -3175,7 +2790,6 @@ namespace TweetSharp
 			
 			return WithHammock<TwitterUploadedMedia>(_uploadMediaClient, WebMethod.Post, "media/upload", media, FormatAsString);
 		}
-
 
         
 		public virtual TwitterChunkedMedia UploadMediaInit(UploadMediaInitOptions options)
@@ -3188,7 +2802,6 @@ namespace TweetSharp
 			return WithHammock<TwitterChunkedMedia>(_uploadMediaClient, WebMethod.Post, "media/upload", FormatAsString, "?command=", "INIT", "&media_type=", media_type, "&media_category=", media_category, "&total_bytes=", total_bytes);
 		}
 
-
         
 		public virtual void UploadMediaAppend(UploadMediaAppendOptions options)
 		{
@@ -3200,7 +2813,6 @@ namespace TweetSharp
 			 WithHammockNoResponse(_uploadMediaClient, WebMethod.Post, "media/upload", media, FormatAsString, "?command=", "APPEND", "&media_id=", media_id, "&segment_index=", segment_index);
 		}
 
-
         
 		public virtual UploadMediaResult UploadMediaFinalize(UploadMediaFinalizeOptions options)
 		{
@@ -3210,7 +2822,6 @@ namespace TweetSharp
 			return WithHammock<UploadMediaResult>(_uploadMediaClient, WebMethod.Post, "media/upload", FormatAsString, "?command=", "FINALIZE", "&media_id=", media_id);
 		}
 
-
         
 		public virtual UploadMediaResult UploadMediaCheckStatus(UploadMediaCheckStatusOptions options)
 		{
@@ -3219,7 +2830,6 @@ namespace TweetSharp
 			
 			return WithHammock<UploadMediaResult>(_uploadMediaClient, "media/upload", FormatAsString, "?command=", "STATUS", "&media_id=", media_id);
 		}
-
 
         
 		public virtual TwitterSearchResult Search(SearchOptions options)
@@ -3240,7 +2850,6 @@ namespace TweetSharp
 			return WithHammock<TwitterSearchResult>(_client, "search/tweets", FormatAsString, "?q=", q, "&geocode=", geocode, "&lang=", lang, "&locale=", locale, "&result_type=", resultType, "&count=", count, "&since_id=", since_id, "&max_id=", max_id, "&include_entities=", include_entities, "&callback=", callback, "&until=", until);
 		}
 
-
         
 		public virtual IEnumerable<TwitterDirectMessage> ListDirectMessagesReceived(ListDirectMessagesReceivedOptions options)
 		{
@@ -3254,7 +2863,6 @@ namespace TweetSharp
 			
 			return WithHammock<IEnumerable<TwitterDirectMessage>>(_client, "direct_messages", FormatAsString, "?since_id=", since_id, "&max_id=", max_id, "&count=", count, "&include_entities=", include_entities, "&skip_status=", skip_status, "&full_text=", full_text);
 		}
-
 
         
 		public virtual IEnumerable<TwitterDirectMessage> ListDirectMessagesSent(ListDirectMessagesSentOptions options)
@@ -3270,7 +2878,6 @@ namespace TweetSharp
 			return WithHammock<IEnumerable<TwitterDirectMessage>>(_client, "direct_messages/sent", FormatAsString, "?since_id=", since_id, "&max_id=", max_id, "&count=", count, "&page=", page, "&include_entities=", include_entities, "&full_text=", full_text);
 		}
 
-
         
 		public virtual TwitterDirectMessage GetDirectMessage(GetDirectMessageOptions options)
 		{
@@ -3280,7 +2887,6 @@ namespace TweetSharp
 			
 			return WithHammock<TwitterDirectMessage>(_client, "direct_messages/show", FormatAsString, "?id=", id, "&full_text=", full_text);
 		}
-
 
         
 		public virtual TwitterDirectMessage DeleteDirectMessage(DeleteDirectMessageOptions options)
@@ -3292,7 +2898,6 @@ namespace TweetSharp
 			return WithHammock<TwitterDirectMessage>(_client, WebMethod.Post, "direct_messages/destroy", FormatAsString, "?id=", id, "&include_entities=", include_entities);
 		}
 
-
         
 		public virtual TwitterDirectMessage SendDirectMessage(SendDirectMessageOptions options)
 		{
@@ -3303,7 +2908,6 @@ namespace TweetSharp
 			
 			return WithHammock<TwitterDirectMessage>(_client, WebMethod.Post, "direct_messages/new", FormatAsString, "?text=", text, "&user_id=", user_id, "&screen_name=", screen_name);
 		}
-
 
         
 		public virtual TwitterCursorList<long> ListFriendIdsOf(ListFriendIdsOfOptions options)
@@ -3317,7 +2921,6 @@ namespace TweetSharp
 			return WithHammock<TwitterCursorList<long>>(_client, "friends/ids", FormatAsString, "?user_id=", user_id, "&screen_name=", screen_name, "&cursor=", cursor, "&count=", count);
 		}
 
-
         
 		public virtual TwitterCursorList<long> ListFollowerIdsOf(ListFollowerIdsOfOptions options)
 		{
@@ -3330,7 +2933,6 @@ namespace TweetSharp
 			return WithHammock<TwitterCursorList<long>>(_client, "followers/ids", FormatAsString, "?user_id=", user_id, "&screen_name=", screen_name, "&cursor=", cursor, "&count=", count);
 		}
 
-
         
 		public virtual IEnumerable<TwitterFriendshipLookup> ListFriendshipsFor(ListFriendshipsForOptions options)
 		{
@@ -3341,7 +2943,6 @@ namespace TweetSharp
 			return WithHammock<IEnumerable<TwitterFriendshipLookup>>(_client, "friendships/lookup", FormatAsString, "?screen_name=", screen_name, "&user_id=", user_id);
 		}
 
-
         
 		public virtual TwitterCursorList<long> GetIncomingFriendRequests(GetIncomingFriendRequestsOptions options)
 		{
@@ -3351,7 +2952,6 @@ namespace TweetSharp
 			return WithHammock<TwitterCursorList<long>>(_client, "friendships/incoming", FormatAsString, "?cursor=", cursor);
 		}
 
-
         
 		public virtual TwitterCursorList<long> GetOutgoingFriendRequests(GetOutgoingFriendRequestsOptions options)
 		{
@@ -3360,7 +2960,6 @@ namespace TweetSharp
 			
 			return WithHammock<TwitterCursorList<long>>(_client, "friendships/outgoing", FormatAsString, "?cursor=", cursor);
 		}
-
 
         
 		public virtual TwitterUser FollowUser(FollowUserOptions options)
@@ -3373,7 +2972,6 @@ namespace TweetSharp
 			return WithHammock<TwitterUser>(_client, WebMethod.Post, "friendships/create", FormatAsString, "?screen_name=", screen_name, "&user_id=", user_id, "&follow=", follow);
 		}
 
-
         
 		public virtual TwitterUser UnfollowUser(UnfollowUserOptions options)
 		{
@@ -3383,7 +2981,6 @@ namespace TweetSharp
 			
 			return WithHammock<TwitterUser>(_client, WebMethod.Post, "friendships/destroy", FormatAsString, "?screen_name=", screen_name, "&user_id=", user_id);
 		}
-
 
         
 		public virtual TwitterFriendship UpdateFriendship(UpdateFriendshipOptions options)
@@ -3397,7 +2994,6 @@ namespace TweetSharp
 			return WithHammock<TwitterFriendship>(_client, WebMethod.Post, "friendships/update", FormatAsString, "?screen_name=", screen_name, "&user_id=", user_id, "&device=", device, "&retweets=", retweets);
 		}
 
-
         
 		public virtual TwitterFriendship GetFriendshipInfo(GetFriendshipInfoOptions options)
 		{
@@ -3409,7 +3005,6 @@ namespace TweetSharp
 			
 			return WithHammock<TwitterFriendship>(_client, "friendships/show", FormatAsString, "?source_id=", source_id, "&source_screen_name=", source_screen_name, "&target_id=", target_id, "&target_screen_name=", target_screen_name);
 		}
-
 
         
 		public virtual TwitterCursorList<TwitterUser> ListFriends(ListFriendsOptions options)
@@ -3425,7 +3020,6 @@ namespace TweetSharp
 			return WithHammock<TwitterCursorList<TwitterUser>>(_client, "friends/list", FormatAsString, "?user_id=", user_id, "&screen_name=", screen_name, "&count=", count, "&cursor=", cursor, "&skip_status=", skip_status, "&include_user_entities=", include_user_entities);
 		}
 
-
         
 		public virtual TwitterCursorList<TwitterUser> ListFollowers(ListFollowersOptions options)
 		{
@@ -3440,7 +3034,6 @@ namespace TweetSharp
 			return WithHammock<TwitterCursorList<TwitterUser>>(_client, "followers/list", FormatAsString, "?user_id=", user_id, "&screen_name=", screen_name, "&count=", count, "&cursor=", cursor, "&skip_status=", skip_status, "&include_user_entities=", include_user_entities);
 		}
 
-
         
 		public virtual TwitterAccount GetAccountSettings()
 		{
@@ -3448,7 +3041,6 @@ namespace TweetSharp
 			
 			return WithHammock<TwitterAccount>(_client, "account/settings", FormatAsString);
 		}
-
 
         
 		public virtual TwitterUser GetUserProfile(GetUserProfileOptions options)
@@ -3461,7 +3053,6 @@ namespace TweetSharp
 			return WithHammock<TwitterUser>(_client, "account/verify_credentials", FormatAsString, "?include_entities=", include_entities, "&skip_status=", skip_status, "&include_email=", include_email);
 		}
 
-
         
 		public virtual TwitterUser VerifyCredentials(VerifyCredentialsOptions options)
 		{
@@ -3472,7 +3063,6 @@ namespace TweetSharp
 			
 			return WithHammock<TwitterUser>(_client, "account/verify_credentials", FormatAsString, "?include_entities=", include_entities, "&skip_status=", skip_status, "&include_email=", include_email);
 		}
-
 
         
 		public virtual TwitterAccount UpdateAccountSettings(UpdateAccountSettingsOptions options)
@@ -3488,7 +3078,6 @@ namespace TweetSharp
 			return WithHammock<TwitterAccount>(_client, WebMethod.Post, "account/settings", FormatAsString, "?trend_location_woeid=", trend_location_woeid, "&sleep_time_enabled=", sleep_time_enabled, "&start_sleep_time=", start_sleep_time, "&end_sleep_time=", end_sleep_time, "&time_zone=", time_zone, "&lang=", lang);
 		}
 
-
         
 		public virtual TwitterUser UpdateDeliveryDevice(UpdateDeliveryDeviceOptions options)
 		{
@@ -3498,7 +3087,6 @@ namespace TweetSharp
 			
 			return WithHammock<TwitterUser>(_client, "account/update_delivery_device", FormatAsString, "?device=", device, "&include_entities=", include_entities);
 		}
-
 
         
 		public virtual TwitterUser UpdateProfile(UpdateProfileOptions options)
@@ -3514,7 +3102,6 @@ namespace TweetSharp
 			return WithHammock<TwitterUser>(_client, WebMethod.Post, "account/update_profile", FormatAsString, "?name=", name, "&url=", url, "&location=", location, "&description=", description, "&include_entities=", include_entities, "&skip_status=", skip_status);
 		}
 
-
         
 		public virtual TwitterUser UpdateProfileBackgroundImage(UpdateProfileBackgroundImageOptions options)
 		{
@@ -3527,7 +3114,6 @@ namespace TweetSharp
 			
 			return WithHammock<TwitterUser>(_client, WebMethod.Post, "account/update_profile_background_image", FormatAsString, "?image_path=", imagePath, "&tile=", tile, "&include_entities=", include_entities, "&skip_status=", skip_status, "&use=", use);
 		}
-
 
         
 		public virtual TwitterUser UpdateProfileColors(UpdateProfileColorsOptions options)
@@ -3544,7 +3130,6 @@ namespace TweetSharp
 			return WithHammock<TwitterUser>(_client, WebMethod.Post, "account/update_profile_colors", FormatAsString, "?profile_background_color=", profile_background_color, "&profile_link_color=", profile_link_color, "&profile_sidebar_border_color=", profile_sidebar_border_color, "&profile_sidebar_fill_color=", profile_sidebar_fill_color, "&profile_text_color=", profile_text_color, "&include_entities=", include_entities, "&skip_status=", skip_status);
 		}
 
-
         
 		public virtual TwitterUser UpdateProfileImage(UpdateProfileImageOptions options)
 		{
@@ -3555,7 +3140,6 @@ namespace TweetSharp
 			
 			return WithHammock<TwitterUser>(_client, WebMethod.Post, "account/update_profile_image", FormatAsString, "?image_path=", image_path, "&include_entities=", include_entities, "&skip_status=", skip_status);
 		}
-
 
         
 		public virtual TwitterCursorList<TwitterUser> ListBlockedUsers(ListBlockedUsersOptions options)
@@ -3568,7 +3152,6 @@ namespace TweetSharp
 			return WithHammock<TwitterCursorList<TwitterUser>>(_client, "blocks/list", FormatAsString, "?include_entities=", include_entities, "&skip_status=", skip_status, "&cursor=", cursor);
 		}
 
-
         
 		public virtual TwitterCursorList<long> ListBlockedUserIds(ListBlockedUserIdsOptions options)
 		{
@@ -3577,7 +3160,6 @@ namespace TweetSharp
 			
 			return WithHammock<TwitterCursorList<long>>(_client, "blocks/ids", FormatAsString, "?cursor=", cursor);
 		}
-
 
         
 		public virtual TwitterUser BlockUser(BlockUserOptions options)
@@ -3591,7 +3173,6 @@ namespace TweetSharp
 			return WithHammock<TwitterUser>(_client, WebMethod.Post, "blocks/create", FormatAsString, "?user_id=", user_id, "&screen_name=", screen_name, "&include_entities=", include_entities, "&skip_status=", skip_status);
 		}
 
-
         
 		public virtual TwitterUser UnblockUser(UnblockUserOptions options)
 		{
@@ -3604,7 +3185,6 @@ namespace TweetSharp
 			return WithHammock<TwitterUser>(_client, WebMethod.Post, "blocks/destroy", FormatAsString, "?screen_name=", screen_name, "&user_id=", user_id, "&include_entities=", include_entities, "&skip_status=", skip_status);
 		}
 
-
         
 		public virtual TwitterUser MuteUser(MuteUserOptions options)
 		{
@@ -3614,7 +3194,6 @@ namespace TweetSharp
 			
 			return WithHammock<TwitterUser>(_client, WebMethod.Post, "mutes/users/create", FormatAsString, "?user_id=", user_id, "&screen_name=", screen_name);
 		}
-
 
         
 		public virtual TwitterUser UnmuteUser(UnmuteUserOptions options)
@@ -3626,7 +3205,6 @@ namespace TweetSharp
 			return WithHammock<TwitterUser>(_client, WebMethod.Post, "mutes/users/destroy", FormatAsString, "?user_id=", user_id, "&screen_name=", screen_name);
 		}
 
-
         
 		public virtual TwitterCursorList<long> ListMutedUserIds(ListMutedUserIdsOptions options)
 		{
@@ -3636,16 +3214,14 @@ namespace TweetSharp
 			return WithHammock<TwitterCursorList<long>>(_client, "mutes/users/ids", FormatAsString, "?cursor=", cursor);
 		}
 
-
         
-		public virtual TwitterCursorList<long> ListMutedUsers(ListMutedUsersOptions options)
+		public virtual TwitterCursorList<TwitterUser> ListMutedUsers(ListMutedUsersOptions options)
 		{
 			var cursor = options.Cursor;
 				
 			
-			return WithHammock<TwitterCursorList<long>>(_client, "mutes/users/list", FormatAsString, "?cursor=", cursor);
+			return WithHammock<TwitterCursorList<TwitterUser>>(_client, "mutes/users/list", FormatAsString, "?cursor=", cursor);
 		}
-
 
         
 		public virtual IEnumerable<TwitterUser> ListUserProfilesFor(ListUserProfilesForOptions options)
@@ -3658,7 +3234,6 @@ namespace TweetSharp
 			return WithHammock<IEnumerable<TwitterUser>>(_client, "users/lookup", FormatAsString, "?screen_name=", screen_name, "&user_id=", user_id, "&include_entities=", include_entities);
 		}
 
-
         
 		public virtual TwitterUser GetUserProfileFor(GetUserProfileForOptions options)
 		{
@@ -3669,7 +3244,6 @@ namespace TweetSharp
 			
 			return WithHammock<TwitterUser>(_client, "users/show", FormatAsString, "?user_id=", user_id, "&screen_name=", screen_name, "&include_entities=", include_entities);
 		}
-
 
         
 		public virtual IEnumerable<TwitterUser> SearchForUser(SearchForUserOptions options)
@@ -3683,7 +3257,6 @@ namespace TweetSharp
 			return WithHammock<IEnumerable<TwitterUser>>(_client, "users/search", FormatAsString, "?q=", q, "&page=", page, "&count=", count, "&include_entities=", include_entities);
 		}
 
-
         
 		public virtual ProfileBanners GetProfileBannerFor(GetProfileBannerForOptions options)
 		{
@@ -3693,7 +3266,6 @@ namespace TweetSharp
 			
 			return WithHammock<ProfileBanners>(_client, "users/profile_banner", FormatAsString, "?screen_name=", screen_name, "&user_id=", user_id);
 		}
-
 
         
 		public virtual TwitterUserSuggestions ListSuggestedUsers(ListSuggestedUsersOptions options)
@@ -3705,7 +3277,6 @@ namespace TweetSharp
 			return WithHammock<TwitterUserSuggestions>(_client, "/users/suggestions/{slug}", FormatAsString, "?slug=", slug, "&lang=", lang);
 		}
 
-
         
 		public virtual IEnumerable<TwitterUserSuggestions> ListSuggestedUserCategories(ListSuggestedUserCategoriesOptions options)
 		{
@@ -3715,7 +3286,6 @@ namespace TweetSharp
 			return WithHammock<IEnumerable<TwitterUserSuggestions>>(_client, "users/suggestions", FormatAsString, "?lang=", lang);
 		}
 
-
         
 		public virtual IEnumerable<TwitterUser> GetSuggestedUserMembers(GetSuggestedUserMembersOptions options)
 		{
@@ -3724,7 +3294,6 @@ namespace TweetSharp
 			
 			return WithHammock<IEnumerable<TwitterUser>>(_client, "/users/suggestions/{slug}/members", FormatAsString, "?slug=", slug);
 		}
-
 
         
 		public virtual IEnumerable<TwitterStatus> ListFavoriteTweets(ListFavoriteTweetsOptions options)
@@ -3741,7 +3310,6 @@ namespace TweetSharp
 			return WithHammock<IEnumerable<TwitterStatus>>(_client, "favorites/list", FormatAsString, "?user_id=", user_id, "&screen_name=", screen_name, "&count=", count, "&since_id=", since_id, "&max_id=", max_id, "&include_entities=", include_entities, "&tweet_mode=", tweet_mode);
 		}
 
-
         
 		public virtual TwitterStatus UnfavoriteTweet(UnfavoriteTweetOptions options)
 		{
@@ -3750,7 +3318,6 @@ namespace TweetSharp
 			
 			return WithHammock<TwitterStatus>(_client, WebMethod.Post, "favorites/destroy", FormatAsString, "?id=", id);
 		}
-
 
         
 		public virtual TwitterStatus FavoriteTweet(FavoriteTweetOptions options)
@@ -3762,7 +3329,6 @@ namespace TweetSharp
 			return WithHammock<TwitterStatus>(_client, WebMethod.Post, "favorites/create", FormatAsString, "?id=", id, "&include_entities=", include_entities);
 		}
 
-
         
 		public virtual IEnumerable<TwitterList> ListListsFor(ListListsForOptions options)
 		{
@@ -3772,7 +3338,6 @@ namespace TweetSharp
 			
 			return WithHammock<IEnumerable<TwitterList>>(_client, "lists/list", FormatAsString, "?user_id=", user_id, "&screen_name=", screen_name);
 		}
-
 
         
 		public virtual TwitterCursorList<TwitterList> ListOwnedListsFor(ListOwnedListsForOptions options)
@@ -3786,7 +3351,6 @@ namespace TweetSharp
 			return WithHammock<TwitterCursorList<TwitterList>>(_client, "lists/ownerships", FormatAsString, "?user_id=", user_id, "&screen_name=", screen_name, "&count=", count, "&cursor=", cursor);
 		}
 
-
         
 		public virtual IEnumerable<TwitterStatus> ListTweetsOnList(ListTweetsOnListOptions options)
 		{
@@ -3799,11 +3363,11 @@ namespace TweetSharp
 			var count = options.Count;
 			var include_entities = options.IncludeEntities;
 			var include_rts = options.IncludeRts;
+			var tweet_mode = options.TweetMode;
 				
 			
-			return WithHammock<IEnumerable<TwitterStatus>>(_client, "lists/statuses", FormatAsString, "?list_id=", list_id, "&slug=", slug, "&owner_screen_name=", owner_screen_name, "&owner_id=", owner_id, "&since_id=", since_id, "&max_id=", max_id, "&count=", count, "&include_entities=", include_entities, "&include_rts=", include_rts);
+			return WithHammock<IEnumerable<TwitterStatus>>(_client, "lists/statuses", FormatAsString, "?list_id=", list_id, "&slug=", slug, "&owner_screen_name=", owner_screen_name, "&owner_id=", owner_id, "&since_id=", since_id, "&max_id=", max_id, "&count=", count, "&include_entities=", include_entities, "&include_rts=", include_rts, "&tweet_mode=", tweet_mode);
 		}
-
 
         
 		public virtual TwitterUser RemoveListMember(RemoveListMemberOptions options)
@@ -3819,7 +3383,6 @@ namespace TweetSharp
 			return WithHammock<TwitterUser>(_client, WebMethod.Post, "lists/members/destroy", FormatAsString, "?list_id=", list_id, "&slug=", slug, "&user_id=", user_id, "&screen_name=", screen_name, "&owner_screen_name=", owner_screen_name, "&owner_id=", owner_id);
 		}
 
-
         
 		public virtual TwitterCursorList<TwitterList> ListListMembershipsFor(ListListMembershipsForOptions options)
 		{
@@ -3831,7 +3394,6 @@ namespace TweetSharp
 			
 			return WithHammock<TwitterCursorList<TwitterList>>(_client, "lists/memberships", FormatAsString, "?user_id=", user_id, "&screen_name=", screen_name, "&cursor=", cursor, "&filter_to_owned_lists=", filter_to_owned_lists);
 		}
-
 
         
 		public virtual TwitterCursorList<TwitterUser> ListListSubscribers(ListListSubscribersOptions options)
@@ -3848,7 +3410,6 @@ namespace TweetSharp
 			return WithHammock<TwitterCursorList<TwitterUser>>(_client, "lists/subscribers", FormatAsString, "?list_id=", list_id, "&slug=", slug, "&owner_screen_name=", owner_screen_name, "&owner_id=", owner_id, "&cursor=", cursor, "&include_entities=", include_entities, "&skip_status=", skip_status);
 		}
 
-
         
 		public virtual TwitterUser FollowList(FollowListOptions options)
 		{
@@ -3860,7 +3421,6 @@ namespace TweetSharp
 			
 			return WithHammock<TwitterUser>(_client, WebMethod.Post, "lists/subscribers/create", FormatAsString, "?owner_screen_name=", owner_screen_name, "&owner_id=", owner_id, "&list_id=", list_id, "&slug=", slug);
 		}
-
 
         
 		public virtual TwitterUser VerifyListSubscription(VerifyListSubscriptionOptions options)
@@ -3878,7 +3438,6 @@ namespace TweetSharp
 			return WithHammock<TwitterUser>(_client, "lists/subscribers/show", FormatAsString, "?owner_screen_name=", owner_screen_name, "&owner_id=", owner_id, "&list_id=", list_id, "&slug=", slug, "&user_id=", user_id, "&screen_name=", screen_name, "&include_entities=", include_entities, "&skip_status=", skip_status);
 		}
 
-
         
 		public virtual TwitterUser UnfollowList(UnfollowListOptions options)
 		{
@@ -3890,7 +3449,6 @@ namespace TweetSharp
 			
 			return WithHammock<TwitterUser>(_client, WebMethod.Post, "lists/subscribers/destroy", FormatAsString, "?list_id=", list_id, "&slug=", slug, "&owner_screen_name=", owner_screen_name, "&owner_id=", owner_id);
 		}
-
 
         
 		public virtual TwitterList AddListMembers(AddListMembersOptions options)
@@ -3905,7 +3463,6 @@ namespace TweetSharp
 			
 			return WithHammock<TwitterList>(_client, WebMethod.Post, "lists/members/create_all", FormatAsString, "?list_id=", list_id, "&slug=", slug, "&user_id=", user_id, "&screen_name=", screen_name, "&owner_screen_name=", owner_screen_name, "&owner_id=", owner_id);
 		}
-
 
         
 		public virtual TwitterUser VerifyListMembership(VerifyListMembershipOptions options)
@@ -3923,7 +3480,6 @@ namespace TweetSharp
 			return WithHammock<TwitterUser>(_client, "lists/members/show", FormatAsString, "?list_id=", list_id, "&slug=", slug, "&user_id=", user_id, "&screen_name=", screen_name, "&owner_screen_name=", owner_screen_name, "&owner_id=", owner_id, "&include_entities=", include_entities, "&skip_status=", skip_status);
 		}
 
-
         
 		public virtual TwitterCursorList<TwitterUser> ListListMembers(ListListMembersOptions options)
 		{
@@ -3940,7 +3496,6 @@ namespace TweetSharp
 			return WithHammock<TwitterCursorList<TwitterUser>>(_client, "lists/members", FormatAsString, "?list_id=", list_id, "&slug=", slug, "&owner_screen_name=", owner_screen_name, "&owner_id=", owner_id, "&count=", count, "&cursor=", cursor, "&include_entities=", include_entities, "&skip_status=", skip_status);
 		}
 
-
         
 		public virtual TwitterUser AddListMember(AddListMemberOptions options)
 		{
@@ -3955,7 +3510,6 @@ namespace TweetSharp
 			return WithHammock<TwitterUser>(_client, WebMethod.Post, "lists/members/create", FormatAsString, "?list_id=", list_id, "&slug=", slug, "&user_id=", user_id, "&screen_name=", screen_name, "&owner_screen_name=", owner_screen_name, "&owner_id=", owner_id);
 		}
 
-
         
 		public virtual TwitterList DeleteList(DeleteListOptions options)
 		{
@@ -3967,7 +3521,6 @@ namespace TweetSharp
 			
 			return WithHammock<TwitterList>(_client, WebMethod.Post, "lists/destroy", FormatAsString, "?owner_screen_name=", owner_screen_name, "&owner_id=", owner_id, "&list_id=", list_id, "&slug=", slug);
 		}
-
 
         
 		public virtual TwitterList UpdateList(UpdateListOptions options)
@@ -3984,7 +3537,6 @@ namespace TweetSharp
 			return WithHammock<TwitterList>(_client, WebMethod.Post, "lists/update", FormatAsString, "?owner_screen_name=", owner_screen_name, "&owner_id=", owner_id, "&list_id=", list_id, "&slug=", slug, "&mode=", mode, "&name=", name, "&description=", description);
 		}
 
-
         
 		public virtual TwitterList CreateList(CreateListOptions options)
 		{
@@ -3996,7 +3548,6 @@ namespace TweetSharp
 			
 			return WithHammock<TwitterList>(_client, WebMethod.Post, "lists/create", FormatAsString, "?list_owner=", list_owner, "&name=", name, "&mode=", mode, "&description=", description);
 		}
-
 
         
 		public virtual TwitterList GetList(GetListOptions options)
@@ -4010,7 +3561,6 @@ namespace TweetSharp
 			return WithHammock<TwitterList>(_client, "lists/show", FormatAsString, "?list_id=", list_id, "&slug=", slug, "&owner_screen_name=", owner_screen_name, "&owner_id=", owner_id);
 		}
 
-
         
 		public virtual TwitterCursorList<TwitterList> ListSubscriptions(ListSubscriptionsOptions options)
 		{
@@ -4023,7 +3573,6 @@ namespace TweetSharp
 			return WithHammock<TwitterCursorList<TwitterList>>(_client, "lists/subscriptions", FormatAsString, "?user_id=", user_id, "&screen_name=", screen_name, "&count=", count, "&cursor=", cursor);
 		}
 
-
         
 		public virtual IEnumerable<TwitterSavedSearch> ListSavedSearches()
 		{
@@ -4031,7 +3580,6 @@ namespace TweetSharp
 			
 			return WithHammock<IEnumerable<TwitterSavedSearch>>(_client, "saved_searches/list", FormatAsString);
 		}
-
 
         
 		public virtual TwitterSavedSearch GetSavedSearch(GetSavedSearchOptions options)
@@ -4042,7 +3590,6 @@ namespace TweetSharp
 			return WithHammock<TwitterSavedSearch>(_client, "saved_searches/show/{id}", FormatAsString, "?id=", id);
 		}
 
-
         
 		public virtual TwitterSavedSearch CreateSavedSearch(CreateSavedSearchOptions options)
 		{
@@ -4051,7 +3598,6 @@ namespace TweetSharp
 			
 			return WithHammock<TwitterSavedSearch>(_client, WebMethod.Post, "saved_searches/create", FormatAsString, "?query=", query);
 		}
-
 
         
 		public virtual TwitterSavedSearch DeleteSavedSearch(DeleteSavedSearchOptions options)
@@ -4062,7 +3608,6 @@ namespace TweetSharp
 			return WithHammock<TwitterSavedSearch>(_client, WebMethod.Post, "saved_searches/destroy/{id}", FormatAsString, "?id=", id);
 		}
 
-
         
 		public virtual TwitterPlace GetPlace(GetPlaceOptions options)
 		{
@@ -4071,7 +3616,6 @@ namespace TweetSharp
 			
 			return WithHammock<TwitterPlace>(_client, "geo/id/{place_id}", FormatAsString, "?place_id=", place_id);
 		}
-
 
         
 		public virtual IEnumerable<TwitterPlace> ReverseGeocode(ReverseGeocodeOptions options)
@@ -4086,7 +3630,6 @@ namespace TweetSharp
 			
 			return WithHammock<IEnumerable<TwitterPlace>>(_client, "geo/reverse_geocode", FormatAsString, "?lat=", lat, "&long=", @long, "&accuracy=", accuracy, "&granularity=", granularity, "&max_results=", max_results, "&callback=", callback);
 		}
-
 
         
 		public virtual IEnumerable<TwitterPlace> GeoSearch(GeoSearchOptions options)
@@ -4105,7 +3648,6 @@ namespace TweetSharp
 			return WithHammock<IEnumerable<TwitterPlace>>(_client, "geo/search", FormatAsString, "?lat=", lat, "&long=", @long, "&query=", query, "&ip=", ip, "&granularity=", granularity, "&accuracy=", accuracy, "&max_results=", max_results, "&contained_within=", contained_within, "&callback=", callback);
 		}
 
-
         
 		public virtual TwitterTrends ListLocalTrendsFor(ListLocalTrendsForOptions options)
 		{
@@ -4116,7 +3658,6 @@ namespace TweetSharp
 			return WithHammock<TwitterTrends>(_client, "trends/place", FormatAsString, "?id=", id, "&exclude=", exclude);
 		}
 
-
         
 		public virtual IEnumerable<WhereOnEarthLocation> ListAvailableTrendsLocations()
 		{
@@ -4124,7 +3665,6 @@ namespace TweetSharp
 			
 			return WithHammock<IEnumerable<WhereOnEarthLocation>>(_client, "trends/available", FormatAsString);
 		}
-
 
         
 		public virtual IEnumerable<WhereOnEarthLocation> ListClosestTrendsLocations(ListClosestTrendsLocationsOptions options)
@@ -4136,7 +3676,6 @@ namespace TweetSharp
 			return WithHammock<IEnumerable<WhereOnEarthLocation>>(_client, "trends/closest", FormatAsString, "?lat=", lat, "&long=", @long);
 		}
 
-
         
 		public virtual TwitterRateLimitStatusSummary GetRateLimitStatus(GetRateLimitStatusOptions options)
 		{
@@ -4145,7 +3684,6 @@ namespace TweetSharp
 			
 			return WithHammock<TwitterRateLimitStatusSummary>(_client, "application/rate_limit_status", FormatAsString, "?resources=", resources);
 		}
-
 
         
 		public virtual TwitterUser ReportSpam(ReportSpamOptions options)
@@ -4157,13 +3695,11 @@ namespace TweetSharp
 			return WithHammock<TwitterUser>(_client, WebMethod.Post, "users/report_spam", FormatAsString, "?screen_name=", screen_name, "&user_id=", user_id);
 		}
 
-
 		#endregion
 #endif
 
 #if !WINDOWS_PHONE
 		#region Asynchronous Methods (with IAsyncResult)
-
         
 		public virtual IAsyncResult GetConfiguration(Action<TwitterConfiguration, TwitterResponse>  action)
 		{
@@ -4171,7 +3707,6 @@ namespace TweetSharp
 
 			return  WithHammock<TwitterConfiguration>(_client, action, "help/configuration", FormatAsString);
 		}
-
 
         
 		public virtual IAsyncResult ListTweetsMentioningMe(ListTweetsMentioningMeOptions options, Action<IEnumerable<TwitterStatus>, TwitterResponse>  action)
@@ -4187,7 +3722,6 @@ namespace TweetSharp
 
 			return  WithHammock<IEnumerable<TwitterStatus>>(_client, action, "statuses/mentions_timeline", FormatAsString, "?count=", count, "&since_id=", since_id, "&max_id=", max_id, "&trim_user=", trim_user, "&contributor_details=", contributor_details, "&include_entities=", include_entities, "&tweet_mode=", tweet_mode);
 		}
-
 
         
 		public virtual IAsyncResult ListTweetsOnUserTimeline(ListTweetsOnUserTimelineOptions options, Action<IEnumerable<TwitterStatus>, TwitterResponse>  action)
@@ -4207,7 +3741,6 @@ namespace TweetSharp
 			return  WithHammock<IEnumerable<TwitterStatus>>(_client, action, "statuses/user_timeline", FormatAsString, "?user_id=", user_id, "&screen_name=", screen_name, "&since_id=", since_id, "&count=", count, "&max_id=", max_id, "&trim_user=", trim_user, "&exclude_replies=", exclude_replies, "&contributor_details=", contributor_details, "&include_rts=", include_rts, "&tweet_mode=", tweet_mode);
 		}
 
-
         
 		public virtual IAsyncResult ListTweetsOnHomeTimeline(ListTweetsOnHomeTimelineOptions options, Action<IEnumerable<TwitterStatus>, TwitterResponse>  action)
 		{
@@ -4224,7 +3757,6 @@ namespace TweetSharp
 			return  WithHammock<IEnumerable<TwitterStatus>>(_client, action, "statuses/home_timeline", FormatAsString, "?count=", count, "&since_id=", since_id, "&max_id=", max_id, "&trim_user=", trim_user, "&exclude_replies=", exclude_replies, "&contributor_details=", contributor_details, "&include_entities=", include_entities, "&tweet_mode=", tweet_mode);
 		}
 
-
         
 		public virtual IAsyncResult ListRetweetsOfMyTweets(ListRetweetsOfMyTweetsOptions options, Action<IEnumerable<TwitterStatus>, TwitterResponse>  action)
 		{
@@ -4240,7 +3772,6 @@ namespace TweetSharp
 			return  WithHammock<IEnumerable<TwitterStatus>>(_client, action, "statuses/retweets_of_me", FormatAsString, "?count=", count, "&since_id=", since_id, "&max_id=", max_id, "&trim_user=", trim_user, "&include_entities=", include_entities, "&include_user_entities=", include_user_entities, "&tweet_mode=", tweet_mode);
 		}
 
-
         
 		public virtual IAsyncResult Retweets(RetweetsOptions options, Action<IEnumerable<TwitterStatus>, TwitterResponse>  action)
 		{
@@ -4252,7 +3783,6 @@ namespace TweetSharp
 
 			return  WithHammock<IEnumerable<TwitterStatus>>(_client, action, "statuses/retweets/{id}", FormatAsString, "?id=", id, "&count=", count, "&trim_user=", trim_user, "&tweet_mode=", tweet_mode);
 		}
-
 
         
 		public virtual IAsyncResult GetTweet(GetTweetOptions options, Action<TwitterStatus, TwitterResponse>  action)
@@ -4267,7 +3797,6 @@ namespace TweetSharp
 			return  WithHammock<TwitterStatus>(_client, action, "statuses/show/{id}", FormatAsString, "?id=", id, "&trim_user=", trim_user, "&include_my_retweet=", include_my_retweet, "&include_entities=", include_entities, "&tweet_mode=", tweet_mode);
 		}
 
-
         
 		public virtual IAsyncResult DeleteTweet(DeleteTweetOptions options, Action<TwitterStatus, TwitterResponse>  action)
 		{
@@ -4277,7 +3806,6 @@ namespace TweetSharp
 
 			return  WithHammock<TwitterStatus>(_client, WebMethod.Post, action, "statuses/destroy/{id}", FormatAsString, "?id=", id, "&trim_user=", trim_user);
 		}
-
 
         
 		public virtual IAsyncResult SendTweet(SendTweetOptions options, Action<TwitterStatus, TwitterResponse>  action)
@@ -4298,7 +3826,6 @@ namespace TweetSharp
 			return  WithHammock<TwitterStatus>(_client, WebMethod.Post, action, "statuses/update", FormatAsString, "?status=", status, "&in_reply_to_status_id=", in_reply_to_status_id, "&lat=", lat, "&long=", @long, "&place_id=", place_id, "&display_coordinates=", display_coordinates, "&trim_user=", trim_user, "&media_ids=", media_ids, "&auto_populate_reply_metadata=", auto_populate_reply_metadata, "&exclude_reply_user_ids=", exclude_reply_user_ids, "&attachment_url=", attachment_url);
 		}
 
-
         
 		public virtual IAsyncResult Retweet(RetweetOptions options, Action<TwitterStatus, TwitterResponse>  action)
 		{
@@ -4308,7 +3835,6 @@ namespace TweetSharp
 
 			return  WithHammock<TwitterStatus>(_client, WebMethod.Post, action, "statuses/retweet/{id}", FormatAsString, "?id=", id, "&trim_user=", trim_user);
 		}
-
 
         [Obsolete("Twitter has declared this method obsolete; it may cease to function at any time. Check https://dev.twitter.com/docs/api#deprecated for alternatives.")]
 		public virtual IAsyncResult SendTweetWithMedia(SendTweetWithMediaOptions options, Action<TwitterStatus, TwitterResponse>  action)
@@ -4326,7 +3852,6 @@ namespace TweetSharp
 			return  WithHammock<TwitterStatus>(_client, WebMethod.Post, action, "statuses/update_with_media", images, FormatAsString, "?status=", status, "&possibly_sensitive=", possibly_sensitive, "&in_reply_to_status_id=", in_reply_to_status_id, "&lat=", lat, "&long=", @long, "&place_id=", place_id, "&display_coordinates=", display_coordinates);
 		}
 
-
         
 		public virtual IAsyncResult UploadMedia(UploadMediaOptions options, Action<TwitterUploadedMedia, TwitterResponse>  action)
 		{
@@ -4335,7 +3860,6 @@ namespace TweetSharp
 
 			return  WithHammock<TwitterUploadedMedia>(_uploadMediaClient, WebMethod.Post, action, "media/upload", media, FormatAsString);
 		}
-
 
         
 		public virtual IAsyncResult UploadMediaInit(UploadMediaInitOptions options, Action<TwitterChunkedMedia, TwitterResponse>  action)
@@ -4348,7 +3872,6 @@ namespace TweetSharp
 			return  WithHammock<TwitterChunkedMedia>(_uploadMediaClient, WebMethod.Post, action, "media/upload", FormatAsString, "?command=", "INIT", "&media_type=", media_type, "&media_category=", media_category, "&total_bytes=", total_bytes);
 		}
 
-
         
 		public virtual IAsyncResult UploadMediaAppend(UploadMediaAppendOptions options, Action<TwitterResponse> action)
 		{
@@ -4360,7 +3883,6 @@ namespace TweetSharp
 			return  WithHammockNoResponse(_uploadMediaClient, WebMethod.Post, action, "media/upload", media, FormatAsString, "?command=", "APPEND", "&media_id=", media_id, "&segment_index=", segment_index);
 		}
 
-
         
 		public virtual IAsyncResult UploadMediaFinalize(UploadMediaFinalizeOptions options, Action<UploadMediaResult, TwitterResponse>  action)
 		{
@@ -4370,7 +3892,6 @@ namespace TweetSharp
 			return  WithHammock<UploadMediaResult>(_uploadMediaClient, WebMethod.Post, action, "media/upload", FormatAsString, "?command=", "FINALIZE", "&media_id=", media_id);
 		}
 
-
         
 		public virtual IAsyncResult UploadMediaCheckStatus(UploadMediaCheckStatusOptions options, Action<UploadMediaResult, TwitterResponse>  action)
 		{
@@ -4379,7 +3900,6 @@ namespace TweetSharp
 
 			return  WithHammock<UploadMediaResult>(_uploadMediaClient, action, "media/upload", FormatAsString, "?command=", "STATUS", "&media_id=", media_id);
 		}
-
 
         
 		public virtual IAsyncResult Search(SearchOptions options, Action<TwitterSearchResult, TwitterResponse>  action)
@@ -4400,7 +3920,6 @@ namespace TweetSharp
 			return  WithHammock<TwitterSearchResult>(_client, action, "search/tweets", FormatAsString, "?q=", q, "&geocode=", geocode, "&lang=", lang, "&locale=", locale, "&result_type=", resultType, "&count=", count, "&since_id=", since_id, "&max_id=", max_id, "&include_entities=", include_entities, "&callback=", callback, "&until=", until);
 		}
 
-
         
 		public virtual IAsyncResult ListDirectMessagesReceived(ListDirectMessagesReceivedOptions options, Action<IEnumerable<TwitterDirectMessage>, TwitterResponse>  action)
 		{
@@ -4414,7 +3933,6 @@ namespace TweetSharp
 
 			return  WithHammock<IEnumerable<TwitterDirectMessage>>(_client, action, "direct_messages", FormatAsString, "?since_id=", since_id, "&max_id=", max_id, "&count=", count, "&include_entities=", include_entities, "&skip_status=", skip_status, "&full_text=", full_text);
 		}
-
 
         
 		public virtual IAsyncResult ListDirectMessagesSent(ListDirectMessagesSentOptions options, Action<IEnumerable<TwitterDirectMessage>, TwitterResponse>  action)
@@ -4430,7 +3948,6 @@ namespace TweetSharp
 			return  WithHammock<IEnumerable<TwitterDirectMessage>>(_client, action, "direct_messages/sent", FormatAsString, "?since_id=", since_id, "&max_id=", max_id, "&count=", count, "&page=", page, "&include_entities=", include_entities, "&full_text=", full_text);
 		}
 
-
         
 		public virtual IAsyncResult GetDirectMessage(GetDirectMessageOptions options, Action<TwitterDirectMessage, TwitterResponse>  action)
 		{
@@ -4440,7 +3957,6 @@ namespace TweetSharp
 
 			return  WithHammock<TwitterDirectMessage>(_client, action, "direct_messages/show", FormatAsString, "?id=", id, "&full_text=", full_text);
 		}
-
 
         
 		public virtual IAsyncResult DeleteDirectMessage(DeleteDirectMessageOptions options, Action<TwitterDirectMessage, TwitterResponse>  action)
@@ -4452,7 +3968,6 @@ namespace TweetSharp
 			return  WithHammock<TwitterDirectMessage>(_client, WebMethod.Post, action, "direct_messages/destroy", FormatAsString, "?id=", id, "&include_entities=", include_entities);
 		}
 
-
         
 		public virtual IAsyncResult SendDirectMessage(SendDirectMessageOptions options, Action<TwitterDirectMessage, TwitterResponse>  action)
 		{
@@ -4463,7 +3978,6 @@ namespace TweetSharp
 
 			return  WithHammock<TwitterDirectMessage>(_client, WebMethod.Post, action, "direct_messages/new", FormatAsString, "?text=", text, "&user_id=", user_id, "&screen_name=", screen_name);
 		}
-
 
         
 		public virtual IAsyncResult ListFriendIdsOf(ListFriendIdsOfOptions options, Action<TwitterCursorList<long>, TwitterResponse>  action)
@@ -4477,7 +3991,6 @@ namespace TweetSharp
 			return  WithHammock<TwitterCursorList<long>>(_client, action, "friends/ids", FormatAsString, "?user_id=", user_id, "&screen_name=", screen_name, "&cursor=", cursor, "&count=", count);
 		}
 
-
         
 		public virtual IAsyncResult ListFollowerIdsOf(ListFollowerIdsOfOptions options, Action<TwitterCursorList<long>, TwitterResponse>  action)
 		{
@@ -4490,7 +4003,6 @@ namespace TweetSharp
 			return  WithHammock<TwitterCursorList<long>>(_client, action, "followers/ids", FormatAsString, "?user_id=", user_id, "&screen_name=", screen_name, "&cursor=", cursor, "&count=", count);
 		}
 
-
         
 		public virtual IAsyncResult ListFriendshipsFor(ListFriendshipsForOptions options, Action<IEnumerable<TwitterFriendshipLookup>, TwitterResponse>  action)
 		{
@@ -4501,7 +4013,6 @@ namespace TweetSharp
 			return  WithHammock<IEnumerable<TwitterFriendshipLookup>>(_client, action, "friendships/lookup", FormatAsString, "?screen_name=", screen_name, "&user_id=", user_id);
 		}
 
-
         
 		public virtual IAsyncResult GetIncomingFriendRequests(GetIncomingFriendRequestsOptions options, Action<TwitterCursorList<long>, TwitterResponse>  action)
 		{
@@ -4511,7 +4022,6 @@ namespace TweetSharp
 			return  WithHammock<TwitterCursorList<long>>(_client, action, "friendships/incoming", FormatAsString, "?cursor=", cursor);
 		}
 
-
         
 		public virtual IAsyncResult GetOutgoingFriendRequests(GetOutgoingFriendRequestsOptions options, Action<TwitterCursorList<long>, TwitterResponse>  action)
 		{
@@ -4520,7 +4030,6 @@ namespace TweetSharp
 
 			return  WithHammock<TwitterCursorList<long>>(_client, action, "friendships/outgoing", FormatAsString, "?cursor=", cursor);
 		}
-
 
         
 		public virtual IAsyncResult FollowUser(FollowUserOptions options, Action<TwitterUser, TwitterResponse>  action)
@@ -4533,7 +4042,6 @@ namespace TweetSharp
 			return  WithHammock<TwitterUser>(_client, WebMethod.Post, action, "friendships/create", FormatAsString, "?screen_name=", screen_name, "&user_id=", user_id, "&follow=", follow);
 		}
 
-
         
 		public virtual IAsyncResult UnfollowUser(UnfollowUserOptions options, Action<TwitterUser, TwitterResponse>  action)
 		{
@@ -4543,7 +4051,6 @@ namespace TweetSharp
 
 			return  WithHammock<TwitterUser>(_client, WebMethod.Post, action, "friendships/destroy", FormatAsString, "?screen_name=", screen_name, "&user_id=", user_id);
 		}
-
 
         
 		public virtual IAsyncResult UpdateFriendship(UpdateFriendshipOptions options, Action<TwitterFriendship, TwitterResponse>  action)
@@ -4557,7 +4064,6 @@ namespace TweetSharp
 			return  WithHammock<TwitterFriendship>(_client, WebMethod.Post, action, "friendships/update", FormatAsString, "?screen_name=", screen_name, "&user_id=", user_id, "&device=", device, "&retweets=", retweets);
 		}
 
-
         
 		public virtual IAsyncResult GetFriendshipInfo(GetFriendshipInfoOptions options, Action<TwitterFriendship, TwitterResponse>  action)
 		{
@@ -4569,7 +4075,6 @@ namespace TweetSharp
 
 			return  WithHammock<TwitterFriendship>(_client, action, "friendships/show", FormatAsString, "?source_id=", source_id, "&source_screen_name=", source_screen_name, "&target_id=", target_id, "&target_screen_name=", target_screen_name);
 		}
-
 
         
 		public virtual IAsyncResult ListFriends(ListFriendsOptions options, Action<TwitterCursorList<TwitterUser>, TwitterResponse>  action)
@@ -4585,7 +4090,6 @@ namespace TweetSharp
 			return  WithHammock<TwitterCursorList<TwitterUser>>(_client, action, "friends/list", FormatAsString, "?user_id=", user_id, "&screen_name=", screen_name, "&count=", count, "&cursor=", cursor, "&skip_status=", skip_status, "&include_user_entities=", include_user_entities);
 		}
 
-
         
 		public virtual IAsyncResult ListFollowers(ListFollowersOptions options, Action<TwitterCursorList<TwitterUser>, TwitterResponse>  action)
 		{
@@ -4600,7 +4104,6 @@ namespace TweetSharp
 			return  WithHammock<TwitterCursorList<TwitterUser>>(_client, action, "followers/list", FormatAsString, "?user_id=", user_id, "&screen_name=", screen_name, "&count=", count, "&cursor=", cursor, "&skip_status=", skip_status, "&include_user_entities=", include_user_entities);
 		}
 
-
         
 		public virtual IAsyncResult GetAccountSettings(Action<TwitterAccount, TwitterResponse>  action)
 		{
@@ -4608,7 +4111,6 @@ namespace TweetSharp
 
 			return  WithHammock<TwitterAccount>(_client, action, "account/settings", FormatAsString);
 		}
-
 
         
 		public virtual IAsyncResult GetUserProfile(GetUserProfileOptions options, Action<TwitterUser, TwitterResponse>  action)
@@ -4621,7 +4123,6 @@ namespace TweetSharp
 			return  WithHammock<TwitterUser>(_client, action, "account/verify_credentials", FormatAsString, "?include_entities=", include_entities, "&skip_status=", skip_status, "&include_email=", include_email);
 		}
 
-
         
 		public virtual IAsyncResult VerifyCredentials(VerifyCredentialsOptions options, Action<TwitterUser, TwitterResponse>  action)
 		{
@@ -4632,7 +4133,6 @@ namespace TweetSharp
 
 			return  WithHammock<TwitterUser>(_client, action, "account/verify_credentials", FormatAsString, "?include_entities=", include_entities, "&skip_status=", skip_status, "&include_email=", include_email);
 		}
-
 
         
 		public virtual IAsyncResult UpdateAccountSettings(UpdateAccountSettingsOptions options, Action<TwitterAccount, TwitterResponse>  action)
@@ -4648,7 +4148,6 @@ namespace TweetSharp
 			return  WithHammock<TwitterAccount>(_client, WebMethod.Post, action, "account/settings", FormatAsString, "?trend_location_woeid=", trend_location_woeid, "&sleep_time_enabled=", sleep_time_enabled, "&start_sleep_time=", start_sleep_time, "&end_sleep_time=", end_sleep_time, "&time_zone=", time_zone, "&lang=", lang);
 		}
 
-
         
 		public virtual IAsyncResult UpdateDeliveryDevice(UpdateDeliveryDeviceOptions options, Action<TwitterUser, TwitterResponse>  action)
 		{
@@ -4658,7 +4157,6 @@ namespace TweetSharp
 
 			return  WithHammock<TwitterUser>(_client, action, "account/update_delivery_device", FormatAsString, "?device=", device, "&include_entities=", include_entities);
 		}
-
 
         
 		public virtual IAsyncResult UpdateProfile(UpdateProfileOptions options, Action<TwitterUser, TwitterResponse>  action)
@@ -4674,7 +4172,6 @@ namespace TweetSharp
 			return  WithHammock<TwitterUser>(_client, WebMethod.Post, action, "account/update_profile", FormatAsString, "?name=", name, "&url=", url, "&location=", location, "&description=", description, "&include_entities=", include_entities, "&skip_status=", skip_status);
 		}
 
-
         
 		public virtual IAsyncResult UpdateProfileBackgroundImage(UpdateProfileBackgroundImageOptions options, Action<TwitterUser, TwitterResponse>  action)
 		{
@@ -4687,7 +4184,6 @@ namespace TweetSharp
 
 			return  WithHammock<TwitterUser>(_client, WebMethod.Post, action, "account/update_profile_background_image", FormatAsString, "?image_path=", imagePath, "&tile=", tile, "&include_entities=", include_entities, "&skip_status=", skip_status, "&use=", use);
 		}
-
 
         
 		public virtual IAsyncResult UpdateProfileColors(UpdateProfileColorsOptions options, Action<TwitterUser, TwitterResponse>  action)
@@ -4704,7 +4200,6 @@ namespace TweetSharp
 			return  WithHammock<TwitterUser>(_client, WebMethod.Post, action, "account/update_profile_colors", FormatAsString, "?profile_background_color=", profile_background_color, "&profile_link_color=", profile_link_color, "&profile_sidebar_border_color=", profile_sidebar_border_color, "&profile_sidebar_fill_color=", profile_sidebar_fill_color, "&profile_text_color=", profile_text_color, "&include_entities=", include_entities, "&skip_status=", skip_status);
 		}
 
-
         
 		public virtual IAsyncResult UpdateProfileImage(UpdateProfileImageOptions options, Action<TwitterUser, TwitterResponse>  action)
 		{
@@ -4715,7 +4210,6 @@ namespace TweetSharp
 
 			return  WithHammock<TwitterUser>(_client, WebMethod.Post, action, "account/update_profile_image", FormatAsString, "?image_path=", image_path, "&include_entities=", include_entities, "&skip_status=", skip_status);
 		}
-
 
         
 		public virtual IAsyncResult ListBlockedUsers(ListBlockedUsersOptions options, Action<TwitterCursorList<TwitterUser>, TwitterResponse>  action)
@@ -4728,7 +4222,6 @@ namespace TweetSharp
 			return  WithHammock<TwitterCursorList<TwitterUser>>(_client, action, "blocks/list", FormatAsString, "?include_entities=", include_entities, "&skip_status=", skip_status, "&cursor=", cursor);
 		}
 
-
         
 		public virtual IAsyncResult ListBlockedUserIds(ListBlockedUserIdsOptions options, Action<TwitterCursorList<long>, TwitterResponse>  action)
 		{
@@ -4737,7 +4230,6 @@ namespace TweetSharp
 
 			return  WithHammock<TwitterCursorList<long>>(_client, action, "blocks/ids", FormatAsString, "?cursor=", cursor);
 		}
-
 
         
 		public virtual IAsyncResult BlockUser(BlockUserOptions options, Action<TwitterUser, TwitterResponse>  action)
@@ -4751,7 +4243,6 @@ namespace TweetSharp
 			return  WithHammock<TwitterUser>(_client, WebMethod.Post, action, "blocks/create", FormatAsString, "?user_id=", user_id, "&screen_name=", screen_name, "&include_entities=", include_entities, "&skip_status=", skip_status);
 		}
 
-
         
 		public virtual IAsyncResult UnblockUser(UnblockUserOptions options, Action<TwitterUser, TwitterResponse>  action)
 		{
@@ -4764,7 +4255,6 @@ namespace TweetSharp
 			return  WithHammock<TwitterUser>(_client, WebMethod.Post, action, "blocks/destroy", FormatAsString, "?screen_name=", screen_name, "&user_id=", user_id, "&include_entities=", include_entities, "&skip_status=", skip_status);
 		}
 
-
         
 		public virtual IAsyncResult MuteUser(MuteUserOptions options, Action<TwitterUser, TwitterResponse>  action)
 		{
@@ -4774,7 +4264,6 @@ namespace TweetSharp
 
 			return  WithHammock<TwitterUser>(_client, WebMethod.Post, action, "mutes/users/create", FormatAsString, "?user_id=", user_id, "&screen_name=", screen_name);
 		}
-
 
         
 		public virtual IAsyncResult UnmuteUser(UnmuteUserOptions options, Action<TwitterUser, TwitterResponse>  action)
@@ -4786,7 +4275,6 @@ namespace TweetSharp
 			return  WithHammock<TwitterUser>(_client, WebMethod.Post, action, "mutes/users/destroy", FormatAsString, "?user_id=", user_id, "&screen_name=", screen_name);
 		}
 
-
         
 		public virtual IAsyncResult ListMutedUserIds(ListMutedUserIdsOptions options, Action<TwitterCursorList<long>, TwitterResponse>  action)
 		{
@@ -4796,16 +4284,14 @@ namespace TweetSharp
 			return  WithHammock<TwitterCursorList<long>>(_client, action, "mutes/users/ids", FormatAsString, "?cursor=", cursor);
 		}
 
-
         
-		public virtual IAsyncResult ListMutedUsers(ListMutedUsersOptions options, Action<TwitterCursorList<long>, TwitterResponse>  action)
+		public virtual IAsyncResult ListMutedUsers(ListMutedUsersOptions options, Action<TwitterCursorList<TwitterUser>, TwitterResponse>  action)
 		{
 			var cursor = options.Cursor;
 				
 
-			return  WithHammock<TwitterCursorList<long>>(_client, action, "mutes/users/list", FormatAsString, "?cursor=", cursor);
+			return  WithHammock<TwitterCursorList<TwitterUser>>(_client, action, "mutes/users/list", FormatAsString, "?cursor=", cursor);
 		}
-
 
         
 		public virtual IAsyncResult ListUserProfilesFor(ListUserProfilesForOptions options, Action<IEnumerable<TwitterUser>, TwitterResponse>  action)
@@ -4818,7 +4304,6 @@ namespace TweetSharp
 			return  WithHammock<IEnumerable<TwitterUser>>(_client, action, "users/lookup", FormatAsString, "?screen_name=", screen_name, "&user_id=", user_id, "&include_entities=", include_entities);
 		}
 
-
         
 		public virtual IAsyncResult GetUserProfileFor(GetUserProfileForOptions options, Action<TwitterUser, TwitterResponse>  action)
 		{
@@ -4829,7 +4314,6 @@ namespace TweetSharp
 
 			return  WithHammock<TwitterUser>(_client, action, "users/show", FormatAsString, "?user_id=", user_id, "&screen_name=", screen_name, "&include_entities=", include_entities);
 		}
-
 
         
 		public virtual IAsyncResult SearchForUser(SearchForUserOptions options, Action<IEnumerable<TwitterUser>, TwitterResponse>  action)
@@ -4843,7 +4327,6 @@ namespace TweetSharp
 			return  WithHammock<IEnumerable<TwitterUser>>(_client, action, "users/search", FormatAsString, "?q=", q, "&page=", page, "&count=", count, "&include_entities=", include_entities);
 		}
 
-
         
 		public virtual IAsyncResult GetProfileBannerFor(GetProfileBannerForOptions options, Action<ProfileBanners, TwitterResponse>  action)
 		{
@@ -4853,7 +4336,6 @@ namespace TweetSharp
 
 			return  WithHammock<ProfileBanners>(_client, action, "users/profile_banner", FormatAsString, "?screen_name=", screen_name, "&user_id=", user_id);
 		}
-
 
         
 		public virtual IAsyncResult ListSuggestedUsers(ListSuggestedUsersOptions options, Action<TwitterUserSuggestions, TwitterResponse>  action)
@@ -4865,7 +4347,6 @@ namespace TweetSharp
 			return  WithHammock<TwitterUserSuggestions>(_client, action, "/users/suggestions/{slug}", FormatAsString, "?slug=", slug, "&lang=", lang);
 		}
 
-
         
 		public virtual IAsyncResult ListSuggestedUserCategories(ListSuggestedUserCategoriesOptions options, Action<IEnumerable<TwitterUserSuggestions>, TwitterResponse>  action)
 		{
@@ -4875,7 +4356,6 @@ namespace TweetSharp
 			return  WithHammock<IEnumerable<TwitterUserSuggestions>>(_client, action, "users/suggestions", FormatAsString, "?lang=", lang);
 		}
 
-
         
 		public virtual IAsyncResult GetSuggestedUserMembers(GetSuggestedUserMembersOptions options, Action<IEnumerable<TwitterUser>, TwitterResponse>  action)
 		{
@@ -4884,7 +4364,6 @@ namespace TweetSharp
 
 			return  WithHammock<IEnumerable<TwitterUser>>(_client, action, "/users/suggestions/{slug}/members", FormatAsString, "?slug=", slug);
 		}
-
 
         
 		public virtual IAsyncResult ListFavoriteTweets(ListFavoriteTweetsOptions options, Action<IEnumerable<TwitterStatus>, TwitterResponse>  action)
@@ -4901,7 +4380,6 @@ namespace TweetSharp
 			return  WithHammock<IEnumerable<TwitterStatus>>(_client, action, "favorites/list", FormatAsString, "?user_id=", user_id, "&screen_name=", screen_name, "&count=", count, "&since_id=", since_id, "&max_id=", max_id, "&include_entities=", include_entities, "&tweet_mode=", tweet_mode);
 		}
 
-
         
 		public virtual IAsyncResult UnfavoriteTweet(UnfavoriteTweetOptions options, Action<TwitterStatus, TwitterResponse>  action)
 		{
@@ -4910,7 +4388,6 @@ namespace TweetSharp
 
 			return  WithHammock<TwitterStatus>(_client, WebMethod.Post, action, "favorites/destroy", FormatAsString, "?id=", id);
 		}
-
 
         
 		public virtual IAsyncResult FavoriteTweet(FavoriteTweetOptions options, Action<TwitterStatus, TwitterResponse>  action)
@@ -4922,7 +4399,6 @@ namespace TweetSharp
 			return  WithHammock<TwitterStatus>(_client, WebMethod.Post, action, "favorites/create", FormatAsString, "?id=", id, "&include_entities=", include_entities);
 		}
 
-
         
 		public virtual IAsyncResult ListListsFor(ListListsForOptions options, Action<IEnumerable<TwitterList>, TwitterResponse>  action)
 		{
@@ -4932,7 +4408,6 @@ namespace TweetSharp
 
 			return  WithHammock<IEnumerable<TwitterList>>(_client, action, "lists/list", FormatAsString, "?user_id=", user_id, "&screen_name=", screen_name);
 		}
-
 
         
 		public virtual IAsyncResult ListOwnedListsFor(ListOwnedListsForOptions options, Action<TwitterCursorList<TwitterList>, TwitterResponse>  action)
@@ -4946,7 +4421,6 @@ namespace TweetSharp
 			return  WithHammock<TwitterCursorList<TwitterList>>(_client, action, "lists/ownerships", FormatAsString, "?user_id=", user_id, "&screen_name=", screen_name, "&count=", count, "&cursor=", cursor);
 		}
 
-
         
 		public virtual IAsyncResult ListTweetsOnList(ListTweetsOnListOptions options, Action<IEnumerable<TwitterStatus>, TwitterResponse>  action)
 		{
@@ -4959,11 +4433,11 @@ namespace TweetSharp
 			var count = options.Count;
 			var include_entities = options.IncludeEntities;
 			var include_rts = options.IncludeRts;
+			var tweet_mode = options.TweetMode;
 				
 
-			return  WithHammock<IEnumerable<TwitterStatus>>(_client, action, "lists/statuses", FormatAsString, "?list_id=", list_id, "&slug=", slug, "&owner_screen_name=", owner_screen_name, "&owner_id=", owner_id, "&since_id=", since_id, "&max_id=", max_id, "&count=", count, "&include_entities=", include_entities, "&include_rts=", include_rts);
+			return  WithHammock<IEnumerable<TwitterStatus>>(_client, action, "lists/statuses", FormatAsString, "?list_id=", list_id, "&slug=", slug, "&owner_screen_name=", owner_screen_name, "&owner_id=", owner_id, "&since_id=", since_id, "&max_id=", max_id, "&count=", count, "&include_entities=", include_entities, "&include_rts=", include_rts, "&tweet_mode=", tweet_mode);
 		}
-
 
         
 		public virtual IAsyncResult RemoveListMember(RemoveListMemberOptions options, Action<TwitterUser, TwitterResponse>  action)
@@ -4979,7 +4453,6 @@ namespace TweetSharp
 			return  WithHammock<TwitterUser>(_client, WebMethod.Post, action, "lists/members/destroy", FormatAsString, "?list_id=", list_id, "&slug=", slug, "&user_id=", user_id, "&screen_name=", screen_name, "&owner_screen_name=", owner_screen_name, "&owner_id=", owner_id);
 		}
 
-
         
 		public virtual IAsyncResult ListListMembershipsFor(ListListMembershipsForOptions options, Action<TwitterCursorList<TwitterList>, TwitterResponse>  action)
 		{
@@ -4991,7 +4464,6 @@ namespace TweetSharp
 
 			return  WithHammock<TwitterCursorList<TwitterList>>(_client, action, "lists/memberships", FormatAsString, "?user_id=", user_id, "&screen_name=", screen_name, "&cursor=", cursor, "&filter_to_owned_lists=", filter_to_owned_lists);
 		}
-
 
         
 		public virtual IAsyncResult ListListSubscribers(ListListSubscribersOptions options, Action<TwitterCursorList<TwitterUser>, TwitterResponse>  action)
@@ -5008,7 +4480,6 @@ namespace TweetSharp
 			return  WithHammock<TwitterCursorList<TwitterUser>>(_client, action, "lists/subscribers", FormatAsString, "?list_id=", list_id, "&slug=", slug, "&owner_screen_name=", owner_screen_name, "&owner_id=", owner_id, "&cursor=", cursor, "&include_entities=", include_entities, "&skip_status=", skip_status);
 		}
 
-
         
 		public virtual IAsyncResult FollowList(FollowListOptions options, Action<TwitterUser, TwitterResponse>  action)
 		{
@@ -5020,7 +4491,6 @@ namespace TweetSharp
 
 			return  WithHammock<TwitterUser>(_client, WebMethod.Post, action, "lists/subscribers/create", FormatAsString, "?owner_screen_name=", owner_screen_name, "&owner_id=", owner_id, "&list_id=", list_id, "&slug=", slug);
 		}
-
 
         
 		public virtual IAsyncResult VerifyListSubscription(VerifyListSubscriptionOptions options, Action<TwitterUser, TwitterResponse>  action)
@@ -5038,7 +4508,6 @@ namespace TweetSharp
 			return  WithHammock<TwitterUser>(_client, action, "lists/subscribers/show", FormatAsString, "?owner_screen_name=", owner_screen_name, "&owner_id=", owner_id, "&list_id=", list_id, "&slug=", slug, "&user_id=", user_id, "&screen_name=", screen_name, "&include_entities=", include_entities, "&skip_status=", skip_status);
 		}
 
-
         
 		public virtual IAsyncResult UnfollowList(UnfollowListOptions options, Action<TwitterUser, TwitterResponse>  action)
 		{
@@ -5050,7 +4519,6 @@ namespace TweetSharp
 
 			return  WithHammock<TwitterUser>(_client, WebMethod.Post, action, "lists/subscribers/destroy", FormatAsString, "?list_id=", list_id, "&slug=", slug, "&owner_screen_name=", owner_screen_name, "&owner_id=", owner_id);
 		}
-
 
         
 		public virtual IAsyncResult AddListMembers(AddListMembersOptions options, Action<TwitterList, TwitterResponse>  action)
@@ -5065,7 +4533,6 @@ namespace TweetSharp
 
 			return  WithHammock<TwitterList>(_client, WebMethod.Post, action, "lists/members/create_all", FormatAsString, "?list_id=", list_id, "&slug=", slug, "&user_id=", user_id, "&screen_name=", screen_name, "&owner_screen_name=", owner_screen_name, "&owner_id=", owner_id);
 		}
-
 
         
 		public virtual IAsyncResult VerifyListMembership(VerifyListMembershipOptions options, Action<TwitterUser, TwitterResponse>  action)
@@ -5083,7 +4550,6 @@ namespace TweetSharp
 			return  WithHammock<TwitterUser>(_client, action, "lists/members/show", FormatAsString, "?list_id=", list_id, "&slug=", slug, "&user_id=", user_id, "&screen_name=", screen_name, "&owner_screen_name=", owner_screen_name, "&owner_id=", owner_id, "&include_entities=", include_entities, "&skip_status=", skip_status);
 		}
 
-
         
 		public virtual IAsyncResult ListListMembers(ListListMembersOptions options, Action<TwitterCursorList<TwitterUser>, TwitterResponse>  action)
 		{
@@ -5100,7 +4566,6 @@ namespace TweetSharp
 			return  WithHammock<TwitterCursorList<TwitterUser>>(_client, action, "lists/members", FormatAsString, "?list_id=", list_id, "&slug=", slug, "&owner_screen_name=", owner_screen_name, "&owner_id=", owner_id, "&count=", count, "&cursor=", cursor, "&include_entities=", include_entities, "&skip_status=", skip_status);
 		}
 
-
         
 		public virtual IAsyncResult AddListMember(AddListMemberOptions options, Action<TwitterUser, TwitterResponse>  action)
 		{
@@ -5115,7 +4580,6 @@ namespace TweetSharp
 			return  WithHammock<TwitterUser>(_client, WebMethod.Post, action, "lists/members/create", FormatAsString, "?list_id=", list_id, "&slug=", slug, "&user_id=", user_id, "&screen_name=", screen_name, "&owner_screen_name=", owner_screen_name, "&owner_id=", owner_id);
 		}
 
-
         
 		public virtual IAsyncResult DeleteList(DeleteListOptions options, Action<TwitterList, TwitterResponse>  action)
 		{
@@ -5127,7 +4591,6 @@ namespace TweetSharp
 
 			return  WithHammock<TwitterList>(_client, WebMethod.Post, action, "lists/destroy", FormatAsString, "?owner_screen_name=", owner_screen_name, "&owner_id=", owner_id, "&list_id=", list_id, "&slug=", slug);
 		}
-
 
         
 		public virtual IAsyncResult UpdateList(UpdateListOptions options, Action<TwitterList, TwitterResponse>  action)
@@ -5144,7 +4607,6 @@ namespace TweetSharp
 			return  WithHammock<TwitterList>(_client, WebMethod.Post, action, "lists/update", FormatAsString, "?owner_screen_name=", owner_screen_name, "&owner_id=", owner_id, "&list_id=", list_id, "&slug=", slug, "&mode=", mode, "&name=", name, "&description=", description);
 		}
 
-
         
 		public virtual IAsyncResult CreateList(CreateListOptions options, Action<TwitterList, TwitterResponse>  action)
 		{
@@ -5156,7 +4618,6 @@ namespace TweetSharp
 
 			return  WithHammock<TwitterList>(_client, WebMethod.Post, action, "lists/create", FormatAsString, "?list_owner=", list_owner, "&name=", name, "&mode=", mode, "&description=", description);
 		}
-
 
         
 		public virtual IAsyncResult GetList(GetListOptions options, Action<TwitterList, TwitterResponse>  action)
@@ -5170,7 +4631,6 @@ namespace TweetSharp
 			return  WithHammock<TwitterList>(_client, action, "lists/show", FormatAsString, "?list_id=", list_id, "&slug=", slug, "&owner_screen_name=", owner_screen_name, "&owner_id=", owner_id);
 		}
 
-
         
 		public virtual IAsyncResult ListSubscriptions(ListSubscriptionsOptions options, Action<TwitterCursorList<TwitterList>, TwitterResponse>  action)
 		{
@@ -5183,7 +4643,6 @@ namespace TweetSharp
 			return  WithHammock<TwitterCursorList<TwitterList>>(_client, action, "lists/subscriptions", FormatAsString, "?user_id=", user_id, "&screen_name=", screen_name, "&count=", count, "&cursor=", cursor);
 		}
 
-
         
 		public virtual IAsyncResult ListSavedSearches(Action<IEnumerable<TwitterSavedSearch>, TwitterResponse>  action)
 		{
@@ -5191,7 +4650,6 @@ namespace TweetSharp
 
 			return  WithHammock<IEnumerable<TwitterSavedSearch>>(_client, action, "saved_searches/list", FormatAsString);
 		}
-
 
         
 		public virtual IAsyncResult GetSavedSearch(GetSavedSearchOptions options, Action<TwitterSavedSearch, TwitterResponse>  action)
@@ -5202,7 +4660,6 @@ namespace TweetSharp
 			return  WithHammock<TwitterSavedSearch>(_client, action, "saved_searches/show/{id}", FormatAsString, "?id=", id);
 		}
 
-
         
 		public virtual IAsyncResult CreateSavedSearch(CreateSavedSearchOptions options, Action<TwitterSavedSearch, TwitterResponse>  action)
 		{
@@ -5211,7 +4668,6 @@ namespace TweetSharp
 
 			return  WithHammock<TwitterSavedSearch>(_client, WebMethod.Post, action, "saved_searches/create", FormatAsString, "?query=", query);
 		}
-
 
         
 		public virtual IAsyncResult DeleteSavedSearch(DeleteSavedSearchOptions options, Action<TwitterSavedSearch, TwitterResponse>  action)
@@ -5222,7 +4678,6 @@ namespace TweetSharp
 			return  WithHammock<TwitterSavedSearch>(_client, WebMethod.Post, action, "saved_searches/destroy/{id}", FormatAsString, "?id=", id);
 		}
 
-
         
 		public virtual IAsyncResult GetPlace(GetPlaceOptions options, Action<TwitterPlace, TwitterResponse>  action)
 		{
@@ -5231,7 +4686,6 @@ namespace TweetSharp
 
 			return  WithHammock<TwitterPlace>(_client, action, "geo/id/{place_id}", FormatAsString, "?place_id=", place_id);
 		}
-
 
         
 		public virtual IAsyncResult ReverseGeocode(ReverseGeocodeOptions options, Action<IEnumerable<TwitterPlace>, TwitterResponse>  action)
@@ -5246,7 +4700,6 @@ namespace TweetSharp
 
 			return  WithHammock<IEnumerable<TwitterPlace>>(_client, action, "geo/reverse_geocode", FormatAsString, "?lat=", lat, "&long=", @long, "&accuracy=", accuracy, "&granularity=", granularity, "&max_results=", max_results, "&callback=", callback);
 		}
-
 
         
 		public virtual IAsyncResult GeoSearch(GeoSearchOptions options, Action<IEnumerable<TwitterPlace>, TwitterResponse>  action)
@@ -5265,7 +4718,6 @@ namespace TweetSharp
 			return  WithHammock<IEnumerable<TwitterPlace>>(_client, action, "geo/search", FormatAsString, "?lat=", lat, "&long=", @long, "&query=", query, "&ip=", ip, "&granularity=", granularity, "&accuracy=", accuracy, "&max_results=", max_results, "&contained_within=", contained_within, "&callback=", callback);
 		}
 
-
         
 		public virtual IAsyncResult ListLocalTrendsFor(ListLocalTrendsForOptions options, Action<TwitterTrends, TwitterResponse>  action)
 		{
@@ -5276,7 +4728,6 @@ namespace TweetSharp
 			return  WithHammock<TwitterTrends>(_client, action, "trends/place", FormatAsString, "?id=", id, "&exclude=", exclude);
 		}
 
-
         
 		public virtual IAsyncResult ListAvailableTrendsLocations(Action<IEnumerable<WhereOnEarthLocation>, TwitterResponse>  action)
 		{
@@ -5284,7 +4735,6 @@ namespace TweetSharp
 
 			return  WithHammock<IEnumerable<WhereOnEarthLocation>>(_client, action, "trends/available", FormatAsString);
 		}
-
 
         
 		public virtual IAsyncResult ListClosestTrendsLocations(ListClosestTrendsLocationsOptions options, Action<IEnumerable<WhereOnEarthLocation>, TwitterResponse>  action)
@@ -5296,7 +4746,6 @@ namespace TweetSharp
 			return  WithHammock<IEnumerable<WhereOnEarthLocation>>(_client, action, "trends/closest", FormatAsString, "?lat=", lat, "&long=", @long);
 		}
 
-
         
 		public virtual IAsyncResult GetRateLimitStatus(GetRateLimitStatusOptions options, Action<TwitterRateLimitStatusSummary, TwitterResponse>  action)
 		{
@@ -5305,7 +4754,6 @@ namespace TweetSharp
 
 			return  WithHammock<TwitterRateLimitStatusSummary>(_client, action, "application/rate_limit_status", FormatAsString, "?resources=", resources);
 		}
-
 
         
 		public virtual IAsyncResult ReportSpam(ReportSpamOptions options, Action<TwitterUser, TwitterResponse>  action)
@@ -5317,13 +4765,11 @@ namespace TweetSharp
 			return  WithHammock<TwitterUser>(_client, WebMethod.Post, action, "users/report_spam", FormatAsString, "?screen_name=", screen_name, "&user_id=", user_id);
 		}
 
-
 		#endregion
 #endif
 
 #if !WINDOWS_PHONE
 		#region Asynchronous Methods (with Begin/End pattern)
-
         
 		public virtual IAsyncResult BeginGetConfiguration()
 		{
@@ -5331,7 +4777,6 @@ namespace TweetSharp
 
 			return BeginWithHammock<TwitterConfiguration>(_client, WebMethod.Get, "help/configuration", FormatAsString);
 		}
-
 
         
 		public virtual IAsyncResult BeginListTweetsMentioningMe(ListTweetsMentioningMeOptions options)
@@ -5347,7 +4792,6 @@ namespace TweetSharp
 
 			return BeginWithHammock<IEnumerable<TwitterStatus>>(_client, WebMethod.Get, "statuses/mentions_timeline", FormatAsString, "?count=", count, "&since_id=", since_id, "&max_id=", max_id, "&trim_user=", trim_user, "&contributor_details=", contributor_details, "&include_entities=", include_entities, "&tweet_mode=", tweet_mode);
 		}
-
 
         
 		public virtual IAsyncResult BeginListTweetsOnUserTimeline(ListTweetsOnUserTimelineOptions options)
@@ -5367,7 +4811,6 @@ namespace TweetSharp
 			return BeginWithHammock<IEnumerable<TwitterStatus>>(_client, WebMethod.Get, "statuses/user_timeline", FormatAsString, "?user_id=", user_id, "&screen_name=", screen_name, "&since_id=", since_id, "&count=", count, "&max_id=", max_id, "&trim_user=", trim_user, "&exclude_replies=", exclude_replies, "&contributor_details=", contributor_details, "&include_rts=", include_rts, "&tweet_mode=", tweet_mode);
 		}
 
-
         
 		public virtual IAsyncResult BeginListTweetsOnHomeTimeline(ListTweetsOnHomeTimelineOptions options)
 		{
@@ -5384,7 +4827,6 @@ namespace TweetSharp
 			return BeginWithHammock<IEnumerable<TwitterStatus>>(_client, WebMethod.Get, "statuses/home_timeline", FormatAsString, "?count=", count, "&since_id=", since_id, "&max_id=", max_id, "&trim_user=", trim_user, "&exclude_replies=", exclude_replies, "&contributor_details=", contributor_details, "&include_entities=", include_entities, "&tweet_mode=", tweet_mode);
 		}
 
-
         
 		public virtual IAsyncResult BeginListRetweetsOfMyTweets(ListRetweetsOfMyTweetsOptions options)
 		{
@@ -5400,7 +4842,6 @@ namespace TweetSharp
 			return BeginWithHammock<IEnumerable<TwitterStatus>>(_client, WebMethod.Get, "statuses/retweets_of_me", FormatAsString, "?count=", count, "&since_id=", since_id, "&max_id=", max_id, "&trim_user=", trim_user, "&include_entities=", include_entities, "&include_user_entities=", include_user_entities, "&tweet_mode=", tweet_mode);
 		}
 
-
         
 		public virtual IAsyncResult BeginRetweets(RetweetsOptions options)
 		{
@@ -5412,7 +4853,6 @@ namespace TweetSharp
 
 			return BeginWithHammock<IEnumerable<TwitterStatus>>(_client, WebMethod.Get, "statuses/retweets/{id}", FormatAsString, "?id=", id, "&count=", count, "&trim_user=", trim_user, "&tweet_mode=", tweet_mode);
 		}
-
 
         
 		public virtual IAsyncResult BeginGetTweet(GetTweetOptions options)
@@ -5427,7 +4867,6 @@ namespace TweetSharp
 			return BeginWithHammock<TwitterStatus>(_client, WebMethod.Get, "statuses/show/{id}", FormatAsString, "?id=", id, "&trim_user=", trim_user, "&include_my_retweet=", include_my_retweet, "&include_entities=", include_entities, "&tweet_mode=", tweet_mode);
 		}
 
-
         
 		public virtual IAsyncResult BeginDeleteTweet(DeleteTweetOptions options)
 		{
@@ -5437,7 +4876,6 @@ namespace TweetSharp
 
 			return BeginWithHammock<TwitterStatus>(_client, WebMethod.Post, "statuses/destroy/{id}", FormatAsString, "?id=", id, "&trim_user=", trim_user);
 		}
-
 
         
 		public virtual IAsyncResult BeginSendTweet(SendTweetOptions options)
@@ -5458,7 +4896,6 @@ namespace TweetSharp
 			return BeginWithHammock<TwitterStatus>(_client, WebMethod.Post, "statuses/update", FormatAsString, "?status=", status, "&in_reply_to_status_id=", in_reply_to_status_id, "&lat=", lat, "&long=", @long, "&place_id=", place_id, "&display_coordinates=", display_coordinates, "&trim_user=", trim_user, "&media_ids=", media_ids, "&auto_populate_reply_metadata=", auto_populate_reply_metadata, "&exclude_reply_user_ids=", exclude_reply_user_ids, "&attachment_url=", attachment_url);
 		}
 
-
         
 		public virtual IAsyncResult BeginRetweet(RetweetOptions options)
 		{
@@ -5468,7 +4905,6 @@ namespace TweetSharp
 
 			return BeginWithHammock<TwitterStatus>(_client, WebMethod.Post, "statuses/retweet/{id}", FormatAsString, "?id=", id, "&trim_user=", trim_user);
 		}
-
 
         [Obsolete("Twitter has declared this method obsolete; it may cease to function at any time. Check https://dev.twitter.com/docs/api#deprecated for alternatives.")]
 		public virtual IAsyncResult BeginSendTweetWithMedia(SendTweetWithMediaOptions options)
@@ -5486,7 +4922,6 @@ namespace TweetSharp
 			return BeginWithHammock<TwitterStatus>(_client, WebMethod.Post, "statuses/update_with_media", images, FormatAsString, "?status=", status, "&possibly_sensitive=", possibly_sensitive, "&in_reply_to_status_id=", in_reply_to_status_id, "&lat=", lat, "&long=", @long, "&place_id=", place_id, "&display_coordinates=", display_coordinates);
 		}
 
-
         
 		public virtual IAsyncResult BeginUploadMedia(UploadMediaOptions options)
 		{
@@ -5495,7 +4930,6 @@ namespace TweetSharp
 
 			return BeginWithHammock<TwitterUploadedMedia>(_uploadMediaClient, WebMethod.Post, "media/upload", media, FormatAsString);
 		}
-
 
         
 		public virtual IAsyncResult BeginUploadMediaInit(UploadMediaInitOptions options)
@@ -5508,7 +4942,6 @@ namespace TweetSharp
 			return BeginWithHammock<TwitterChunkedMedia>(_uploadMediaClient, WebMethod.Post, "media/upload", FormatAsString, "?command=", "INIT", "&media_type=", media_type, "&media_category=", media_category, "&total_bytes=", total_bytes);
 		}
 
-
         
 		public virtual IAsyncResult BeginUploadMediaAppend(UploadMediaAppendOptions options)
 		{
@@ -5520,7 +4953,6 @@ namespace TweetSharp
 			return  BeginWithHammockNoResponse(_uploadMediaClient, WebMethod.Post, "media/upload", media, FormatAsString, "?command=", "APPEND", "&media_id=", media_id, "&segment_index=", segment_index);
 		}
 
-
         
 		public virtual IAsyncResult BeginUploadMediaFinalize(UploadMediaFinalizeOptions options)
 		{
@@ -5530,7 +4962,6 @@ namespace TweetSharp
 			return BeginWithHammock<UploadMediaResult>(_uploadMediaClient, WebMethod.Post, "media/upload", FormatAsString, "?command=", "FINALIZE", "&media_id=", media_id);
 		}
 
-
         
 		public virtual IAsyncResult BeginUploadMediaCheckStatus(UploadMediaCheckStatusOptions options)
 		{
@@ -5539,7 +4970,6 @@ namespace TweetSharp
 
 			return BeginWithHammock<UploadMediaResult>(_uploadMediaClient, WebMethod.Get, "media/upload", FormatAsString, "?command=", "STATUS", "&media_id=", media_id);
 		}
-
 
         
 		public virtual IAsyncResult BeginSearch(SearchOptions options)
@@ -5560,7 +4990,6 @@ namespace TweetSharp
 			return BeginWithHammock<TwitterSearchResult>(_client, WebMethod.Get, "search/tweets", FormatAsString, "?q=", q, "&geocode=", geocode, "&lang=", lang, "&locale=", locale, "&result_type=", resultType, "&count=", count, "&since_id=", since_id, "&max_id=", max_id, "&include_entities=", include_entities, "&callback=", callback, "&until=", until);
 		}
 
-
         
 		public virtual IAsyncResult BeginListDirectMessagesReceived(ListDirectMessagesReceivedOptions options)
 		{
@@ -5574,7 +5003,6 @@ namespace TweetSharp
 
 			return BeginWithHammock<IEnumerable<TwitterDirectMessage>>(_client, WebMethod.Get, "direct_messages", FormatAsString, "?since_id=", since_id, "&max_id=", max_id, "&count=", count, "&include_entities=", include_entities, "&skip_status=", skip_status, "&full_text=", full_text);
 		}
-
 
         
 		public virtual IAsyncResult BeginListDirectMessagesSent(ListDirectMessagesSentOptions options)
@@ -5590,7 +5018,6 @@ namespace TweetSharp
 			return BeginWithHammock<IEnumerable<TwitterDirectMessage>>(_client, WebMethod.Get, "direct_messages/sent", FormatAsString, "?since_id=", since_id, "&max_id=", max_id, "&count=", count, "&page=", page, "&include_entities=", include_entities, "&full_text=", full_text);
 		}
 
-
         
 		public virtual IAsyncResult BeginGetDirectMessage(GetDirectMessageOptions options)
 		{
@@ -5600,7 +5027,6 @@ namespace TweetSharp
 
 			return BeginWithHammock<TwitterDirectMessage>(_client, WebMethod.Get, "direct_messages/show", FormatAsString, "?id=", id, "&full_text=", full_text);
 		}
-
 
         
 		public virtual IAsyncResult BeginDeleteDirectMessage(DeleteDirectMessageOptions options)
@@ -5612,7 +5038,6 @@ namespace TweetSharp
 			return BeginWithHammock<TwitterDirectMessage>(_client, WebMethod.Post, "direct_messages/destroy", FormatAsString, "?id=", id, "&include_entities=", include_entities);
 		}
 
-
         
 		public virtual IAsyncResult BeginSendDirectMessage(SendDirectMessageOptions options)
 		{
@@ -5623,7 +5048,6 @@ namespace TweetSharp
 
 			return BeginWithHammock<TwitterDirectMessage>(_client, WebMethod.Post, "direct_messages/new", FormatAsString, "?text=", text, "&user_id=", user_id, "&screen_name=", screen_name);
 		}
-
 
         
 		public virtual IAsyncResult BeginListFriendIdsOf(ListFriendIdsOfOptions options)
@@ -5637,7 +5061,6 @@ namespace TweetSharp
 			return BeginWithHammock<TwitterCursorList<long>>(_client, WebMethod.Get, "friends/ids", FormatAsString, "?user_id=", user_id, "&screen_name=", screen_name, "&cursor=", cursor, "&count=", count);
 		}
 
-
         
 		public virtual IAsyncResult BeginListFollowerIdsOf(ListFollowerIdsOfOptions options)
 		{
@@ -5650,7 +5073,6 @@ namespace TweetSharp
 			return BeginWithHammock<TwitterCursorList<long>>(_client, WebMethod.Get, "followers/ids", FormatAsString, "?user_id=", user_id, "&screen_name=", screen_name, "&cursor=", cursor, "&count=", count);
 		}
 
-
         
 		public virtual IAsyncResult BeginListFriendshipsFor(ListFriendshipsForOptions options)
 		{
@@ -5661,7 +5083,6 @@ namespace TweetSharp
 			return BeginWithHammock<IEnumerable<TwitterFriendshipLookup>>(_client, WebMethod.Get, "friendships/lookup", FormatAsString, "?screen_name=", screen_name, "&user_id=", user_id);
 		}
 
-
         
 		public virtual IAsyncResult BeginGetIncomingFriendRequests(GetIncomingFriendRequestsOptions options)
 		{
@@ -5671,7 +5092,6 @@ namespace TweetSharp
 			return BeginWithHammock<TwitterCursorList<long>>(_client, WebMethod.Get, "friendships/incoming", FormatAsString, "?cursor=", cursor);
 		}
 
-
         
 		public virtual IAsyncResult BeginGetOutgoingFriendRequests(GetOutgoingFriendRequestsOptions options)
 		{
@@ -5680,7 +5100,6 @@ namespace TweetSharp
 
 			return BeginWithHammock<TwitterCursorList<long>>(_client, WebMethod.Get, "friendships/outgoing", FormatAsString, "?cursor=", cursor);
 		}
-
 
         
 		public virtual IAsyncResult BeginFollowUser(FollowUserOptions options)
@@ -5693,7 +5112,6 @@ namespace TweetSharp
 			return BeginWithHammock<TwitterUser>(_client, WebMethod.Post, "friendships/create", FormatAsString, "?screen_name=", screen_name, "&user_id=", user_id, "&follow=", follow);
 		}
 
-
         
 		public virtual IAsyncResult BeginUnfollowUser(UnfollowUserOptions options)
 		{
@@ -5703,7 +5121,6 @@ namespace TweetSharp
 
 			return BeginWithHammock<TwitterUser>(_client, WebMethod.Post, "friendships/destroy", FormatAsString, "?screen_name=", screen_name, "&user_id=", user_id);
 		}
-
 
         
 		public virtual IAsyncResult BeginUpdateFriendship(UpdateFriendshipOptions options)
@@ -5717,7 +5134,6 @@ namespace TweetSharp
 			return BeginWithHammock<TwitterFriendship>(_client, WebMethod.Post, "friendships/update", FormatAsString, "?screen_name=", screen_name, "&user_id=", user_id, "&device=", device, "&retweets=", retweets);
 		}
 
-
         
 		public virtual IAsyncResult BeginGetFriendshipInfo(GetFriendshipInfoOptions options)
 		{
@@ -5729,7 +5145,6 @@ namespace TweetSharp
 
 			return BeginWithHammock<TwitterFriendship>(_client, WebMethod.Get, "friendships/show", FormatAsString, "?source_id=", source_id, "&source_screen_name=", source_screen_name, "&target_id=", target_id, "&target_screen_name=", target_screen_name);
 		}
-
 
         
 		public virtual IAsyncResult BeginListFriends(ListFriendsOptions options)
@@ -5745,7 +5160,6 @@ namespace TweetSharp
 			return BeginWithHammock<TwitterCursorList<TwitterUser>>(_client, WebMethod.Get, "friends/list", FormatAsString, "?user_id=", user_id, "&screen_name=", screen_name, "&count=", count, "&cursor=", cursor, "&skip_status=", skip_status, "&include_user_entities=", include_user_entities);
 		}
 
-
         
 		public virtual IAsyncResult BeginListFollowers(ListFollowersOptions options)
 		{
@@ -5760,7 +5174,6 @@ namespace TweetSharp
 			return BeginWithHammock<TwitterCursorList<TwitterUser>>(_client, WebMethod.Get, "followers/list", FormatAsString, "?user_id=", user_id, "&screen_name=", screen_name, "&count=", count, "&cursor=", cursor, "&skip_status=", skip_status, "&include_user_entities=", include_user_entities);
 		}
 
-
         
 		public virtual IAsyncResult BeginGetAccountSettings()
 		{
@@ -5768,7 +5181,6 @@ namespace TweetSharp
 
 			return BeginWithHammock<TwitterAccount>(_client, WebMethod.Get, "account/settings", FormatAsString);
 		}
-
 
         
 		public virtual IAsyncResult BeginGetUserProfile(GetUserProfileOptions options)
@@ -5781,7 +5193,6 @@ namespace TweetSharp
 			return BeginWithHammock<TwitterUser>(_client, WebMethod.Get, "account/verify_credentials", FormatAsString, "?include_entities=", include_entities, "&skip_status=", skip_status, "&include_email=", include_email);
 		}
 
-
         
 		public virtual IAsyncResult BeginVerifyCredentials(VerifyCredentialsOptions options)
 		{
@@ -5792,7 +5203,6 @@ namespace TweetSharp
 
 			return BeginWithHammock<TwitterUser>(_client, WebMethod.Get, "account/verify_credentials", FormatAsString, "?include_entities=", include_entities, "&skip_status=", skip_status, "&include_email=", include_email);
 		}
-
 
         
 		public virtual IAsyncResult BeginUpdateAccountSettings(UpdateAccountSettingsOptions options)
@@ -5808,7 +5218,6 @@ namespace TweetSharp
 			return BeginWithHammock<TwitterAccount>(_client, WebMethod.Post, "account/settings", FormatAsString, "?trend_location_woeid=", trend_location_woeid, "&sleep_time_enabled=", sleep_time_enabled, "&start_sleep_time=", start_sleep_time, "&end_sleep_time=", end_sleep_time, "&time_zone=", time_zone, "&lang=", lang);
 		}
 
-
         
 		public virtual IAsyncResult BeginUpdateDeliveryDevice(UpdateDeliveryDeviceOptions options)
 		{
@@ -5818,7 +5227,6 @@ namespace TweetSharp
 
 			return BeginWithHammock<TwitterUser>(_client, WebMethod.Get, "account/update_delivery_device", FormatAsString, "?device=", device, "&include_entities=", include_entities);
 		}
-
 
         
 		public virtual IAsyncResult BeginUpdateProfile(UpdateProfileOptions options)
@@ -5834,7 +5242,6 @@ namespace TweetSharp
 			return BeginWithHammock<TwitterUser>(_client, WebMethod.Post, "account/update_profile", FormatAsString, "?name=", name, "&url=", url, "&location=", location, "&description=", description, "&include_entities=", include_entities, "&skip_status=", skip_status);
 		}
 
-
         
 		public virtual IAsyncResult BeginUpdateProfileBackgroundImage(UpdateProfileBackgroundImageOptions options)
 		{
@@ -5847,7 +5254,6 @@ namespace TweetSharp
 
 			return BeginWithHammock<TwitterUser>(_client, WebMethod.Post, "account/update_profile_background_image", FormatAsString, "?image_path=", imagePath, "&tile=", tile, "&include_entities=", include_entities, "&skip_status=", skip_status, "&use=", use);
 		}
-
 
         
 		public virtual IAsyncResult BeginUpdateProfileColors(UpdateProfileColorsOptions options)
@@ -5864,7 +5270,6 @@ namespace TweetSharp
 			return BeginWithHammock<TwitterUser>(_client, WebMethod.Post, "account/update_profile_colors", FormatAsString, "?profile_background_color=", profile_background_color, "&profile_link_color=", profile_link_color, "&profile_sidebar_border_color=", profile_sidebar_border_color, "&profile_sidebar_fill_color=", profile_sidebar_fill_color, "&profile_text_color=", profile_text_color, "&include_entities=", include_entities, "&skip_status=", skip_status);
 		}
 
-
         
 		public virtual IAsyncResult BeginUpdateProfileImage(UpdateProfileImageOptions options)
 		{
@@ -5875,7 +5280,6 @@ namespace TweetSharp
 
 			return BeginWithHammock<TwitterUser>(_client, WebMethod.Post, "account/update_profile_image", FormatAsString, "?image_path=", image_path, "&include_entities=", include_entities, "&skip_status=", skip_status);
 		}
-
 
         
 		public virtual IAsyncResult BeginListBlockedUsers(ListBlockedUsersOptions options)
@@ -5888,7 +5292,6 @@ namespace TweetSharp
 			return BeginWithHammock<TwitterCursorList<TwitterUser>>(_client, WebMethod.Get, "blocks/list", FormatAsString, "?include_entities=", include_entities, "&skip_status=", skip_status, "&cursor=", cursor);
 		}
 
-
         
 		public virtual IAsyncResult BeginListBlockedUserIds(ListBlockedUserIdsOptions options)
 		{
@@ -5897,7 +5300,6 @@ namespace TweetSharp
 
 			return BeginWithHammock<TwitterCursorList<long>>(_client, WebMethod.Get, "blocks/ids", FormatAsString, "?cursor=", cursor);
 		}
-
 
         
 		public virtual IAsyncResult BeginBlockUser(BlockUserOptions options)
@@ -5911,7 +5313,6 @@ namespace TweetSharp
 			return BeginWithHammock<TwitterUser>(_client, WebMethod.Post, "blocks/create", FormatAsString, "?user_id=", user_id, "&screen_name=", screen_name, "&include_entities=", include_entities, "&skip_status=", skip_status);
 		}
 
-
         
 		public virtual IAsyncResult BeginUnblockUser(UnblockUserOptions options)
 		{
@@ -5924,7 +5325,6 @@ namespace TweetSharp
 			return BeginWithHammock<TwitterUser>(_client, WebMethod.Post, "blocks/destroy", FormatAsString, "?screen_name=", screen_name, "&user_id=", user_id, "&include_entities=", include_entities, "&skip_status=", skip_status);
 		}
 
-
         
 		public virtual IAsyncResult BeginMuteUser(MuteUserOptions options)
 		{
@@ -5934,7 +5334,6 @@ namespace TweetSharp
 
 			return BeginWithHammock<TwitterUser>(_client, WebMethod.Post, "mutes/users/create", FormatAsString, "?user_id=", user_id, "&screen_name=", screen_name);
 		}
-
 
         
 		public virtual IAsyncResult BeginUnmuteUser(UnmuteUserOptions options)
@@ -5946,7 +5345,6 @@ namespace TweetSharp
 			return BeginWithHammock<TwitterUser>(_client, WebMethod.Post, "mutes/users/destroy", FormatAsString, "?user_id=", user_id, "&screen_name=", screen_name);
 		}
 
-
         
 		public virtual IAsyncResult BeginListMutedUserIds(ListMutedUserIdsOptions options)
 		{
@@ -5956,16 +5354,14 @@ namespace TweetSharp
 			return BeginWithHammock<TwitterCursorList<long>>(_client, WebMethod.Get, "mutes/users/ids", FormatAsString, "?cursor=", cursor);
 		}
 
-
         
 		public virtual IAsyncResult BeginListMutedUsers(ListMutedUsersOptions options)
 		{
 			var cursor = options.Cursor;
 				
 
-			return BeginWithHammock<TwitterCursorList<long>>(_client, WebMethod.Get, "mutes/users/list", FormatAsString, "?cursor=", cursor);
+			return BeginWithHammock<TwitterCursorList<TwitterUser>>(_client, WebMethod.Get, "mutes/users/list", FormatAsString, "?cursor=", cursor);
 		}
-
 
         
 		public virtual IAsyncResult BeginListUserProfilesFor(ListUserProfilesForOptions options)
@@ -5978,7 +5374,6 @@ namespace TweetSharp
 			return BeginWithHammock<IEnumerable<TwitterUser>>(_client, WebMethod.Get, "users/lookup", FormatAsString, "?screen_name=", screen_name, "&user_id=", user_id, "&include_entities=", include_entities);
 		}
 
-
         
 		public virtual IAsyncResult BeginGetUserProfileFor(GetUserProfileForOptions options)
 		{
@@ -5989,7 +5384,6 @@ namespace TweetSharp
 
 			return BeginWithHammock<TwitterUser>(_client, WebMethod.Get, "users/show", FormatAsString, "?user_id=", user_id, "&screen_name=", screen_name, "&include_entities=", include_entities);
 		}
-
 
         
 		public virtual IAsyncResult BeginSearchForUser(SearchForUserOptions options)
@@ -6003,7 +5397,6 @@ namespace TweetSharp
 			return BeginWithHammock<IEnumerable<TwitterUser>>(_client, WebMethod.Get, "users/search", FormatAsString, "?q=", q, "&page=", page, "&count=", count, "&include_entities=", include_entities);
 		}
 
-
         
 		public virtual IAsyncResult BeginGetProfileBannerFor(GetProfileBannerForOptions options)
 		{
@@ -6013,7 +5406,6 @@ namespace TweetSharp
 
 			return BeginWithHammock<ProfileBanners>(_client, WebMethod.Get, "users/profile_banner", FormatAsString, "?screen_name=", screen_name, "&user_id=", user_id);
 		}
-
 
         
 		public virtual IAsyncResult BeginListSuggestedUsers(ListSuggestedUsersOptions options)
@@ -6025,7 +5417,6 @@ namespace TweetSharp
 			return BeginWithHammock<TwitterUserSuggestions>(_client, WebMethod.Get, "/users/suggestions/{slug}", FormatAsString, "?slug=", slug, "&lang=", lang);
 		}
 
-
         
 		public virtual IAsyncResult BeginListSuggestedUserCategories(ListSuggestedUserCategoriesOptions options)
 		{
@@ -6035,7 +5426,6 @@ namespace TweetSharp
 			return BeginWithHammock<IEnumerable<TwitterUserSuggestions>>(_client, WebMethod.Get, "users/suggestions", FormatAsString, "?lang=", lang);
 		}
 
-
         
 		public virtual IAsyncResult BeginGetSuggestedUserMembers(GetSuggestedUserMembersOptions options)
 		{
@@ -6044,7 +5434,6 @@ namespace TweetSharp
 
 			return BeginWithHammock<IEnumerable<TwitterUser>>(_client, WebMethod.Get, "/users/suggestions/{slug}/members", FormatAsString, "?slug=", slug);
 		}
-
 
         
 		public virtual IAsyncResult BeginListFavoriteTweets(ListFavoriteTweetsOptions options)
@@ -6061,7 +5450,6 @@ namespace TweetSharp
 			return BeginWithHammock<IEnumerable<TwitterStatus>>(_client, WebMethod.Get, "favorites/list", FormatAsString, "?user_id=", user_id, "&screen_name=", screen_name, "&count=", count, "&since_id=", since_id, "&max_id=", max_id, "&include_entities=", include_entities, "&tweet_mode=", tweet_mode);
 		}
 
-
         
 		public virtual IAsyncResult BeginUnfavoriteTweet(UnfavoriteTweetOptions options)
 		{
@@ -6070,7 +5458,6 @@ namespace TweetSharp
 
 			return BeginWithHammock<TwitterStatus>(_client, WebMethod.Post, "favorites/destroy", FormatAsString, "?id=", id);
 		}
-
 
         
 		public virtual IAsyncResult BeginFavoriteTweet(FavoriteTweetOptions options)
@@ -6082,7 +5469,6 @@ namespace TweetSharp
 			return BeginWithHammock<TwitterStatus>(_client, WebMethod.Post, "favorites/create", FormatAsString, "?id=", id, "&include_entities=", include_entities);
 		}
 
-
         
 		public virtual IAsyncResult BeginListListsFor(ListListsForOptions options)
 		{
@@ -6092,7 +5478,6 @@ namespace TweetSharp
 
 			return BeginWithHammock<IEnumerable<TwitterList>>(_client, WebMethod.Get, "lists/list", FormatAsString, "?user_id=", user_id, "&screen_name=", screen_name);
 		}
-
 
         
 		public virtual IAsyncResult BeginListOwnedListsFor(ListOwnedListsForOptions options)
@@ -6106,7 +5491,6 @@ namespace TweetSharp
 			return BeginWithHammock<TwitterCursorList<TwitterList>>(_client, WebMethod.Get, "lists/ownerships", FormatAsString, "?user_id=", user_id, "&screen_name=", screen_name, "&count=", count, "&cursor=", cursor);
 		}
 
-
         
 		public virtual IAsyncResult BeginListTweetsOnList(ListTweetsOnListOptions options)
 		{
@@ -6119,11 +5503,11 @@ namespace TweetSharp
 			var count = options.Count;
 			var include_entities = options.IncludeEntities;
 			var include_rts = options.IncludeRts;
+			var tweet_mode = options.TweetMode;
 				
 
-			return BeginWithHammock<IEnumerable<TwitterStatus>>(_client, WebMethod.Get, "lists/statuses", FormatAsString, "?list_id=", list_id, "&slug=", slug, "&owner_screen_name=", owner_screen_name, "&owner_id=", owner_id, "&since_id=", since_id, "&max_id=", max_id, "&count=", count, "&include_entities=", include_entities, "&include_rts=", include_rts);
+			return BeginWithHammock<IEnumerable<TwitterStatus>>(_client, WebMethod.Get, "lists/statuses", FormatAsString, "?list_id=", list_id, "&slug=", slug, "&owner_screen_name=", owner_screen_name, "&owner_id=", owner_id, "&since_id=", since_id, "&max_id=", max_id, "&count=", count, "&include_entities=", include_entities, "&include_rts=", include_rts, "&tweet_mode=", tweet_mode);
 		}
-
 
         
 		public virtual IAsyncResult BeginRemoveListMember(RemoveListMemberOptions options)
@@ -6139,7 +5523,6 @@ namespace TweetSharp
 			return BeginWithHammock<TwitterUser>(_client, WebMethod.Post, "lists/members/destroy", FormatAsString, "?list_id=", list_id, "&slug=", slug, "&user_id=", user_id, "&screen_name=", screen_name, "&owner_screen_name=", owner_screen_name, "&owner_id=", owner_id);
 		}
 
-
         
 		public virtual IAsyncResult BeginListListMembershipsFor(ListListMembershipsForOptions options)
 		{
@@ -6151,7 +5534,6 @@ namespace TweetSharp
 
 			return BeginWithHammock<TwitterCursorList<TwitterList>>(_client, WebMethod.Get, "lists/memberships", FormatAsString, "?user_id=", user_id, "&screen_name=", screen_name, "&cursor=", cursor, "&filter_to_owned_lists=", filter_to_owned_lists);
 		}
-
 
         
 		public virtual IAsyncResult BeginListListSubscribers(ListListSubscribersOptions options)
@@ -6168,7 +5550,6 @@ namespace TweetSharp
 			return BeginWithHammock<TwitterCursorList<TwitterUser>>(_client, WebMethod.Get, "lists/subscribers", FormatAsString, "?list_id=", list_id, "&slug=", slug, "&owner_screen_name=", owner_screen_name, "&owner_id=", owner_id, "&cursor=", cursor, "&include_entities=", include_entities, "&skip_status=", skip_status);
 		}
 
-
         
 		public virtual IAsyncResult BeginFollowList(FollowListOptions options)
 		{
@@ -6180,7 +5561,6 @@ namespace TweetSharp
 
 			return BeginWithHammock<TwitterUser>(_client, WebMethod.Post, "lists/subscribers/create", FormatAsString, "?owner_screen_name=", owner_screen_name, "&owner_id=", owner_id, "&list_id=", list_id, "&slug=", slug);
 		}
-
 
         
 		public virtual IAsyncResult BeginVerifyListSubscription(VerifyListSubscriptionOptions options)
@@ -6198,7 +5578,6 @@ namespace TweetSharp
 			return BeginWithHammock<TwitterUser>(_client, WebMethod.Get, "lists/subscribers/show", FormatAsString, "?owner_screen_name=", owner_screen_name, "&owner_id=", owner_id, "&list_id=", list_id, "&slug=", slug, "&user_id=", user_id, "&screen_name=", screen_name, "&include_entities=", include_entities, "&skip_status=", skip_status);
 		}
 
-
         
 		public virtual IAsyncResult BeginUnfollowList(UnfollowListOptions options)
 		{
@@ -6210,7 +5589,6 @@ namespace TweetSharp
 
 			return BeginWithHammock<TwitterUser>(_client, WebMethod.Post, "lists/subscribers/destroy", FormatAsString, "?list_id=", list_id, "&slug=", slug, "&owner_screen_name=", owner_screen_name, "&owner_id=", owner_id);
 		}
-
 
         
 		public virtual IAsyncResult BeginAddListMembers(AddListMembersOptions options)
@@ -6225,7 +5603,6 @@ namespace TweetSharp
 
 			return BeginWithHammock<TwitterList>(_client, WebMethod.Post, "lists/members/create_all", FormatAsString, "?list_id=", list_id, "&slug=", slug, "&user_id=", user_id, "&screen_name=", screen_name, "&owner_screen_name=", owner_screen_name, "&owner_id=", owner_id);
 		}
-
 
         
 		public virtual IAsyncResult BeginVerifyListMembership(VerifyListMembershipOptions options)
@@ -6243,7 +5620,6 @@ namespace TweetSharp
 			return BeginWithHammock<TwitterUser>(_client, WebMethod.Get, "lists/members/show", FormatAsString, "?list_id=", list_id, "&slug=", slug, "&user_id=", user_id, "&screen_name=", screen_name, "&owner_screen_name=", owner_screen_name, "&owner_id=", owner_id, "&include_entities=", include_entities, "&skip_status=", skip_status);
 		}
 
-
         
 		public virtual IAsyncResult BeginListListMembers(ListListMembersOptions options)
 		{
@@ -6260,7 +5636,6 @@ namespace TweetSharp
 			return BeginWithHammock<TwitterCursorList<TwitterUser>>(_client, WebMethod.Get, "lists/members", FormatAsString, "?list_id=", list_id, "&slug=", slug, "&owner_screen_name=", owner_screen_name, "&owner_id=", owner_id, "&count=", count, "&cursor=", cursor, "&include_entities=", include_entities, "&skip_status=", skip_status);
 		}
 
-
         
 		public virtual IAsyncResult BeginAddListMember(AddListMemberOptions options)
 		{
@@ -6275,7 +5650,6 @@ namespace TweetSharp
 			return BeginWithHammock<TwitterUser>(_client, WebMethod.Post, "lists/members/create", FormatAsString, "?list_id=", list_id, "&slug=", slug, "&user_id=", user_id, "&screen_name=", screen_name, "&owner_screen_name=", owner_screen_name, "&owner_id=", owner_id);
 		}
 
-
         
 		public virtual IAsyncResult BeginDeleteList(DeleteListOptions options)
 		{
@@ -6287,7 +5661,6 @@ namespace TweetSharp
 
 			return BeginWithHammock<TwitterList>(_client, WebMethod.Post, "lists/destroy", FormatAsString, "?owner_screen_name=", owner_screen_name, "&owner_id=", owner_id, "&list_id=", list_id, "&slug=", slug);
 		}
-
 
         
 		public virtual IAsyncResult BeginUpdateList(UpdateListOptions options)
@@ -6304,7 +5677,6 @@ namespace TweetSharp
 			return BeginWithHammock<TwitterList>(_client, WebMethod.Post, "lists/update", FormatAsString, "?owner_screen_name=", owner_screen_name, "&owner_id=", owner_id, "&list_id=", list_id, "&slug=", slug, "&mode=", mode, "&name=", name, "&description=", description);
 		}
 
-
         
 		public virtual IAsyncResult BeginCreateList(CreateListOptions options)
 		{
@@ -6316,7 +5688,6 @@ namespace TweetSharp
 
 			return BeginWithHammock<TwitterList>(_client, WebMethod.Post, "lists/create", FormatAsString, "?list_owner=", list_owner, "&name=", name, "&mode=", mode, "&description=", description);
 		}
-
 
         
 		public virtual IAsyncResult BeginGetList(GetListOptions options)
@@ -6330,7 +5701,6 @@ namespace TweetSharp
 			return BeginWithHammock<TwitterList>(_client, WebMethod.Get, "lists/show", FormatAsString, "?list_id=", list_id, "&slug=", slug, "&owner_screen_name=", owner_screen_name, "&owner_id=", owner_id);
 		}
 
-
         
 		public virtual IAsyncResult BeginListSubscriptions(ListSubscriptionsOptions options)
 		{
@@ -6343,7 +5713,6 @@ namespace TweetSharp
 			return BeginWithHammock<TwitterCursorList<TwitterList>>(_client, WebMethod.Get, "lists/subscriptions", FormatAsString, "?user_id=", user_id, "&screen_name=", screen_name, "&count=", count, "&cursor=", cursor);
 		}
 
-
         
 		public virtual IAsyncResult BeginListSavedSearches()
 		{
@@ -6351,7 +5720,6 @@ namespace TweetSharp
 
 			return BeginWithHammock<IEnumerable<TwitterSavedSearch>>(_client, WebMethod.Get, "saved_searches/list", FormatAsString);
 		}
-
 
         
 		public virtual IAsyncResult BeginGetSavedSearch(GetSavedSearchOptions options)
@@ -6362,7 +5730,6 @@ namespace TweetSharp
 			return BeginWithHammock<TwitterSavedSearch>(_client, WebMethod.Get, "saved_searches/show/{id}", FormatAsString, "?id=", id);
 		}
 
-
         
 		public virtual IAsyncResult BeginCreateSavedSearch(CreateSavedSearchOptions options)
 		{
@@ -6371,7 +5738,6 @@ namespace TweetSharp
 
 			return BeginWithHammock<TwitterSavedSearch>(_client, WebMethod.Post, "saved_searches/create", FormatAsString, "?query=", query);
 		}
-
 
         
 		public virtual IAsyncResult BeginDeleteSavedSearch(DeleteSavedSearchOptions options)
@@ -6382,7 +5748,6 @@ namespace TweetSharp
 			return BeginWithHammock<TwitterSavedSearch>(_client, WebMethod.Post, "saved_searches/destroy/{id}", FormatAsString, "?id=", id);
 		}
 
-
         
 		public virtual IAsyncResult BeginGetPlace(GetPlaceOptions options)
 		{
@@ -6391,7 +5756,6 @@ namespace TweetSharp
 
 			return BeginWithHammock<TwitterPlace>(_client, WebMethod.Get, "geo/id/{place_id}", FormatAsString, "?place_id=", place_id);
 		}
-
 
         
 		public virtual IAsyncResult BeginReverseGeocode(ReverseGeocodeOptions options)
@@ -6406,7 +5770,6 @@ namespace TweetSharp
 
 			return BeginWithHammock<IEnumerable<TwitterPlace>>(_client, WebMethod.Get, "geo/reverse_geocode", FormatAsString, "?lat=", lat, "&long=", @long, "&accuracy=", accuracy, "&granularity=", granularity, "&max_results=", max_results, "&callback=", callback);
 		}
-
 
         
 		public virtual IAsyncResult BeginGeoSearch(GeoSearchOptions options)
@@ -6425,7 +5788,6 @@ namespace TweetSharp
 			return BeginWithHammock<IEnumerable<TwitterPlace>>(_client, WebMethod.Get, "geo/search", FormatAsString, "?lat=", lat, "&long=", @long, "&query=", query, "&ip=", ip, "&granularity=", granularity, "&accuracy=", accuracy, "&max_results=", max_results, "&contained_within=", contained_within, "&callback=", callback);
 		}
 
-
         
 		public virtual IAsyncResult BeginListLocalTrendsFor(ListLocalTrendsForOptions options)
 		{
@@ -6436,7 +5798,6 @@ namespace TweetSharp
 			return BeginWithHammock<TwitterTrends>(_client, WebMethod.Get, "trends/place", FormatAsString, "?id=", id, "&exclude=", exclude);
 		}
 
-
         
 		public virtual IAsyncResult BeginListAvailableTrendsLocations()
 		{
@@ -6444,7 +5805,6 @@ namespace TweetSharp
 
 			return BeginWithHammock<IEnumerable<WhereOnEarthLocation>>(_client, WebMethod.Get, "trends/available", FormatAsString);
 		}
-
 
         
 		public virtual IAsyncResult BeginListClosestTrendsLocations(ListClosestTrendsLocationsOptions options)
@@ -6456,7 +5816,6 @@ namespace TweetSharp
 			return BeginWithHammock<IEnumerable<WhereOnEarthLocation>>(_client, WebMethod.Get, "trends/closest", FormatAsString, "?lat=", lat, "&long=", @long);
 		}
 
-
         
 		public virtual IAsyncResult BeginGetRateLimitStatus(GetRateLimitStatusOptions options)
 		{
@@ -6465,7 +5824,6 @@ namespace TweetSharp
 
 			return BeginWithHammock<TwitterRateLimitStatusSummary>(_client, WebMethod.Get, "application/rate_limit_status", FormatAsString, "?resources=", resources);
 		}
-
 
         
 		public virtual IAsyncResult BeginReportSpam(ReportSpamOptions options)
@@ -6476,8 +5834,6 @@ namespace TweetSharp
 
 			return BeginWithHammock<TwitterUser>(_client, WebMethod.Post, "users/report_spam", FormatAsString, "?screen_name=", screen_name, "&user_id=", user_id);
 		}
-
-
 
         
 		public virtual TwitterConfiguration EndGetConfiguration(IAsyncResult result) 
@@ -6491,7 +5847,6 @@ namespace TweetSharp
 			return EndWithHammock<TwitterConfiguration>(result, timeout);
 		}
 
-
         
 		public virtual IEnumerable<TwitterStatus> EndListTweetsMentioningMe(IAsyncResult result) 
 		{
@@ -6503,7 +5858,6 @@ namespace TweetSharp
 		{
 			return EndWithHammock<IEnumerable<TwitterStatus>>(result, timeout);
 		}
-
 
         
 		public virtual IEnumerable<TwitterStatus> EndListTweetsOnUserTimeline(IAsyncResult result) 
@@ -6517,7 +5871,6 @@ namespace TweetSharp
 			return EndWithHammock<IEnumerable<TwitterStatus>>(result, timeout);
 		}
 
-
         
 		public virtual IEnumerable<TwitterStatus> EndListTweetsOnHomeTimeline(IAsyncResult result) 
 		{
@@ -6529,7 +5882,6 @@ namespace TweetSharp
 		{
 			return EndWithHammock<IEnumerable<TwitterStatus>>(result, timeout);
 		}
-
 
         
 		public virtual IEnumerable<TwitterStatus> EndListRetweetsOfMyTweets(IAsyncResult result) 
@@ -6543,7 +5895,6 @@ namespace TweetSharp
 			return EndWithHammock<IEnumerable<TwitterStatus>>(result, timeout);
 		}
 
-
         
 		public virtual IEnumerable<TwitterStatus> EndRetweets(IAsyncResult result) 
 		{
@@ -6555,7 +5906,6 @@ namespace TweetSharp
 		{
 			return EndWithHammock<IEnumerable<TwitterStatus>>(result, timeout);
 		}
-
 
         
 		public virtual TwitterStatus EndGetTweet(IAsyncResult result) 
@@ -6569,7 +5919,6 @@ namespace TweetSharp
 			return EndWithHammock<TwitterStatus>(result, timeout);
 		}
 
-
         
 		public virtual TwitterStatus EndDeleteTweet(IAsyncResult result) 
 		{
@@ -6581,7 +5930,6 @@ namespace TweetSharp
 		{
 			return EndWithHammock<TwitterStatus>(result, timeout);
 		}
-
 
         
 		public virtual TwitterStatus EndSendTweet(IAsyncResult result) 
@@ -6595,7 +5943,6 @@ namespace TweetSharp
 			return EndWithHammock<TwitterStatus>(result, timeout);
 		}
 
-
         
 		public virtual TwitterStatus EndRetweet(IAsyncResult result) 
 		{
@@ -6607,7 +5954,6 @@ namespace TweetSharp
 		{
 			return EndWithHammock<TwitterStatus>(result, timeout);
 		}
-
 
         [Obsolete("Twitter has declared this method obsolete; it may cease to function at any time. Check https://dev.twitter.com/docs/api#deprecated for alternatives.")]
 		public virtual TwitterStatus EndSendTweetWithMedia(IAsyncResult result) 
@@ -6621,7 +5967,6 @@ namespace TweetSharp
 			return EndWithHammock<TwitterStatus>(result, timeout);
 		}
 
-
         
 		public virtual TwitterUploadedMedia EndUploadMedia(IAsyncResult result) 
 		{
@@ -6633,7 +5978,6 @@ namespace TweetSharp
 		{
 			return EndWithHammock<TwitterUploadedMedia>(result, timeout);
 		}
-
 
         
 		public virtual TwitterChunkedMedia EndUploadMediaInit(IAsyncResult result) 
@@ -6647,7 +5991,6 @@ namespace TweetSharp
 			return EndWithHammock<TwitterChunkedMedia>(result, timeout);
 		}
 
-
         
 		public virtual void EndUploadMediaAppend(IAsyncResult result) 
 		{
@@ -6659,7 +6002,6 @@ namespace TweetSharp
 		{
 			 EndWithHammockNoResponse(result, timeout);
 		}
-
 
         
 		public virtual UploadMediaResult EndUploadMediaFinalize(IAsyncResult result) 
@@ -6673,7 +6015,6 @@ namespace TweetSharp
 			return EndWithHammock<UploadMediaResult>(result, timeout);
 		}
 
-
         
 		public virtual UploadMediaResult EndUploadMediaCheckStatus(IAsyncResult result) 
 		{
@@ -6685,7 +6026,6 @@ namespace TweetSharp
 		{
 			return EndWithHammock<UploadMediaResult>(result, timeout);
 		}
-
 
         
 		public virtual TwitterSearchResult EndSearch(IAsyncResult result) 
@@ -6699,7 +6039,6 @@ namespace TweetSharp
 			return EndWithHammock<TwitterSearchResult>(result, timeout);
 		}
 
-
         
 		public virtual IEnumerable<TwitterDirectMessage> EndListDirectMessagesReceived(IAsyncResult result) 
 		{
@@ -6711,7 +6050,6 @@ namespace TweetSharp
 		{
 			return EndWithHammock<IEnumerable<TwitterDirectMessage>>(result, timeout);
 		}
-
 
         
 		public virtual IEnumerable<TwitterDirectMessage> EndListDirectMessagesSent(IAsyncResult result) 
@@ -6725,7 +6063,6 @@ namespace TweetSharp
 			return EndWithHammock<IEnumerable<TwitterDirectMessage>>(result, timeout);
 		}
 
-
         
 		public virtual TwitterDirectMessage EndGetDirectMessage(IAsyncResult result) 
 		{
@@ -6737,7 +6074,6 @@ namespace TweetSharp
 		{
 			return EndWithHammock<TwitterDirectMessage>(result, timeout);
 		}
-
 
         
 		public virtual TwitterDirectMessage EndDeleteDirectMessage(IAsyncResult result) 
@@ -6751,7 +6087,6 @@ namespace TweetSharp
 			return EndWithHammock<TwitterDirectMessage>(result, timeout);
 		}
 
-
         
 		public virtual TwitterDirectMessage EndSendDirectMessage(IAsyncResult result) 
 		{
@@ -6763,7 +6098,6 @@ namespace TweetSharp
 		{
 			return EndWithHammock<TwitterDirectMessage>(result, timeout);
 		}
-
 
         
 		public virtual TwitterCursorList<long> EndListFriendIdsOf(IAsyncResult result) 
@@ -6777,7 +6111,6 @@ namespace TweetSharp
 			return EndWithHammock<TwitterCursorList<long>>(result, timeout);
 		}
 
-
         
 		public virtual TwitterCursorList<long> EndListFollowerIdsOf(IAsyncResult result) 
 		{
@@ -6789,7 +6122,6 @@ namespace TweetSharp
 		{
 			return EndWithHammock<TwitterCursorList<long>>(result, timeout);
 		}
-
 
         
 		public virtual IEnumerable<TwitterFriendshipLookup> EndListFriendshipsFor(IAsyncResult result) 
@@ -6803,7 +6135,6 @@ namespace TweetSharp
 			return EndWithHammock<IEnumerable<TwitterFriendshipLookup>>(result, timeout);
 		}
 
-
         
 		public virtual TwitterCursorList<long> EndGetIncomingFriendRequests(IAsyncResult result) 
 		{
@@ -6815,7 +6146,6 @@ namespace TweetSharp
 		{
 			return EndWithHammock<TwitterCursorList<long>>(result, timeout);
 		}
-
 
         
 		public virtual TwitterCursorList<long> EndGetOutgoingFriendRequests(IAsyncResult result) 
@@ -6829,7 +6159,6 @@ namespace TweetSharp
 			return EndWithHammock<TwitterCursorList<long>>(result, timeout);
 		}
 
-
         
 		public virtual TwitterUser EndFollowUser(IAsyncResult result) 
 		{
@@ -6841,7 +6170,6 @@ namespace TweetSharp
 		{
 			return EndWithHammock<TwitterUser>(result, timeout);
 		}
-
 
         
 		public virtual TwitterUser EndUnfollowUser(IAsyncResult result) 
@@ -6855,7 +6183,6 @@ namespace TweetSharp
 			return EndWithHammock<TwitterUser>(result, timeout);
 		}
 
-
         
 		public virtual TwitterFriendship EndUpdateFriendship(IAsyncResult result) 
 		{
@@ -6867,7 +6194,6 @@ namespace TweetSharp
 		{
 			return EndWithHammock<TwitterFriendship>(result, timeout);
 		}
-
 
         
 		public virtual TwitterFriendship EndGetFriendshipInfo(IAsyncResult result) 
@@ -6881,7 +6207,6 @@ namespace TweetSharp
 			return EndWithHammock<TwitterFriendship>(result, timeout);
 		}
 
-
         
 		public virtual TwitterCursorList<TwitterUser> EndListFriends(IAsyncResult result) 
 		{
@@ -6893,7 +6218,6 @@ namespace TweetSharp
 		{
 			return EndWithHammock<TwitterCursorList<TwitterUser>>(result, timeout);
 		}
-
 
         
 		public virtual TwitterCursorList<TwitterUser> EndListFollowers(IAsyncResult result) 
@@ -6907,7 +6231,6 @@ namespace TweetSharp
 			return EndWithHammock<TwitterCursorList<TwitterUser>>(result, timeout);
 		}
 
-
         
 		public virtual TwitterAccount EndGetAccountSettings(IAsyncResult result) 
 		{
@@ -6919,7 +6242,6 @@ namespace TweetSharp
 		{
 			return EndWithHammock<TwitterAccount>(result, timeout);
 		}
-
 
         
 		public virtual TwitterUser EndGetUserProfile(IAsyncResult result) 
@@ -6933,7 +6255,6 @@ namespace TweetSharp
 			return EndWithHammock<TwitterUser>(result, timeout);
 		}
 
-
         
 		public virtual TwitterUser EndVerifyCredentials(IAsyncResult result) 
 		{
@@ -6945,7 +6266,6 @@ namespace TweetSharp
 		{
 			return EndWithHammock<TwitterUser>(result, timeout);
 		}
-
 
         
 		public virtual TwitterAccount EndUpdateAccountSettings(IAsyncResult result) 
@@ -6959,7 +6279,6 @@ namespace TweetSharp
 			return EndWithHammock<TwitterAccount>(result, timeout);
 		}
 
-
         
 		public virtual TwitterUser EndUpdateDeliveryDevice(IAsyncResult result) 
 		{
@@ -6971,7 +6290,6 @@ namespace TweetSharp
 		{
 			return EndWithHammock<TwitterUser>(result, timeout);
 		}
-
 
         
 		public virtual TwitterUser EndUpdateProfile(IAsyncResult result) 
@@ -6985,7 +6303,6 @@ namespace TweetSharp
 			return EndWithHammock<TwitterUser>(result, timeout);
 		}
 
-
         
 		public virtual TwitterUser EndUpdateProfileBackgroundImage(IAsyncResult result) 
 		{
@@ -6997,7 +6314,6 @@ namespace TweetSharp
 		{
 			return EndWithHammock<TwitterUser>(result, timeout);
 		}
-
 
         
 		public virtual TwitterUser EndUpdateProfileColors(IAsyncResult result) 
@@ -7011,7 +6327,6 @@ namespace TweetSharp
 			return EndWithHammock<TwitterUser>(result, timeout);
 		}
 
-
         
 		public virtual TwitterUser EndUpdateProfileImage(IAsyncResult result) 
 		{
@@ -7023,7 +6338,6 @@ namespace TweetSharp
 		{
 			return EndWithHammock<TwitterUser>(result, timeout);
 		}
-
 
         
 		public virtual TwitterCursorList<TwitterUser> EndListBlockedUsers(IAsyncResult result) 
@@ -7037,7 +6351,6 @@ namespace TweetSharp
 			return EndWithHammock<TwitterCursorList<TwitterUser>>(result, timeout);
 		}
 
-
         
 		public virtual TwitterCursorList<long> EndListBlockedUserIds(IAsyncResult result) 
 		{
@@ -7049,7 +6362,6 @@ namespace TweetSharp
 		{
 			return EndWithHammock<TwitterCursorList<long>>(result, timeout);
 		}
-
 
         
 		public virtual TwitterUser EndBlockUser(IAsyncResult result) 
@@ -7063,7 +6375,6 @@ namespace TweetSharp
 			return EndWithHammock<TwitterUser>(result, timeout);
 		}
 
-
         
 		public virtual TwitterUser EndUnblockUser(IAsyncResult result) 
 		{
@@ -7075,7 +6386,6 @@ namespace TweetSharp
 		{
 			return EndWithHammock<TwitterUser>(result, timeout);
 		}
-
 
         
 		public virtual TwitterUser EndMuteUser(IAsyncResult result) 
@@ -7089,7 +6399,6 @@ namespace TweetSharp
 			return EndWithHammock<TwitterUser>(result, timeout);
 		}
 
-
         
 		public virtual TwitterUser EndUnmuteUser(IAsyncResult result) 
 		{
@@ -7101,7 +6410,6 @@ namespace TweetSharp
 		{
 			return EndWithHammock<TwitterUser>(result, timeout);
 		}
-
 
         
 		public virtual TwitterCursorList<long> EndListMutedUserIds(IAsyncResult result) 
@@ -7115,19 +6423,17 @@ namespace TweetSharp
 			return EndWithHammock<TwitterCursorList<long>>(result, timeout);
 		}
 
-
         
-		public virtual TwitterCursorList<long> EndListMutedUsers(IAsyncResult result) 
+		public virtual TwitterCursorList<TwitterUser> EndListMutedUsers(IAsyncResult result) 
 		{
-			return EndWithHammock<TwitterCursorList<long>>(result);
+			return EndWithHammock<TwitterCursorList<TwitterUser>>(result);
 		}
 
 		
-		public virtual TwitterCursorList<long> EndListMutedUsers(IAsyncResult result, TimeSpan timeout) 
+		public virtual TwitterCursorList<TwitterUser> EndListMutedUsers(IAsyncResult result, TimeSpan timeout) 
 		{
-			return EndWithHammock<TwitterCursorList<long>>(result, timeout);
+			return EndWithHammock<TwitterCursorList<TwitterUser>>(result, timeout);
 		}
-
 
         
 		public virtual IEnumerable<TwitterUser> EndListUserProfilesFor(IAsyncResult result) 
@@ -7141,7 +6447,6 @@ namespace TweetSharp
 			return EndWithHammock<IEnumerable<TwitterUser>>(result, timeout);
 		}
 
-
         
 		public virtual TwitterUser EndGetUserProfileFor(IAsyncResult result) 
 		{
@@ -7153,7 +6458,6 @@ namespace TweetSharp
 		{
 			return EndWithHammock<TwitterUser>(result, timeout);
 		}
-
 
         
 		public virtual IEnumerable<TwitterUser> EndSearchForUser(IAsyncResult result) 
@@ -7167,7 +6471,6 @@ namespace TweetSharp
 			return EndWithHammock<IEnumerable<TwitterUser>>(result, timeout);
 		}
 
-
         
 		public virtual ProfileBanners EndGetProfileBannerFor(IAsyncResult result) 
 		{
@@ -7179,7 +6482,6 @@ namespace TweetSharp
 		{
 			return EndWithHammock<ProfileBanners>(result, timeout);
 		}
-
 
         
 		public virtual TwitterUserSuggestions EndListSuggestedUsers(IAsyncResult result) 
@@ -7193,7 +6495,6 @@ namespace TweetSharp
 			return EndWithHammock<TwitterUserSuggestions>(result, timeout);
 		}
 
-
         
 		public virtual IEnumerable<TwitterUserSuggestions> EndListSuggestedUserCategories(IAsyncResult result) 
 		{
@@ -7205,7 +6506,6 @@ namespace TweetSharp
 		{
 			return EndWithHammock<IEnumerable<TwitterUserSuggestions>>(result, timeout);
 		}
-
 
         
 		public virtual IEnumerable<TwitterUser> EndGetSuggestedUserMembers(IAsyncResult result) 
@@ -7219,7 +6519,6 @@ namespace TweetSharp
 			return EndWithHammock<IEnumerable<TwitterUser>>(result, timeout);
 		}
 
-
         
 		public virtual IEnumerable<TwitterStatus> EndListFavoriteTweets(IAsyncResult result) 
 		{
@@ -7231,7 +6530,6 @@ namespace TweetSharp
 		{
 			return EndWithHammock<IEnumerable<TwitterStatus>>(result, timeout);
 		}
-
 
         
 		public virtual TwitterStatus EndUnfavoriteTweet(IAsyncResult result) 
@@ -7245,7 +6543,6 @@ namespace TweetSharp
 			return EndWithHammock<TwitterStatus>(result, timeout);
 		}
 
-
         
 		public virtual TwitterStatus EndFavoriteTweet(IAsyncResult result) 
 		{
@@ -7257,7 +6554,6 @@ namespace TweetSharp
 		{
 			return EndWithHammock<TwitterStatus>(result, timeout);
 		}
-
 
         
 		public virtual IEnumerable<TwitterList> EndListListsFor(IAsyncResult result) 
@@ -7271,7 +6567,6 @@ namespace TweetSharp
 			return EndWithHammock<IEnumerable<TwitterList>>(result, timeout);
 		}
 
-
         
 		public virtual TwitterCursorList<TwitterList> EndListOwnedListsFor(IAsyncResult result) 
 		{
@@ -7283,7 +6578,6 @@ namespace TweetSharp
 		{
 			return EndWithHammock<TwitterCursorList<TwitterList>>(result, timeout);
 		}
-
 
         
 		public virtual IEnumerable<TwitterStatus> EndListTweetsOnList(IAsyncResult result) 
@@ -7297,7 +6591,6 @@ namespace TweetSharp
 			return EndWithHammock<IEnumerable<TwitterStatus>>(result, timeout);
 		}
 
-
         
 		public virtual TwitterUser EndRemoveListMember(IAsyncResult result) 
 		{
@@ -7309,7 +6602,6 @@ namespace TweetSharp
 		{
 			return EndWithHammock<TwitterUser>(result, timeout);
 		}
-
 
         
 		public virtual TwitterCursorList<TwitterList> EndListListMembershipsFor(IAsyncResult result) 
@@ -7323,7 +6615,6 @@ namespace TweetSharp
 			return EndWithHammock<TwitterCursorList<TwitterList>>(result, timeout);
 		}
 
-
         
 		public virtual TwitterCursorList<TwitterUser> EndListListSubscribers(IAsyncResult result) 
 		{
@@ -7335,7 +6626,6 @@ namespace TweetSharp
 		{
 			return EndWithHammock<TwitterCursorList<TwitterUser>>(result, timeout);
 		}
-
 
         
 		public virtual TwitterUser EndFollowList(IAsyncResult result) 
@@ -7349,7 +6639,6 @@ namespace TweetSharp
 			return EndWithHammock<TwitterUser>(result, timeout);
 		}
 
-
         
 		public virtual TwitterUser EndVerifyListSubscription(IAsyncResult result) 
 		{
@@ -7361,7 +6650,6 @@ namespace TweetSharp
 		{
 			return EndWithHammock<TwitterUser>(result, timeout);
 		}
-
 
         
 		public virtual TwitterUser EndUnfollowList(IAsyncResult result) 
@@ -7375,7 +6663,6 @@ namespace TweetSharp
 			return EndWithHammock<TwitterUser>(result, timeout);
 		}
 
-
         
 		public virtual TwitterList EndAddListMembers(IAsyncResult result) 
 		{
@@ -7387,7 +6674,6 @@ namespace TweetSharp
 		{
 			return EndWithHammock<TwitterList>(result, timeout);
 		}
-
 
         
 		public virtual TwitterUser EndVerifyListMembership(IAsyncResult result) 
@@ -7401,7 +6687,6 @@ namespace TweetSharp
 			return EndWithHammock<TwitterUser>(result, timeout);
 		}
 
-
         
 		public virtual TwitterCursorList<TwitterUser> EndListListMembers(IAsyncResult result) 
 		{
@@ -7413,7 +6698,6 @@ namespace TweetSharp
 		{
 			return EndWithHammock<TwitterCursorList<TwitterUser>>(result, timeout);
 		}
-
 
         
 		public virtual TwitterUser EndAddListMember(IAsyncResult result) 
@@ -7427,7 +6711,6 @@ namespace TweetSharp
 			return EndWithHammock<TwitterUser>(result, timeout);
 		}
 
-
         
 		public virtual TwitterList EndDeleteList(IAsyncResult result) 
 		{
@@ -7439,7 +6722,6 @@ namespace TweetSharp
 		{
 			return EndWithHammock<TwitterList>(result, timeout);
 		}
-
 
         
 		public virtual TwitterList EndUpdateList(IAsyncResult result) 
@@ -7453,7 +6735,6 @@ namespace TweetSharp
 			return EndWithHammock<TwitterList>(result, timeout);
 		}
 
-
         
 		public virtual TwitterList EndCreateList(IAsyncResult result) 
 		{
@@ -7465,7 +6746,6 @@ namespace TweetSharp
 		{
 			return EndWithHammock<TwitterList>(result, timeout);
 		}
-
 
         
 		public virtual TwitterList EndGetList(IAsyncResult result) 
@@ -7479,7 +6759,6 @@ namespace TweetSharp
 			return EndWithHammock<TwitterList>(result, timeout);
 		}
 
-
         
 		public virtual TwitterCursorList<TwitterList> EndListSubscriptions(IAsyncResult result) 
 		{
@@ -7491,7 +6770,6 @@ namespace TweetSharp
 		{
 			return EndWithHammock<TwitterCursorList<TwitterList>>(result, timeout);
 		}
-
 
         
 		public virtual IEnumerable<TwitterSavedSearch> EndListSavedSearches(IAsyncResult result) 
@@ -7505,7 +6783,6 @@ namespace TweetSharp
 			return EndWithHammock<IEnumerable<TwitterSavedSearch>>(result, timeout);
 		}
 
-
         
 		public virtual TwitterSavedSearch EndGetSavedSearch(IAsyncResult result) 
 		{
@@ -7517,7 +6794,6 @@ namespace TweetSharp
 		{
 			return EndWithHammock<TwitterSavedSearch>(result, timeout);
 		}
-
 
         
 		public virtual TwitterSavedSearch EndCreateSavedSearch(IAsyncResult result) 
@@ -7531,7 +6807,6 @@ namespace TweetSharp
 			return EndWithHammock<TwitterSavedSearch>(result, timeout);
 		}
 
-
         
 		public virtual TwitterSavedSearch EndDeleteSavedSearch(IAsyncResult result) 
 		{
@@ -7543,7 +6818,6 @@ namespace TweetSharp
 		{
 			return EndWithHammock<TwitterSavedSearch>(result, timeout);
 		}
-
 
         
 		public virtual TwitterPlace EndGetPlace(IAsyncResult result) 
@@ -7557,7 +6831,6 @@ namespace TweetSharp
 			return EndWithHammock<TwitterPlace>(result, timeout);
 		}
 
-
         
 		public virtual IEnumerable<TwitterPlace> EndReverseGeocode(IAsyncResult result) 
 		{
@@ -7569,7 +6842,6 @@ namespace TweetSharp
 		{
 			return EndWithHammock<IEnumerable<TwitterPlace>>(result, timeout);
 		}
-
 
         
 		public virtual IEnumerable<TwitterPlace> EndGeoSearch(IAsyncResult result) 
@@ -7583,7 +6855,6 @@ namespace TweetSharp
 			return EndWithHammock<IEnumerable<TwitterPlace>>(result, timeout);
 		}
 
-
         
 		public virtual TwitterTrends EndListLocalTrendsFor(IAsyncResult result) 
 		{
@@ -7595,7 +6866,6 @@ namespace TweetSharp
 		{
 			return EndWithHammock<TwitterTrends>(result, timeout);
 		}
-
 
         
 		public virtual IEnumerable<WhereOnEarthLocation> EndListAvailableTrendsLocations(IAsyncResult result) 
@@ -7609,7 +6879,6 @@ namespace TweetSharp
 			return EndWithHammock<IEnumerable<WhereOnEarthLocation>>(result, timeout);
 		}
 
-
         
 		public virtual IEnumerable<WhereOnEarthLocation> EndListClosestTrendsLocations(IAsyncResult result) 
 		{
@@ -7621,7 +6890,6 @@ namespace TweetSharp
 		{
 			return EndWithHammock<IEnumerable<WhereOnEarthLocation>>(result, timeout);
 		}
-
 
         
 		public virtual TwitterRateLimitStatusSummary EndGetRateLimitStatus(IAsyncResult result) 
@@ -7635,7 +6903,6 @@ namespace TweetSharp
 			return EndWithHammock<TwitterRateLimitStatusSummary>(result, timeout);
 		}
 
-
         
 		public virtual TwitterUser EndReportSpam(IAsyncResult result) 
 		{
@@ -7648,21 +6915,17 @@ namespace TweetSharp
 			return EndWithHammock<TwitterUser>(result, timeout);
 		}
 
-
 		#endregion
 #endif
 
 #if WINDOWS_PHONE
 		#region Asynchronous Methods (without IAsyncResult)
-
         
 		public virtual void GetConfiguration(Action<TwitterConfiguration, TwitterResponse>  action)
 		{
 			
-
 			WithHammock<TwitterConfiguration>(_client, action, "help/configuration", FormatAsString);
 		}
-
 
         
 		public virtual void ListTweetsMentioningMe(ListTweetsMentioningMeOptions options, Action<IEnumerable<TwitterStatus>, TwitterResponse>  action)
@@ -7675,10 +6938,8 @@ namespace TweetSharp
 			var include_entities = options.IncludeEntities;
 			var tweet_mode = options.TweetMode;
 			
-
 			WithHammock<IEnumerable<TwitterStatus>>(_client, action, "statuses/mentions_timeline", FormatAsString, "?count=", count, "&since_id=", since_id, "&max_id=", max_id, "&trim_user=", trim_user, "&contributor_details=", contributor_details, "&include_entities=", include_entities, "&tweet_mode=", tweet_mode);
 		}
-
 
         
 		public virtual void ListTweetsOnUserTimeline(ListTweetsOnUserTimelineOptions options, Action<IEnumerable<TwitterStatus>, TwitterResponse>  action)
@@ -7694,10 +6955,8 @@ namespace TweetSharp
 			var include_rts = options.IncludeRts;
 			var tweet_mode = options.TweetMode;
 			
-
 			WithHammock<IEnumerable<TwitterStatus>>(_client, action, "statuses/user_timeline", FormatAsString, "?user_id=", user_id, "&screen_name=", screen_name, "&since_id=", since_id, "&count=", count, "&max_id=", max_id, "&trim_user=", trim_user, "&exclude_replies=", exclude_replies, "&contributor_details=", contributor_details, "&include_rts=", include_rts, "&tweet_mode=", tweet_mode);
 		}
-
 
         
 		public virtual void ListTweetsOnHomeTimeline(ListTweetsOnHomeTimelineOptions options, Action<IEnumerable<TwitterStatus>, TwitterResponse>  action)
@@ -7711,10 +6970,8 @@ namespace TweetSharp
 			var include_entities = options.IncludeEntities;
 			var tweet_mode = options.TweetMode;
 			
-
 			WithHammock<IEnumerable<TwitterStatus>>(_client, action, "statuses/home_timeline", FormatAsString, "?count=", count, "&since_id=", since_id, "&max_id=", max_id, "&trim_user=", trim_user, "&exclude_replies=", exclude_replies, "&contributor_details=", contributor_details, "&include_entities=", include_entities, "&tweet_mode=", tweet_mode);
 		}
-
 
         
 		public virtual void ListRetweetsOfMyTweets(ListRetweetsOfMyTweetsOptions options, Action<IEnumerable<TwitterStatus>, TwitterResponse>  action)
@@ -7727,10 +6984,8 @@ namespace TweetSharp
 			var include_user_entities = options.IncludeUserEntities;
 			var tweet_mode = options.TweetMode;
 			
-
 			WithHammock<IEnumerable<TwitterStatus>>(_client, action, "statuses/retweets_of_me", FormatAsString, "?count=", count, "&since_id=", since_id, "&max_id=", max_id, "&trim_user=", trim_user, "&include_entities=", include_entities, "&include_user_entities=", include_user_entities, "&tweet_mode=", tweet_mode);
 		}
-
 
         
 		public virtual void Retweets(RetweetsOptions options, Action<IEnumerable<TwitterStatus>, TwitterResponse>  action)
@@ -7740,10 +6995,8 @@ namespace TweetSharp
 			var trim_user = options.TrimUser;
 			var tweet_mode = options.TweetMode;
 			
-
 			WithHammock<IEnumerable<TwitterStatus>>(_client, action, "statuses/retweets/{id}", FormatAsString, "?id=", id, "&count=", count, "&trim_user=", trim_user, "&tweet_mode=", tweet_mode);
 		}
-
 
         
 		public virtual void GetTweet(GetTweetOptions options, Action<TwitterStatus, TwitterResponse>  action)
@@ -7754,10 +7007,8 @@ namespace TweetSharp
 			var include_entities = options.IncludeEntities;
 			var tweet_mode = options.TweetMode;
 			
-
 			WithHammock<TwitterStatus>(_client, action, "statuses/show/{id}", FormatAsString, "?id=", id, "&trim_user=", trim_user, "&include_my_retweet=", include_my_retweet, "&include_entities=", include_entities, "&tweet_mode=", tweet_mode);
 		}
-
 
         
 		public virtual void DeleteTweet(DeleteTweetOptions options, Action<TwitterStatus, TwitterResponse>  action)
@@ -7765,10 +7016,8 @@ namespace TweetSharp
 			var id = options.Id;
 			var trim_user = options.TrimUser;
 			
-
 			WithHammock<TwitterStatus>(_client, WebMethod.Post, action, "statuses/destroy/{id}", FormatAsString, "?id=", id, "&trim_user=", trim_user);
 		}
-
 
         
 		public virtual void SendTweet(SendTweetOptions options, Action<TwitterStatus, TwitterResponse>  action)
@@ -7785,10 +7034,8 @@ namespace TweetSharp
 			var exclude_reply_user_ids = options.ExcludeReplyUserIds;
 			var attachment_url = options.AttachmentUrl;
 			
-
 			WithHammock<TwitterStatus>(_client, WebMethod.Post, action, "statuses/update", FormatAsString, "?status=", status, "&in_reply_to_status_id=", in_reply_to_status_id, "&lat=", lat, "&long=", @long, "&place_id=", place_id, "&display_coordinates=", display_coordinates, "&trim_user=", trim_user, "&media_ids=", media_ids, "&auto_populate_reply_metadata=", auto_populate_reply_metadata, "&exclude_reply_user_ids=", exclude_reply_user_ids, "&attachment_url=", attachment_url);
 		}
-
 
         
 		public virtual void Retweet(RetweetOptions options, Action<TwitterStatus, TwitterResponse>  action)
@@ -7796,10 +7043,8 @@ namespace TweetSharp
 			var id = options.Id;
 			var trim_user = options.TrimUser;
 			
-
 			WithHammock<TwitterStatus>(_client, WebMethod.Post, action, "statuses/retweet/{id}", FormatAsString, "?id=", id, "&trim_user=", trim_user);
 		}
-
 
         [Obsolete("Twitter has declared this method obsolete; it may cease to function at any time. Check https://dev.twitter.com/docs/api#deprecated for alternatives.")]
 		public virtual void SendTweetWithMedia(SendTweetWithMediaOptions options, Action<TwitterStatus, TwitterResponse>  action)
@@ -7813,20 +7058,16 @@ namespace TweetSharp
 			var display_coordinates = options.DisplayCoordinates;
 			 var images = options.Images;
 			
-
 			WithHammock<TwitterStatus>(_client, WebMethod.Post, action, "statuses/update_with_media", images, FormatAsString, "?status=", status, "&possibly_sensitive=", possibly_sensitive, "&in_reply_to_status_id=", in_reply_to_status_id, "&lat=", lat, "&long=", @long, "&place_id=", place_id, "&display_coordinates=", display_coordinates);
 		}
-
 
         
 		public virtual void UploadMedia(UploadMediaOptions options, Action<TwitterUploadedMedia, TwitterResponse>  action)
 		{
 			 var media = options.Media;
 			
-
 			WithHammock<TwitterUploadedMedia>(_uploadMediaClient, WebMethod.Post, action, "media/upload", media, FormatAsString);
 		}
-
 
         
 		public virtual void UploadMediaInit(UploadMediaInitOptions options, Action<TwitterChunkedMedia, TwitterResponse>  action)
@@ -7835,10 +7076,8 @@ namespace TweetSharp
 			var media_category = options.MediaCategory;
 			var total_bytes = options.TotalBytes;
 			
-
 			WithHammock<TwitterChunkedMedia>(_uploadMediaClient, WebMethod.Post, action, "media/upload", FormatAsString, "?command=", "INIT", "&media_type=", media_type, "&media_category=", media_category, "&total_bytes=", total_bytes);
 		}
-
 
         
 		public virtual void UploadMediaAppend(UploadMediaAppendOptions options, Action<TwitterResponse> action)
@@ -7847,30 +7086,24 @@ namespace TweetSharp
 			var segment_index = options.SegmentIndex;
 			 var media = options.Media;
 			
-
 			 WithHammockNoResponse(_uploadMediaClient, WebMethod.Post, action, "media/upload", media, FormatAsString, "?command=", "APPEND", "&media_id=", media_id, "&segment_index=", segment_index);
 		}
-
 
         
 		public virtual void UploadMediaFinalize(UploadMediaFinalizeOptions options, Action<UploadMediaResult, TwitterResponse>  action)
 		{
 			var media_id = options.MediaId;
 			
-
 			WithHammock<UploadMediaResult>(_uploadMediaClient, WebMethod.Post, action, "media/upload", FormatAsString, "?command=", "FINALIZE", "&media_id=", media_id);
 		}
-
 
         
 		public virtual void UploadMediaCheckStatus(UploadMediaCheckStatusOptions options, Action<UploadMediaResult, TwitterResponse>  action)
 		{
 			var media_id = options.MediaId;
 			
-
 			WithHammock<UploadMediaResult>(_uploadMediaClient, action, "media/upload", FormatAsString, "?command=", "STATUS", "&media_id=", media_id);
 		}
-
 
         
 		public virtual void Search(SearchOptions options, Action<TwitterSearchResult, TwitterResponse>  action)
@@ -7887,10 +7120,8 @@ namespace TweetSharp
 			var callback = options.Callback;
 			var until = options.Until;
 			
-
 			WithHammock<TwitterSearchResult>(_client, action, "search/tweets", FormatAsString, "?q=", q, "&geocode=", geocode, "&lang=", lang, "&locale=", locale, "&result_type=", resultType, "&count=", count, "&since_id=", since_id, "&max_id=", max_id, "&include_entities=", include_entities, "&callback=", callback, "&until=", until);
 		}
-
 
         
 		public virtual void ListDirectMessagesReceived(ListDirectMessagesReceivedOptions options, Action<IEnumerable<TwitterDirectMessage>, TwitterResponse>  action)
@@ -7902,10 +7133,8 @@ namespace TweetSharp
 			var skip_status = options.SkipStatus;
 			var full_text = options.FullText;
 			
-
 			WithHammock<IEnumerable<TwitterDirectMessage>>(_client, action, "direct_messages", FormatAsString, "?since_id=", since_id, "&max_id=", max_id, "&count=", count, "&include_entities=", include_entities, "&skip_status=", skip_status, "&full_text=", full_text);
 		}
-
 
         
 		public virtual void ListDirectMessagesSent(ListDirectMessagesSentOptions options, Action<IEnumerable<TwitterDirectMessage>, TwitterResponse>  action)
@@ -7917,10 +7146,8 @@ namespace TweetSharp
 			var include_entities = options.IncludeEntities;
 			var full_text = options.FullText;
 			
-
 			WithHammock<IEnumerable<TwitterDirectMessage>>(_client, action, "direct_messages/sent", FormatAsString, "?since_id=", since_id, "&max_id=", max_id, "&count=", count, "&page=", page, "&include_entities=", include_entities, "&full_text=", full_text);
 		}
-
 
         
 		public virtual void GetDirectMessage(GetDirectMessageOptions options, Action<TwitterDirectMessage, TwitterResponse>  action)
@@ -7928,10 +7155,8 @@ namespace TweetSharp
 			var id = options.Id;
 			var full_text = options.FullText;
 			
-
 			WithHammock<TwitterDirectMessage>(_client, action, "direct_messages/show", FormatAsString, "?id=", id, "&full_text=", full_text);
 		}
-
 
         
 		public virtual void DeleteDirectMessage(DeleteDirectMessageOptions options, Action<TwitterDirectMessage, TwitterResponse>  action)
@@ -7939,10 +7164,8 @@ namespace TweetSharp
 			var id = options.Id;
 			var include_entities = options.IncludeEntities;
 			
-
 			WithHammock<TwitterDirectMessage>(_client, WebMethod.Post, action, "direct_messages/destroy", FormatAsString, "?id=", id, "&include_entities=", include_entities);
 		}
-
 
         
 		public virtual void SendDirectMessage(SendDirectMessageOptions options, Action<TwitterDirectMessage, TwitterResponse>  action)
@@ -7951,10 +7174,8 @@ namespace TweetSharp
 			var user_id = options.UserId;
 			var screen_name = options.ScreenName;
 			
-
 			WithHammock<TwitterDirectMessage>(_client, WebMethod.Post, action, "direct_messages/new", FormatAsString, "?text=", text, "&user_id=", user_id, "&screen_name=", screen_name);
 		}
-
 
         
 		public virtual void ListFriendIdsOf(ListFriendIdsOfOptions options, Action<TwitterCursorList<long>, TwitterResponse>  action)
@@ -7964,10 +7185,8 @@ namespace TweetSharp
 			var cursor = options.Cursor;
 			var count = options.Count;
 			
-
 			WithHammock<TwitterCursorList<long>>(_client, action, "friends/ids", FormatAsString, "?user_id=", user_id, "&screen_name=", screen_name, "&cursor=", cursor, "&count=", count);
 		}
-
 
         
 		public virtual void ListFollowerIdsOf(ListFollowerIdsOfOptions options, Action<TwitterCursorList<long>, TwitterResponse>  action)
@@ -7977,10 +7196,8 @@ namespace TweetSharp
 			var cursor = options.Cursor;
 			var count = options.Count;
 			
-
 			WithHammock<TwitterCursorList<long>>(_client, action, "followers/ids", FormatAsString, "?user_id=", user_id, "&screen_name=", screen_name, "&cursor=", cursor, "&count=", count);
 		}
-
 
         
 		public virtual void ListFriendshipsFor(ListFriendshipsForOptions options, Action<IEnumerable<TwitterFriendshipLookup>, TwitterResponse>  action)
@@ -7988,30 +7205,24 @@ namespace TweetSharp
 			var screen_name = options.ScreenName;
 			var user_id = options.UserId;
 			
-
 			WithHammock<IEnumerable<TwitterFriendshipLookup>>(_client, action, "friendships/lookup", FormatAsString, "?screen_name=", screen_name, "&user_id=", user_id);
 		}
-
 
         
 		public virtual void GetIncomingFriendRequests(GetIncomingFriendRequestsOptions options, Action<TwitterCursorList<long>, TwitterResponse>  action)
 		{
 			var cursor = options.Cursor;
 			
-
 			WithHammock<TwitterCursorList<long>>(_client, action, "friendships/incoming", FormatAsString, "?cursor=", cursor);
 		}
-
 
         
 		public virtual void GetOutgoingFriendRequests(GetOutgoingFriendRequestsOptions options, Action<TwitterCursorList<long>, TwitterResponse>  action)
 		{
 			var cursor = options.Cursor;
 			
-
 			WithHammock<TwitterCursorList<long>>(_client, action, "friendships/outgoing", FormatAsString, "?cursor=", cursor);
 		}
-
 
         
 		public virtual void FollowUser(FollowUserOptions options, Action<TwitterUser, TwitterResponse>  action)
@@ -8020,10 +7231,8 @@ namespace TweetSharp
 			var user_id = options.UserId;
 			var follow = options.Follow;
 			
-
 			WithHammock<TwitterUser>(_client, WebMethod.Post, action, "friendships/create", FormatAsString, "?screen_name=", screen_name, "&user_id=", user_id, "&follow=", follow);
 		}
-
 
         
 		public virtual void UnfollowUser(UnfollowUserOptions options, Action<TwitterUser, TwitterResponse>  action)
@@ -8031,10 +7240,8 @@ namespace TweetSharp
 			var screen_name = options.ScreenName;
 			var user_id = options.UserId;
 			
-
 			WithHammock<TwitterUser>(_client, WebMethod.Post, action, "friendships/destroy", FormatAsString, "?screen_name=", screen_name, "&user_id=", user_id);
 		}
-
 
         
 		public virtual void UpdateFriendship(UpdateFriendshipOptions options, Action<TwitterFriendship, TwitterResponse>  action)
@@ -8044,10 +7251,8 @@ namespace TweetSharp
 			var device = options.Device;
 			var retweets = options.Retweets;
 			
-
 			WithHammock<TwitterFriendship>(_client, WebMethod.Post, action, "friendships/update", FormatAsString, "?screen_name=", screen_name, "&user_id=", user_id, "&device=", device, "&retweets=", retweets);
 		}
-
 
         
 		public virtual void GetFriendshipInfo(GetFriendshipInfoOptions options, Action<TwitterFriendship, TwitterResponse>  action)
@@ -8057,10 +7262,8 @@ namespace TweetSharp
 			var target_id = options.TargetId;
 			var target_screen_name = options.TargetScreenName;
 			
-
 			WithHammock<TwitterFriendship>(_client, action, "friendships/show", FormatAsString, "?source_id=", source_id, "&source_screen_name=", source_screen_name, "&target_id=", target_id, "&target_screen_name=", target_screen_name);
 		}
-
 
         
 		public virtual void ListFriends(ListFriendsOptions options, Action<TwitterCursorList<TwitterUser>, TwitterResponse>  action)
@@ -8072,10 +7275,8 @@ namespace TweetSharp
 			var skip_status = options.SkipStatus;
 			var include_user_entities = options.IncludeUserEntities;
 			
-
 			WithHammock<TwitterCursorList<TwitterUser>>(_client, action, "friends/list", FormatAsString, "?user_id=", user_id, "&screen_name=", screen_name, "&count=", count, "&cursor=", cursor, "&skip_status=", skip_status, "&include_user_entities=", include_user_entities);
 		}
-
 
         
 		public virtual void ListFollowers(ListFollowersOptions options, Action<TwitterCursorList<TwitterUser>, TwitterResponse>  action)
@@ -8087,19 +7288,15 @@ namespace TweetSharp
 			var skip_status = options.SkipStatus;
 			var include_user_entities = options.IncludeUserEntities;
 			
-
 			WithHammock<TwitterCursorList<TwitterUser>>(_client, action, "followers/list", FormatAsString, "?user_id=", user_id, "&screen_name=", screen_name, "&count=", count, "&cursor=", cursor, "&skip_status=", skip_status, "&include_user_entities=", include_user_entities);
 		}
-
 
         
 		public virtual void GetAccountSettings(Action<TwitterAccount, TwitterResponse>  action)
 		{
 			
-
 			WithHammock<TwitterAccount>(_client, action, "account/settings", FormatAsString);
 		}
-
 
         
 		public virtual void GetUserProfile(GetUserProfileOptions options, Action<TwitterUser, TwitterResponse>  action)
@@ -8108,10 +7305,8 @@ namespace TweetSharp
 			var skip_status = options.SkipStatus;
 			var include_email = options.IncludeEmail;
 			
-
 			WithHammock<TwitterUser>(_client, action, "account/verify_credentials", FormatAsString, "?include_entities=", include_entities, "&skip_status=", skip_status, "&include_email=", include_email);
 		}
-
 
         
 		public virtual void VerifyCredentials(VerifyCredentialsOptions options, Action<TwitterUser, TwitterResponse>  action)
@@ -8120,10 +7315,8 @@ namespace TweetSharp
 			var skip_status = options.SkipStatus;
 			var include_email = options.IncludeEmail;
 			
-
 			WithHammock<TwitterUser>(_client, action, "account/verify_credentials", FormatAsString, "?include_entities=", include_entities, "&skip_status=", skip_status, "&include_email=", include_email);
 		}
-
 
         
 		public virtual void UpdateAccountSettings(UpdateAccountSettingsOptions options, Action<TwitterAccount, TwitterResponse>  action)
@@ -8135,10 +7328,8 @@ namespace TweetSharp
 			var time_zone = options.TimeZone;
 			var lang = options.Lang;
 			
-
 			WithHammock<TwitterAccount>(_client, WebMethod.Post, action, "account/settings", FormatAsString, "?trend_location_woeid=", trend_location_woeid, "&sleep_time_enabled=", sleep_time_enabled, "&start_sleep_time=", start_sleep_time, "&end_sleep_time=", end_sleep_time, "&time_zone=", time_zone, "&lang=", lang);
 		}
-
 
         
 		public virtual void UpdateDeliveryDevice(UpdateDeliveryDeviceOptions options, Action<TwitterUser, TwitterResponse>  action)
@@ -8146,10 +7337,8 @@ namespace TweetSharp
 			var device = options.Device;
 			var include_entities = options.IncludeEntities;
 			
-
 			WithHammock<TwitterUser>(_client, action, "account/update_delivery_device", FormatAsString, "?device=", device, "&include_entities=", include_entities);
 		}
-
 
         
 		public virtual void UpdateProfile(UpdateProfileOptions options, Action<TwitterUser, TwitterResponse>  action)
@@ -8161,10 +7350,8 @@ namespace TweetSharp
 			var include_entities = options.IncludeEntities;
 			var skip_status = options.SkipStatus;
 			
-
 			WithHammock<TwitterUser>(_client, WebMethod.Post, action, "account/update_profile", FormatAsString, "?name=", name, "&url=", url, "&location=", location, "&description=", description, "&include_entities=", include_entities, "&skip_status=", skip_status);
 		}
-
 
         
 		public virtual void UpdateProfileBackgroundImage(UpdateProfileBackgroundImageOptions options, Action<TwitterUser, TwitterResponse>  action)
@@ -8175,10 +7362,8 @@ namespace TweetSharp
 			var skip_status = options.SkipStatus;
 			var use = options.Use;
 			
-
 			WithHammock<TwitterUser>(_client, WebMethod.Post, action, "account/update_profile_background_image", FormatAsString, "?image_path=", imagePath, "&tile=", tile, "&include_entities=", include_entities, "&skip_status=", skip_status, "&use=", use);
 		}
-
 
         
 		public virtual void UpdateProfileColors(UpdateProfileColorsOptions options, Action<TwitterUser, TwitterResponse>  action)
@@ -8191,10 +7376,8 @@ namespace TweetSharp
 			var include_entities = options.IncludeEntities;
 			var skip_status = options.SkipStatus;
 			
-
 			WithHammock<TwitterUser>(_client, WebMethod.Post, action, "account/update_profile_colors", FormatAsString, "?profile_background_color=", profile_background_color, "&profile_link_color=", profile_link_color, "&profile_sidebar_border_color=", profile_sidebar_border_color, "&profile_sidebar_fill_color=", profile_sidebar_fill_color, "&profile_text_color=", profile_text_color, "&include_entities=", include_entities, "&skip_status=", skip_status);
 		}
-
 
         
 		public virtual void UpdateProfileImage(UpdateProfileImageOptions options, Action<TwitterUser, TwitterResponse>  action)
@@ -8203,10 +7386,8 @@ namespace TweetSharp
 			var include_entities = options.IncludeEntities;
 			var skip_status = options.SkipStatus;
 			
-
 			WithHammock<TwitterUser>(_client, WebMethod.Post, action, "account/update_profile_image", FormatAsString, "?image_path=", image_path, "&include_entities=", include_entities, "&skip_status=", skip_status);
 		}
-
 
         
 		public virtual void ListBlockedUsers(ListBlockedUsersOptions options, Action<TwitterCursorList<TwitterUser>, TwitterResponse>  action)
@@ -8215,20 +7396,16 @@ namespace TweetSharp
 			var skip_status = options.SkipStatus;
 			var cursor = options.Cursor;
 			
-
 			WithHammock<TwitterCursorList<TwitterUser>>(_client, action, "blocks/list", FormatAsString, "?include_entities=", include_entities, "&skip_status=", skip_status, "&cursor=", cursor);
 		}
-
 
         
 		public virtual void ListBlockedUserIds(ListBlockedUserIdsOptions options, Action<TwitterCursorList<long>, TwitterResponse>  action)
 		{
 			var cursor = options.Cursor;
 			
-
 			WithHammock<TwitterCursorList<long>>(_client, action, "blocks/ids", FormatAsString, "?cursor=", cursor);
 		}
-
 
         
 		public virtual void BlockUser(BlockUserOptions options, Action<TwitterUser, TwitterResponse>  action)
@@ -8238,10 +7415,8 @@ namespace TweetSharp
 			var include_entities = options.IncludeEntities;
 			var skip_status = options.SkipStatus;
 			
-
 			WithHammock<TwitterUser>(_client, WebMethod.Post, action, "blocks/create", FormatAsString, "?user_id=", user_id, "&screen_name=", screen_name, "&include_entities=", include_entities, "&skip_status=", skip_status);
 		}
-
 
         
 		public virtual void UnblockUser(UnblockUserOptions options, Action<TwitterUser, TwitterResponse>  action)
@@ -8251,10 +7426,8 @@ namespace TweetSharp
 			var include_entities = options.IncludeEntities;
 			var skip_status = options.SkipStatus;
 			
-
 			WithHammock<TwitterUser>(_client, WebMethod.Post, action, "blocks/destroy", FormatAsString, "?screen_name=", screen_name, "&user_id=", user_id, "&include_entities=", include_entities, "&skip_status=", skip_status);
 		}
-
 
         
 		public virtual void MuteUser(MuteUserOptions options, Action<TwitterUser, TwitterResponse>  action)
@@ -8262,10 +7435,8 @@ namespace TweetSharp
 			var user_id = options.UserId;
 			var screen_name = options.ScreenName;
 			
-
 			WithHammock<TwitterUser>(_client, WebMethod.Post, action, "mutes/users/create", FormatAsString, "?user_id=", user_id, "&screen_name=", screen_name);
 		}
-
 
         
 		public virtual void UnmuteUser(UnmuteUserOptions options, Action<TwitterUser, TwitterResponse>  action)
@@ -8273,30 +7444,24 @@ namespace TweetSharp
 			var user_id = options.UserId;
 			var screen_name = options.ScreenName;
 			
-
 			WithHammock<TwitterUser>(_client, WebMethod.Post, action, "mutes/users/destroy", FormatAsString, "?user_id=", user_id, "&screen_name=", screen_name);
 		}
-
 
         
 		public virtual void ListMutedUserIds(ListMutedUserIdsOptions options, Action<TwitterCursorList<long>, TwitterResponse>  action)
 		{
 			var cursor = options.Cursor;
 			
-
 			WithHammock<TwitterCursorList<long>>(_client, action, "mutes/users/ids", FormatAsString, "?cursor=", cursor);
 		}
 
-
         
-		public virtual void ListMutedUsers(ListMutedUsersOptions options, Action<TwitterCursorList<long>, TwitterResponse>  action)
+		public virtual void ListMutedUsers(ListMutedUsersOptions options, Action<TwitterCursorList<TwitterUser>, TwitterResponse>  action)
 		{
 			var cursor = options.Cursor;
 			
-
-			WithHammock<TwitterCursorList<long>>(_client, action, "mutes/users/list", FormatAsString, "?cursor=", cursor);
+			WithHammock<TwitterCursorList<TwitterUser>>(_client, action, "mutes/users/list", FormatAsString, "?cursor=", cursor);
 		}
-
 
         
 		public virtual void ListUserProfilesFor(ListUserProfilesForOptions options, Action<IEnumerable<TwitterUser>, TwitterResponse>  action)
@@ -8305,10 +7470,8 @@ namespace TweetSharp
 			var user_id = options.UserId;
 			var include_entities = options.IncludeEntities;
 			
-
 			WithHammock<IEnumerable<TwitterUser>>(_client, action, "users/lookup", FormatAsString, "?screen_name=", screen_name, "&user_id=", user_id, "&include_entities=", include_entities);
 		}
-
 
         
 		public virtual void GetUserProfileFor(GetUserProfileForOptions options, Action<TwitterUser, TwitterResponse>  action)
@@ -8317,10 +7480,8 @@ namespace TweetSharp
 			var screen_name = options.ScreenName;
 			var include_entities = options.IncludeEntities;
 			
-
 			WithHammock<TwitterUser>(_client, action, "users/show", FormatAsString, "?user_id=", user_id, "&screen_name=", screen_name, "&include_entities=", include_entities);
 		}
-
 
         
 		public virtual void SearchForUser(SearchForUserOptions options, Action<IEnumerable<TwitterUser>, TwitterResponse>  action)
@@ -8330,10 +7491,8 @@ namespace TweetSharp
 			var count = options.Count;
 			var include_entities = options.IncludeEntities;
 			
-
 			WithHammock<IEnumerable<TwitterUser>>(_client, action, "users/search", FormatAsString, "?q=", q, "&page=", page, "&count=", count, "&include_entities=", include_entities);
 		}
-
 
         
 		public virtual void GetProfileBannerFor(GetProfileBannerForOptions options, Action<ProfileBanners, TwitterResponse>  action)
@@ -8341,10 +7500,8 @@ namespace TweetSharp
 			var screen_name = options.ScreenName;
 			var user_id = options.UserId;
 			
-
 			WithHammock<ProfileBanners>(_client, action, "users/profile_banner", FormatAsString, "?screen_name=", screen_name, "&user_id=", user_id);
 		}
-
 
         
 		public virtual void ListSuggestedUsers(ListSuggestedUsersOptions options, Action<TwitterUserSuggestions, TwitterResponse>  action)
@@ -8352,30 +7509,24 @@ namespace TweetSharp
 			var slug = options.Slug;
 			var lang = options.Lang;
 			
-
 			WithHammock<TwitterUserSuggestions>(_client, action, "/users/suggestions/{slug}", FormatAsString, "?slug=", slug, "&lang=", lang);
 		}
-
 
         
 		public virtual void ListSuggestedUserCategories(ListSuggestedUserCategoriesOptions options, Action<IEnumerable<TwitterUserSuggestions>, TwitterResponse>  action)
 		{
 			var lang = options.Lang;
 			
-
 			WithHammock<IEnumerable<TwitterUserSuggestions>>(_client, action, "users/suggestions", FormatAsString, "?lang=", lang);
 		}
-
 
         
 		public virtual void GetSuggestedUserMembers(GetSuggestedUserMembersOptions options, Action<IEnumerable<TwitterUser>, TwitterResponse>  action)
 		{
 			var slug = options.Slug;
 			
-
 			WithHammock<IEnumerable<TwitterUser>>(_client, action, "/users/suggestions/{slug}/members", FormatAsString, "?slug=", slug);
 		}
-
 
         
 		public virtual void ListFavoriteTweets(ListFavoriteTweetsOptions options, Action<IEnumerable<TwitterStatus>, TwitterResponse>  action)
@@ -8388,20 +7539,16 @@ namespace TweetSharp
 			var include_entities = options.IncludeEntities;
 			var tweet_mode = options.TweetMode;
 			
-
 			WithHammock<IEnumerable<TwitterStatus>>(_client, action, "favorites/list", FormatAsString, "?user_id=", user_id, "&screen_name=", screen_name, "&count=", count, "&since_id=", since_id, "&max_id=", max_id, "&include_entities=", include_entities, "&tweet_mode=", tweet_mode);
 		}
-
 
         
 		public virtual void UnfavoriteTweet(UnfavoriteTweetOptions options, Action<TwitterStatus, TwitterResponse>  action)
 		{
 			var id = options.Id;
 			
-
 			WithHammock<TwitterStatus>(_client, WebMethod.Post, action, "favorites/destroy", FormatAsString, "?id=", id);
 		}
-
 
         
 		public virtual void FavoriteTweet(FavoriteTweetOptions options, Action<TwitterStatus, TwitterResponse>  action)
@@ -8409,10 +7556,8 @@ namespace TweetSharp
 			var id = options.Id;
 			var include_entities = options.IncludeEntities;
 			
-
 			WithHammock<TwitterStatus>(_client, WebMethod.Post, action, "favorites/create", FormatAsString, "?id=", id, "&include_entities=", include_entities);
 		}
-
 
         
 		public virtual void ListListsFor(ListListsForOptions options, Action<IEnumerable<TwitterList>, TwitterResponse>  action)
@@ -8420,10 +7565,8 @@ namespace TweetSharp
 			var user_id = options.UserId;
 			var screen_name = options.ScreenName;
 			
-
 			WithHammock<IEnumerable<TwitterList>>(_client, action, "lists/list", FormatAsString, "?user_id=", user_id, "&screen_name=", screen_name);
 		}
-
 
         
 		public virtual void ListOwnedListsFor(ListOwnedListsForOptions options, Action<TwitterCursorList<TwitterList>, TwitterResponse>  action)
@@ -8433,10 +7576,8 @@ namespace TweetSharp
 			var count = options.Count;
 			var cursor = options.Cursor;
 			
-
 			WithHammock<TwitterCursorList<TwitterList>>(_client, action, "lists/ownerships", FormatAsString, "?user_id=", user_id, "&screen_name=", screen_name, "&count=", count, "&cursor=", cursor);
 		}
-
 
         
 		public virtual void ListTweetsOnList(ListTweetsOnListOptions options, Action<IEnumerable<TwitterStatus>, TwitterResponse>  action)
@@ -8450,11 +7591,10 @@ namespace TweetSharp
 			var count = options.Count;
 			var include_entities = options.IncludeEntities;
 			var include_rts = options.IncludeRts;
+			var tweet_mode = options.TweetMode;
 			
-
-			WithHammock<IEnumerable<TwitterStatus>>(_client, action, "lists/statuses", FormatAsString, "?list_id=", list_id, "&slug=", slug, "&owner_screen_name=", owner_screen_name, "&owner_id=", owner_id, "&since_id=", since_id, "&max_id=", max_id, "&count=", count, "&include_entities=", include_entities, "&include_rts=", include_rts);
+			WithHammock<IEnumerable<TwitterStatus>>(_client, action, "lists/statuses", FormatAsString, "?list_id=", list_id, "&slug=", slug, "&owner_screen_name=", owner_screen_name, "&owner_id=", owner_id, "&since_id=", since_id, "&max_id=", max_id, "&count=", count, "&include_entities=", include_entities, "&include_rts=", include_rts, "&tweet_mode=", tweet_mode);
 		}
-
 
         
 		public virtual void RemoveListMember(RemoveListMemberOptions options, Action<TwitterUser, TwitterResponse>  action)
@@ -8466,10 +7606,8 @@ namespace TweetSharp
 			var owner_screen_name = options.OwnerScreenName;
 			var owner_id = options.OwnerId;
 			
-
 			WithHammock<TwitterUser>(_client, WebMethod.Post, action, "lists/members/destroy", FormatAsString, "?list_id=", list_id, "&slug=", slug, "&user_id=", user_id, "&screen_name=", screen_name, "&owner_screen_name=", owner_screen_name, "&owner_id=", owner_id);
 		}
-
 
         
 		public virtual void ListListMembershipsFor(ListListMembershipsForOptions options, Action<TwitterCursorList<TwitterList>, TwitterResponse>  action)
@@ -8479,10 +7617,8 @@ namespace TweetSharp
 			var cursor = options.Cursor;
 			var filter_to_owned_lists = options.FilterToOwnedLists;
 			
-
 			WithHammock<TwitterCursorList<TwitterList>>(_client, action, "lists/memberships", FormatAsString, "?user_id=", user_id, "&screen_name=", screen_name, "&cursor=", cursor, "&filter_to_owned_lists=", filter_to_owned_lists);
 		}
-
 
         
 		public virtual void ListListSubscribers(ListListSubscribersOptions options, Action<TwitterCursorList<TwitterUser>, TwitterResponse>  action)
@@ -8495,10 +7631,8 @@ namespace TweetSharp
 			var include_entities = options.IncludeEntities;
 			var skip_status = options.SkipStatus;
 			
-
 			WithHammock<TwitterCursorList<TwitterUser>>(_client, action, "lists/subscribers", FormatAsString, "?list_id=", list_id, "&slug=", slug, "&owner_screen_name=", owner_screen_name, "&owner_id=", owner_id, "&cursor=", cursor, "&include_entities=", include_entities, "&skip_status=", skip_status);
 		}
-
 
         
 		public virtual void FollowList(FollowListOptions options, Action<TwitterUser, TwitterResponse>  action)
@@ -8508,10 +7642,8 @@ namespace TweetSharp
 			var list_id = options.ListId;
 			var slug = options.Slug;
 			
-
 			WithHammock<TwitterUser>(_client, WebMethod.Post, action, "lists/subscribers/create", FormatAsString, "?owner_screen_name=", owner_screen_name, "&owner_id=", owner_id, "&list_id=", list_id, "&slug=", slug);
 		}
-
 
         
 		public virtual void VerifyListSubscription(VerifyListSubscriptionOptions options, Action<TwitterUser, TwitterResponse>  action)
@@ -8525,10 +7657,8 @@ namespace TweetSharp
 			var include_entities = options.IncludeEntities;
 			var skip_status = options.SkipStatus;
 			
-
 			WithHammock<TwitterUser>(_client, action, "lists/subscribers/show", FormatAsString, "?owner_screen_name=", owner_screen_name, "&owner_id=", owner_id, "&list_id=", list_id, "&slug=", slug, "&user_id=", user_id, "&screen_name=", screen_name, "&include_entities=", include_entities, "&skip_status=", skip_status);
 		}
-
 
         
 		public virtual void UnfollowList(UnfollowListOptions options, Action<TwitterUser, TwitterResponse>  action)
@@ -8538,10 +7668,8 @@ namespace TweetSharp
 			var owner_screen_name = options.OwnerScreenName;
 			var owner_id = options.OwnerId;
 			
-
 			WithHammock<TwitterUser>(_client, WebMethod.Post, action, "lists/subscribers/destroy", FormatAsString, "?list_id=", list_id, "&slug=", slug, "&owner_screen_name=", owner_screen_name, "&owner_id=", owner_id);
 		}
-
 
         
 		public virtual void AddListMembers(AddListMembersOptions options, Action<TwitterList, TwitterResponse>  action)
@@ -8553,10 +7681,8 @@ namespace TweetSharp
 			var owner_screen_name = options.OwnerScreenName;
 			var owner_id = options.OwnerId;
 			
-
 			WithHammock<TwitterList>(_client, WebMethod.Post, action, "lists/members/create_all", FormatAsString, "?list_id=", list_id, "&slug=", slug, "&user_id=", user_id, "&screen_name=", screen_name, "&owner_screen_name=", owner_screen_name, "&owner_id=", owner_id);
 		}
-
 
         
 		public virtual void VerifyListMembership(VerifyListMembershipOptions options, Action<TwitterUser, TwitterResponse>  action)
@@ -8570,10 +7696,8 @@ namespace TweetSharp
 			var include_entities = options.IncludeEntities;
 			var skip_status = options.SkipStatus;
 			
-
 			WithHammock<TwitterUser>(_client, action, "lists/members/show", FormatAsString, "?list_id=", list_id, "&slug=", slug, "&user_id=", user_id, "&screen_name=", screen_name, "&owner_screen_name=", owner_screen_name, "&owner_id=", owner_id, "&include_entities=", include_entities, "&skip_status=", skip_status);
 		}
-
 
         
 		public virtual void ListListMembers(ListListMembersOptions options, Action<TwitterCursorList<TwitterUser>, TwitterResponse>  action)
@@ -8587,10 +7711,8 @@ namespace TweetSharp
 			var include_entities = options.IncludeEntities;
 			var skip_status = options.SkipStatus;
 			
-
 			WithHammock<TwitterCursorList<TwitterUser>>(_client, action, "lists/members", FormatAsString, "?list_id=", list_id, "&slug=", slug, "&owner_screen_name=", owner_screen_name, "&owner_id=", owner_id, "&count=", count, "&cursor=", cursor, "&include_entities=", include_entities, "&skip_status=", skip_status);
 		}
-
 
         
 		public virtual void AddListMember(AddListMemberOptions options, Action<TwitterUser, TwitterResponse>  action)
@@ -8602,10 +7724,8 @@ namespace TweetSharp
 			var owner_screen_name = options.OwnerScreenName;
 			var owner_id = options.OwnerId;
 			
-
 			WithHammock<TwitterUser>(_client, WebMethod.Post, action, "lists/members/create", FormatAsString, "?list_id=", list_id, "&slug=", slug, "&user_id=", user_id, "&screen_name=", screen_name, "&owner_screen_name=", owner_screen_name, "&owner_id=", owner_id);
 		}
-
 
         
 		public virtual void DeleteList(DeleteListOptions options, Action<TwitterList, TwitterResponse>  action)
@@ -8615,10 +7735,8 @@ namespace TweetSharp
 			var list_id = options.ListId;
 			var slug = options.Slug;
 			
-
 			WithHammock<TwitterList>(_client, WebMethod.Post, action, "lists/destroy", FormatAsString, "?owner_screen_name=", owner_screen_name, "&owner_id=", owner_id, "&list_id=", list_id, "&slug=", slug);
 		}
-
 
         
 		public virtual void UpdateList(UpdateListOptions options, Action<TwitterList, TwitterResponse>  action)
@@ -8631,10 +7749,8 @@ namespace TweetSharp
 			var name = options.Name;
 			var description = options.Description;
 			
-
 			WithHammock<TwitterList>(_client, WebMethod.Post, action, "lists/update", FormatAsString, "?owner_screen_name=", owner_screen_name, "&owner_id=", owner_id, "&list_id=", list_id, "&slug=", slug, "&mode=", mode, "&name=", name, "&description=", description);
 		}
-
 
         
 		public virtual void CreateList(CreateListOptions options, Action<TwitterList, TwitterResponse>  action)
@@ -8644,10 +7760,8 @@ namespace TweetSharp
 			var mode = options.Mode;
 			var description = options.Description;
 			
-
 			WithHammock<TwitterList>(_client, WebMethod.Post, action, "lists/create", FormatAsString, "?list_owner=", list_owner, "&name=", name, "&mode=", mode, "&description=", description);
 		}
-
 
         
 		public virtual void GetList(GetListOptions options, Action<TwitterList, TwitterResponse>  action)
@@ -8657,10 +7771,8 @@ namespace TweetSharp
 			var owner_screen_name = options.OwnerScreenName;
 			var owner_id = options.OwnerId;
 			
-
 			WithHammock<TwitterList>(_client, action, "lists/show", FormatAsString, "?list_id=", list_id, "&slug=", slug, "&owner_screen_name=", owner_screen_name, "&owner_id=", owner_id);
 		}
-
 
         
 		public virtual void ListSubscriptions(ListSubscriptionsOptions options, Action<TwitterCursorList<TwitterList>, TwitterResponse>  action)
@@ -8670,59 +7782,47 @@ namespace TweetSharp
 			var count = options.Count;
 			var cursor = options.Cursor;
 			
-
 			WithHammock<TwitterCursorList<TwitterList>>(_client, action, "lists/subscriptions", FormatAsString, "?user_id=", user_id, "&screen_name=", screen_name, "&count=", count, "&cursor=", cursor);
 		}
-
 
         
 		public virtual void ListSavedSearches(Action<IEnumerable<TwitterSavedSearch>, TwitterResponse>  action)
 		{
 			
-
 			WithHammock<IEnumerable<TwitterSavedSearch>>(_client, action, "saved_searches/list", FormatAsString);
 		}
-
 
         
 		public virtual void GetSavedSearch(GetSavedSearchOptions options, Action<TwitterSavedSearch, TwitterResponse>  action)
 		{
 			var id = options.Id;
 			
-
 			WithHammock<TwitterSavedSearch>(_client, action, "saved_searches/show/{id}", FormatAsString, "?id=", id);
 		}
-
 
         
 		public virtual void CreateSavedSearch(CreateSavedSearchOptions options, Action<TwitterSavedSearch, TwitterResponse>  action)
 		{
 			var query = options.Query;
 			
-
 			WithHammock<TwitterSavedSearch>(_client, WebMethod.Post, action, "saved_searches/create", FormatAsString, "?query=", query);
 		}
-
 
         
 		public virtual void DeleteSavedSearch(DeleteSavedSearchOptions options, Action<TwitterSavedSearch, TwitterResponse>  action)
 		{
 			var id = options.Id;
 			
-
 			WithHammock<TwitterSavedSearch>(_client, WebMethod.Post, action, "saved_searches/destroy/{id}", FormatAsString, "?id=", id);
 		}
-
 
         
 		public virtual void GetPlace(GetPlaceOptions options, Action<TwitterPlace, TwitterResponse>  action)
 		{
 			var place_id = options.PlaceId;
 			
-
 			WithHammock<TwitterPlace>(_client, action, "geo/id/{place_id}", FormatAsString, "?place_id=", place_id);
 		}
-
 
         
 		public virtual void ReverseGeocode(ReverseGeocodeOptions options, Action<IEnumerable<TwitterPlace>, TwitterResponse>  action)
@@ -8734,10 +7834,8 @@ namespace TweetSharp
 			var max_results = options.MaxResults;
 			var callback = options.Callback;
 			
-
 			WithHammock<IEnumerable<TwitterPlace>>(_client, action, "geo/reverse_geocode", FormatAsString, "?lat=", lat, "&long=", @long, "&accuracy=", accuracy, "&granularity=", granularity, "&max_results=", max_results, "&callback=", callback);
 		}
-
 
         
 		public virtual void GeoSearch(GeoSearchOptions options, Action<IEnumerable<TwitterPlace>, TwitterResponse>  action)
@@ -8752,10 +7850,8 @@ namespace TweetSharp
 			var contained_within = options.ContainedWithin;
 			var callback = options.Callback;
 			
-
 			WithHammock<IEnumerable<TwitterPlace>>(_client, action, "geo/search", FormatAsString, "?lat=", lat, "&long=", @long, "&query=", query, "&ip=", ip, "&granularity=", granularity, "&accuracy=", accuracy, "&max_results=", max_results, "&contained_within=", contained_within, "&callback=", callback);
 		}
-
 
         
 		public virtual void ListLocalTrendsFor(ListLocalTrendsForOptions options, Action<TwitterTrends, TwitterResponse>  action)
@@ -8763,19 +7859,15 @@ namespace TweetSharp
 			var id = options.Id;
 			var exclude = options.Exclude;
 			
-
 			WithHammock<TwitterTrends>(_client, action, "trends/place", FormatAsString, "?id=", id, "&exclude=", exclude);
 		}
-
 
         
 		public virtual void ListAvailableTrendsLocations(Action<IEnumerable<WhereOnEarthLocation>, TwitterResponse>  action)
 		{
 			
-
 			WithHammock<IEnumerable<WhereOnEarthLocation>>(_client, action, "trends/available", FormatAsString);
 		}
-
 
         
 		public virtual void ListClosestTrendsLocations(ListClosestTrendsLocationsOptions options, Action<IEnumerable<WhereOnEarthLocation>, TwitterResponse>  action)
@@ -8783,20 +7875,16 @@ namespace TweetSharp
 			var lat = options.Lat;
 			var @long = options.@Long;
 			
-
 			WithHammock<IEnumerable<WhereOnEarthLocation>>(_client, action, "trends/closest", FormatAsString, "?lat=", lat, "&long=", @long);
 		}
-
 
         
 		public virtual void GetRateLimitStatus(GetRateLimitStatusOptions options, Action<TwitterRateLimitStatusSummary, TwitterResponse>  action)
 		{
 			var resources = options.Resources;
 			
-
 			WithHammock<TwitterRateLimitStatusSummary>(_client, action, "application/rate_limit_status", FormatAsString, "?resources=", resources);
 		}
-
 
         
 		public virtual void ReportSpam(ReportSpamOptions options, Action<TwitterUser, TwitterResponse>  action)
@@ -8804,25 +7892,20 @@ namespace TweetSharp
 			var screen_name = options.ScreenName;
 			var user_id = options.UserId;
 			
-
 			WithHammock<TwitterUser>(_client, WebMethod.Post, action, "users/report_spam", FormatAsString, "?screen_name=", screen_name, "&user_id=", user_id);
 		}
-
 
 		#endregion
 #endif	
 
 #if PLATFORM_SUPPORTS_ASYNC_AWAIT
 		#region Task Based Async/Await Methods 
-
         
 		public virtual  Task<TwitterAsyncResult<TwitterConfiguration>> GetConfigurationAsync()
 		{
 			
-
 			return WithHammockTask<TwitterConfiguration>(_client, "help/configuration", FormatAsString);
 		}
-
         
 		public virtual  Task<TwitterAsyncResult<IEnumerable<TwitterStatus>>> ListTweetsMentioningMeAsync(ListTweetsMentioningMeOptions options)
 		{
@@ -8834,10 +7917,8 @@ namespace TweetSharp
 			var include_entities = options.IncludeEntities;
 			var tweet_mode = options.TweetMode;
 			
-
 			return WithHammockTask<IEnumerable<TwitterStatus>>(_client, "statuses/mentions_timeline", FormatAsString, "?count=", count, "&since_id=", since_id, "&max_id=", max_id, "&trim_user=", trim_user, "&contributor_details=", contributor_details, "&include_entities=", include_entities, "&tweet_mode=", tweet_mode);
 		}
-
         
 		public virtual  Task<TwitterAsyncResult<IEnumerable<TwitterStatus>>> ListTweetsOnUserTimelineAsync(ListTweetsOnUserTimelineOptions options)
 		{
@@ -8852,10 +7933,8 @@ namespace TweetSharp
 			var include_rts = options.IncludeRts;
 			var tweet_mode = options.TweetMode;
 			
-
 			return WithHammockTask<IEnumerable<TwitterStatus>>(_client, "statuses/user_timeline", FormatAsString, "?user_id=", user_id, "&screen_name=", screen_name, "&since_id=", since_id, "&count=", count, "&max_id=", max_id, "&trim_user=", trim_user, "&exclude_replies=", exclude_replies, "&contributor_details=", contributor_details, "&include_rts=", include_rts, "&tweet_mode=", tweet_mode);
 		}
-
         
 		public virtual  Task<TwitterAsyncResult<IEnumerable<TwitterStatus>>> ListTweetsOnHomeTimelineAsync(ListTweetsOnHomeTimelineOptions options)
 		{
@@ -8868,10 +7947,8 @@ namespace TweetSharp
 			var include_entities = options.IncludeEntities;
 			var tweet_mode = options.TweetMode;
 			
-
 			return WithHammockTask<IEnumerable<TwitterStatus>>(_client, "statuses/home_timeline", FormatAsString, "?count=", count, "&since_id=", since_id, "&max_id=", max_id, "&trim_user=", trim_user, "&exclude_replies=", exclude_replies, "&contributor_details=", contributor_details, "&include_entities=", include_entities, "&tweet_mode=", tweet_mode);
 		}
-
         
 		public virtual  Task<TwitterAsyncResult<IEnumerable<TwitterStatus>>> ListRetweetsOfMyTweetsAsync(ListRetweetsOfMyTweetsOptions options)
 		{
@@ -8883,10 +7960,8 @@ namespace TweetSharp
 			var include_user_entities = options.IncludeUserEntities;
 			var tweet_mode = options.TweetMode;
 			
-
 			return WithHammockTask<IEnumerable<TwitterStatus>>(_client, "statuses/retweets_of_me", FormatAsString, "?count=", count, "&since_id=", since_id, "&max_id=", max_id, "&trim_user=", trim_user, "&include_entities=", include_entities, "&include_user_entities=", include_user_entities, "&tweet_mode=", tweet_mode);
 		}
-
         
 		public virtual  Task<TwitterAsyncResult<IEnumerable<TwitterStatus>>> RetweetsAsync(RetweetsOptions options)
 		{
@@ -8895,10 +7970,8 @@ namespace TweetSharp
 			var trim_user = options.TrimUser;
 			var tweet_mode = options.TweetMode;
 			
-
 			return WithHammockTask<IEnumerable<TwitterStatus>>(_client, "statuses/retweets/{id}", FormatAsString, "?id=", id, "&count=", count, "&trim_user=", trim_user, "&tweet_mode=", tweet_mode);
 		}
-
         
 		public virtual  Task<TwitterAsyncResult<TwitterStatus>> GetTweetAsync(GetTweetOptions options)
 		{
@@ -8908,20 +7981,16 @@ namespace TweetSharp
 			var include_entities = options.IncludeEntities;
 			var tweet_mode = options.TweetMode;
 			
-
 			return WithHammockTask<TwitterStatus>(_client, "statuses/show/{id}", FormatAsString, "?id=", id, "&trim_user=", trim_user, "&include_my_retweet=", include_my_retweet, "&include_entities=", include_entities, "&tweet_mode=", tweet_mode);
 		}
-
         
 		public virtual  Task<TwitterAsyncResult<TwitterStatus>> DeleteTweetAsync(DeleteTweetOptions options)
 		{
 			var id = options.Id;
 			var trim_user = options.TrimUser;
 			
-
 			return WithHammockTask<TwitterStatus>(_client, WebMethod.Post, "statuses/destroy/{id}", FormatAsString, "?id=", id, "&trim_user=", trim_user);
 		}
-
         
 		public virtual  Task<TwitterAsyncResult<TwitterStatus>> SendTweetAsync(SendTweetOptions options)
 		{
@@ -8937,20 +8006,16 @@ namespace TweetSharp
 			var exclude_reply_user_ids = options.ExcludeReplyUserIds;
 			var attachment_url = options.AttachmentUrl;
 			
-
 			return WithHammockTask<TwitterStatus>(_client, WebMethod.Post, "statuses/update", FormatAsString, "?status=", status, "&in_reply_to_status_id=", in_reply_to_status_id, "&lat=", lat, "&long=", @long, "&place_id=", place_id, "&display_coordinates=", display_coordinates, "&trim_user=", trim_user, "&media_ids=", media_ids, "&auto_populate_reply_metadata=", auto_populate_reply_metadata, "&exclude_reply_user_ids=", exclude_reply_user_ids, "&attachment_url=", attachment_url);
 		}
-
         
 		public virtual  Task<TwitterAsyncResult<TwitterStatus>> RetweetAsync(RetweetOptions options)
 		{
 			var id = options.Id;
 			var trim_user = options.TrimUser;
 			
-
 			return WithHammockTask<TwitterStatus>(_client, WebMethod.Post, "statuses/retweet/{id}", FormatAsString, "?id=", id, "&trim_user=", trim_user);
 		}
-
         [Obsolete("Twitter has declared this method obsolete; it may cease to function at any time. Check https://dev.twitter.com/docs/api#deprecated for alternatives.")]
 		public virtual  Task<TwitterAsyncResult<TwitterStatus>> SendTweetWithMediaAsync(SendTweetWithMediaOptions options)
 		{
@@ -8963,19 +8028,15 @@ namespace TweetSharp
 			var display_coordinates = options.DisplayCoordinates;
 			 var images = options.Images;
 			
-
 			return WithHammockTask<TwitterStatus>(_client, WebMethod.Post, "statuses/update_with_media", images, FormatAsString, "?status=", status, "&possibly_sensitive=", possibly_sensitive, "&in_reply_to_status_id=", in_reply_to_status_id, "&lat=", lat, "&long=", @long, "&place_id=", place_id, "&display_coordinates=", display_coordinates);
 		}
-
         
 		public virtual  Task<TwitterAsyncResult<TwitterUploadedMedia>> UploadMediaAsync(UploadMediaOptions options)
 		{
 			 var media = options.Media;
 			
-
 			return WithHammockTask<TwitterUploadedMedia>(_uploadMediaClient, WebMethod.Post, "media/upload", media, FormatAsString);
 		}
-
         
 		public virtual  Task<TwitterAsyncResult<TwitterChunkedMedia>> UploadMediaInitAsync(UploadMediaInitOptions options)
 		{
@@ -8983,10 +8044,8 @@ namespace TweetSharp
 			var media_category = options.MediaCategory;
 			var total_bytes = options.TotalBytes;
 			
-
 			return WithHammockTask<TwitterChunkedMedia>(_uploadMediaClient, WebMethod.Post, "media/upload", FormatAsString, "?command=", "INIT", "&media_type=", media_type, "&media_category=", media_category, "&total_bytes=", total_bytes);
 		}
-
         
 		public virtual  Task UploadMediaAppendAsync(UploadMediaAppendOptions options)
 		{
@@ -8994,28 +8053,22 @@ namespace TweetSharp
 			var segment_index = options.SegmentIndex;
 			 var media = options.Media;
 			
-
 			return  WithHammockNoResponseTask(_uploadMediaClient, WebMethod.Post, "media/upload", media, FormatAsString, "?command=", "APPEND", "&media_id=", media_id, "&segment_index=", segment_index);
 		}
-
         
 		public virtual  Task<TwitterAsyncResult<UploadMediaResult>> UploadMediaFinalizeAsync(UploadMediaFinalizeOptions options)
 		{
 			var media_id = options.MediaId;
 			
-
 			return WithHammockTask<UploadMediaResult>(_uploadMediaClient, WebMethod.Post, "media/upload", FormatAsString, "?command=", "FINALIZE", "&media_id=", media_id);
 		}
-
         
 		public virtual  Task<TwitterAsyncResult<UploadMediaResult>> UploadMediaCheckStatusAsync(UploadMediaCheckStatusOptions options)
 		{
 			var media_id = options.MediaId;
 			
-
 			return WithHammockTask<UploadMediaResult>(_uploadMediaClient, "media/upload", FormatAsString, "?command=", "STATUS", "&media_id=", media_id);
 		}
-
         
 		public virtual  Task<TwitterAsyncResult<TwitterSearchResult>> SearchAsync(SearchOptions options)
 		{
@@ -9031,10 +8084,8 @@ namespace TweetSharp
 			var callback = options.Callback;
 			var until = options.Until;
 			
-
 			return WithHammockTask<TwitterSearchResult>(_client, "search/tweets", FormatAsString, "?q=", q, "&geocode=", geocode, "&lang=", lang, "&locale=", locale, "&result_type=", resultType, "&count=", count, "&since_id=", since_id, "&max_id=", max_id, "&include_entities=", include_entities, "&callback=", callback, "&until=", until);
 		}
-
         
 		public virtual  Task<TwitterAsyncResult<IEnumerable<TwitterDirectMessage>>> ListDirectMessagesReceivedAsync(ListDirectMessagesReceivedOptions options)
 		{
@@ -9045,10 +8096,8 @@ namespace TweetSharp
 			var skip_status = options.SkipStatus;
 			var full_text = options.FullText;
 			
-
 			return WithHammockTask<IEnumerable<TwitterDirectMessage>>(_client, "direct_messages", FormatAsString, "?since_id=", since_id, "&max_id=", max_id, "&count=", count, "&include_entities=", include_entities, "&skip_status=", skip_status, "&full_text=", full_text);
 		}
-
         
 		public virtual  Task<TwitterAsyncResult<IEnumerable<TwitterDirectMessage>>> ListDirectMessagesSentAsync(ListDirectMessagesSentOptions options)
 		{
@@ -9059,30 +8108,24 @@ namespace TweetSharp
 			var include_entities = options.IncludeEntities;
 			var full_text = options.FullText;
 			
-
 			return WithHammockTask<IEnumerable<TwitterDirectMessage>>(_client, "direct_messages/sent", FormatAsString, "?since_id=", since_id, "&max_id=", max_id, "&count=", count, "&page=", page, "&include_entities=", include_entities, "&full_text=", full_text);
 		}
-
         
 		public virtual  Task<TwitterAsyncResult<TwitterDirectMessage>> GetDirectMessageAsync(GetDirectMessageOptions options)
 		{
 			var id = options.Id;
 			var full_text = options.FullText;
 			
-
 			return WithHammockTask<TwitterDirectMessage>(_client, "direct_messages/show", FormatAsString, "?id=", id, "&full_text=", full_text);
 		}
-
         
 		public virtual  Task<TwitterAsyncResult<TwitterDirectMessage>> DeleteDirectMessageAsync(DeleteDirectMessageOptions options)
 		{
 			var id = options.Id;
 			var include_entities = options.IncludeEntities;
 			
-
 			return WithHammockTask<TwitterDirectMessage>(_client, WebMethod.Post, "direct_messages/destroy", FormatAsString, "?id=", id, "&include_entities=", include_entities);
 		}
-
         
 		public virtual  Task<TwitterAsyncResult<TwitterDirectMessage>> SendDirectMessageAsync(SendDirectMessageOptions options)
 		{
@@ -9090,10 +8133,8 @@ namespace TweetSharp
 			var user_id = options.UserId;
 			var screen_name = options.ScreenName;
 			
-
 			return WithHammockTask<TwitterDirectMessage>(_client, WebMethod.Post, "direct_messages/new", FormatAsString, "?text=", text, "&user_id=", user_id, "&screen_name=", screen_name);
 		}
-
         
 		public virtual  Task<TwitterAsyncResult<TwitterCursorList<long>>> ListFriendIdsOfAsync(ListFriendIdsOfOptions options)
 		{
@@ -9102,10 +8143,8 @@ namespace TweetSharp
 			var cursor = options.Cursor;
 			var count = options.Count;
 			
-
 			return WithHammockTask<TwitterCursorList<long>>(_client, "friends/ids", FormatAsString, "?user_id=", user_id, "&screen_name=", screen_name, "&cursor=", cursor, "&count=", count);
 		}
-
         
 		public virtual  Task<TwitterAsyncResult<TwitterCursorList<long>>> ListFollowerIdsOfAsync(ListFollowerIdsOfOptions options)
 		{
@@ -9114,38 +8153,30 @@ namespace TweetSharp
 			var cursor = options.Cursor;
 			var count = options.Count;
 			
-
 			return WithHammockTask<TwitterCursorList<long>>(_client, "followers/ids", FormatAsString, "?user_id=", user_id, "&screen_name=", screen_name, "&cursor=", cursor, "&count=", count);
 		}
-
         
 		public virtual  Task<TwitterAsyncResult<IEnumerable<TwitterFriendshipLookup>>> ListFriendshipsForAsync(ListFriendshipsForOptions options)
 		{
 			var screen_name = options.ScreenName;
 			var user_id = options.UserId;
 			
-
 			return WithHammockTask<IEnumerable<TwitterFriendshipLookup>>(_client, "friendships/lookup", FormatAsString, "?screen_name=", screen_name, "&user_id=", user_id);
 		}
-
         
 		public virtual  Task<TwitterAsyncResult<TwitterCursorList<long>>> GetIncomingFriendRequestsAsync(GetIncomingFriendRequestsOptions options)
 		{
 			var cursor = options.Cursor;
 			
-
 			return WithHammockTask<TwitterCursorList<long>>(_client, "friendships/incoming", FormatAsString, "?cursor=", cursor);
 		}
-
         
 		public virtual  Task<TwitterAsyncResult<TwitterCursorList<long>>> GetOutgoingFriendRequestsAsync(GetOutgoingFriendRequestsOptions options)
 		{
 			var cursor = options.Cursor;
 			
-
 			return WithHammockTask<TwitterCursorList<long>>(_client, "friendships/outgoing", FormatAsString, "?cursor=", cursor);
 		}
-
         
 		public virtual  Task<TwitterAsyncResult<TwitterUser>> FollowUserAsync(FollowUserOptions options)
 		{
@@ -9153,20 +8184,16 @@ namespace TweetSharp
 			var user_id = options.UserId;
 			var follow = options.Follow;
 			
-
 			return WithHammockTask<TwitterUser>(_client, WebMethod.Post, "friendships/create", FormatAsString, "?screen_name=", screen_name, "&user_id=", user_id, "&follow=", follow);
 		}
-
         
 		public virtual  Task<TwitterAsyncResult<TwitterUser>> UnfollowUserAsync(UnfollowUserOptions options)
 		{
 			var screen_name = options.ScreenName;
 			var user_id = options.UserId;
 			
-
 			return WithHammockTask<TwitterUser>(_client, WebMethod.Post, "friendships/destroy", FormatAsString, "?screen_name=", screen_name, "&user_id=", user_id);
 		}
-
         
 		public virtual  Task<TwitterAsyncResult<TwitterFriendship>> UpdateFriendshipAsync(UpdateFriendshipOptions options)
 		{
@@ -9175,10 +8202,8 @@ namespace TweetSharp
 			var device = options.Device;
 			var retweets = options.Retweets;
 			
-
 			return WithHammockTask<TwitterFriendship>(_client, WebMethod.Post, "friendships/update", FormatAsString, "?screen_name=", screen_name, "&user_id=", user_id, "&device=", device, "&retweets=", retweets);
 		}
-
         
 		public virtual  Task<TwitterAsyncResult<TwitterFriendship>> GetFriendshipInfoAsync(GetFriendshipInfoOptions options)
 		{
@@ -9187,10 +8212,8 @@ namespace TweetSharp
 			var target_id = options.TargetId;
 			var target_screen_name = options.TargetScreenName;
 			
-
 			return WithHammockTask<TwitterFriendship>(_client, "friendships/show", FormatAsString, "?source_id=", source_id, "&source_screen_name=", source_screen_name, "&target_id=", target_id, "&target_screen_name=", target_screen_name);
 		}
-
         
 		public virtual  Task<TwitterAsyncResult<TwitterCursorList<TwitterUser>>> ListFriendsAsync(ListFriendsOptions options)
 		{
@@ -9201,10 +8224,8 @@ namespace TweetSharp
 			var skip_status = options.SkipStatus;
 			var include_user_entities = options.IncludeUserEntities;
 			
-
 			return WithHammockTask<TwitterCursorList<TwitterUser>>(_client, "friends/list", FormatAsString, "?user_id=", user_id, "&screen_name=", screen_name, "&count=", count, "&cursor=", cursor, "&skip_status=", skip_status, "&include_user_entities=", include_user_entities);
 		}
-
         
 		public virtual  Task<TwitterAsyncResult<TwitterCursorList<TwitterUser>>> ListFollowersAsync(ListFollowersOptions options)
 		{
@@ -9215,18 +8236,14 @@ namespace TweetSharp
 			var skip_status = options.SkipStatus;
 			var include_user_entities = options.IncludeUserEntities;
 			
-
 			return WithHammockTask<TwitterCursorList<TwitterUser>>(_client, "followers/list", FormatAsString, "?user_id=", user_id, "&screen_name=", screen_name, "&count=", count, "&cursor=", cursor, "&skip_status=", skip_status, "&include_user_entities=", include_user_entities);
 		}
-
         
 		public virtual  Task<TwitterAsyncResult<TwitterAccount>> GetAccountSettingsAsync()
 		{
 			
-
 			return WithHammockTask<TwitterAccount>(_client, "account/settings", FormatAsString);
 		}
-
         
 		public virtual  Task<TwitterAsyncResult<TwitterUser>> GetUserProfileAsync(GetUserProfileOptions options)
 		{
@@ -9234,10 +8251,8 @@ namespace TweetSharp
 			var skip_status = options.SkipStatus;
 			var include_email = options.IncludeEmail;
 			
-
 			return WithHammockTask<TwitterUser>(_client, "account/verify_credentials", FormatAsString, "?include_entities=", include_entities, "&skip_status=", skip_status, "&include_email=", include_email);
 		}
-
         
 		public virtual  Task<TwitterAsyncResult<TwitterUser>> VerifyCredentialsAsync(VerifyCredentialsOptions options)
 		{
@@ -9245,10 +8260,8 @@ namespace TweetSharp
 			var skip_status = options.SkipStatus;
 			var include_email = options.IncludeEmail;
 			
-
 			return WithHammockTask<TwitterUser>(_client, "account/verify_credentials", FormatAsString, "?include_entities=", include_entities, "&skip_status=", skip_status, "&include_email=", include_email);
 		}
-
         
 		public virtual  Task<TwitterAsyncResult<TwitterAccount>> UpdateAccountSettingsAsync(UpdateAccountSettingsOptions options)
 		{
@@ -9259,20 +8272,16 @@ namespace TweetSharp
 			var time_zone = options.TimeZone;
 			var lang = options.Lang;
 			
-
 			return WithHammockTask<TwitterAccount>(_client, WebMethod.Post, "account/settings", FormatAsString, "?trend_location_woeid=", trend_location_woeid, "&sleep_time_enabled=", sleep_time_enabled, "&start_sleep_time=", start_sleep_time, "&end_sleep_time=", end_sleep_time, "&time_zone=", time_zone, "&lang=", lang);
 		}
-
         
 		public virtual  Task<TwitterAsyncResult<TwitterUser>> UpdateDeliveryDeviceAsync(UpdateDeliveryDeviceOptions options)
 		{
 			var device = options.Device;
 			var include_entities = options.IncludeEntities;
 			
-
 			return WithHammockTask<TwitterUser>(_client, "account/update_delivery_device", FormatAsString, "?device=", device, "&include_entities=", include_entities);
 		}
-
         
 		public virtual  Task<TwitterAsyncResult<TwitterUser>> UpdateProfileAsync(UpdateProfileOptions options)
 		{
@@ -9283,10 +8292,8 @@ namespace TweetSharp
 			var include_entities = options.IncludeEntities;
 			var skip_status = options.SkipStatus;
 			
-
 			return WithHammockTask<TwitterUser>(_client, WebMethod.Post, "account/update_profile", FormatAsString, "?name=", name, "&url=", url, "&location=", location, "&description=", description, "&include_entities=", include_entities, "&skip_status=", skip_status);
 		}
-
         
 		public virtual  Task<TwitterAsyncResult<TwitterUser>> UpdateProfileBackgroundImageAsync(UpdateProfileBackgroundImageOptions options)
 		{
@@ -9296,10 +8303,8 @@ namespace TweetSharp
 			var skip_status = options.SkipStatus;
 			var use = options.Use;
 			
-
 			return WithHammockTask<TwitterUser>(_client, WebMethod.Post, "account/update_profile_background_image", FormatAsString, "?image_path=", imagePath, "&tile=", tile, "&include_entities=", include_entities, "&skip_status=", skip_status, "&use=", use);
 		}
-
         
 		public virtual  Task<TwitterAsyncResult<TwitterUser>> UpdateProfileColorsAsync(UpdateProfileColorsOptions options)
 		{
@@ -9311,10 +8316,8 @@ namespace TweetSharp
 			var include_entities = options.IncludeEntities;
 			var skip_status = options.SkipStatus;
 			
-
 			return WithHammockTask<TwitterUser>(_client, WebMethod.Post, "account/update_profile_colors", FormatAsString, "?profile_background_color=", profile_background_color, "&profile_link_color=", profile_link_color, "&profile_sidebar_border_color=", profile_sidebar_border_color, "&profile_sidebar_fill_color=", profile_sidebar_fill_color, "&profile_text_color=", profile_text_color, "&include_entities=", include_entities, "&skip_status=", skip_status);
 		}
-
         
 		public virtual  Task<TwitterAsyncResult<TwitterUser>> UpdateProfileImageAsync(UpdateProfileImageOptions options)
 		{
@@ -9322,10 +8325,8 @@ namespace TweetSharp
 			var include_entities = options.IncludeEntities;
 			var skip_status = options.SkipStatus;
 			
-
 			return WithHammockTask<TwitterUser>(_client, WebMethod.Post, "account/update_profile_image", FormatAsString, "?image_path=", image_path, "&include_entities=", include_entities, "&skip_status=", skip_status);
 		}
-
         
 		public virtual  Task<TwitterAsyncResult<TwitterCursorList<TwitterUser>>> ListBlockedUsersAsync(ListBlockedUsersOptions options)
 		{
@@ -9333,19 +8334,15 @@ namespace TweetSharp
 			var skip_status = options.SkipStatus;
 			var cursor = options.Cursor;
 			
-
 			return WithHammockTask<TwitterCursorList<TwitterUser>>(_client, "blocks/list", FormatAsString, "?include_entities=", include_entities, "&skip_status=", skip_status, "&cursor=", cursor);
 		}
-
         
 		public virtual  Task<TwitterAsyncResult<TwitterCursorList<long>>> ListBlockedUserIdsAsync(ListBlockedUserIdsOptions options)
 		{
 			var cursor = options.Cursor;
 			
-
 			return WithHammockTask<TwitterCursorList<long>>(_client, "blocks/ids", FormatAsString, "?cursor=", cursor);
 		}
-
         
 		public virtual  Task<TwitterAsyncResult<TwitterUser>> BlockUserAsync(BlockUserOptions options)
 		{
@@ -9354,10 +8351,8 @@ namespace TweetSharp
 			var include_entities = options.IncludeEntities;
 			var skip_status = options.SkipStatus;
 			
-
 			return WithHammockTask<TwitterUser>(_client, WebMethod.Post, "blocks/create", FormatAsString, "?user_id=", user_id, "&screen_name=", screen_name, "&include_entities=", include_entities, "&skip_status=", skip_status);
 		}
-
         
 		public virtual  Task<TwitterAsyncResult<TwitterUser>> UnblockUserAsync(UnblockUserOptions options)
 		{
@@ -9366,48 +8361,38 @@ namespace TweetSharp
 			var include_entities = options.IncludeEntities;
 			var skip_status = options.SkipStatus;
 			
-
 			return WithHammockTask<TwitterUser>(_client, WebMethod.Post, "blocks/destroy", FormatAsString, "?screen_name=", screen_name, "&user_id=", user_id, "&include_entities=", include_entities, "&skip_status=", skip_status);
 		}
-
         
 		public virtual  Task<TwitterAsyncResult<TwitterUser>> MuteUserAsync(MuteUserOptions options)
 		{
 			var user_id = options.UserId;
 			var screen_name = options.ScreenName;
 			
-
 			return WithHammockTask<TwitterUser>(_client, WebMethod.Post, "mutes/users/create", FormatAsString, "?user_id=", user_id, "&screen_name=", screen_name);
 		}
-
         
 		public virtual  Task<TwitterAsyncResult<TwitterUser>> UnmuteUserAsync(UnmuteUserOptions options)
 		{
 			var user_id = options.UserId;
 			var screen_name = options.ScreenName;
 			
-
 			return WithHammockTask<TwitterUser>(_client, WebMethod.Post, "mutes/users/destroy", FormatAsString, "?user_id=", user_id, "&screen_name=", screen_name);
 		}
-
         
 		public virtual  Task<TwitterAsyncResult<TwitterCursorList<long>>> ListMutedUserIdsAsync(ListMutedUserIdsOptions options)
 		{
 			var cursor = options.Cursor;
 			
-
 			return WithHammockTask<TwitterCursorList<long>>(_client, "mutes/users/ids", FormatAsString, "?cursor=", cursor);
 		}
-
         
-		public virtual  Task<TwitterAsyncResult<TwitterCursorList<long>>> ListMutedUsersAsync(ListMutedUsersOptions options)
+		public virtual  Task<TwitterAsyncResult<TwitterCursorList<TwitterUser>>> ListMutedUsersAsync(ListMutedUsersOptions options)
 		{
 			var cursor = options.Cursor;
 			
-
-			return WithHammockTask<TwitterCursorList<long>>(_client, "mutes/users/list", FormatAsString, "?cursor=", cursor);
+			return WithHammockTask<TwitterCursorList<TwitterUser>>(_client, "mutes/users/list", FormatAsString, "?cursor=", cursor);
 		}
-
         
 		public virtual  Task<TwitterAsyncResult<IEnumerable<TwitterUser>>> ListUserProfilesForAsync(ListUserProfilesForOptions options)
 		{
@@ -9415,10 +8400,8 @@ namespace TweetSharp
 			var user_id = options.UserId;
 			var include_entities = options.IncludeEntities;
 			
-
 			return WithHammockTask<IEnumerable<TwitterUser>>(_client, "users/lookup", FormatAsString, "?screen_name=", screen_name, "&user_id=", user_id, "&include_entities=", include_entities);
 		}
-
         
 		public virtual  Task<TwitterAsyncResult<TwitterUser>> GetUserProfileForAsync(GetUserProfileForOptions options)
 		{
@@ -9426,10 +8409,8 @@ namespace TweetSharp
 			var screen_name = options.ScreenName;
 			var include_entities = options.IncludeEntities;
 			
-
 			return WithHammockTask<TwitterUser>(_client, "users/show", FormatAsString, "?user_id=", user_id, "&screen_name=", screen_name, "&include_entities=", include_entities);
 		}
-
         
 		public virtual  Task<TwitterAsyncResult<IEnumerable<TwitterUser>>> SearchForUserAsync(SearchForUserOptions options)
 		{
@@ -9438,48 +8419,38 @@ namespace TweetSharp
 			var count = options.Count;
 			var include_entities = options.IncludeEntities;
 			
-
 			return WithHammockTask<IEnumerable<TwitterUser>>(_client, "users/search", FormatAsString, "?q=", q, "&page=", page, "&count=", count, "&include_entities=", include_entities);
 		}
-
         
 		public virtual  Task<TwitterAsyncResult<ProfileBanners>> GetProfileBannerForAsync(GetProfileBannerForOptions options)
 		{
 			var screen_name = options.ScreenName;
 			var user_id = options.UserId;
 			
-
 			return WithHammockTask<ProfileBanners>(_client, "users/profile_banner", FormatAsString, "?screen_name=", screen_name, "&user_id=", user_id);
 		}
-
         
 		public virtual  Task<TwitterAsyncResult<TwitterUserSuggestions>> ListSuggestedUsersAsync(ListSuggestedUsersOptions options)
 		{
 			var slug = options.Slug;
 			var lang = options.Lang;
 			
-
 			return WithHammockTask<TwitterUserSuggestions>(_client, "/users/suggestions/{slug}", FormatAsString, "?slug=", slug, "&lang=", lang);
 		}
-
         
 		public virtual  Task<TwitterAsyncResult<IEnumerable<TwitterUserSuggestions>>> ListSuggestedUserCategoriesAsync(ListSuggestedUserCategoriesOptions options)
 		{
 			var lang = options.Lang;
 			
-
 			return WithHammockTask<IEnumerable<TwitterUserSuggestions>>(_client, "users/suggestions", FormatAsString, "?lang=", lang);
 		}
-
         
 		public virtual  Task<TwitterAsyncResult<IEnumerable<TwitterUser>>> GetSuggestedUserMembersAsync(GetSuggestedUserMembersOptions options)
 		{
 			var slug = options.Slug;
 			
-
 			return WithHammockTask<IEnumerable<TwitterUser>>(_client, "/users/suggestions/{slug}/members", FormatAsString, "?slug=", slug);
 		}
-
         
 		public virtual  Task<TwitterAsyncResult<IEnumerable<TwitterStatus>>> ListFavoriteTweetsAsync(ListFavoriteTweetsOptions options)
 		{
@@ -9491,39 +8462,31 @@ namespace TweetSharp
 			var include_entities = options.IncludeEntities;
 			var tweet_mode = options.TweetMode;
 			
-
 			return WithHammockTask<IEnumerable<TwitterStatus>>(_client, "favorites/list", FormatAsString, "?user_id=", user_id, "&screen_name=", screen_name, "&count=", count, "&since_id=", since_id, "&max_id=", max_id, "&include_entities=", include_entities, "&tweet_mode=", tweet_mode);
 		}
-
         
 		public virtual  Task<TwitterAsyncResult<TwitterStatus>> UnfavoriteTweetAsync(UnfavoriteTweetOptions options)
 		{
 			var id = options.Id;
 			
-
 			return WithHammockTask<TwitterStatus>(_client, WebMethod.Post, "favorites/destroy", FormatAsString, "?id=", id);
 		}
-
         
 		public virtual  Task<TwitterAsyncResult<TwitterStatus>> FavoriteTweetAsync(FavoriteTweetOptions options)
 		{
 			var id = options.Id;
 			var include_entities = options.IncludeEntities;
 			
-
 			return WithHammockTask<TwitterStatus>(_client, WebMethod.Post, "favorites/create", FormatAsString, "?id=", id, "&include_entities=", include_entities);
 		}
-
         
 		public virtual  Task<TwitterAsyncResult<IEnumerable<TwitterList>>> ListListsForAsync(ListListsForOptions options)
 		{
 			var user_id = options.UserId;
 			var screen_name = options.ScreenName;
 			
-
 			return WithHammockTask<IEnumerable<TwitterList>>(_client, "lists/list", FormatAsString, "?user_id=", user_id, "&screen_name=", screen_name);
 		}
-
         
 		public virtual  Task<TwitterAsyncResult<TwitterCursorList<TwitterList>>> ListOwnedListsForAsync(ListOwnedListsForOptions options)
 		{
@@ -9532,10 +8495,8 @@ namespace TweetSharp
 			var count = options.Count;
 			var cursor = options.Cursor;
 			
-
 			return WithHammockTask<TwitterCursorList<TwitterList>>(_client, "lists/ownerships", FormatAsString, "?user_id=", user_id, "&screen_name=", screen_name, "&count=", count, "&cursor=", cursor);
 		}
-
         
 		public virtual  Task<TwitterAsyncResult<IEnumerable<TwitterStatus>>> ListTweetsOnListAsync(ListTweetsOnListOptions options)
 		{
@@ -9548,11 +8509,10 @@ namespace TweetSharp
 			var count = options.Count;
 			var include_entities = options.IncludeEntities;
 			var include_rts = options.IncludeRts;
+			var tweet_mode = options.TweetMode;
 			
-
-			return WithHammockTask<IEnumerable<TwitterStatus>>(_client, "lists/statuses", FormatAsString, "?list_id=", list_id, "&slug=", slug, "&owner_screen_name=", owner_screen_name, "&owner_id=", owner_id, "&since_id=", since_id, "&max_id=", max_id, "&count=", count, "&include_entities=", include_entities, "&include_rts=", include_rts);
+			return WithHammockTask<IEnumerable<TwitterStatus>>(_client, "lists/statuses", FormatAsString, "?list_id=", list_id, "&slug=", slug, "&owner_screen_name=", owner_screen_name, "&owner_id=", owner_id, "&since_id=", since_id, "&max_id=", max_id, "&count=", count, "&include_entities=", include_entities, "&include_rts=", include_rts, "&tweet_mode=", tweet_mode);
 		}
-
         
 		public virtual  Task<TwitterAsyncResult<TwitterUser>> RemoveListMemberAsync(RemoveListMemberOptions options)
 		{
@@ -9563,10 +8523,8 @@ namespace TweetSharp
 			var owner_screen_name = options.OwnerScreenName;
 			var owner_id = options.OwnerId;
 			
-
 			return WithHammockTask<TwitterUser>(_client, WebMethod.Post, "lists/members/destroy", FormatAsString, "?list_id=", list_id, "&slug=", slug, "&user_id=", user_id, "&screen_name=", screen_name, "&owner_screen_name=", owner_screen_name, "&owner_id=", owner_id);
 		}
-
         
 		public virtual  Task<TwitterAsyncResult<TwitterCursorList<TwitterList>>> ListListMembershipsForAsync(ListListMembershipsForOptions options)
 		{
@@ -9575,10 +8533,8 @@ namespace TweetSharp
 			var cursor = options.Cursor;
 			var filter_to_owned_lists = options.FilterToOwnedLists;
 			
-
 			return WithHammockTask<TwitterCursorList<TwitterList>>(_client, "lists/memberships", FormatAsString, "?user_id=", user_id, "&screen_name=", screen_name, "&cursor=", cursor, "&filter_to_owned_lists=", filter_to_owned_lists);
 		}
-
         
 		public virtual  Task<TwitterAsyncResult<TwitterCursorList<TwitterUser>>> ListListSubscribersAsync(ListListSubscribersOptions options)
 		{
@@ -9590,10 +8546,8 @@ namespace TweetSharp
 			var include_entities = options.IncludeEntities;
 			var skip_status = options.SkipStatus;
 			
-
 			return WithHammockTask<TwitterCursorList<TwitterUser>>(_client, "lists/subscribers", FormatAsString, "?list_id=", list_id, "&slug=", slug, "&owner_screen_name=", owner_screen_name, "&owner_id=", owner_id, "&cursor=", cursor, "&include_entities=", include_entities, "&skip_status=", skip_status);
 		}
-
         
 		public virtual  Task<TwitterAsyncResult<TwitterUser>> FollowListAsync(FollowListOptions options)
 		{
@@ -9602,10 +8556,8 @@ namespace TweetSharp
 			var list_id = options.ListId;
 			var slug = options.Slug;
 			
-
 			return WithHammockTask<TwitterUser>(_client, WebMethod.Post, "lists/subscribers/create", FormatAsString, "?owner_screen_name=", owner_screen_name, "&owner_id=", owner_id, "&list_id=", list_id, "&slug=", slug);
 		}
-
         
 		public virtual  Task<TwitterAsyncResult<TwitterUser>> VerifyListSubscriptionAsync(VerifyListSubscriptionOptions options)
 		{
@@ -9618,10 +8570,8 @@ namespace TweetSharp
 			var include_entities = options.IncludeEntities;
 			var skip_status = options.SkipStatus;
 			
-
 			return WithHammockTask<TwitterUser>(_client, "lists/subscribers/show", FormatAsString, "?owner_screen_name=", owner_screen_name, "&owner_id=", owner_id, "&list_id=", list_id, "&slug=", slug, "&user_id=", user_id, "&screen_name=", screen_name, "&include_entities=", include_entities, "&skip_status=", skip_status);
 		}
-
         
 		public virtual  Task<TwitterAsyncResult<TwitterUser>> UnfollowListAsync(UnfollowListOptions options)
 		{
@@ -9630,10 +8580,8 @@ namespace TweetSharp
 			var owner_screen_name = options.OwnerScreenName;
 			var owner_id = options.OwnerId;
 			
-
 			return WithHammockTask<TwitterUser>(_client, WebMethod.Post, "lists/subscribers/destroy", FormatAsString, "?list_id=", list_id, "&slug=", slug, "&owner_screen_name=", owner_screen_name, "&owner_id=", owner_id);
 		}
-
         
 		public virtual  Task<TwitterAsyncResult<TwitterList>> AddListMembersAsync(AddListMembersOptions options)
 		{
@@ -9644,10 +8592,8 @@ namespace TweetSharp
 			var owner_screen_name = options.OwnerScreenName;
 			var owner_id = options.OwnerId;
 			
-
 			return WithHammockTask<TwitterList>(_client, WebMethod.Post, "lists/members/create_all", FormatAsString, "?list_id=", list_id, "&slug=", slug, "&user_id=", user_id, "&screen_name=", screen_name, "&owner_screen_name=", owner_screen_name, "&owner_id=", owner_id);
 		}
-
         
 		public virtual  Task<TwitterAsyncResult<TwitterUser>> VerifyListMembershipAsync(VerifyListMembershipOptions options)
 		{
@@ -9660,10 +8606,8 @@ namespace TweetSharp
 			var include_entities = options.IncludeEntities;
 			var skip_status = options.SkipStatus;
 			
-
 			return WithHammockTask<TwitterUser>(_client, "lists/members/show", FormatAsString, "?list_id=", list_id, "&slug=", slug, "&user_id=", user_id, "&screen_name=", screen_name, "&owner_screen_name=", owner_screen_name, "&owner_id=", owner_id, "&include_entities=", include_entities, "&skip_status=", skip_status);
 		}
-
         
 		public virtual  Task<TwitterAsyncResult<TwitterCursorList<TwitterUser>>> ListListMembersAsync(ListListMembersOptions options)
 		{
@@ -9676,10 +8620,8 @@ namespace TweetSharp
 			var include_entities = options.IncludeEntities;
 			var skip_status = options.SkipStatus;
 			
-
 			return WithHammockTask<TwitterCursorList<TwitterUser>>(_client, "lists/members", FormatAsString, "?list_id=", list_id, "&slug=", slug, "&owner_screen_name=", owner_screen_name, "&owner_id=", owner_id, "&count=", count, "&cursor=", cursor, "&include_entities=", include_entities, "&skip_status=", skip_status);
 		}
-
         
 		public virtual  Task<TwitterAsyncResult<TwitterUser>> AddListMemberAsync(AddListMemberOptions options)
 		{
@@ -9690,10 +8632,8 @@ namespace TweetSharp
 			var owner_screen_name = options.OwnerScreenName;
 			var owner_id = options.OwnerId;
 			
-
 			return WithHammockTask<TwitterUser>(_client, WebMethod.Post, "lists/members/create", FormatAsString, "?list_id=", list_id, "&slug=", slug, "&user_id=", user_id, "&screen_name=", screen_name, "&owner_screen_name=", owner_screen_name, "&owner_id=", owner_id);
 		}
-
         
 		public virtual  Task<TwitterAsyncResult<TwitterList>> DeleteListAsync(DeleteListOptions options)
 		{
@@ -9702,10 +8642,8 @@ namespace TweetSharp
 			var list_id = options.ListId;
 			var slug = options.Slug;
 			
-
 			return WithHammockTask<TwitterList>(_client, WebMethod.Post, "lists/destroy", FormatAsString, "?owner_screen_name=", owner_screen_name, "&owner_id=", owner_id, "&list_id=", list_id, "&slug=", slug);
 		}
-
         
 		public virtual  Task<TwitterAsyncResult<TwitterList>> UpdateListAsync(UpdateListOptions options)
 		{
@@ -9717,10 +8655,8 @@ namespace TweetSharp
 			var name = options.Name;
 			var description = options.Description;
 			
-
 			return WithHammockTask<TwitterList>(_client, WebMethod.Post, "lists/update", FormatAsString, "?owner_screen_name=", owner_screen_name, "&owner_id=", owner_id, "&list_id=", list_id, "&slug=", slug, "&mode=", mode, "&name=", name, "&description=", description);
 		}
-
         
 		public virtual  Task<TwitterAsyncResult<TwitterList>> CreateListAsync(CreateListOptions options)
 		{
@@ -9729,10 +8665,8 @@ namespace TweetSharp
 			var mode = options.Mode;
 			var description = options.Description;
 			
-
 			return WithHammockTask<TwitterList>(_client, WebMethod.Post, "lists/create", FormatAsString, "?list_owner=", list_owner, "&name=", name, "&mode=", mode, "&description=", description);
 		}
-
         
 		public virtual  Task<TwitterAsyncResult<TwitterList>> GetListAsync(GetListOptions options)
 		{
@@ -9741,10 +8675,8 @@ namespace TweetSharp
 			var owner_screen_name = options.OwnerScreenName;
 			var owner_id = options.OwnerId;
 			
-
 			return WithHammockTask<TwitterList>(_client, "lists/show", FormatAsString, "?list_id=", list_id, "&slug=", slug, "&owner_screen_name=", owner_screen_name, "&owner_id=", owner_id);
 		}
-
         
 		public virtual  Task<TwitterAsyncResult<TwitterCursorList<TwitterList>>> ListSubscriptionsAsync(ListSubscriptionsOptions options)
 		{
@@ -9753,54 +8685,42 @@ namespace TweetSharp
 			var count = options.Count;
 			var cursor = options.Cursor;
 			
-
 			return WithHammockTask<TwitterCursorList<TwitterList>>(_client, "lists/subscriptions", FormatAsString, "?user_id=", user_id, "&screen_name=", screen_name, "&count=", count, "&cursor=", cursor);
 		}
-
         
 		public virtual  Task<TwitterAsyncResult<IEnumerable<TwitterSavedSearch>>> ListSavedSearchesAsync()
 		{
 			
-
 			return WithHammockTask<IEnumerable<TwitterSavedSearch>>(_client, "saved_searches/list", FormatAsString);
 		}
-
         
 		public virtual  Task<TwitterAsyncResult<TwitterSavedSearch>> GetSavedSearchAsync(GetSavedSearchOptions options)
 		{
 			var id = options.Id;
 			
-
 			return WithHammockTask<TwitterSavedSearch>(_client, "saved_searches/show/{id}", FormatAsString, "?id=", id);
 		}
-
         
 		public virtual  Task<TwitterAsyncResult<TwitterSavedSearch>> CreateSavedSearchAsync(CreateSavedSearchOptions options)
 		{
 			var query = options.Query;
 			
-
 			return WithHammockTask<TwitterSavedSearch>(_client, WebMethod.Post, "saved_searches/create", FormatAsString, "?query=", query);
 		}
-
         
 		public virtual  Task<TwitterAsyncResult<TwitterSavedSearch>> DeleteSavedSearchAsync(DeleteSavedSearchOptions options)
 		{
 			var id = options.Id;
 			
-
 			return WithHammockTask<TwitterSavedSearch>(_client, WebMethod.Post, "saved_searches/destroy/{id}", FormatAsString, "?id=", id);
 		}
-
         
 		public virtual  Task<TwitterAsyncResult<TwitterPlace>> GetPlaceAsync(GetPlaceOptions options)
 		{
 			var place_id = options.PlaceId;
 			
-
 			return WithHammockTask<TwitterPlace>(_client, "geo/id/{place_id}", FormatAsString, "?place_id=", place_id);
 		}
-
         
 		public virtual  Task<TwitterAsyncResult<IEnumerable<TwitterPlace>>> ReverseGeocodeAsync(ReverseGeocodeOptions options)
 		{
@@ -9811,10 +8731,8 @@ namespace TweetSharp
 			var max_results = options.MaxResults;
 			var callback = options.Callback;
 			
-
 			return WithHammockTask<IEnumerable<TwitterPlace>>(_client, "geo/reverse_geocode", FormatAsString, "?lat=", lat, "&long=", @long, "&accuracy=", accuracy, "&granularity=", granularity, "&max_results=", max_results, "&callback=", callback);
 		}
-
         
 		public virtual  Task<TwitterAsyncResult<IEnumerable<TwitterPlace>>> GeoSearchAsync(GeoSearchOptions options)
 		{
@@ -9828,57 +8746,45 @@ namespace TweetSharp
 			var contained_within = options.ContainedWithin;
 			var callback = options.Callback;
 			
-
 			return WithHammockTask<IEnumerable<TwitterPlace>>(_client, "geo/search", FormatAsString, "?lat=", lat, "&long=", @long, "&query=", query, "&ip=", ip, "&granularity=", granularity, "&accuracy=", accuracy, "&max_results=", max_results, "&contained_within=", contained_within, "&callback=", callback);
 		}
-
         
 		public virtual  Task<TwitterAsyncResult<TwitterTrends>> ListLocalTrendsForAsync(ListLocalTrendsForOptions options)
 		{
 			var id = options.Id;
 			var exclude = options.Exclude;
 			
-
 			return WithHammockTask<TwitterTrends>(_client, "trends/place", FormatAsString, "?id=", id, "&exclude=", exclude);
 		}
-
         
 		public virtual  Task<TwitterAsyncResult<IEnumerable<WhereOnEarthLocation>>> ListAvailableTrendsLocationsAsync()
 		{
 			
-
 			return WithHammockTask<IEnumerable<WhereOnEarthLocation>>(_client, "trends/available", FormatAsString);
 		}
-
         
 		public virtual  Task<TwitterAsyncResult<IEnumerable<WhereOnEarthLocation>>> ListClosestTrendsLocationsAsync(ListClosestTrendsLocationsOptions options)
 		{
 			var lat = options.Lat;
 			var @long = options.@Long;
 			
-
 			return WithHammockTask<IEnumerable<WhereOnEarthLocation>>(_client, "trends/closest", FormatAsString, "?lat=", lat, "&long=", @long);
 		}
-
         
 		public virtual  Task<TwitterAsyncResult<TwitterRateLimitStatusSummary>> GetRateLimitStatusAsync(GetRateLimitStatusOptions options)
 		{
 			var resources = options.Resources;
 			
-
 			return WithHammockTask<TwitterRateLimitStatusSummary>(_client, "application/rate_limit_status", FormatAsString, "?resources=", resources);
 		}
-
         
 		public virtual  Task<TwitterAsyncResult<TwitterUser>> ReportSpamAsync(ReportSpamOptions options)
 		{
 			var screen_name = options.ScreenName;
 			var user_id = options.UserId;
 			
-
 			return WithHammockTask<TwitterUser>(_client, WebMethod.Post, "users/report_spam", FormatAsString, "?screen_name=", screen_name, "&user_id=", user_id);
 		}
-
 		#endregion
 #endif
 

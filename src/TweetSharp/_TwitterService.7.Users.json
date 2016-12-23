@@ -46,7 +46,7 @@ TwitterUser, "mutes/users/destroy":POST, UnmuteUser, long? user_id, string scree
 TwitterCursorList<long>, "mutes/users/ids", ListMutedUserIds, long? cursor
 
 // https://dev.twitter.com/docs/api/1.1/get/mutes/users/list
-TwitterCursorList<long>, "mutes/users/list", ListMutedUsers, long? cursor
+TwitterCursorList<TwitterUser>, "mutes/users/list", ListMutedUsers, long? cursor
 
 
 // https://dev.twitter.com/docs/api/1.1/get/users/lookup
