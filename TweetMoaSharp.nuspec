@@ -2,7 +2,7 @@
 <package>
 	<metadata>
 		<id>TweetMoaSharp</id>
-		<version>4.0.0.0</version>
+		<version>4.0.1</version>
 		<dependencies>
 			<group>
 				<dependency id="Newtonsoft.Json" version="6.0.8" />
@@ -41,7 +41,7 @@
 		<releaseNotes>
 			New in 4.0.0.0
 			----------
-			- Breaking Change: ListMutedUsers now returns TwitterUser objects instead of ids (use ListMutedUserIds for id list)
+			- Added Unretweet (required for undoing self-retweets)
  		</releaseNotes>
 	</metadata>
 	<files>

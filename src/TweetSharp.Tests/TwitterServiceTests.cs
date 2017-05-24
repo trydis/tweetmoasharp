@@ -263,6 +263,31 @@ namespace TweetSharp.Tests.Service
 		}
 
 		[Test]
+		public void Can_Unretweet()
+		{
+			#region Test Setup 
+			//First tweet
+			var service = GetAuthenticatedService();
+			var status = _hero + DateTime.UtcNow.Ticks + " Tweet from TweetSharp unit tests";
+			var tweet = service.SendTweet(new SendTweetOptions { Status = status });
+
+			var retweet = service.Retweet(new RetweetOptions() { Id = tweet.Id });
+
+			#endregion
+
+			var originalTweet = service.Unretweet(new UnretweetOptions() { Id = retweet.Id });
+
+			AssertResultWas(service, HttpStatusCode.OK);
+			Assert.IsNotNull(tweet);
+			Assert.AreNotEqual(0, tweet.Id);
+
+			//Check we can't find the retweet anymore
+			var notFoundTweet = service.GetTweet(new GetTweetOptions() { Id = retweet.Id });
+			Assert.IsNull(notFoundTweet);
+			AssertResultWas(service, HttpStatusCode.NotFound);
+		}
+
+		[Test]
 		public void Can_tweet_with_attachment_url()
 		{
 			var service = GetAuthenticatedService();

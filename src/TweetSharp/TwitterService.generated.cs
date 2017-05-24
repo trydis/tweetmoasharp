@@ -116,6 +116,13 @@ namespace TweetSharp
 		public bool? TrimUser { get; set; } 			
 	}			
  
+    		
+	public class UnretweetOptions
+	{ 
+		public long Id { get; set; }  
+		public bool? TrimUser { get; set; } 			
+	}			
+ 
     [Obsolete("Twitter has declared this method obsolete; it may cease to function at any time. Check https://dev.twitter.com/docs/api#deprecated for alternatives.")]		
 	public class SendTweetWithMediaOptions
 	{ 
@@ -836,6 +843,10 @@ namespace TweetSharp
 		TwitterStatus Retweet(RetweetOptions options);	
 
  
+        
+		TwitterStatus Unretweet(UnretweetOptions options);	
+
+ 
         [Obsolete("Twitter has declared this method obsolete; it may cease to function at any time. Check https://dev.twitter.com/docs/api#deprecated for alternatives.")]
 		TwitterStatus SendTweetWithMedia(SendTweetWithMediaOptions options);	
 
@@ -1190,6 +1201,9 @@ namespace TweetSharp
         
 		IAsyncResult Retweet(RetweetOptions options, Action<TwitterStatus, TwitterResponse>  action);
 
+        
+		IAsyncResult Unretweet(UnretweetOptions options, Action<TwitterStatus, TwitterResponse>  action);
+
         [Obsolete("Twitter has declared this method obsolete; it may cease to function at any time. Check https://dev.twitter.com/docs/api#deprecated for alternatives.")]
 		IAsyncResult SendTweetWithMedia(SendTweetWithMediaOptions options, Action<TwitterStatus, TwitterResponse>  action);
 
@@ -1504,6 +1518,13 @@ namespace TweetSharp
 		TwitterStatus EndRetweet(IAsyncResult result);		
 
 		TwitterStatus EndRetweet(IAsyncResult result, TimeSpan timeout);
+
+        
+		IAsyncResult BeginUnretweet(UnretweetOptions options);
+
+		TwitterStatus EndUnretweet(IAsyncResult result);		
+
+		TwitterStatus EndUnretweet(IAsyncResult result, TimeSpan timeout);
 
         [Obsolete("Twitter has declared this method obsolete; it may cease to function at any time. Check https://dev.twitter.com/docs/api#deprecated for alternatives.")]
 		IAsyncResult BeginSendTweetWithMedia(SendTweetWithMediaOptions options);
@@ -2100,6 +2121,9 @@ namespace TweetSharp
         
 		void Retweet(RetweetOptions options, Action<TwitterStatus, TwitterResponse>  action);
 
+        
+		void Unretweet(UnretweetOptions options, Action<TwitterStatus, TwitterResponse>  action);
+
         [Obsolete("Twitter has declared this method obsolete; it may cease to function at any time. Check https://dev.twitter.com/docs/api#deprecated for alternatives.")]
 		void SendTweetWithMedia(SendTweetWithMediaOptions options, Action<TwitterStatus, TwitterResponse>  action);
 
@@ -2375,6 +2399,9 @@ namespace TweetSharp
         
 
 		 Task<TwitterAsyncResult<TwitterStatus>> RetweetAsync(RetweetOptions options);
+        
+
+		 Task<TwitterAsyncResult<TwitterStatus>> UnretweetAsync(UnretweetOptions options);
         [Obsolete("Twitter has declared this method obsolete; it may cease to function at any time. Check https://dev.twitter.com/docs/api#deprecated for alternatives.")]
 
 		 Task<TwitterAsyncResult<TwitterStatus>> SendTweetWithMediaAsync(SendTweetWithMediaOptions options);
@@ -2764,6 +2791,16 @@ namespace TweetSharp
 				
 			
 			return WithHammock<TwitterStatus>(_client, WebMethod.Post, "statuses/retweet/{id}", FormatAsString, "?id=", id, "&trim_user=", trim_user);
+		}
+
+        
+		public virtual TwitterStatus Unretweet(UnretweetOptions options)
+		{
+			var id = options.Id;
+			var trim_user = options.TrimUser;
+				
+			
+			return WithHammock<TwitterStatus>(_client, WebMethod.Post, "statuses/unretweet/{id}", FormatAsString, "?id=", id, "&trim_user=", trim_user);
 		}
 
         [Obsolete("Twitter has declared this method obsolete; it may cease to function at any time. Check https://dev.twitter.com/docs/api#deprecated for alternatives.")]
@@ -3836,6 +3873,16 @@ namespace TweetSharp
 			return  WithHammock<TwitterStatus>(_client, WebMethod.Post, action, "statuses/retweet/{id}", FormatAsString, "?id=", id, "&trim_user=", trim_user);
 		}
 
+        
+		public virtual IAsyncResult Unretweet(UnretweetOptions options, Action<TwitterStatus, TwitterResponse>  action)
+		{
+			var id = options.Id;
+			var trim_user = options.TrimUser;
+				
+
+			return  WithHammock<TwitterStatus>(_client, WebMethod.Post, action, "statuses/unretweet/{id}", FormatAsString, "?id=", id, "&trim_user=", trim_user);
+		}
+
         [Obsolete("Twitter has declared this method obsolete; it may cease to function at any time. Check https://dev.twitter.com/docs/api#deprecated for alternatives.")]
 		public virtual IAsyncResult SendTweetWithMedia(SendTweetWithMediaOptions options, Action<TwitterStatus, TwitterResponse>  action)
 		{
@@ -4906,6 +4953,16 @@ namespace TweetSharp
 			return BeginWithHammock<TwitterStatus>(_client, WebMethod.Post, "statuses/retweet/{id}", FormatAsString, "?id=", id, "&trim_user=", trim_user);
 		}
 
+        
+		public virtual IAsyncResult BeginUnretweet(UnretweetOptions options)
+		{
+			var id = options.Id;
+			var trim_user = options.TrimUser;
+				
+
+			return BeginWithHammock<TwitterStatus>(_client, WebMethod.Post, "statuses/unretweet/{id}", FormatAsString, "?id=", id, "&trim_user=", trim_user);
+		}
+
         [Obsolete("Twitter has declared this method obsolete; it may cease to function at any time. Check https://dev.twitter.com/docs/api#deprecated for alternatives.")]
 		public virtual IAsyncResult BeginSendTweetWithMedia(SendTweetWithMediaOptions options)
 		{
@@ -5951,6 +6008,18 @@ namespace TweetSharp
 
 		
 		public virtual TwitterStatus EndRetweet(IAsyncResult result, TimeSpan timeout) 
+		{
+			return EndWithHammock<TwitterStatus>(result, timeout);
+		}
+
+        
+		public virtual TwitterStatus EndUnretweet(IAsyncResult result) 
+		{
+			return EndWithHammock<TwitterStatus>(result);
+		}
+
+		
+		public virtual TwitterStatus EndUnretweet(IAsyncResult result, TimeSpan timeout) 
 		{
 			return EndWithHammock<TwitterStatus>(result, timeout);
 		}
@@ -7046,6 +7115,15 @@ namespace TweetSharp
 			WithHammock<TwitterStatus>(_client, WebMethod.Post, action, "statuses/retweet/{id}", FormatAsString, "?id=", id, "&trim_user=", trim_user);
 		}
 
+        
+		public virtual void Unretweet(UnretweetOptions options, Action<TwitterStatus, TwitterResponse>  action)
+		{
+			var id = options.Id;
+			var trim_user = options.TrimUser;
+			
+			WithHammock<TwitterStatus>(_client, WebMethod.Post, action, "statuses/unretweet/{id}", FormatAsString, "?id=", id, "&trim_user=", trim_user);
+		}
+
         [Obsolete("Twitter has declared this method obsolete; it may cease to function at any time. Check https://dev.twitter.com/docs/api#deprecated for alternatives.")]
 		public virtual void SendTweetWithMedia(SendTweetWithMediaOptions options, Action<TwitterStatus, TwitterResponse>  action)
 		{
@@ -8015,6 +8093,14 @@ namespace TweetSharp
 			var trim_user = options.TrimUser;
 			
 			return WithHammockTask<TwitterStatus>(_client, WebMethod.Post, "statuses/retweet/{id}", FormatAsString, "?id=", id, "&trim_user=", trim_user);
+		}
+        
+		public virtual  Task<TwitterAsyncResult<TwitterStatus>> UnretweetAsync(UnretweetOptions options)
+		{
+			var id = options.Id;
+			var trim_user = options.TrimUser;
+			
+			return WithHammockTask<TwitterStatus>(_client, WebMethod.Post, "statuses/unretweet/{id}", FormatAsString, "?id=", id, "&trim_user=", trim_user);
 		}
         [Obsolete("Twitter has declared this method obsolete; it may cease to function at any time. Check https://dev.twitter.com/docs/api#deprecated for alternatives.")]
 		public virtual  Task<TwitterAsyncResult<TwitterStatus>> SendTweetWithMediaAsync(SendTweetWithMediaOptions options)

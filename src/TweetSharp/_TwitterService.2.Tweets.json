@@ -13,6 +13,9 @@ TwitterStatus, "statuses/update":POST, SendTweet, string status, long? in_reply_
 // https://dev.twitter.com/docs/api/1.1/post/statuses/retweet/%3Aid
 TwitterStatus, "statuses/retweet/{id}":POST, Retweet, long id, bool? trim_user
 
+// https://dev.twitter.com/rest/reference/post/statuses/unretweet/id
+TwitterStatus, "statuses/unretweet/{id}":POST, Unretweet, long id, bool? trim_user
+
 // https://dev.twitter.com/docs/api/1.1/post/statuses/update_with_media
 DEPRECATED, MEDIA, IDictionary<string,Stream> images, TwitterStatus, "statuses/update_with_media":POST, SendTweetWithMedia, string status, bool? possibly_sensitive, long? in_reply_to_status_id, double? lat, double? @long, string place_id, bool? display_coordinates
 
