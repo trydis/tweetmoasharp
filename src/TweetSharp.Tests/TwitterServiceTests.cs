@@ -263,6 +263,27 @@ namespace TweetSharp.Tests.Service
 		}
 
 		[Test]
+		public void IsRetweetReturnsTrue()
+		{
+			#region Test Setup 
+			//First tweet
+			var service = GetAuthenticatedService();
+			var status = _hero + DateTime.UtcNow.Ticks + " Tweet from TweetSharp unit tests";
+			var tweet = service.SendTweet(new SendTweetOptions { Status = status });
+
+			var retweet = service.Retweet(new RetweetOptions() { Id = tweet.Id });
+
+			#endregion
+
+			var updatedStatus = service.GetTweet(new GetTweetOptions() { Id = retweet.Id });
+
+			AssertResultWas(service, HttpStatusCode.OK);
+			Assert.IsNotNull(updatedStatus);
+			Assert.AreEqual(true, retweet.IsRetweeted);
+			Assert.AreEqual(true, updatedStatus.IsRetweeted);
+		}
+
+		[Test]
 		public void Can_Unretweet()
 		{
 			#region Test Setup 
