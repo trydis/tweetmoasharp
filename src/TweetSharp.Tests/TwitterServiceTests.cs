@@ -263,6 +263,27 @@ namespace TweetSharp.Tests.Service
 		}
 
 		[Test]
+		public void Can_TweetWithCallback()
+		{
+			var service = GetAuthenticatedService();
+			var status = _hero + DateTime.UtcNow.Ticks + " Tweet from TweetSharp unit tests";
+			var callbackHappened = false;
+			var asyncResult = service.SendTweet
+			(	
+				new SendTweetOptions { Status = status }, 
+				(cbStatus, cbResponse) =>
+				{
+					callbackHappened = true;
+				}
+			);
+
+			asyncResult.AsyncWaitHandle.WaitOne();
+
+			Assert.IsTrue(callbackHappened);
+			AssertResultWas(service, HttpStatusCode.OK);
+		}
+
+		[Test]
 		public void IsRetweetReturnsTrue()
 		{
 			#region Test Setup 
