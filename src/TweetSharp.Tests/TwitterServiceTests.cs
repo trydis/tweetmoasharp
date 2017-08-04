@@ -1870,6 +1870,23 @@ namespace TweetSharp.Tests.Service
 
 		}
 
+		[Test]
+		public void Can_GetPublicTimeline_AppAuthOnly()
+		{
+			var service = new TwitterService(_consumerKey, _consumerSecret);
+			service.TraceEnabled = true;
+			ListTweetsOnUserTimelineOptions lto = new ListTweetsOnUserTimelineOptions();
+			lto.ScreenName = "yortw";
+			lto.Count = 5;
+			lto.IncludeRts = true;
+			lto.ExcludeReplies = true;
+			lto.TrimUser = true;
+			var result = service.ListTweetsOnUserTimeline(lto);
+			var tweets = result.OrderByDescending(data => data.Id).ToList();
+			Assert.IsNotNull(tweets);
+			Assert.IsTrue(tweets.Count > 0);
+		}
+
 		private static TwitterChunkedMedia InitialiseMediaUpload(TwitterService service, FileStream stream)
 		{
 			var uploadedMedia = service.UploadMediaInit(new UploadMediaInitOptions

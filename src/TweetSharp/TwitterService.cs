@@ -254,7 +254,11 @@ namespace TweetSharp
 		private RestRequest PrepareHammockQuery(string path)
 		{
 			RestRequest request;
-			if (string.IsNullOrEmpty(_token) || string.IsNullOrEmpty(_tokenSecret))
+			//TFW - 2017-08-04 - No auth query if there's no consumer token
+			//can't have user token without consumer token, but can have
+			//consumer token without user token (for 'app only' auth).
+			//Else path works fine when _token and _tokenSecret are null/empty.
+			if (string.IsNullOrEmpty(_consumerKey) || string.IsNullOrEmpty(_consumerSecret))
 			{
 				request = _noAuthQuery.Invoke();
 			}
