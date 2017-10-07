@@ -452,7 +452,7 @@ namespace TweetSharp.Tests.Service
 			var service = GetAuthenticatedService();
 
 			//TODO: Fix code and then finish this test.
-			var message = "Testing 😀👌☺️☺☹😀😉 " + System.Guid.NewGuid().ToString();
+			var message = "Testing 😀👌☺️☺☹😀😉 😀☺️ " + System.Guid.NewGuid().ToString();
 			var tweet = service.SendTweet(new SendTweetOptions { Status = message });
 			Assert.IsNotNull(tweet);
 			Assert.AreNotEqual(0, tweet.Id);
