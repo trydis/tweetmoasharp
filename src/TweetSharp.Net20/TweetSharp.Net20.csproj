@@ -216,9 +216,6 @@
     <Compile Include="..\TweetSharp\TwitterService.OAuth.cs">
       <Link>TwitterService.OAuth.cs</Link>
     </Compile>
-    <Compile Include="..\TweetSharp\TwitterService.Streaming.cs">
-      <Link>TwitterService.Streaming.cs</Link>
-    </Compile>
     <Compile Include="..\TweetSharp\TwitterSleepTime.cs">
       <Link>TwitterSleepTime.cs</Link>
     </Compile>
@@ -239,9 +236,6 @@
     </Compile>
     <Compile Include="..\TweetSharp\TwitterUser.cs">
       <Link>TwitterUser.cs</Link>
-    </Compile>
-    <Compile Include="..\TweetSharp\TwitterUserStreams.cs">
-      <Link>TwitterUserStreams.cs</Link>
     </Compile>
     <Compile Include="..\TweetSharp\TwitterUserSuggestions.cs">
       <Link>TwitterUserSuggestions.cs</Link>

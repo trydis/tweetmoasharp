@@ -41,8 +41,6 @@ namespace TweetSharp
 			set
 			{
 				_client.UserAgent = value;
-				_publicStreamsClient.UserAgent = value;
-				_userStreamsClient.UserAgent = value;
 				_oauth.UserAgent = value;
 			}
 		}
@@ -53,8 +51,6 @@ namespace TweetSharp
 			set
 			{
 				_client.Deserializer = value;
-				_userStreamsClient.Deserializer = value;
-				_publicStreamsClient.Deserializer = value;
 			}
 		}
 
@@ -64,8 +60,6 @@ namespace TweetSharp
 			set
 			{
 				_client.Serializer = value;
-				_userStreamsClient.Serializer = value;
-				_publicStreamsClient.Serializer = value;
 			}
 		}
 
@@ -189,41 +183,6 @@ namespace TweetSharp
 				GetErrorResponseEntityType = (request, @base) => typeof(TwitterErrors),
 				UserAgent = userAgent,
 				Proxy = Proxy,
-#if !SILVERLIGHT && !WINRT
-				FollowRedirects = true,
-#endif
-#if SILVERLIGHT
-                HasElevatedPermissions = true
-#endif
-			};
-
-			_userStreamsClient = new RestClient
-			{
-				Authority = Globals.UserStreamsAuthority,
-				Proxy = Proxy,
-				VersionPath = "1.1",
-				Serializer = serializer ?? jsonSerializer,
-				Deserializer = deserializer ?? jsonSerializer,
-				DecompressionMethods = DecompressionMethods.GZip,
-				GetErrorResponseEntityType = (request, @base) => typeof(TwitterErrors),
-				UserAgent = userAgent,
-#if !SILVERLIGHT && !WINRT
-				FollowRedirects = true,
-#endif
-#if SILVERLIGHT
-                HasElevatedPermissions = true
-#endif
-			};
-
-			_publicStreamsClient = new RestClient
-			{
-				Authority = Globals.PublicStreamsAuthority,
-				Proxy = Proxy,
-				VersionPath = "1.1",
-				Serializer = serializer ?? jsonSerializer,
-				Deserializer = deserializer ?? jsonSerializer,
-				DecompressionMethods = DecompressionMethods.GZip,
-				UserAgent = userAgent,
 #if !SILVERLIGHT && !WINRT
 				FollowRedirects = true,
 #endif

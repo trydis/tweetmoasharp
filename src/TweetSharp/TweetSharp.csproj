@@ -100,7 +100,6 @@
     <Compile Include="TwitterDateTimeConverter.cs" />
     <Compile Include="TwitterGeoConverter.cs" />
     <Compile Include="TwitterWonkyBooleanConverter.cs" />
-    <Compile Include="TwitterService.Streaming.cs" />
     <Compile Include="ITwitterModel.cs" />
     <Compile Include="TwitterDateFormat.cs" />
     <Compile Include="TwitterDateTime.cs" />

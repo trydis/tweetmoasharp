@@ -39,11 +39,6 @@ namespace TweetSharp
 
 			var content = response.Content;
 
-			if (content.Equals("END STREAMING"))
-			{
-				return (T)(ITwitterModel)new TwitterUserStreamEnd();
-			}
-
 			return (T)DeserializeContent<T>(content);
 		}
 
@@ -113,83 +108,7 @@ namespace TweetSharp
 				var instance = JArray.Parse(content);
 				var inner = instance.First.ToString();
 				return DeserializeSingle(inner, type);
-			}
-
-			if (type == typeof(TwitterStreamArtifact))
-			{
-				content = content.Trim('\n');
-				if (content.StartsWith("{\"friends\":["))
-				{
-					var friends = (JArray)JObject.Parse(content)["friends"];
-					if (friends != null)
-					{
-						var result = new TwitterUserStreamFriends { RawSource = content };
-						var ids = friends.Select(token => token.Value<long>()).ToList();
-						result.Ids = ids;
-						return result;
-					}
-				}
-				// {"delete":{"status":{"user_id_str":"14363427","id_str":"45331017418014721","id":45331017418014721,"user_id":14363427}}}
-				else if (content.StartsWith("{\"delete\":{\"status\":"))
-				{
-					var deleted = JObject.Parse(content)["delete"]["status"];
-					if (deleted != null)
-					{
-						var result = new TwitterUserStreamDeleteStatus
-						{
-							RawSource = content,
-							StatusId = deleted["id"].Value<long>(),
-							UserId = deleted["user_id"].Value<long>()
-						};
-						return result;
-					}
-				}
-				else if (content.StartsWith("{\"delete\":{\"direct_message\":"))
-				{
-					var deleted = JObject.Parse(content)["delete"]["direct_message"];
-					if (deleted != null)
-					{
-						var result = new TwitterUserStreamDeleteDirectMessage
-						{
-							RawSource = content,
-							DirectMessageId = deleted["id"].Value<long>(),
-							UserId = deleted["user_id"].Value<long>()
-						};
-						return result;
-					}
-				}
-				else
-				{
-					var artifact = JObject.Parse(content);
-					if (artifact["target_object"] != null)
-					{
-						return DeserializeUserStreamEvent(content);
-					}
-
-					if (artifact["user"] != null)
-					{
-						var tweet = DeserializeSingle(content, typeof(TwitterStatus)) as TwitterStatus;
-						var @event = new TwitterUserStreamStatus { Status = tweet, RawSource = content };
-						return @event;
-					}
-
-					if (artifact["direct_message"] != null)
-					{
-						var json = artifact["direct_message"].ToString();
-						var dm = DeserializeSingle(json, typeof(TwitterDirectMessage)) as TwitterDirectMessage;
-						var @event = new TwitterUserStreamDirectMessage { DirectMessage = dm, RawSource = json };
-						return @event;
-					}
-
-					if (!String.IsNullOrEmpty(artifact.Value<string>("event")))
-					{
-						return DeserializeUserStreamEvent(content);
-					}
-
-					var unknown = new TwitterStreamArtifact { RawSource = content };
-					return unknown;
-				}
-			}
+			}	
 
 			if (type == typeof(IEnumerable<TwitterTrends>))
 			{
@@ -203,36 +122,6 @@ namespace TweetSharp
 														 : DeserializeSingle(content, type);
 
 			return deserialized;
-		}
-
-		private object DeserializeUserStreamEvent(string content)
-		{
-			var @event = DeserializeSingle(content, typeof(TwitterUserStreamEventBase)) as TwitterUserStreamEventBase;
-
-			var target = JObject.Parse(content);
-
-			var result = new TwitterUserStreamEvent(@event);
-
-			var targetObject = target["target_object"];
-			if (targetObject != null)
-			{
-				var json = targetObject.ToString();
-
-				if (targetObject["recipient_screen_name"] != null)
-				{
-					result.TargetObject = DeserializeSingle(json, typeof(TwitterDirectMessage)) as TwitterDirectMessage;
-				}
-				else if (targetObject["slug"] != null)
-				{
-					result.TargetObject = DeserializeSingle(json, typeof(TwitterList)) as TwitterList;
-				}
-				else
-				{
-					result.TargetObject = DeserializeSingle(json, typeof(TwitterStatus)) as TwitterStatus;
-				}
-			}
-
-			return result;
 		}
 
 		private object DeserializeTrends(string content)
