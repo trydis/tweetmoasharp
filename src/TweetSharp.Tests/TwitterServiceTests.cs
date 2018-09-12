@@ -395,7 +395,7 @@ namespace TweetSharp.Tests.Service
 		public void Can_tweet_with_image()
 		{
 			var service = GetAuthenticatedService();
-			using (var stream = new FileStream("daniel_8bit.png", FileMode.Open))
+			using (var stream = new FileStream(System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "daniel_8bit.png"), FileMode.Open))
 			{
 #pragma warning disable CS0618 // Type or member is obsolete
 				var tweet = service.SendTweetWithMedia(new SendTweetWithMediaOptions
@@ -426,7 +426,7 @@ namespace TweetSharp.Tests.Service
 			//this is an issue and possibly fix it.
 			var service = GetAuthenticatedService();
 			service.TraceEnabled = true;
-			using (var stream = new FileStream("daniel_8bit.png", FileMode.Open, FileAccess.Read, FileShare.Read))
+			using (var stream = new FileStream(System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "daniel_8bit.png"), FileMode.Open, FileAccess.Read, FileShare.Read))
 			{
 #pragma warning disable CS0618 // Type or member is obsolete
 				var tweet = service.SendTweetWithMedia(new SendTweetWithMediaOptions
@@ -449,7 +449,7 @@ namespace TweetSharp.Tests.Service
 		{
 			var service = GetAuthenticatedService();
 			service.TraceEnabled = true;
-			using (var stream = new FileStream("daniel_8bit.png", FileMode.Open, FileAccess.Read, FileShare.Read))
+			using (var stream = new FileStream(System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "daniel_8bit.png"), FileMode.Open, FileAccess.Read, FileShare.Read))
 			{
 				var uploadedMedia = service.UploadMedia(new UploadMediaOptions
 				{
@@ -469,7 +469,7 @@ namespace TweetSharp.Tests.Service
 
 			var service = GetAuthenticatedService();
 			service.TraceEnabled = true;
-			using (var stream = new FileStream("daniel_8bit.png", FileMode.Open, FileAccess.Read, FileShare.Read))
+			using (var stream = new FileStream(System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "daniel_8bit.png"), FileMode.Open, FileAccess.Read, FileShare.Read))
 			{
 				var uploadedMedia = service.UploadMedia(new UploadMediaOptions
 				{
@@ -482,7 +482,7 @@ namespace TweetSharp.Tests.Service
 				mediaIds.Add(uploadedMedia.Media_Id);
 			}
 
-			using (var stream = new FileStream("Sparrow.jpg", FileMode.Open, FileAccess.Read, FileShare.Read))
+			using (var stream = new FileStream(System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Sparrow.jpg"), FileMode.Open, FileAccess.Read, FileShare.Read))
 			{
 				var uploadedMedia = service.UploadMedia(new UploadMediaOptions
 				{
@@ -1454,7 +1454,7 @@ namespace TweetSharp.Tests.Service
 			var service = GetAuthenticatedService();
 			service.TraceEnabled = true;
 
-			using (var stream = new FileStream(@"big_buck_bunny.mp4", FileMode.Open, FileAccess.Read, FileShare.Read))
+			using (var stream = new FileStream(System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"big_buck_bunny.mp4"), FileMode.Open, FileAccess.Read, FileShare.Read))
 			{
 				TwitterChunkedMedia uploadedMedia = InitialiseMediaUpload(service, stream);
 
@@ -1571,7 +1571,7 @@ namespace TweetSharp.Tests.Service
 			service.TraceEnabled = true;
 
 			//using (var stream = new FileStream("test_video.mp4", FileMode.Open, FileAccess.Read, FileShare.Read))
-			using (var stream = new FileStream(@"big_buck_bunny.mp4", FileMode.Open, FileAccess.Read, FileShare.Read))
+			using (var stream = new FileStream(System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"big_buck_bunny.mp4"), FileMode.Open, FileAccess.Read, FileShare.Read))
 			{
 				TwitterChunkedMedia uploadedMedia = await InitialiseMediaUploadAsync(service, stream);
 
