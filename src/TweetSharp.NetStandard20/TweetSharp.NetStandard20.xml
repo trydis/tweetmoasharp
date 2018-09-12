@@ -4,6 +4,11 @@
         <name>TweetSharp.NetStandard20</name>
     </assembly>
     <members>
+        <member name="T:TweetSharp.TwitterCreateDirectMessageEvent">
+            <summary>
+            Represents an event for a private direct message between two users.
+            </summary>
+        </member>
         <member name="T:TweetSharp.TwitterCursorList`1">
             <summary>
             A generic collection that also contains any cursor data necessary for paging
@@ -120,12 +125,12 @@
             An SMS-capable delivery device is used.
             </summary>
         </member>
-        <member name="T:TweetSharp.TwitterDirectMessage">
+        <member name="T:TweetSharp.TwitterDirectMessageEvent">
             <summary>
-            Represents a private <see cref="T:TweetSharp.TwitterStatus" /> between two users.
+            Represents an event about a direct message.
             </summary>
         </member>
-        <member name="M:TweetSharp.TwitterDirectMessage.CompareTo(TweetSharp.TwitterDirectMessage)">
+        <member name="M:TweetSharp.TwitterDirectMessageEvent.CompareTo(TweetSharp.TwitterDirectMessageEvent)">
             <summary>
             Compares the current object with another object of the same type.
             </summary>
@@ -134,7 +139,7 @@
             </returns>
             <param name="other">An object to compare with this object.</param>
         </member>
-        <member name="M:TweetSharp.TwitterDirectMessage.Equals(TweetSharp.TwitterDirectMessage)">
+        <member name="M:TweetSharp.TwitterDirectMessageEvent.Equals(TweetSharp.TwitterDirectMessageEvent)">
             <summary>
             Indicates whether the current object is equal to another object of the same type.
             </summary>
@@ -143,7 +148,7 @@
             true if the current object is equal to the <paramref name="obj"/> parameter; otherwise, false.
             </returns>
         </member>
-        <member name="M:TweetSharp.TwitterDirectMessage.Equals(System.Object)">
+        <member name="M:TweetSharp.TwitterDirectMessageEvent.Equals(System.Object)">
             <summary>
             Determines whether the specified <see cref="T:System.Object"/> is equal to the current <see cref="T:System.Object"/>.
             </summary>
@@ -152,7 +157,7 @@
             true if the specified <see cref="T:System.Object"/> is equal to the current <see cref="T:System.Object"/>; otherwise, false.
             </returns>
         </member>
-        <member name="M:TweetSharp.TwitterDirectMessage.GetHashCode">
+        <member name="M:TweetSharp.TwitterDirectMessageEvent.GetHashCode">
             <summary>
             Serves as a hash function for a particular type.
             </summary>
@@ -160,7 +165,7 @@
             A hash code for the current <see cref="T:System.Object"/>.
             </returns>
         </member>
-        <member name="M:TweetSharp.TwitterDirectMessage.op_Equality(TweetSharp.TwitterDirectMessage,TweetSharp.TwitterDirectMessage)">
+        <member name="M:TweetSharp.TwitterDirectMessageEvent.op_Equality(TweetSharp.TwitterDirectMessageEvent,TweetSharp.TwitterDirectMessageEvent)">
             <summary>
             Implements the operator ==.
             </summary>
@@ -168,13 +173,48 @@
             <param name="right">The right.</param>
             <returns>The result of the operator.</returns>
         </member>
-        <member name="M:TweetSharp.TwitterDirectMessage.op_Inequality(TweetSharp.TwitterDirectMessage,TweetSharp.TwitterDirectMessage)">
+        <member name="M:TweetSharp.TwitterDirectMessageEvent.op_Inequality(TweetSharp.TwitterDirectMessageEvent,TweetSharp.TwitterDirectMessageEvent)">
             <summary>
             Implements the operator !=.
             </summary>
             <param name="left">The left.</param>
             <param name="right">The right.</param>
             <returns>The result of the operator.</returns>
+        </member>
+        <member name="T:TweetSharp.TwitterDirectMessageEventInitiatedVia">
+            <summary>
+            Represents information about what started a <see cref="T:TweetSharp.TwitterDirectMessageEvent"/>.
+            </summary>
+        </member>
+        <member name="T:TweetSharp.TwitterDirectMessage">
+            <summary>
+            Represents a private direct message between two users.
+            </summary>
+        </member>
+        <member name="T:TweetSharp.DirectMessageTarget">
+            <summary>
+            Represents the recipient of a direct message.
+            </summary>
+        </member>
+        <member name="T:TweetSharp.TwitterDirectMessageContent">
+            <summary>
+            Represents the actual text and embedded entities of a direct message.
+            </summary>
+        </member>
+        <member name="T:TweetSharp.TwitterQuickReplyResponse">
+            <summary>
+            Represents a quick (precanned) reply to a direct message.
+            </summary>
+        </member>
+        <member name="T:TweetSharp.TwitterMediaAttachment">
+            <summary>
+            Represents a piece of media as an attachment.
+            </summary>
+        </member>
+        <member name="T:TweetSharp.TwitterAttachment">
+            <summary>
+            Represents a quick (precanned) reply to a direct message.
+            </summary>
         </member>
         <member name="T:TweetSharp.TweetMode">
             <summary>
@@ -619,35 +659,6 @@
             </summary>
             <seealso href="http://dev.twitter.com/doc" />
         </member>
-        <member name="M:TweetSharp.TwitterService.CancelStreaming">
-            <summary>
-            Cancels pending streaming actions from this service.
-            </summary>
-        </member>
-        <member name="M:TweetSharp.TwitterService.StreamFilter(System.Action{TweetSharp.TwitterStreamArtifact,TweetSharp.TwitterResponse},TweetSharp.FilterStreamOptions)">
-            <summary>
-            Accesses an asynchronous Twitter filter stream indefinitely, until terminated.
-            </summary>
-            <seealso href="http://dev.twitter.com/pages/streaming_api_methods#statuses-filter" />
-            <param name="action"></param>
-            <returns></returns>
-        </member>
-        <member name="M:TweetSharp.TwitterService.StreamUser(System.Action{TweetSharp.TwitterStreamArtifact,TweetSharp.TwitterResponse})">
-            <summary>
-            Accesses an asynchronous Twitter user stream indefinitely, until terminated.
-            </summary>
-            <seealso href="http://dev.twitter.com/pages/user_streams" />
-            <param name="action"></param>
-            <returns></returns>
-        </member>
-        <member name="M:TweetSharp.TwitterService.StreamUser(System.Action{TweetSharp.TwitterStreamArtifact,TweetSharp.TwitterResponse},TweetSharp.FilterStreamOptions)">
-            <summary>
-            Accesses an asynchronous Twitter user stream indefinitely, until terminated.
-            </summary>
-            <seealso href="http://dev.twitter.com/pages/user_streams" />
-            <param name="action"></param>
-            <returns></returns>
-        </member>
         <member name="P:TweetSharp.TwitterStatus.RetrievedAt">
             <summary>
             Returns the UTC date and time (from the local system clock) at which this item was deserialised, usually equivalent to the time it was retrieved from Twitter. 
@@ -713,39 +724,6 @@
             <param name="left">The left.</param>
             <param name="right">The right.</param>
             <returns>The result of the operator.</returns>
-        </member>
-        <member name="T:TweetSharp.TwitterUserStreamFriends">
-            <summary>
-            Denotes a list of user friends in a user stream.
-            </summary>
-        </member>
-        <member name="T:TweetSharp.TwitterUserStreamStatus">
-            <summary>
-            Denotes a <see cref="T:TweetSharp.TwitterStatus" /> in a user stream.
-            </summary>
-        </member>
-        <member name="T:TweetSharp.TwitterUserStreamEventBase">
-            <summary>
-            Denotes a stream event, resulting from a user action.
-            The source is always the initiating user, the target is always the affected user.
-            </summary>
-        </member>
-        <member name="T:TweetSharp.TwitterUserStreamEvent">
-            <summary>
-            Denotes a stream event, resulting from a user action;
-            the source is always the initiating user, the target is always the affected user, and
-            the target object depends on the initiating action: statuses, direct messages, and lists.
-            </summary>
-        </member>
-        <member name="T:TweetSharp.TwitterUserStreamEnd">
-            <summary>
-            Denotes the end of a user stream
-            </summary>
-        </member>
-        <member name="T:TweetSharp.TwitterStreamArtifact">
-            <summary>
-            Denotes content surfaced in a stream
-            </summary>
         </member>
         <member name="T:TweetSharp.TwitterUserSuggestions">
             <summary>

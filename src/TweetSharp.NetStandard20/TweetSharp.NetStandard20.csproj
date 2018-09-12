@@ -40,12 +40,13 @@
     <Compile Include="..\TweetSharp\TwitterClientInfo.cs" Link="TwitterClientInfo.cs" />
     <Compile Include="..\TweetSharp\TwitterConfiguration.cs" Link="TwitterConfiguration.cs" />
     <Compile Include="..\TweetSharp\TwitterConverterBase.cs" Link="TwitterConverterBase.cs" />
+    <Compile Include="..\TweetSharp\TwitterCreateDirectMessageEvent.cs" Link="TwitterCreateDirectMessageEvent.cs" />
     <Compile Include="..\TweetSharp\TwitterCursorList.cs" Link="TwitterCursorList.cs" />
     <Compile Include="..\TweetSharp\TwitterDateFormat.cs" Link="TwitterDateFormat.cs" />
     <Compile Include="..\TweetSharp\TwitterDateTime.cs" Link="TwitterDateTime.cs" />
     <Compile Include="..\TweetSharp\TwitterDateTimeConverter.cs" Link="TwitterDateTimeConverter.cs" />
     <Compile Include="..\TweetSharp\TwitterDeliveryDevice.cs" Link="TwitterDeliveryDevice.cs" />
-    <Compile Include="..\TweetSharp\TwitterDirectMessage.cs" Link="TwitterDirectMessage.cs" />
+    <Compile Include="..\TweetSharp\TwitterDirectMessageEvent.cs" Link="TwitterDirectMessageEvent.cs" />
     <Compile Include="..\TweetSharp\TwitterEntities.cs" Link="TwitterEntities.cs" />
     <Compile Include="..\TweetSharp\TwitterEnums.cs" Link="TwitterEnums.cs" />
     <Compile Include="..\TweetSharp\TwitterError.cs" Link="TwitterError.cs" />
@@ -66,7 +67,6 @@
     <Compile Include="..\TweetSharp\TwitterService.cs" Link="TwitterService.cs" />
     <Compile Include="..\TweetSharp\TwitterService.generated.cs" Link="TwitterService.generated.cs" />
     <Compile Include="..\TweetSharp\TwitterService.OAuth.cs" Link="TwitterService.OAuth.cs" />
-    <Compile Include="..\TweetSharp\TwitterService.Streaming.cs" Link="TwitterService.Streaming.cs" />
     <Compile Include="..\TweetSharp\TwitterSleepTime.cs" Link="TwitterSleepTime.cs" />
     <Compile Include="..\TweetSharp\TwitterStatus.cs" Link="TwitterStatus.cs" />
     <Compile Include="..\TweetSharp\TwitterTimeZone.cs" Link="TwitterTimeZone.cs" />
@@ -74,7 +74,6 @@
     <Compile Include="..\TweetSharp\TwitterTrends.cs" Link="TwitterTrends.cs" />
     <Compile Include="..\TweetSharp\TwitterUploadedMedia.cs" Link="TwitterUploadedMedia.cs" />
     <Compile Include="..\TweetSharp\TwitterUser.cs" Link="TwitterUser.cs" />
-    <Compile Include="..\TweetSharp\TwitterUserStreams.cs" Link="TwitterUserStreams.cs" />
     <Compile Include="..\TweetSharp\TwitterUserSuggestions.cs" Link="TwitterUserSuggestions.cs" />
     <Compile Include="..\TweetSharp\TwitterWonkyBooleanConverter.cs" Link="TwitterWonkyBooleanConverter.cs" />
     <Compile Include="..\TweetSharp\UploadMediaResult.cs" Link="UploadMediaResult.cs" />
