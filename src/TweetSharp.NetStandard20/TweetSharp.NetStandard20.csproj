@@ -3,7 +3,18 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <RootNamespace>TweetSharp</RootNamespace>
+		<GenerateAssemblyInfo>False</GenerateAssemblyInfo>
     <ApplicationIcon />
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <OutputPath>C:\Projects\GitHub\Forks\tweetsharp\bin\lib\</OutputPath>
+    <DocumentationFile>C:\Projects\GitHub\Forks\tweetsharp\src\TweetSharp.NetStandard20\TweetSharp.NetStandard20.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <OutputPath>C:\Projects\GitHub\Forks\tweetsharp\bin\lib\</OutputPath>
+    <DocumentationFile>C:\Projects\GitHub\Forks\tweetsharp\src\TweetSharp.NetStandard20\TweetSharp.NetStandard20.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
@@ -19,6 +30,7 @@
     <Compile Include="..\TweetSharp\OAuthAccessToken.cs" Link="OAuthAccessToken.cs" />
     <Compile Include="..\TweetSharp\OAuthRequestToken.cs" Link="OAuthRequestToken.cs" />
     <Compile Include="..\TweetSharp\ObjectExtensions.cs" Link="ObjectExtensions.cs" />
+    <Compile Include="..\TweetSharp\Properties\AssemblyInfoVersion.cs" Link="AssemblyInfoVersion.cs" />
     <Compile Include="..\TweetSharp\SerializerBase.cs" Link="SerializerBase.cs" />
     <Compile Include="..\TweetSharp\StringExtensions.cs" Link="StringExtensions.cs" />
     <Compile Include="..\TweetSharp\TimeExtensions.cs" Link="TimeExtensions.cs" />
@@ -38,7 +50,6 @@
     <Compile Include="..\TweetSharp\TwitterEnums.cs" Link="TwitterEnums.cs" />
     <Compile Include="..\TweetSharp\TwitterError.cs" Link="TwitterError.cs" />
     <Compile Include="..\TweetSharp\TwitterErrors.cs" Link="TwitterErrors.cs" />
-    <Compile Include="..\TweetSharp\TwitterExtendedEntities.cs" Link="TwitterExtendedEntities.cs" />
     <Compile Include="..\TweetSharp\TwitterFriend.cs" Link="TwitterFriend.cs" />
     <Compile Include="..\TweetSharp\TwitterFriendship.cs" Link="TwitterFriendship.cs" />
     <Compile Include="..\TweetSharp\TwitterGeoConverter.cs" Link="TwitterGeoConverter.cs" />
@@ -70,6 +81,7 @@
     <Compile Include="..\TweetSharp\WhereOnEarthLocation.cs" Link="WhereOnEarthLocation.cs" />
     <Compile Include="..\TweetSharp\WhereOnEarthPlaceType.cs" Link="WhereOnEarthPlaceType.cs" />
   </ItemGroup>
+
 
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
