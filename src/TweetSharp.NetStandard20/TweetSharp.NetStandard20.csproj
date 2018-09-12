@@ -9,12 +9,12 @@
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <OutputPath>C:\Projects\GitHub\Forks\tweetsharp\bin\lib\</OutputPath>
-    <DocumentationFile>C:\Projects\GitHub\Forks\tweetsharp\src\TweetSharp.NetStandard20\TweetSharp.NetStandard20.xml</DocumentationFile>
+    <DocumentationFile></DocumentationFile>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <OutputPath>C:\Projects\GitHub\Forks\tweetsharp\bin\lib\</OutputPath>
-    <DocumentationFile>C:\Projects\GitHub\Forks\tweetsharp\src\TweetSharp.NetStandard20\TweetSharp.NetStandard20.xml</DocumentationFile>
+    <DocumentationFile></DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>

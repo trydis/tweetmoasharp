@@ -125,6 +125,7 @@ namespace TweetSharp.Tests.Service
 			foreach (var dm in mentions)
 			{
 				Console.WriteLine("{0} said '{1}'", dm.User.ScreenName, dm.Text);
+				System.Diagnostics.Debug.WriteLine(String.Format("{0} said '{1}'", dm.User.ScreenName, dm.Text));
 			}
 		}
 
