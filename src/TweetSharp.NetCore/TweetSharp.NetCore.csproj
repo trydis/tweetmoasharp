@@ -118,6 +118,9 @@
     <Compile Include="..\TweetSharp\TwitterConverterBase.cs">
       <Link>TwitterConverterBase.cs</Link>
     </Compile>
+    <Compile Include="..\TweetSharp\TwitterCreateDirectMessageEvent.cs">
+      <Link>TwitterCreateDirectMessageEvent.cs</Link>
+    </Compile>
     <Compile Include="..\TweetSharp\TwitterCursorList.cs">
       <Link>TwitterCursorList.cs</Link>
     </Compile>
@@ -133,8 +136,8 @@
     <Compile Include="..\TweetSharp\TwitterDeliveryDevice.cs">
       <Link>TwitterDeliveryDevice.cs</Link>
     </Compile>
-    <Compile Include="..\TweetSharp\TwitterDirectMessage.cs">
-      <Link>TwitterDirectMessage.cs</Link>
+    <Compile Include="..\TweetSharp\TwitterDirectMessageEvent.cs">
+      <Link>TwitterDirectMessageEvent.cs</Link>
     </Compile>
     <Compile Include="..\TweetSharp\TwitterEntities.cs">
       <Link>TwitterEntities.cs</Link>
@@ -216,9 +219,6 @@
     </Compile>
     <Compile Include="..\TweetSharp\TwitterUser.cs">
       <Link>TwitterUser.cs</Link>
-    </Compile>
-    <Compile Include="..\TweetSharp\TwitterUserStreams.cs">
-      <Link>TwitterUserStreams.cs</Link>
     </Compile>
     <Compile Include="..\TweetSharp\TwitterUserSuggestions.cs">
       <Link>TwitterUserSuggestions.cs</Link>

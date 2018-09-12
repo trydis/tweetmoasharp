@@ -187,47 +187,9 @@ namespace TweetSharp
 	}			
  
     		
-	public class ListDirectMessagesReceivedOptions
-	{ 
-		public long? SinceId { get; set; }  
-		public long? MaxId { get; set; }  
-		public int? Count { get; set; }  
-		public bool? IncludeEntities { get; set; }  
-		public bool? SkipStatus { get; set; }  
-		public bool? FullText { get; set; } 			
-	}			
- 
-    		
-	public class ListDirectMessagesSentOptions
-	{ 
-		public long? SinceId { get; set; }  
-		public long? MaxId { get; set; }  
-		public int? Count { get; set; }  
-		public int? Page { get; set; }  
-		public bool? IncludeEntities { get; set; }  
-		public bool? FullText { get; set; } 			
-	}			
- 
-    		
-	public class GetDirectMessageOptions
-	{ 
-		public long Id { get; set; }  
-		public bool? FullText { get; set; } 			
-	}			
- 
-    		
-	public class DeleteDirectMessageOptions
-	{ 
-		public long Id { get; set; }  
-		public bool? IncludeEntities { get; set; } 			
-	}			
- 
-    		
 	public class SendDirectMessageOptions
 	{ 
-		public string Text { get; set; }  
-		public long UserId { get; set; }  
-		public string ScreenName { get; set; } 			
+		public TwitterDirectMessage Message { get; set; } 			
 	}			
  
     		
@@ -876,23 +838,7 @@ namespace TweetSharp
 
  
         
-		IEnumerable<TwitterDirectMessage> ListDirectMessagesReceived(ListDirectMessagesReceivedOptions options);	
-
- 
-        
-		IEnumerable<TwitterDirectMessage> ListDirectMessagesSent(ListDirectMessagesSentOptions options);	
-
- 
-        
-		TwitterDirectMessage GetDirectMessage(GetDirectMessageOptions options);	
-
- 
-        
-		TwitterDirectMessage DeleteDirectMessage(DeleteDirectMessageOptions options);	
-
- 
-        
-		TwitterDirectMessage SendDirectMessage(SendDirectMessageOptions options);	
+		TwitterCreateDirectMessageEvent SendDirectMessage(SendDirectMessageOptions options);	
 
  
         
@@ -1226,19 +1172,7 @@ namespace TweetSharp
 		IAsyncResult Search(SearchOptions options, Action<TwitterSearchResult, TwitterResponse>  action);
 
         
-		IAsyncResult ListDirectMessagesReceived(ListDirectMessagesReceivedOptions options, Action<IEnumerable<TwitterDirectMessage>, TwitterResponse>  action);
-
-        
-		IAsyncResult ListDirectMessagesSent(ListDirectMessagesSentOptions options, Action<IEnumerable<TwitterDirectMessage>, TwitterResponse>  action);
-
-        
-		IAsyncResult GetDirectMessage(GetDirectMessageOptions options, Action<TwitterDirectMessage, TwitterResponse>  action);
-
-        
-		IAsyncResult DeleteDirectMessage(DeleteDirectMessageOptions options, Action<TwitterDirectMessage, TwitterResponse>  action);
-
-        
-		IAsyncResult SendDirectMessage(SendDirectMessageOptions options, Action<TwitterDirectMessage, TwitterResponse>  action);
+		IAsyncResult SendDirectMessage(SendDirectMessageOptions options, Action<TwitterCreateDirectMessageEvent, TwitterResponse>  action);
 
         
 		IAsyncResult ListFriendIdsOf(ListFriendIdsOfOptions options, Action<TwitterCursorList<long>, TwitterResponse>  action);
@@ -1576,39 +1510,11 @@ namespace TweetSharp
 		TwitterSearchResult EndSearch(IAsyncResult result, TimeSpan timeout);
 
         
-		IAsyncResult BeginListDirectMessagesReceived(ListDirectMessagesReceivedOptions options);
-
-		IEnumerable<TwitterDirectMessage> EndListDirectMessagesReceived(IAsyncResult result);		
-
-		IEnumerable<TwitterDirectMessage> EndListDirectMessagesReceived(IAsyncResult result, TimeSpan timeout);
-
-        
-		IAsyncResult BeginListDirectMessagesSent(ListDirectMessagesSentOptions options);
-
-		IEnumerable<TwitterDirectMessage> EndListDirectMessagesSent(IAsyncResult result);		
-
-		IEnumerable<TwitterDirectMessage> EndListDirectMessagesSent(IAsyncResult result, TimeSpan timeout);
-
-        
-		IAsyncResult BeginGetDirectMessage(GetDirectMessageOptions options);
-
-		TwitterDirectMessage EndGetDirectMessage(IAsyncResult result);		
-
-		TwitterDirectMessage EndGetDirectMessage(IAsyncResult result, TimeSpan timeout);
-
-        
-		IAsyncResult BeginDeleteDirectMessage(DeleteDirectMessageOptions options);
-
-		TwitterDirectMessage EndDeleteDirectMessage(IAsyncResult result);		
-
-		TwitterDirectMessage EndDeleteDirectMessage(IAsyncResult result, TimeSpan timeout);
-
-        
 		IAsyncResult BeginSendDirectMessage(SendDirectMessageOptions options);
 
-		TwitterDirectMessage EndSendDirectMessage(IAsyncResult result);		
+		TwitterCreateDirectMessageEvent EndSendDirectMessage(IAsyncResult result);		
 
-		TwitterDirectMessage EndSendDirectMessage(IAsyncResult result, TimeSpan timeout);
+		TwitterCreateDirectMessageEvent EndSendDirectMessage(IAsyncResult result, TimeSpan timeout);
 
         
 		IAsyncResult BeginListFriendIdsOf(ListFriendIdsOfOptions options);
@@ -2146,19 +2052,7 @@ namespace TweetSharp
 		void Search(SearchOptions options, Action<TwitterSearchResult, TwitterResponse>  action);
 
         
-		void ListDirectMessagesReceived(ListDirectMessagesReceivedOptions options, Action<IEnumerable<TwitterDirectMessage>, TwitterResponse>  action);
-
-        
-		void ListDirectMessagesSent(ListDirectMessagesSentOptions options, Action<IEnumerable<TwitterDirectMessage>, TwitterResponse>  action);
-
-        
-		void GetDirectMessage(GetDirectMessageOptions options, Action<TwitterDirectMessage, TwitterResponse>  action);
-
-        
-		void DeleteDirectMessage(DeleteDirectMessageOptions options, Action<TwitterDirectMessage, TwitterResponse>  action);
-
-        
-		void SendDirectMessage(SendDirectMessageOptions options, Action<TwitterDirectMessage, TwitterResponse>  action);
+		void SendDirectMessage(SendDirectMessageOptions options, Action<TwitterCreateDirectMessageEvent, TwitterResponse>  action);
 
         
 		void ListFriendIdsOf(ListFriendIdsOfOptions options, Action<TwitterCursorList<long>, TwitterResponse>  action);
@@ -2425,19 +2319,7 @@ namespace TweetSharp
 		 Task<TwitterAsyncResult<TwitterSearchResult>> SearchAsync(SearchOptions options);
         
 
-		 Task<TwitterAsyncResult<IEnumerable<TwitterDirectMessage>>> ListDirectMessagesReceivedAsync(ListDirectMessagesReceivedOptions options);
-        
-
-		 Task<TwitterAsyncResult<IEnumerable<TwitterDirectMessage>>> ListDirectMessagesSentAsync(ListDirectMessagesSentOptions options);
-        
-
-		 Task<TwitterAsyncResult<TwitterDirectMessage>> GetDirectMessageAsync(GetDirectMessageOptions options);
-        
-
-		 Task<TwitterAsyncResult<TwitterDirectMessage>> DeleteDirectMessageAsync(DeleteDirectMessageOptions options);
-        
-
-		 Task<TwitterAsyncResult<TwitterDirectMessage>> SendDirectMessageAsync(SendDirectMessageOptions options);
+		 Task<TwitterAsyncResult<TwitterCreateDirectMessageEvent>> SendDirectMessageAsync(SendDirectMessageOptions options);
         
 
 		 Task<TwitterAsyncResult<TwitterCursorList<long>>> ListFriendIdsOfAsync(ListFriendIdsOfOptions options);
@@ -2888,62 +2770,12 @@ namespace TweetSharp
 		}
 
         
-		public virtual IEnumerable<TwitterDirectMessage> ListDirectMessagesReceived(ListDirectMessagesReceivedOptions options)
+		public virtual TwitterCreateDirectMessageEvent SendDirectMessage(SendDirectMessageOptions options)
 		{
-			var since_id = options.SinceId;
-			var max_id = options.MaxId;
-			var count = options.Count;
-			var include_entities = options.IncludeEntities;
-			var skip_status = options.SkipStatus;
-			var full_text = options.FullText;
+			var message = options.Message;
 				
 			
-			return WithHammock<IEnumerable<TwitterDirectMessage>>(_client, "direct_messages", FormatAsString, "?since_id=", since_id, "&max_id=", max_id, "&count=", count, "&include_entities=", include_entities, "&skip_status=", skip_status, "&full_text=", full_text);
-		}
-
-        
-		public virtual IEnumerable<TwitterDirectMessage> ListDirectMessagesSent(ListDirectMessagesSentOptions options)
-		{
-			var since_id = options.SinceId;
-			var max_id = options.MaxId;
-			var count = options.Count;
-			var page = options.Page;
-			var include_entities = options.IncludeEntities;
-			var full_text = options.FullText;
-				
-			
-			return WithHammock<IEnumerable<TwitterDirectMessage>>(_client, "direct_messages/sent", FormatAsString, "?since_id=", since_id, "&max_id=", max_id, "&count=", count, "&page=", page, "&include_entities=", include_entities, "&full_text=", full_text);
-		}
-
-        
-		public virtual TwitterDirectMessage GetDirectMessage(GetDirectMessageOptions options)
-		{
-			var id = options.Id;
-			var full_text = options.FullText;
-				
-			
-			return WithHammock<TwitterDirectMessage>(_client, "direct_messages/show", FormatAsString, "?id=", id, "&full_text=", full_text);
-		}
-
-        
-		public virtual TwitterDirectMessage DeleteDirectMessage(DeleteDirectMessageOptions options)
-		{
-			var id = options.Id;
-			var include_entities = options.IncludeEntities;
-				
-			
-			return WithHammock<TwitterDirectMessage>(_client, WebMethod.Post, "direct_messages/destroy", FormatAsString, "?id=", id, "&include_entities=", include_entities);
-		}
-
-        
-		public virtual TwitterDirectMessage SendDirectMessage(SendDirectMessageOptions options)
-		{
-			var text = options.Text;
-			var user_id = options.UserId;
-			var screen_name = options.ScreenName;
-				
-			
-			return WithHammock<TwitterDirectMessage>(_client, WebMethod.Post, "direct_messages/new", FormatAsString, "?text=", text, "&user_id=", user_id, "&screen_name=", screen_name);
+			return WithHammock<TwitterCreateDirectMessageEvent>(_client, "direct_messages/events/new", FormatAsString, "?message=", message);
 		}
 
         
@@ -3968,62 +3800,12 @@ namespace TweetSharp
 		}
 
         
-		public virtual IAsyncResult ListDirectMessagesReceived(ListDirectMessagesReceivedOptions options, Action<IEnumerable<TwitterDirectMessage>, TwitterResponse>  action)
+		public virtual IAsyncResult SendDirectMessage(SendDirectMessageOptions options, Action<TwitterCreateDirectMessageEvent, TwitterResponse>  action)
 		{
-			var since_id = options.SinceId;
-			var max_id = options.MaxId;
-			var count = options.Count;
-			var include_entities = options.IncludeEntities;
-			var skip_status = options.SkipStatus;
-			var full_text = options.FullText;
+			var message = options.Message;
 				
 
-			return  WithHammock<IEnumerable<TwitterDirectMessage>>(_client, action, "direct_messages", FormatAsString, "?since_id=", since_id, "&max_id=", max_id, "&count=", count, "&include_entities=", include_entities, "&skip_status=", skip_status, "&full_text=", full_text);
-		}
-
-        
-		public virtual IAsyncResult ListDirectMessagesSent(ListDirectMessagesSentOptions options, Action<IEnumerable<TwitterDirectMessage>, TwitterResponse>  action)
-		{
-			var since_id = options.SinceId;
-			var max_id = options.MaxId;
-			var count = options.Count;
-			var page = options.Page;
-			var include_entities = options.IncludeEntities;
-			var full_text = options.FullText;
-				
-
-			return  WithHammock<IEnumerable<TwitterDirectMessage>>(_client, action, "direct_messages/sent", FormatAsString, "?since_id=", since_id, "&max_id=", max_id, "&count=", count, "&page=", page, "&include_entities=", include_entities, "&full_text=", full_text);
-		}
-
-        
-		public virtual IAsyncResult GetDirectMessage(GetDirectMessageOptions options, Action<TwitterDirectMessage, TwitterResponse>  action)
-		{
-			var id = options.Id;
-			var full_text = options.FullText;
-				
-
-			return  WithHammock<TwitterDirectMessage>(_client, action, "direct_messages/show", FormatAsString, "?id=", id, "&full_text=", full_text);
-		}
-
-        
-		public virtual IAsyncResult DeleteDirectMessage(DeleteDirectMessageOptions options, Action<TwitterDirectMessage, TwitterResponse>  action)
-		{
-			var id = options.Id;
-			var include_entities = options.IncludeEntities;
-				
-
-			return  WithHammock<TwitterDirectMessage>(_client, WebMethod.Post, action, "direct_messages/destroy", FormatAsString, "?id=", id, "&include_entities=", include_entities);
-		}
-
-        
-		public virtual IAsyncResult SendDirectMessage(SendDirectMessageOptions options, Action<TwitterDirectMessage, TwitterResponse>  action)
-		{
-			var text = options.Text;
-			var user_id = options.UserId;
-			var screen_name = options.ScreenName;
-				
-
-			return  WithHammock<TwitterDirectMessage>(_client, WebMethod.Post, action, "direct_messages/new", FormatAsString, "?text=", text, "&user_id=", user_id, "&screen_name=", screen_name);
+			return  WithHammock<TwitterCreateDirectMessageEvent>(_client, action, "direct_messages/events/new", FormatAsString, "?message=", message);
 		}
 
         
@@ -5048,62 +4830,12 @@ namespace TweetSharp
 		}
 
         
-		public virtual IAsyncResult BeginListDirectMessagesReceived(ListDirectMessagesReceivedOptions options)
-		{
-			var since_id = options.SinceId;
-			var max_id = options.MaxId;
-			var count = options.Count;
-			var include_entities = options.IncludeEntities;
-			var skip_status = options.SkipStatus;
-			var full_text = options.FullText;
-				
-
-			return BeginWithHammock<IEnumerable<TwitterDirectMessage>>(_client, WebMethod.Get, "direct_messages", FormatAsString, "?since_id=", since_id, "&max_id=", max_id, "&count=", count, "&include_entities=", include_entities, "&skip_status=", skip_status, "&full_text=", full_text);
-		}
-
-        
-		public virtual IAsyncResult BeginListDirectMessagesSent(ListDirectMessagesSentOptions options)
-		{
-			var since_id = options.SinceId;
-			var max_id = options.MaxId;
-			var count = options.Count;
-			var page = options.Page;
-			var include_entities = options.IncludeEntities;
-			var full_text = options.FullText;
-				
-
-			return BeginWithHammock<IEnumerable<TwitterDirectMessage>>(_client, WebMethod.Get, "direct_messages/sent", FormatAsString, "?since_id=", since_id, "&max_id=", max_id, "&count=", count, "&page=", page, "&include_entities=", include_entities, "&full_text=", full_text);
-		}
-
-        
-		public virtual IAsyncResult BeginGetDirectMessage(GetDirectMessageOptions options)
-		{
-			var id = options.Id;
-			var full_text = options.FullText;
-				
-
-			return BeginWithHammock<TwitterDirectMessage>(_client, WebMethod.Get, "direct_messages/show", FormatAsString, "?id=", id, "&full_text=", full_text);
-		}
-
-        
-		public virtual IAsyncResult BeginDeleteDirectMessage(DeleteDirectMessageOptions options)
-		{
-			var id = options.Id;
-			var include_entities = options.IncludeEntities;
-				
-
-			return BeginWithHammock<TwitterDirectMessage>(_client, WebMethod.Post, "direct_messages/destroy", FormatAsString, "?id=", id, "&include_entities=", include_entities);
-		}
-
-        
 		public virtual IAsyncResult BeginSendDirectMessage(SendDirectMessageOptions options)
 		{
-			var text = options.Text;
-			var user_id = options.UserId;
-			var screen_name = options.ScreenName;
+			var message = options.Message;
 				
 
-			return BeginWithHammock<TwitterDirectMessage>(_client, WebMethod.Post, "direct_messages/new", FormatAsString, "?text=", text, "&user_id=", user_id, "&screen_name=", screen_name);
+			return BeginWithHammock<TwitterCreateDirectMessageEvent>(_client, WebMethod.Get, "direct_messages/events/new", FormatAsString, "?message=", message);
 		}
 
         
@@ -6109,63 +5841,15 @@ namespace TweetSharp
 		}
 
         
-		public virtual IEnumerable<TwitterDirectMessage> EndListDirectMessagesReceived(IAsyncResult result) 
+		public virtual TwitterCreateDirectMessageEvent EndSendDirectMessage(IAsyncResult result) 
 		{
-			return EndWithHammock<IEnumerable<TwitterDirectMessage>>(result);
+			return EndWithHammock<TwitterCreateDirectMessageEvent>(result);
 		}
 
 		
-		public virtual IEnumerable<TwitterDirectMessage> EndListDirectMessagesReceived(IAsyncResult result, TimeSpan timeout) 
+		public virtual TwitterCreateDirectMessageEvent EndSendDirectMessage(IAsyncResult result, TimeSpan timeout) 
 		{
-			return EndWithHammock<IEnumerable<TwitterDirectMessage>>(result, timeout);
-		}
-
-        
-		public virtual IEnumerable<TwitterDirectMessage> EndListDirectMessagesSent(IAsyncResult result) 
-		{
-			return EndWithHammock<IEnumerable<TwitterDirectMessage>>(result);
-		}
-
-		
-		public virtual IEnumerable<TwitterDirectMessage> EndListDirectMessagesSent(IAsyncResult result, TimeSpan timeout) 
-		{
-			return EndWithHammock<IEnumerable<TwitterDirectMessage>>(result, timeout);
-		}
-
-        
-		public virtual TwitterDirectMessage EndGetDirectMessage(IAsyncResult result) 
-		{
-			return EndWithHammock<TwitterDirectMessage>(result);
-		}
-
-		
-		public virtual TwitterDirectMessage EndGetDirectMessage(IAsyncResult result, TimeSpan timeout) 
-		{
-			return EndWithHammock<TwitterDirectMessage>(result, timeout);
-		}
-
-        
-		public virtual TwitterDirectMessage EndDeleteDirectMessage(IAsyncResult result) 
-		{
-			return EndWithHammock<TwitterDirectMessage>(result);
-		}
-
-		
-		public virtual TwitterDirectMessage EndDeleteDirectMessage(IAsyncResult result, TimeSpan timeout) 
-		{
-			return EndWithHammock<TwitterDirectMessage>(result, timeout);
-		}
-
-        
-		public virtual TwitterDirectMessage EndSendDirectMessage(IAsyncResult result) 
-		{
-			return EndWithHammock<TwitterDirectMessage>(result);
-		}
-
-		
-		public virtual TwitterDirectMessage EndSendDirectMessage(IAsyncResult result, TimeSpan timeout) 
-		{
-			return EndWithHammock<TwitterDirectMessage>(result, timeout);
+			return EndWithHammock<TwitterCreateDirectMessageEvent>(result, timeout);
 		}
 
         
@@ -7202,57 +6886,11 @@ namespace TweetSharp
 		}
 
         
-		public virtual void ListDirectMessagesReceived(ListDirectMessagesReceivedOptions options, Action<IEnumerable<TwitterDirectMessage>, TwitterResponse>  action)
+		public virtual void SendDirectMessage(SendDirectMessageOptions options, Action<TwitterCreateDirectMessageEvent, TwitterResponse>  action)
 		{
-			var since_id = options.SinceId;
-			var max_id = options.MaxId;
-			var count = options.Count;
-			var include_entities = options.IncludeEntities;
-			var skip_status = options.SkipStatus;
-			var full_text = options.FullText;
+			var message = options.Message;
 			
-			WithHammock<IEnumerable<TwitterDirectMessage>>(_client, action, "direct_messages", FormatAsString, "?since_id=", since_id, "&max_id=", max_id, "&count=", count, "&include_entities=", include_entities, "&skip_status=", skip_status, "&full_text=", full_text);
-		}
-
-        
-		public virtual void ListDirectMessagesSent(ListDirectMessagesSentOptions options, Action<IEnumerable<TwitterDirectMessage>, TwitterResponse>  action)
-		{
-			var since_id = options.SinceId;
-			var max_id = options.MaxId;
-			var count = options.Count;
-			var page = options.Page;
-			var include_entities = options.IncludeEntities;
-			var full_text = options.FullText;
-			
-			WithHammock<IEnumerable<TwitterDirectMessage>>(_client, action, "direct_messages/sent", FormatAsString, "?since_id=", since_id, "&max_id=", max_id, "&count=", count, "&page=", page, "&include_entities=", include_entities, "&full_text=", full_text);
-		}
-
-        
-		public virtual void GetDirectMessage(GetDirectMessageOptions options, Action<TwitterDirectMessage, TwitterResponse>  action)
-		{
-			var id = options.Id;
-			var full_text = options.FullText;
-			
-			WithHammock<TwitterDirectMessage>(_client, action, "direct_messages/show", FormatAsString, "?id=", id, "&full_text=", full_text);
-		}
-
-        
-		public virtual void DeleteDirectMessage(DeleteDirectMessageOptions options, Action<TwitterDirectMessage, TwitterResponse>  action)
-		{
-			var id = options.Id;
-			var include_entities = options.IncludeEntities;
-			
-			WithHammock<TwitterDirectMessage>(_client, WebMethod.Post, action, "direct_messages/destroy", FormatAsString, "?id=", id, "&include_entities=", include_entities);
-		}
-
-        
-		public virtual void SendDirectMessage(SendDirectMessageOptions options, Action<TwitterDirectMessage, TwitterResponse>  action)
-		{
-			var text = options.Text;
-			var user_id = options.UserId;
-			var screen_name = options.ScreenName;
-			
-			WithHammock<TwitterDirectMessage>(_client, WebMethod.Post, action, "direct_messages/new", FormatAsString, "?text=", text, "&user_id=", user_id, "&screen_name=", screen_name);
+			WithHammock<TwitterCreateDirectMessageEvent>(_client, action, "direct_messages/events/new", FormatAsString, "?message=", message);
 		}
 
         
@@ -8173,53 +7811,11 @@ namespace TweetSharp
 			return WithHammockTask<TwitterSearchResult>(_client, "search/tweets", FormatAsString, "?q=", q, "&geocode=", geocode, "&lang=", lang, "&locale=", locale, "&result_type=", resultType, "&count=", count, "&since_id=", since_id, "&max_id=", max_id, "&include_entities=", include_entities, "&callback=", callback, "&until=", until);
 		}
         
-		public virtual  Task<TwitterAsyncResult<IEnumerable<TwitterDirectMessage>>> ListDirectMessagesReceivedAsync(ListDirectMessagesReceivedOptions options)
+		public virtual  Task<TwitterAsyncResult<TwitterCreateDirectMessageEvent>> SendDirectMessageAsync(SendDirectMessageOptions options)
 		{
-			var since_id = options.SinceId;
-			var max_id = options.MaxId;
-			var count = options.Count;
-			var include_entities = options.IncludeEntities;
-			var skip_status = options.SkipStatus;
-			var full_text = options.FullText;
+			var message = options.Message;
 			
-			return WithHammockTask<IEnumerable<TwitterDirectMessage>>(_client, "direct_messages", FormatAsString, "?since_id=", since_id, "&max_id=", max_id, "&count=", count, "&include_entities=", include_entities, "&skip_status=", skip_status, "&full_text=", full_text);
-		}
-        
-		public virtual  Task<TwitterAsyncResult<IEnumerable<TwitterDirectMessage>>> ListDirectMessagesSentAsync(ListDirectMessagesSentOptions options)
-		{
-			var since_id = options.SinceId;
-			var max_id = options.MaxId;
-			var count = options.Count;
-			var page = options.Page;
-			var include_entities = options.IncludeEntities;
-			var full_text = options.FullText;
-			
-			return WithHammockTask<IEnumerable<TwitterDirectMessage>>(_client, "direct_messages/sent", FormatAsString, "?since_id=", since_id, "&max_id=", max_id, "&count=", count, "&page=", page, "&include_entities=", include_entities, "&full_text=", full_text);
-		}
-        
-		public virtual  Task<TwitterAsyncResult<TwitterDirectMessage>> GetDirectMessageAsync(GetDirectMessageOptions options)
-		{
-			var id = options.Id;
-			var full_text = options.FullText;
-			
-			return WithHammockTask<TwitterDirectMessage>(_client, "direct_messages/show", FormatAsString, "?id=", id, "&full_text=", full_text);
-		}
-        
-		public virtual  Task<TwitterAsyncResult<TwitterDirectMessage>> DeleteDirectMessageAsync(DeleteDirectMessageOptions options)
-		{
-			var id = options.Id;
-			var include_entities = options.IncludeEntities;
-			
-			return WithHammockTask<TwitterDirectMessage>(_client, WebMethod.Post, "direct_messages/destroy", FormatAsString, "?id=", id, "&include_entities=", include_entities);
-		}
-        
-		public virtual  Task<TwitterAsyncResult<TwitterDirectMessage>> SendDirectMessageAsync(SendDirectMessageOptions options)
-		{
-			var text = options.Text;
-			var user_id = options.UserId;
-			var screen_name = options.ScreenName;
-			
-			return WithHammockTask<TwitterDirectMessage>(_client, WebMethod.Post, "direct_messages/new", FormatAsString, "?text=", text, "&user_id=", user_id, "&screen_name=", screen_name);
+			return WithHammockTask<TwitterCreateDirectMessageEvent>(_client, "direct_messages/events/new", FormatAsString, "?message=", message);
 		}
         
 		public virtual  Task<TwitterAsyncResult<TwitterCursorList<long>>> ListFriendIdsOfAsync(ListFriendIdsOfOptions options)

@@ -78,65 +78,6 @@ namespace TweetSharp.Tests.Service
 		}
 
 		[Test]
-		public void Can_get_direct_messages()
-		{
-			var service = GetAuthenticatedService();
-			var dms = service.ListDirectMessagesReceived(new ListDirectMessagesReceivedOptions());
-
-			Assert.IsNotNull(dms);
-			Assert.IsTrue(dms.Count() <= 20);
-
-			Assert.IsNotNull(service.Response);
-			AssertResultWas(service, HttpStatusCode.OK);
-
-			foreach (var tweet in dms)
-			{
-				Assert.IsNotNull(tweet.RawSource);
-				Assert.AreNotEqual(default(DateTime), tweet.CreatedDate);
-
-				Console.WriteLine("{0} said '{1}'", tweet.SenderScreenName, tweet.Text);
-			}
-
-			AssertRateLimitStatus(service);
-		}
-
-		[Test]
-		public void Can_get_direct_messages_async_callback_style()
-		{
-			var service = GetAuthenticatedService();
-			var result = service.ListDirectMessagesReceived(new ListDirectMessagesReceivedOptions { FullText = true },
-					(dms, response) =>
-							{
-								Assert.AreEqual(HttpStatusCode.OK, response.StatusCode);
-								Assert.IsNotNull(dms);
-								Assert.AreEqual(20, dms.Count());
-
-								foreach (var dm in dms)
-								{
-									Console.WriteLine("{0} said '{1}'", dm.SenderScreenName, dm.Text);
-								}
-							});
-
-			result.AsyncWaitHandle.WaitOne(TimeSpan.FromSeconds(5));
-		}
-
-		[Test]
-		public void Can_get_direct_messages_begin_end_style()
-		{
-			var service = GetAuthenticatedService();
-			var result = service.BeginListDirectMessagesReceived(new ListDirectMessagesReceivedOptions { FullText = true, Count = 5 });
-			var dms = service.EndListDirectMessagesReceived(result, TimeSpan.FromSeconds(5));
-
-			Assert.IsNotNull(dms);
-			Assert.Greater(dms.Count(), 0);
-
-			foreach (var dm in dms)
-			{
-				Console.WriteLine("{0} said '{1}'", dm.SenderScreenName, dm.Text);
-			}
-		}
-
-		[Test]
 		public void Can_deserialize_dates()
 		{
 			var service = GetAuthenticatedService();
@@ -211,6 +152,11 @@ namespace TweetSharp.Tests.Service
 			AssertResultWas(service, HttpStatusCode.OK);
 			Assert.IsNotNull(profile);
 			Assert.IsNotEmpty(profile.ScreenName);
+		}
+
+		private TwitterUser GetHeroProfile(TwitterService service)
+		{
+			return service.GetUserProfileFor(new GetUserProfileForOptions { ScreenName = _hero });
 		}
 
 		[Test]
@@ -382,66 +328,6 @@ namespace TweetSharp.Tests.Service
 			var tweet = service.SendTweet(new SendTweetOptions { Status = DateTime.UtcNow.Ticks.ToString(), Lat = 56.95, Long = 24.1 });
 
 			AssertResultWas(service, HttpStatusCode.OK);
-			Assert.IsNotNull(tweet);
-			Assert.AreNotEqual(0, tweet.Id);
-		}
-
-		[Test]
-		public void Can_direct_message()
-		{
-			var service = GetAuthenticatedService();
-			var recipient = GetHeroProfile(service);
-			var tweet = service.SendDirectMessage(new SendDirectMessageOptions() { UserId = recipient.Id, Text = DateTime.UtcNow.Ticks.ToString() });
-
-			Assert.IsNotNull(tweet);
-			Assert.AreNotEqual(0, tweet.Id);
-		}
-
-		[Test]
-		public void Can_direct_message_with_url_without_double_entities()
-		{
-			var service = GetAuthenticatedService();
-
-			var recipient = GetHeroProfile(service);
-			var tweet = service.SendDirectMessage(new SendDirectMessageOptions { UserId = recipient.Id, Text = string.Format("http://tweetsharp.com {0}", DateTime.UtcNow.Ticks) });
-			var urls = tweet.Entities.OfType<TwitterUrl>();
-
-			Assert.IsNotNull(tweet);
-			Assert.AreNotEqual(0, tweet.Id);
-
-			foreach (var url in urls)
-			{
-				Console.WriteLine(url.Value);
-			}
-
-			Assert.AreEqual(1, urls.Count());
-		}
-
-		[Test]
-		public void Can_direct_message_with_screen_name()
-		{
-			var service = GetAuthenticatedService();
-
-			var recipient = GetHeroProfile(service);
-			var tweet = service.SendDirectMessage(new SendDirectMessageOptions { ScreenName = recipient.ScreenName, Text = DateTime.UtcNow.Ticks.ToString() });
-
-			Assert.IsNotNull(tweet);
-			Assert.AreNotEqual(0, tweet.Id);
-		}
-
-		private TwitterUser GetHeroProfile(TwitterService service)
-		{
-			return service.GetUserProfileFor(new GetUserProfileForOptions { ScreenName = _hero });
-		}
-
-		[Test]
-		public void Can_direct_message_with_a_url()
-		{
-			var service = GetAuthenticatedService();
-
-			var recipient = GetHeroProfile(service);
-			var tweet = service.SendDirectMessage(new SendDirectMessageOptions { UserId = recipient.Id, Text = "http://tweetsharp.com" });
-
 			Assert.IsNotNull(tweet);
 			Assert.AreNotEqual(0, tweet.Id);
 		}
@@ -1117,94 +1003,6 @@ namespace TweetSharp.Tests.Service
 			Assert.IsNotNull(tweet.QuotedStatus);
 			Assert.IsNotEmpty(tweet.QuotedStatusIdStr);
 			Assert.IsNotNull(tweet.QuotedStatusId);
-		}
-
-		[Test]
-		public void Can_send_direct_message()
-		{
-			var service = new TwitterService { IncludeEntities = true };
-			service.AuthenticateWith(_consumerKey, _consumerSecret, _accessToken, _accessTokenSecret);
-			var response = service.SendDirectMessage(new SendDirectMessageOptions
-			{
-				ScreenName = _hero,
-				Text = "Test a tweetsharp dm " + DateTime.Now.Ticks
-			});
-
-			AssertResultWas(service, HttpStatusCode.OK);
-			Assert.IsNotNull(response);
-			Assert.IsFalse(response.Id == 0);
-		}
-
-		[Test]
-		public void Can_delete_direct_message()
-		{
-			var service = new TwitterService { IncludeEntities = true };
-			service.AuthenticateWith(_consumerKey, _consumerSecret, _accessToken, _accessTokenSecret);
-			var created = service.SendDirectMessage(new SendDirectMessageOptions
-			{
-				ScreenName = _hero,
-				Text = "Test of a tweetsharp dm " + DateTime.Now.Ticks
-			});
-			AssertResultWas(service, HttpStatusCode.OK);
-			Assert.IsNotNull(created);
-			Assert.IsFalse(created.Id == 0);
-
-			var deleted = service.DeleteDirectMessage(new DeleteDirectMessageOptions { Id = created.Id });
-			Assert.IsNotNull(deleted);
-			Assert.AreEqual(deleted.Id, created.Id);
-		}
-
-		[Test]
-		public void Can_get_entities_on_direct_messages()
-		{
-			var service = new TwitterService { IncludeEntities = true };
-			service.AuthenticateWith(_consumerKey, _consumerSecret, _accessToken, _accessTokenSecret);
-
-			var tweets = service.ListDirectMessagesSent(new ListDirectMessagesSentOptions { FullText = true });
-			if (!tweets.Any())
-			{
-				Assert.Ignore("No direct messages available to verify entities");
-			}
-
-			Console.WriteLine(service.Response.Response);
-
-			foreach (var tweet in tweets)
-			{
-				Assert.IsNotNull(tweet.Entities);
-				var coalesced = tweet.Entities.Coalesce();
-				var text = tweet.Text;
-
-				Assert.IsNotNull(tweet.TextAsHtml);
-				Console.WriteLine("Tweet: " + text);
-				Console.WriteLine("HTML: " + tweet.TextAsHtml);
-				foreach (var entity in coalesced)
-				{
-					switch (entity.EntityType)
-					{
-						case TwitterEntityType.HashTag:
-							var hashtag = ((TwitterHashTag)entity).Text;
-							Console.WriteLine(hashtag);
-							var hashtagText = text.Substring(entity.StartIndex, entity.EndIndex - entity.StartIndex);
-							Assert.AreEqual("#" + hashtag, hashtagText);
-							break;
-						case TwitterEntityType.Mention:
-							var mention = ((TwitterMention)entity).ScreenName;
-							Console.WriteLine(mention);
-							var mentionText = text.Substring(entity.StartIndex, entity.EndIndex - entity.StartIndex);
-							Assert.AreEqual("@" + mention, mentionText);
-							break;
-						case TwitterEntityType.Url:
-							var url = ((TwitterUrl)entity).Value;
-							Console.WriteLine(url);
-							var urlText = text.Substring(entity.StartIndex, entity.EndIndex - entity.StartIndex);
-							Assert.AreEqual(url, urlText);
-							break;
-						default:
-							throw new ArgumentOutOfRangeException();
-					}
-				}
-				Console.WriteLine();
-			}
 		}
 
 		[Test]
