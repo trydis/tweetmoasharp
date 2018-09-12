@@ -64,4 +64,3 @@ src/.vs/config/applicationhost.config
 src/TweetSharp.Mono/Hammock.Mono.dll
 src/TweetSharp.Mono/TweetSharp.Mono.dll
 /src/.vs/TweetSharp/v15/Server/sqlite3
-/src/.vs/TweetSharp/DesignTimeBuild

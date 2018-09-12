@@ -44,10 +44,9 @@
     <ApplicationIcon>assembly.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.8.0.1\lib\net40\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net40\Newtonsoft.Json.dll</HintPath>
       <SpecificVersion>False</SpecificVersion>
-      <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -138,13 +137,13 @@
     <Content Include="_TwitterService.14.Help.json" />
     <Content Include="_TwitterService.9.Favorites.json" />
     <Content Include="_TwitterService.8.SuggestedUsers.json" />
-    <None Include="packages.config" />
     <Content Include="TwitterService.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>TwitterService.generated.cs</LastGenOutput>
     </Content>
     <None Include="key.snk" />
     <Content Include="_TwitterService.1.Help.json" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="assembly.ico" />
