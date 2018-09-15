@@ -57,12 +57,15 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="TwitterQuickReplyOption.cs" />
+    <Compile Include="SendDirectMessageBodyGenerator.cs" />
     <Compile Include="FilterStreamOptions.cs" />
     <Compile Include="Properties\AssemblyInfoVersion.cs" />
     <Compile Include="ITwitterService.cs" />
     <Compile Include="ObjectExtensions.cs" />
     <Compile Include="TimeExtensions.cs" />
     <Compile Include="TwitterAsyncResult.cs" />
+    <Compile Include="TwitterBodyGenerator.cs" />
     <Compile Include="TwitterChunkedMedia.cs" />
     <Compile Include="TwitterConfiguration.cs" />
     <Compile Include="TwitterErrors.cs" />

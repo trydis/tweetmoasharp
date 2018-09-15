@@ -87,6 +87,9 @@
     <Compile Include="..\TweetSharp\Properties\AssemblyInfoVersion.cs">
       <Link>Properties\AssemblyInfoVersion.cs</Link>
     </Compile>
+    <Compile Include="..\TweetSharp\SendDirectMessageBodyGenerator.cs">
+      <Link>SendDirectMessageBodyGenerator.cs</Link>
+    </Compile>
     <Compile Include="..\TweetSharp\SerializerBase.cs">
       <Link>SerializerBase.cs</Link>
     </Compile>
@@ -101,6 +104,9 @@
     </Compile>
     <Compile Include="..\TweetSharp\TwitterAsyncResult.cs">
       <Link>TwitterAsyncResult.cs</Link>
+    </Compile>
+    <Compile Include="..\TweetSharp\TwitterBodyGenerator.cs">
+      <Link>TwitterBodyGenerator.cs</Link>
     </Compile>
     <Compile Include="..\TweetSharp\TwitterChunkedMedia.cs">
       <Link>TwitterChunkedMedia.cs</Link>
@@ -170,6 +176,9 @@
     </Compile>
     <Compile Include="..\TweetSharp\TwitterPlace.cs">
       <Link>TwitterPlace.cs</Link>
+    </Compile>
+    <Compile Include="..\TweetSharp\TwitterQuickReplyOption.cs">
+      <Link>TwitterQuickReplyOption.cs</Link>
     </Compile>
     <Compile Include="..\TweetSharp\TwitterRateLimitStatus.cs">
       <Link>TwitterRateLimitStatus.cs</Link>

@@ -26,6 +26,7 @@ namespace TweetSharp
 #if !Smartphone && !NET20
 		[DataMember]
 #endif
+		[JsonProperty("id")]
 		public virtual long Id
 		{
 			get { return _id; }
@@ -44,6 +45,7 @@ namespace TweetSharp
 #if !Smartphone && !NET20
 		[DataMember]
 #endif
+		[JsonProperty("type")]
 		public virtual string Type
 		{
 			get { return _type; }

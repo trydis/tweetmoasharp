@@ -63,6 +63,12 @@
     <Compile Include="..\TweetSharp\Properties\AssemblyInfoVersion.cs">
       <Link>AssemblyInfoVersion.cs</Link>
     </Compile>
+    <Compile Include="..\TweetSharp\SendDirectMessageBodyGenerator.cs">
+      <Link>SendDirectMessageBodyGenerator.cs</Link>
+    </Compile>
+    <Compile Include="..\TweetSharp\TwitterBodyGenerator.cs">
+      <Link>TwitterBodyGenerator.cs</Link>
+    </Compile>
     <Compile Include="..\TweetSharp\TwitterChunkedMedia.cs">
       <Link>TwitterChunkedMedia.cs</Link>
     </Compile>
@@ -80,6 +86,9 @@
     </Compile>
     <Compile Include="..\TweetSharp\TwitterGeoLocationSearch.cs">
       <Link>TwitterGeoLocationSearch.cs</Link>
+    </Compile>
+    <Compile Include="..\TweetSharp\TwitterQuickReplyOption.cs">
+      <Link>TwitterQuickReplyOption.cs</Link>
     </Compile>
     <Compile Include="..\TweetSharp\TwitterUploadedMedia.cs">
       <Link>TwitterUploadedMedia.cs</Link>

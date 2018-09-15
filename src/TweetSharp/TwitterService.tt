@@ -139,12 +139,26 @@ namespace TweetSharp
         <#= method.IsDeprecated ? "[Obsolete(\"Twitter has declared this method obsolete; it may cease to function at any time. Check https://dev.twitter.com/docs/api#deprecated for alternatives.\")]" : "" #>
 		public virtual <#= method.Type #> <#= method.Name #>(<# if(method.Parameters.Where((p) => !String.IsNullOrEmpty(p.PropertyName)).Count() > 0 || method.MediaParameter != null) { #><#= method.Name #>Options options<# } #>)
 		{
-			<# foreach(var parameter in method.Parameters.Where((p) => !String.IsNullOrEmpty(p.PropertyName))) { #>var <#= parameter.Name #> = options.<#= parameter.PropertyName #>;
-			<# } #><# if(method.MediaParameter!=null) { #> var <#= method.MediaParameter.Name #> = options.<#= method.MediaParameter.PropertyName #>;
-			<# } #>	
+			<# if (method.RequestUsesJsonBody)
+			{
+			#>
+			var generator = new <#= method.Name #>BodyGenerator();
+
+				<# if ( method.Type == "void") { #> WithHammockNoResponse<#} else { #>return WithHammock<<#= method.Type #>><# } #>(<# switch((method.AuthorityName ?? "").ToUpper()){case "UPLOAD": #>_uploadMediaClient<# break; default: #>_client<#break; } #>, <# switch(method.Method){case "POST": #>WebMethod.Post, <# break; case "PUT": #>WebMethod.Put, <#break; case "DELETE": #>WebMethod.Delete, <# break; case "HEAD":#>WebMethod.Head, <# break; case "OPTIONS": #>WebMethod.Options, <# break; default: break; } #><#= method.Path #> + FormatAsString, generator.GenerateBody(options), generator.ContentType);
+			<#
+			}
+			else
+			{
+			#>
+				<# foreach(var parameter in method.Parameters.Where((p) => !String.IsNullOrEmpty(p.PropertyName))) { #>var <#= parameter.Name #> = options.<#= parameter.PropertyName #>;
+				<# } #><# if(method.MediaParameter!=null) { #> var <#= method.MediaParameter.Name #> = options.<#= method.MediaParameter.PropertyName #>;
+				<# } #>	
 			
-			<# if ( method.Type == "void") { #> WithHammockNoResponse<#} else { #>return WithHammock<<#= method.Type #>><# } #>(<# switch((method.AuthorityName ?? "").ToUpper()){case "UPLOAD": #>_uploadMediaClient<# break; default: #>_client<#break; } #>, <# switch(method.Method){case "POST": #>WebMethod.Post, <# break; case "PUT": #>WebMethod.Put, <#break; case "DELETE": #>WebMethod.Delete, <# break; case "HEAD":#>WebMethod.Head, <# break; case "OPTIONS": #>WebMethod.Options, <# break; default: break; } #><#= method.Path #>,<# if(method.MediaParameter!=null) { #> <#= method.MediaParameter.Name #>,<# } #> FormatAsString<# var count = method.Parameters.Count(); if(count > 0) { #>, <# } #><# for(var i = 0; i < count; i++) { var parameter = method.Parameters[i]; #>"<# if(i == 0) { #>?<# } else { #>&<# } #><#= Helpers.Underscore(parameter.Name) #>=", <#= parameter.FixedValue == null ? parameter.Name : Helpers.ToCsharpLiteral(parameter.Type, parameter.FixedValue) #><# if(i < count - 1) { #>, <# } #><# } #>);
-		}
+				<# if ( method.Type == "void") { #> WithHammockNoResponse<#} else { #>return WithHammock<<#= method.Type #>><# } #>(<# switch((method.AuthorityName ?? "").ToUpper()){case "UPLOAD": #>_uploadMediaClient<# break; default: #>_client<#break; } #>, <# switch(method.Method){case "POST": #>WebMethod.Post, <# break; case "PUT": #>WebMethod.Put, <#break; case "DELETE": #>WebMethod.Delete, <# break; case "HEAD":#>WebMethod.Head, <# break; case "OPTIONS": #>WebMethod.Options, <# break; default: break; } #><#= method.Path #>,<# if(method.MediaParameter!=null) { #> <#= method.MediaParameter.Name #>,<# } #> FormatAsString<# var count = method.Parameters.Count(); if(count > 0) { #>, <# } #><# for(var i = 0; i < count; i++) { var parameter = method.Parameters[i]; #>"<# if(i == 0) { #>?<# } else { #>&<# } #><#= Helpers.Underscore(parameter.Name) #>=", <#= parameter.FixedValue == null ? parameter.Name : Helpers.ToCsharpLiteral(parameter.Type, parameter.FixedValue) #><# if(i < count - 1) { #>, <# } #><# } #>);
+			<#
+			}
+			#>
+	}
 
 <# } #>
 		#endregion
@@ -311,6 +325,10 @@ namespace TweetSharp
 		{
 			get; private set;
 		}
+		public bool RequestUsesJsonBody
+		{
+			get; private set;
+		}
 
 		public TweetSharpMethodParameter MediaParameter{get;private set;}
 
@@ -358,6 +376,11 @@ namespace TweetSharp
 			 var pathParts = parts[1].Trim().Split(new string[] { ":" }, StringSplitOptions.RemoveEmptyEntries);
 			 Path = pathParts[0];
 			 Method = pathParts.Length > 1 ? Method = pathParts[1] : "GET";
+			 if (Method.EndsWith(".JSONBODY"))
+			 {
+					Method = Method.Substring(0, Method.Length - 9);
+					RequestUsesJsonBody = true;
+			 }
 
 			 Name = parts[2].Trim();
 

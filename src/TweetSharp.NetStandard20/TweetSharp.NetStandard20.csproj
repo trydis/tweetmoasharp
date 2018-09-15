@@ -10,11 +10,13 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <OutputPath>C:\Projects\GitHub\Forks\tweetsharp\bin\lib\</OutputPath>
     <DocumentationFile></DocumentationFile>
+    <DefineConstants>TRACE;PLATFORM_SUPPORTS_ASYNC_AWAIT</DefineConstants>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <OutputPath>C:\Projects\GitHub\Forks\tweetsharp\bin\lib\</OutputPath>
     <DocumentationFile></DocumentationFile>
+    <DefineConstants>TRACE;PLATFORM_SUPPORTS_ASYNC_AWAIT</DefineConstants>
   </PropertyGroup>
 
   <ItemGroup>
@@ -31,11 +33,13 @@
     <Compile Include="..\TweetSharp\OAuthRequestToken.cs" Link="OAuthRequestToken.cs" />
     <Compile Include="..\TweetSharp\ObjectExtensions.cs" Link="ObjectExtensions.cs" />
     <Compile Include="..\TweetSharp\Properties\AssemblyInfoVersion.cs" Link="AssemblyInfoVersion.cs" />
+    <Compile Include="..\TweetSharp\SendDirectMessageBodyGenerator.cs" Link="SendDirectMessageBodyGenerator.cs" />
     <Compile Include="..\TweetSharp\SerializerBase.cs" Link="SerializerBase.cs" />
     <Compile Include="..\TweetSharp\StringExtensions.cs" Link="StringExtensions.cs" />
     <Compile Include="..\TweetSharp\TimeExtensions.cs" Link="TimeExtensions.cs" />
     <Compile Include="..\TweetSharp\TwitterAccount.cs" Link="TwitterAccount.cs" />
     <Compile Include="..\TweetSharp\TwitterAsyncResult.cs" Link="TwitterAsyncResult.cs" />
+    <Compile Include="..\TweetSharp\TwitterBodyGenerator.cs" Link="TwitterBodyGenerator.cs" />
     <Compile Include="..\TweetSharp\TwitterChunkedMedia.cs" Link="TwitterChunkedMedia.cs" />
     <Compile Include="..\TweetSharp\TwitterClientInfo.cs" Link="TwitterClientInfo.cs" />
     <Compile Include="..\TweetSharp\TwitterConfiguration.cs" Link="TwitterConfiguration.cs" />
@@ -59,6 +63,7 @@
     <Compile Include="..\TweetSharp\TwitterList.cs" Link="TwitterList.cs" />
     <Compile Include="..\TweetSharp\TwitterLocalTrends.cs" Link="TwitterLocalTrends.cs" />
     <Compile Include="..\TweetSharp\TwitterPlace.cs" Link="TwitterPlace.cs" />
+    <Compile Include="..\TweetSharp\TwitterQuickReplyOption.cs" Link="TwitterQuickReplyOption.cs" />
     <Compile Include="..\TweetSharp\TwitterRateLimitStatus.cs" Link="TwitterRateLimitStatus.cs" />
     <Compile Include="..\TweetSharp\TwitterRelationship.cs" Link="TwitterRelationship.cs" />
     <Compile Include="..\TweetSharp\TwitterResponse.cs" Link="TwitterResponse.cs" />

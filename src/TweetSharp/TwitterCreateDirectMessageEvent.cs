@@ -6,11 +6,31 @@ using Newtonsoft.Json;
 
 namespace TweetSharp
 {
+
 #if !SILVERLIGHT && !WINRT
 	/// <summary>
 	/// Represents an event for a private direct message between two users.
 	/// </summary>
 	[Serializable]
+#endif
+#if !Smartphone && !NET20
+	[DataContract]
+#endif
+	[JsonObject(MemberSerialization.OptIn)]
+	public class TwitterCreateDirectMessageResult 
+	{
+#if !Smartphone && !NET20
+		[DataMember]
+#endif
+		[JsonProperty("event")]
+		public TwitterCreateDirectMessageEvent Event { get; set; }
+	}
+
+#if !SILVERLIGHT && !WINRT
+		/// <summary>
+		/// Represents an event for a private direct message between two users.
+		/// </summary>
+		[Serializable]
 #endif
 #if !Smartphone && !NET20
 	[DataContract]
