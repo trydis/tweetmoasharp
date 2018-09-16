@@ -106,9 +106,6 @@
     <Compile Include="..\TweetSharp\TwitterService.OAuth.cs">
       <Link>TwitterService.OAuth.cs</Link>
     </Compile>
-    <Compile Include="..\TweetSharp\TwitterService.Streaming.cs">
-      <Link>TwitterService.Streaming.cs</Link>
-    </Compile>
     <Compile Include="..\TweetSharp\ICursored.cs">
       <Link>ICursored.cs</Link>
     </Compile>
