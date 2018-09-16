@@ -1,6 +1,9 @@
 ﻿//POST direct_messages/events/new (message_create)
 TwitterCreateDirectMessageResult, "direct_messages/events/new":POST.JSONBODY, SendDirectMessage, long recipientId, string text, string mediaType, long? mediaId, IEnumerable<TwitterQuickReplyOption> quickReplies
 
+//POST direct_messages/events/new (message_create)
+TwitterCreateDirectMessageResult, "direct_messages/events/show", GetDirectMessage, long id
+
 // https://dev.twitter.com/docs/api/1.1/get/direct_messages
 // IEnumerable<TwitterDirectMessage>, "direct_messages", ListDirectMessagesReceived, long? since_id, long? max_id, int? count, bool? include_entities, bool? skip_status, bool? full_text
 

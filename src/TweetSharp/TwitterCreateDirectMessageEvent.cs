@@ -17,13 +17,14 @@ namespace TweetSharp
 	[DataContract]
 #endif
 	[JsonObject(MemberSerialization.OptIn)]
-	public class TwitterCreateDirectMessageResult 
+	public class TwitterCreateDirectMessageResult : ITwitterModel
 	{
 #if !Smartphone && !NET20
 		[DataMember]
 #endif
 		[JsonProperty("event")]
 		public TwitterCreateDirectMessageEvent Event { get; set; }
+		public string RawSource { get; set; }
 	}
 
 #if !SILVERLIGHT && !WINRT

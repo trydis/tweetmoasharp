@@ -198,6 +198,12 @@ namespace TweetSharp
 	}			
  
     		
+	public class GetDirectMessageOptions
+	{ 
+		public long Id { get; set; } 			
+	}			
+ 
+    		
 	public class ListFriendIdsOfOptions
 	{ 
 		public long? UserId { get; set; }  
@@ -847,6 +853,10 @@ namespace TweetSharp
 
  
         
+		TwitterCreateDirectMessageResult GetDirectMessage(GetDirectMessageOptions options);	
+
+ 
+        
 		TwitterCursorList<long> ListFriendIdsOf(ListFriendIdsOfOptions options);	
 
  
@@ -1178,6 +1188,9 @@ namespace TweetSharp
 
         
 		IAsyncResult SendDirectMessage(SendDirectMessageOptions options, Action<TwitterCreateDirectMessageResult, TwitterResponse>  action);
+
+        
+		IAsyncResult GetDirectMessage(GetDirectMessageOptions options, Action<TwitterCreateDirectMessageResult, TwitterResponse>  action);
 
         
 		IAsyncResult ListFriendIdsOf(ListFriendIdsOfOptions options, Action<TwitterCursorList<long>, TwitterResponse>  action);
@@ -1520,6 +1533,13 @@ namespace TweetSharp
 		TwitterCreateDirectMessageResult EndSendDirectMessage(IAsyncResult result);		
 
 		TwitterCreateDirectMessageResult EndSendDirectMessage(IAsyncResult result, TimeSpan timeout);
+
+        
+		IAsyncResult BeginGetDirectMessage(GetDirectMessageOptions options);
+
+		TwitterCreateDirectMessageResult EndGetDirectMessage(IAsyncResult result);		
+
+		TwitterCreateDirectMessageResult EndGetDirectMessage(IAsyncResult result, TimeSpan timeout);
 
         
 		IAsyncResult BeginListFriendIdsOf(ListFriendIdsOfOptions options);
@@ -2060,6 +2080,9 @@ namespace TweetSharp
 		void SendDirectMessage(SendDirectMessageOptions options, Action<TwitterCreateDirectMessageResult, TwitterResponse>  action);
 
         
+		void GetDirectMessage(GetDirectMessageOptions options, Action<TwitterCreateDirectMessageResult, TwitterResponse>  action);
+
+        
 		void ListFriendIdsOf(ListFriendIdsOfOptions options, Action<TwitterCursorList<long>, TwitterResponse>  action);
 
         
@@ -2325,6 +2348,9 @@ namespace TweetSharp
         
 
 		 Task<TwitterAsyncResult<TwitterCreateDirectMessageResult>> SendDirectMessageAsync(SendDirectMessageOptions options);
+        
+
+		 Task<TwitterAsyncResult<TwitterCreateDirectMessageResult>> GetDirectMessageAsync(GetDirectMessageOptions options);
         
 
 		 Task<TwitterAsyncResult<TwitterCursorList<long>>> ListFriendIdsOfAsync(ListFriendIdsOfOptions options);
@@ -2781,6 +2807,15 @@ namespace TweetSharp
 						var generator = new SendDirectMessageBodyGenerator();
 
 				return WithHammock<TwitterCreateDirectMessageResult>(_client, WebMethod.Post, "direct_messages/events/new" + FormatAsString, generator.GenerateBody(options), generator.ContentType);
+				}
+
+        
+		public virtual TwitterCreateDirectMessageResult GetDirectMessage(GetDirectMessageOptions options)
+		{
+							var id = options.Id;
+					
+			
+				return WithHammock<TwitterCreateDirectMessageResult>(_client, "direct_messages/events/show", FormatAsString, "?id=", id);
 				}
 
         
@@ -3819,6 +3854,15 @@ namespace TweetSharp
 		}
 
         
+		public virtual IAsyncResult GetDirectMessage(GetDirectMessageOptions options, Action<TwitterCreateDirectMessageResult, TwitterResponse>  action)
+		{
+			var id = options.Id;
+				
+
+			return  WithHammock<TwitterCreateDirectMessageResult>(_client, action, "direct_messages/events/show", FormatAsString, "?id=", id);
+		}
+
+        
 		public virtual IAsyncResult ListFriendIdsOf(ListFriendIdsOfOptions options, Action<TwitterCursorList<long>, TwitterResponse>  action)
 		{
 			var user_id = options.UserId;
@@ -4854,6 +4898,15 @@ namespace TweetSharp
 		}
 
         
+		public virtual IAsyncResult BeginGetDirectMessage(GetDirectMessageOptions options)
+		{
+			var id = options.Id;
+				
+
+			return BeginWithHammock<TwitterCreateDirectMessageResult>(_client, WebMethod.Get, "direct_messages/events/show", FormatAsString, "?id=", id);
+		}
+
+        
 		public virtual IAsyncResult BeginListFriendIdsOf(ListFriendIdsOfOptions options)
 		{
 			var user_id = options.UserId;
@@ -5863,6 +5916,18 @@ namespace TweetSharp
 
 		
 		public virtual TwitterCreateDirectMessageResult EndSendDirectMessage(IAsyncResult result, TimeSpan timeout) 
+		{
+			return EndWithHammock<TwitterCreateDirectMessageResult>(result, timeout);
+		}
+
+        
+		public virtual TwitterCreateDirectMessageResult EndGetDirectMessage(IAsyncResult result) 
+		{
+			return EndWithHammock<TwitterCreateDirectMessageResult>(result);
+		}
+
+		
+		public virtual TwitterCreateDirectMessageResult EndGetDirectMessage(IAsyncResult result, TimeSpan timeout) 
 		{
 			return EndWithHammock<TwitterCreateDirectMessageResult>(result, timeout);
 		}
@@ -6914,6 +6979,14 @@ namespace TweetSharp
 		}
 
         
+		public virtual void GetDirectMessage(GetDirectMessageOptions options, Action<TwitterCreateDirectMessageResult, TwitterResponse>  action)
+		{
+			var id = options.Id;
+			
+			WithHammock<TwitterCreateDirectMessageResult>(_client, action, "direct_messages/events/show", FormatAsString, "?id=", id);
+		}
+
+        
 		public virtual void ListFriendIdsOf(ListFriendIdsOfOptions options, Action<TwitterCursorList<long>, TwitterResponse>  action)
 		{
 			var user_id = options.UserId;
@@ -7841,6 +7914,13 @@ namespace TweetSharp
 			var quickReplies = options.Quickreplies;
 			
 			return WithHammockTask<TwitterCreateDirectMessageResult>(_client, WebMethod.Post, "direct_messages/events/new", FormatAsString, "?recipient_id=", recipientId, "&text=", text, "&media_type=", mediaType, "&media_id=", mediaId, "&quick_replies=", quickReplies);
+		}
+        
+		public virtual  Task<TwitterAsyncResult<TwitterCreateDirectMessageResult>> GetDirectMessageAsync(GetDirectMessageOptions options)
+		{
+			var id = options.Id;
+			
+			return WithHammockTask<TwitterCreateDirectMessageResult>(_client, "direct_messages/events/show", FormatAsString, "?id=", id);
 		}
         
 		public virtual  Task<TwitterAsyncResult<TwitterCursorList<long>>> ListFriendIdsOfAsync(ListFriendIdsOfOptions options)

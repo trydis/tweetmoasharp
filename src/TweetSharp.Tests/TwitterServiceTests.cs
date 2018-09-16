@@ -1743,5 +1743,21 @@ namespace TweetSharp.Tests.Service
 			Console.WriteLine("You have " + rate.RemainingHits + " left out of " + rate.HourlyLimit);
 		}
 
+		[Test]
+		public void Can_Get_DirectMessage()
+		{
+			var service = GetAuthenticatedService();
+			var result = service.GetDirectMessage(new GetDirectMessageOptions() { Id = 1041227137464692741 });
+
+			AssertResultWas(service, HttpStatusCode.OK);
+			Assert.IsNotNull(result);
+			Assert.IsNotNull(result.Event);
+			Assert.NotZero(result.Event.Id);
+
+			var rate = service.Response.RateLimitStatus;
+			Assert.IsNotNull(rate);
+			Console.WriteLine("You have " + rate.RemainingHits + " left out of " + rate.HourlyLimit);
+		}
+
 	}
 }
