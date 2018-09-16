@@ -11,7 +11,7 @@ using System.Security;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("TweetMoaSharp")]
-[assembly: AssemblyCopyright("Copyright © 2016 Yortw")]
+[assembly: AssemblyCopyright("Copyright © 2018 Yortw")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 [assembly: AllowPartiallyTrustedCallers]
