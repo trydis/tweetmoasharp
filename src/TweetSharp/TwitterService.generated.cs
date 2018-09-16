@@ -211,6 +211,12 @@ namespace TweetSharp
 	}			
  
     		
+	public class DeleteDirectMessageOptions
+	{ 
+		public long Id { get; set; } 			
+	}			
+ 
+    		
 	public class ListFriendIdsOfOptions
 	{ 
 		public long? UserId { get; set; }  
@@ -868,6 +874,10 @@ namespace TweetSharp
 
  
         
+		void DeleteDirectMessage(DeleteDirectMessageOptions options);	
+
+ 
+        
 		TwitterCursorList<long> ListFriendIdsOf(ListFriendIdsOfOptions options);	
 
  
@@ -1205,6 +1215,9 @@ namespace TweetSharp
 
         
 		IAsyncResult ListDirectMessages(ListDirectMessagesOptions options, Action<TwitterDirectMessageListResult, TwitterResponse>  action);
+
+        
+		IAsyncResult DeleteDirectMessage(DeleteDirectMessageOptions options, Action<TwitterResponse> action);
 
         
 		IAsyncResult ListFriendIdsOf(ListFriendIdsOfOptions options, Action<TwitterCursorList<long>, TwitterResponse>  action);
@@ -1561,6 +1574,13 @@ namespace TweetSharp
 		TwitterDirectMessageListResult EndListDirectMessages(IAsyncResult result);		
 
 		TwitterDirectMessageListResult EndListDirectMessages(IAsyncResult result, TimeSpan timeout);
+
+        
+		IAsyncResult BeginDeleteDirectMessage(DeleteDirectMessageOptions options);
+
+		void EndDeleteDirectMessage(IAsyncResult result);		
+
+		void EndDeleteDirectMessage(IAsyncResult result, TimeSpan timeout);
 
         
 		IAsyncResult BeginListFriendIdsOf(ListFriendIdsOfOptions options);
@@ -2107,6 +2127,9 @@ namespace TweetSharp
 		void ListDirectMessages(ListDirectMessagesOptions options, Action<TwitterDirectMessageListResult, TwitterResponse>  action);
 
         
+		void DeleteDirectMessage(DeleteDirectMessageOptions options, Action<TwitterResponse> action);
+
+        
 		void ListFriendIdsOf(ListFriendIdsOfOptions options, Action<TwitterCursorList<long>, TwitterResponse>  action);
 
         
@@ -2378,6 +2401,9 @@ namespace TweetSharp
         
 
 		 Task<TwitterAsyncResult<TwitterDirectMessageListResult>> ListDirectMessagesAsync(ListDirectMessagesOptions options);
+        
+
+		 Task DeleteDirectMessageAsync(DeleteDirectMessageOptions options);
         
 
 		 Task<TwitterAsyncResult<TwitterCursorList<long>>> ListFriendIdsOfAsync(ListFriendIdsOfOptions options);
@@ -2853,6 +2879,15 @@ namespace TweetSharp
 					
 			
 				return WithHammock<TwitterDirectMessageListResult>(_client, "direct_messages/events/list", FormatAsString, "?count=", count, "&cursor=", cursor);
+				}
+
+        
+		public virtual void DeleteDirectMessage(DeleteDirectMessageOptions options)
+		{
+							var id = options.Id;
+					
+			
+				 WithHammockNoResponse(_client, WebMethod.Delete, "direct_messages/events/destroy", FormatAsString, "?id=", id);
 				}
 
         
@@ -3910,6 +3945,15 @@ namespace TweetSharp
 		}
 
         
+		public virtual IAsyncResult DeleteDirectMessage(DeleteDirectMessageOptions options, Action<TwitterResponse> action)
+		{
+			var id = options.Id;
+				
+
+			return  WithHammockNoResponse(_client, WebMethod.Delete, action, "direct_messages/events/destroy", FormatAsString, "?id=", id);
+		}
+
+        
 		public virtual IAsyncResult ListFriendIdsOf(ListFriendIdsOfOptions options, Action<TwitterCursorList<long>, TwitterResponse>  action)
 		{
 			var user_id = options.UserId;
@@ -4964,6 +5008,15 @@ namespace TweetSharp
 		}
 
         
+		public virtual IAsyncResult BeginDeleteDirectMessage(DeleteDirectMessageOptions options)
+		{
+			var id = options.Id;
+				
+
+			return  BeginWithHammockNoResponse(_client, WebMethod.Delete, "direct_messages/events/destroy", FormatAsString, "?id=", id);
+		}
+
+        
 		public virtual IAsyncResult BeginListFriendIdsOf(ListFriendIdsOfOptions options)
 		{
 			var user_id = options.UserId;
@@ -5999,6 +6052,18 @@ namespace TweetSharp
 		public virtual TwitterDirectMessageListResult EndListDirectMessages(IAsyncResult result, TimeSpan timeout) 
 		{
 			return EndWithHammock<TwitterDirectMessageListResult>(result, timeout);
+		}
+
+        
+		public virtual void EndDeleteDirectMessage(IAsyncResult result) 
+		{
+			 EndWithHammockNoResponse(result);
+		}
+
+		
+		public virtual void EndDeleteDirectMessage(IAsyncResult result, TimeSpan timeout) 
+		{
+			 EndWithHammockNoResponse(result, timeout);
 		}
 
         
@@ -7065,6 +7130,14 @@ namespace TweetSharp
 		}
 
         
+		public virtual void DeleteDirectMessage(DeleteDirectMessageOptions options, Action<TwitterResponse> action)
+		{
+			var id = options.Id;
+			
+			 WithHammockNoResponse(_client, WebMethod.Delete, action, "direct_messages/events/destroy", FormatAsString, "?id=", id);
+		}
+
+        
 		public virtual void ListFriendIdsOf(ListFriendIdsOfOptions options, Action<TwitterCursorList<long>, TwitterResponse>  action)
 		{
 			var user_id = options.UserId;
@@ -8007,6 +8080,13 @@ namespace TweetSharp
 			var cursor = options.Cursor;
 			
 			return WithHammockTask<TwitterDirectMessageListResult>(_client, "direct_messages/events/list", FormatAsString, "?count=", count, "&cursor=", cursor);
+		}
+        
+		public virtual  Task DeleteDirectMessageAsync(DeleteDirectMessageOptions options)
+		{
+			var id = options.Id;
+			
+			return  WithHammockNoResponseTask(_client, WebMethod.Delete, "direct_messages/events/destroy", FormatAsString, "?id=", id);
 		}
         
 		public virtual  Task<TwitterAsyncResult<TwitterCursorList<long>>> ListFriendIdsOfAsync(ListFriendIdsOfOptions options)

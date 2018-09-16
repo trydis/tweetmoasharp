@@ -7,5 +7,5 @@ TwitterDirectMessageResult, "direct_messages/events/show", GetDirectMessage, lon
 //GET direct_messages/events/list (get set of dms)
 TwitterDirectMessageListResult, "direct_messages/events/list", ListDirectMessages, long? count, long? cursor
 
-// https://dev.twitter.com/docs/api/1.1/post/direct_messages/destroy
-// TwitterDirectMessage, "direct_messages/destroy":POST, DeleteDirectMessage, long id, bool? include_entities
+// DELETE void, "direct_messages/events/destroy", DeleteDirectMessage, long id
+void, "direct_messages/events/destroy":DELETE, DeleteDirectMessage, long id

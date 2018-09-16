@@ -549,6 +549,9 @@ namespace TweetSharp
 			var request = PrepareHammockQuery(path);
 			request.Method = method;
 			var result = _client.BeginRequest(request);
+			var response = _client.EndRequest(result);
+			SetResponse(response);
+
 			return result;
 		}
 

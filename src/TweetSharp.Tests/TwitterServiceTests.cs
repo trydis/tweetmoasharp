@@ -1775,5 +1775,52 @@ namespace TweetSharp.Tests.Service
 
 		}
 
+		[Test]
+		public async Task Can_Delete_DirectMessage()
+		{
+			var service = GetAuthenticatedService();
+			var user = service.GetUserProfileFor(new GetUserProfileForOptions() { ScreenName = "yortwdevtest" });
+
+			long directMessageId = 0;
+
+			#region Create DM
+
+			var result = service.SendDirectMessage
+			(
+				new SendDirectMessageOptions()
+				{
+					Text = "Hello! #welcome " + DateTime.Now,
+					Recipientid = user.Id,
+					Quickreplies = new TwitterQuickReplyOption[]
+					{
+						new TwitterQuickReplyOption()
+						{
+							Label= "Hi yourself",
+							Description = "Welcome",
+							Metadata = "1"
+						},
+						new TwitterQuickReplyOption()
+						{
+							Label= "Go away",
+							Description = "busy",
+							Metadata = "2"
+						}
+					}
+				}
+			);
+
+			directMessageId = result.Event.Id;
+
+			#endregion
+
+			service.DeleteDirectMessage(new DeleteDirectMessageOptions() { Id = directMessageId });
+
+			AssertResultWas(service, HttpStatusCode.NoContent);
+
+			var rate = service.Response.RateLimitStatus;
+			Assert.IsNotNull(rate);
+			Console.WriteLine("You have " + rate.RemainingHits + " left out of " + rate.HourlyLimit);
+		}
+
 	}
 }
