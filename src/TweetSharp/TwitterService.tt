@@ -36,6 +36,8 @@
 
 		foreach(var line in lines)
 		{
+			if (String.IsNullOrEmpty(line.Trim())) continue;
+
 			var method = new TweetSharpMethod(line);
 			methods.Add(method);
 		}
@@ -333,7 +335,8 @@ namespace TweetSharp
 		public TweetSharpMethodParameter MediaParameter{get;private set;}
 
 		private string[] SplitLine(string line){
-			var parts = line.Split(new string[] { "," }, StringSplitOptions.RemoveEmptyEntries);
+
+ 			var parts = line.Split(new string[] { "," }, StringSplitOptions.RemoveEmptyEntries);
 			var retParts = new List<string>();
 			for(var i = 0; i < parts.Length;i++){
 				var part = parts[i];

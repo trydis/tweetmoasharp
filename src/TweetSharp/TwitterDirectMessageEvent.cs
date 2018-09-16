@@ -143,7 +143,7 @@ namespace TweetSharp
 			{
 				return true;
 			}
-			return obj.GetType() == typeof(TwitterCreateDirectMessageEvent) && Equals((TwitterCreateDirectMessageEvent)obj);
+			return obj.GetType() == typeof(TwitterDirectMessageModels) && Equals((TwitterDirectMessageModels)obj);
 		}
 
 		/// <summary>

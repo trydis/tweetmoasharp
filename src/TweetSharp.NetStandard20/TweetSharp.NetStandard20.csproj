@@ -44,13 +44,13 @@
     <Compile Include="..\TweetSharp\TwitterClientInfo.cs" Link="TwitterClientInfo.cs" />
     <Compile Include="..\TweetSharp\TwitterConfiguration.cs" Link="TwitterConfiguration.cs" />
     <Compile Include="..\TweetSharp\TwitterConverterBase.cs" Link="TwitterConverterBase.cs" />
-    <Compile Include="..\TweetSharp\TwitterCreateDirectMessageEvent.cs" Link="TwitterCreateDirectMessageEvent.cs" />
     <Compile Include="..\TweetSharp\TwitterCursorList.cs" Link="TwitterCursorList.cs" />
     <Compile Include="..\TweetSharp\TwitterDateFormat.cs" Link="TwitterDateFormat.cs" />
     <Compile Include="..\TweetSharp\TwitterDateTime.cs" Link="TwitterDateTime.cs" />
     <Compile Include="..\TweetSharp\TwitterDateTimeConverter.cs" Link="TwitterDateTimeConverter.cs" />
     <Compile Include="..\TweetSharp\TwitterDeliveryDevice.cs" Link="TwitterDeliveryDevice.cs" />
     <Compile Include="..\TweetSharp\TwitterDirectMessageEvent.cs" Link="TwitterDirectMessageEvent.cs" />
+    <Compile Include="..\TweetSharp\TwitterDirectMessageModels.cs" Link="TwitterDirectMessageModels.cs" />
     <Compile Include="..\TweetSharp\TwitterEntities.cs" Link="TwitterEntities.cs" />
     <Compile Include="..\TweetSharp\TwitterEnums.cs" Link="TwitterEnums.cs" />
     <Compile Include="..\TweetSharp\TwitterError.cs" Link="TwitterError.cs" />

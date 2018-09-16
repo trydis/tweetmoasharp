@@ -106,7 +106,7 @@
     <Compile Include="TwitterDateFormat.cs" />
     <Compile Include="TwitterDateTime.cs" />
     <Compile Include="TwitterDeliveryDevice.cs" />
-    <Compile Include="TwitterCreateDirectMessageEvent.cs" />
+    <Compile Include="TwitterDirectMessageModels.cs" />
     <Compile Include="TwitterError.cs" />
     <Compile Include="TwitterFriend.cs" />
     <Compile Include="TwitterFriendship.cs" />

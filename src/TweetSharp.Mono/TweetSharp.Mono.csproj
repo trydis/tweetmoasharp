@@ -75,11 +75,11 @@
     <Compile Include="..\TweetSharp\TwitterConfiguration.cs">
       <Link>TwitterConfiguration.cs</Link>
     </Compile>
-    <Compile Include="..\TweetSharp\TwitterCreateDirectMessageEvent.cs">
-      <Link>TwitterCreateDirectMessageEvent.cs</Link>
-    </Compile>
     <Compile Include="..\TweetSharp\TwitterDirectMessageEvent.cs">
       <Link>TwitterDirectMessageEvent.cs</Link>
+    </Compile>
+    <Compile Include="..\TweetSharp\TwitterDirectMessageModels.cs">
+      <Link>TwitterDirectMessageModels.cs</Link>
     </Compile>
     <Compile Include="..\TweetSharp\TwitterErrors.cs">
       <Link>TwitterErrors.cs</Link>

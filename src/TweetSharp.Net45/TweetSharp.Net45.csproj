@@ -127,9 +127,6 @@
     <Compile Include="..\TweetSharp\TwitterConverterBase.cs">
       <Link>TwitterConverterBase.cs</Link>
     </Compile>
-    <Compile Include="..\TweetSharp\TwitterCreateDirectMessageEvent.cs">
-      <Link>TwitterCreateDirectMessageEvent.cs</Link>
-    </Compile>
     <Compile Include="..\TweetSharp\TwitterCursorList.cs">
       <Link>TwitterCursorList.cs</Link>
     </Compile>
@@ -147,6 +144,9 @@
     </Compile>
     <Compile Include="..\TweetSharp\TwitterDirectMessageEvent.cs">
       <Link>TwitterDirectMessageEvent.cs</Link>
+    </Compile>
+    <Compile Include="..\TweetSharp\TwitterDirectMessageModels.cs">
+      <Link>TwitterDirectMessageModels.cs</Link>
     </Compile>
     <Compile Include="..\TweetSharp\TwitterEntities.cs">
       <Link>TwitterEntities.cs</Link>
