@@ -1779,7 +1779,7 @@ namespace TweetSharp.Tests.Service
 		}
 
 		[Test]
-		public async Task Can_Delete_DirectMessage()
+		public void Can_Delete_DirectMessage()
 		{
 			var service = GetAuthenticatedService();
 			var user = service.GetUserProfileFor(new GetUserProfileForOptions() { ScreenName = "yortwdevtest" });
