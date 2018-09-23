@@ -75,6 +75,10 @@ namespace TweetSharp
 		public const string Image = "tweet_image";
 		public const string AnimatedGif = "tweet_gif";
 		public const string Video = "tweet_video";
+
+		public const string DirectMessage_Image = "dm_image";
+		public const string DirectMessage_AnimatedGif = "dm_gif";
+		public const string DirectMessage_Video = "dm_video";
 	}
 
 	/// <summary>

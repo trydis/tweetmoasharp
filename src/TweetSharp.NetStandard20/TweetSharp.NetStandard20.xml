@@ -1,0 +1,779 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>TweetSharp.NetStandard20</name>
+    </assembly>
+    <members>
+        <member name="T:TweetSharp.TwitterCreateDirectMessageEvent">
+            <summary>
+            Represents an event for a private direct message between two users.
+            </summary>
+        </member>
+        <member name="T:TweetSharp.TwitterCursorList`1">
+            <summary>
+            A generic collection that also contains any cursor data necessary for paging
+            using Twitter's cursor feature.
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="T:TweetSharp.TwitterDateFormat">
+            <summary>
+            Represents the possible known date formats that Twitter reports.
+            </summary>
+        </member>
+        <member name="F:TweetSharp.TwitterDateFormat.RestApi">
+            <summary>
+            RestApi
+            </summary>
+        </member>
+        <member name="F:TweetSharp.TwitterDateFormat.SearchApi">
+            <summary>
+            SearchApi
+            </summary>
+        </member>
+        <member name="F:TweetSharp.TwitterDateFormat.Atom">
+            <summary>
+            Atom
+            </summary>
+        </member>
+        <member name="F:TweetSharp.TwitterDateFormat.XmlHashesAndRss">
+            <summary>
+            XmlHashesAndRss
+            </summary>
+        </member>
+        <member name="F:TweetSharp.TwitterDateFormat.TrendsCurrent">
+            <summary>
+            TrendsCurrent
+            </summary>
+        </member>
+        <member name="F:TweetSharp.TwitterDateFormat.TrendsDaily">
+            <summary>
+            TrendsDaily
+            </summary>
+        </member>
+        <member name="F:TweetSharp.TwitterDateFormat.TrendsWeekly">
+            <summary>
+            TrendsWeekly
+            </summary>
+        </member>
+        <member name="T:TweetSharp.TwitterDateTime">
+            <summary>
+            Represents a normalized date from the Twitter API. 
+            </summary>
+        </member>
+        <member name="P:TweetSharp.TwitterDateTime.Format">
+            <summary>
+            Gets or sets the Twitter-based date format.
+            </summary>
+            <value>The format.</value>
+        </member>
+        <member name="P:TweetSharp.TwitterDateTime.DateTime">
+            <summary>
+            Gets or sets the actual date time.
+            </summary>
+            <value>The date time.</value>
+        </member>
+        <member name="M:TweetSharp.TwitterDateTime.#ctor(System.DateTime,TweetSharp.TwitterDateFormat)">
+            <summary>
+            Initializes a new instance of the <see cref="T:TweetSharp.TwitterDateTime"/> class.
+            </summary>
+            <param name="dateTime">The date time.</param>
+            <param name="format">The format.</param>
+        </member>
+        <member name="M:TweetSharp.TwitterDateTime.ConvertFromDateTime(System.DateTime,TweetSharp.TwitterDateFormat)">
+            <summary>
+            Converts from date time.
+            </summary>
+            <param name="input">The input.</param>
+            <param name="format">The format.</param>
+            <returns></returns>
+        </member>
+        <member name="M:TweetSharp.TwitterDateTime.ConvertToDateTime(System.String)">
+            <summary>
+            Converts to date time.
+            </summary>
+            <param name="input">The input.</param>
+            <returns></returns>
+        </member>
+        <member name="M:TweetSharp.TwitterDateTime.ConvertToTwitterDateTime(System.String)">
+            <summary>
+            Converts to twitter date time.
+            </summary>
+            <param name="input">The input.</param>
+            <returns></returns>
+        </member>
+        <member name="M:TweetSharp.TwitterDateTime.ToString">
+            <summary>
+            Returns a <see cref="T:System.String"/> that represents this instance.
+            </summary>
+            <returns>
+            A <see cref="T:System.String"/> that represents this instance.
+            </returns>
+        </member>
+        <member name="T:TweetSharp.TwitterDeliveryDevice">
+            <summary>
+            Represents a delivery device for receiving updates from Twitter.
+            </summary>
+        </member>
+        <member name="F:TweetSharp.TwitterDeliveryDevice.None">
+            <summary>
+            No delivery device is used.
+            </summary>
+        </member>
+        <member name="F:TweetSharp.TwitterDeliveryDevice.Sms">
+            <summary>
+            An SMS-capable delivery device is used.
+            </summary>
+        </member>
+        <member name="T:TweetSharp.TwitterDirectMessageEvent">
+            <summary>
+            Represents an event about a direct message.
+            </summary>
+        </member>
+        <member name="M:TweetSharp.TwitterDirectMessageEvent.CompareTo(TweetSharp.TwitterDirectMessageEvent)">
+            <summary>
+            Compares the current object with another object of the same type.
+            </summary>
+            <returns>
+            A value that indicates the relative order of the objects being compared. The return value has the following meanings: Value Meaning Less than zero This object is less than the <paramref name="other"/> parameter.Zero This object is equal to <paramref name="other"/>. Greater than zero This object is greater than <paramref name="other"/>. 
+            </returns>
+            <param name="other">An object to compare with this object.</param>
+        </member>
+        <member name="M:TweetSharp.TwitterDirectMessageEvent.Equals(TweetSharp.TwitterDirectMessageEvent)">
+            <summary>
+            Indicates whether the current object is equal to another object of the same type.
+            </summary>
+            <param name="obj">An object to compare with this object.</param>
+            <returns>
+            true if the current object is equal to the <paramref name="obj"/> parameter; otherwise, false.
+            </returns>
+        </member>
+        <member name="M:TweetSharp.TwitterDirectMessageEvent.Equals(System.Object)">
+            <summary>
+            Determines whether the specified <see cref="T:System.Object"/> is equal to the current <see cref="T:System.Object"/>.
+            </summary>
+            <param name="obj">The <see cref="T:System.Object"/> to compare with the current <see cref="T:System.Object"/>.</param>
+            <returns>
+            true if the specified <see cref="T:System.Object"/> is equal to the current <see cref="T:System.Object"/>; otherwise, false.
+            </returns>
+        </member>
+        <member name="M:TweetSharp.TwitterDirectMessageEvent.GetHashCode">
+            <summary>
+            Serves as a hash function for a particular type.
+            </summary>
+            <returns>
+            A hash code for the current <see cref="T:System.Object"/>.
+            </returns>
+        </member>
+        <member name="M:TweetSharp.TwitterDirectMessageEvent.op_Equality(TweetSharp.TwitterDirectMessageEvent,TweetSharp.TwitterDirectMessageEvent)">
+            <summary>
+            Implements the operator ==.
+            </summary>
+            <param name="left">The left.</param>
+            <param name="right">The right.</param>
+            <returns>The result of the operator.</returns>
+        </member>
+        <member name="M:TweetSharp.TwitterDirectMessageEvent.op_Inequality(TweetSharp.TwitterDirectMessageEvent,TweetSharp.TwitterDirectMessageEvent)">
+            <summary>
+            Implements the operator !=.
+            </summary>
+            <param name="left">The left.</param>
+            <param name="right">The right.</param>
+            <returns>The result of the operator.</returns>
+        </member>
+        <member name="T:TweetSharp.TwitterDirectMessageEventInitiatedVia">
+            <summary>
+            Represents information about what started a <see cref="T:TweetSharp.TwitterDirectMessageEvent"/>.
+            </summary>
+        </member>
+        <member name="T:TweetSharp.TwitterDirectMessage">
+            <summary>
+            Represents a private direct message between two users.
+            </summary>
+        </member>
+        <member name="T:TweetSharp.DirectMessageTarget">
+            <summary>
+            Represents the recipient of a direct message.
+            </summary>
+        </member>
+        <member name="T:TweetSharp.TwitterDirectMessageContent">
+            <summary>
+            Represents the actual text and embedded entities of a direct message.
+            </summary>
+        </member>
+        <member name="T:TweetSharp.TwitterQuickReplyResponse">
+            <summary>
+            Represents a quick (precanned) reply to a direct message.
+            </summary>
+        </member>
+        <member name="T:TweetSharp.TwitterMediaAttachment">
+            <summary>
+            Represents a piece of media as an attachment.
+            </summary>
+        </member>
+        <member name="T:TweetSharp.TwitterAttachment">
+            <summary>
+            Represents a quick (precanned) reply to a direct message.
+            </summary>
+        </member>
+        <member name="T:TweetSharp.TweetMode">
+            <summary>
+            Specifies how tweets are returned with regards to changes to the 140 character limit.
+            </summary>
+            <remarks>
+            <para>See https://dev.twitter.com/overview/api/upcoming-changes-to-tweets for more details.</para>
+            </remarks>
+        </member>
+        <member name="F:TweetSharp.TweetMode.Compatibility">
+            <summary>
+            Tweet payload will work with all existing integrations, regardless of tweet content.
+            </summary>
+        </member>
+        <member name="F:TweetSharp.TweetMode.Extended">
+            <summary>
+            Tweet payload contains all information to render tweets that contain more than 140 characters.
+            </summary>
+        </member>
+        <member name="P:TweetSharp.TwitterFriendship.Relationship">
+            <summary>
+            Gets or sets the relationship.
+            </summary>
+            <value>The relationship.</value>
+        </member>
+        <member name="T:TweetSharp.TwitterGeoConverter">
+            <summary>
+            This converter exists to convert geo-spatial coordinates.
+            </summary>
+        </member>
+        <member name="T:TweetSharp.TwitterGeoLocation.GeoCoordinates">
+            <summary>
+            The inner spatial coordinates for this location.
+            </summary>
+        </member>
+        <member name="P:TweetSharp.TwitterGeoLocation.GeoCoordinates.Latitude">
+            <summary>
+            Gets or sets the latitude.
+            </summary>
+            <value>The latitude.</value>
+        </member>
+        <member name="P:TweetSharp.TwitterGeoLocation.GeoCoordinates.Longitude">
+            <summary>
+            Gets or sets the longitude.
+            </summary>
+            <value>The longitude.</value>
+        </member>
+        <member name="M:TweetSharp.TwitterGeoLocation.GeoCoordinates.op_Explicit(TweetSharp.TwitterGeoLocation.GeoCoordinates)~System.Double[]">
+            <summary>
+            Performs an explicit conversion from <see cref="T:TweetSharp.TwitterGeoLocation.GeoCoordinates"/> to array of <see cref="T:System.Double"/>.
+            </summary>
+            <param name="location">The location.</param>
+            <returns>The result of the conversion.</returns>
+        </member>
+        <member name="M:TweetSharp.TwitterGeoLocation.GeoCoordinates.op_Implicit(System.Collections.Generic.List{System.Double})~TweetSharp.TwitterGeoLocation.GeoCoordinates">
+            <summary>
+            Performs an implicit conversion from <see cref="T:System.Double"/> to <see cref="T:TweetSharp.TwitterGeoLocation.GeoCoordinates"/>.
+            </summary>
+            <param name="values">The values.</param>
+            <returns>The result of the conversion.</returns>
+        </member>
+        <member name="M:TweetSharp.TwitterGeoLocation.GeoCoordinates.op_Implicit(System.Double[])~TweetSharp.TwitterGeoLocation.GeoCoordinates">
+            <summary>
+            Performs an implicit conversion from array of <see cref="T:System.Double"/> to <see cref="T:TweetSharp.TwitterGeoLocation.GeoCoordinates"/>.
+            </summary>
+            <param name="values">The values.</param>
+            <returns>The result of the conversion.</returns>
+        </member>
+        <member name="M:TweetSharp.TwitterGeoLocation.GeoCoordinates.FromEnumerable(System.Collections.Generic.IEnumerable{System.Double})">
+            <summary>
+            Froms the enumerable.
+            </summary>
+            <param name="values">The values.</param>
+            <returns></returns>
+        </member>
+        <member name="M:TweetSharp.TwitterGeoLocation.#ctor(System.Double,System.Double)">
+            <summary>
+            Initializes a new instance of the <see cref="T:TweetSharp.TwitterGeoLocation"/> struct.
+            </summary>
+            <param name="latitude">The latitude.</param>
+            <param name="longitude">The longitude.</param>
+        </member>
+        <member name="M:TweetSharp.TwitterGeoLocation.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:TweetSharp.TwitterGeoLocation"/> struct.
+            </summary>
+        </member>
+        <member name="P:TweetSharp.TwitterGeoLocation.Coordinates">
+            <summary>
+            Gets or sets the inner spatial coordinates.
+            </summary>
+            <value>The coordinates.</value>
+        </member>
+        <member name="P:TweetSharp.TwitterGeoLocation.Type">
+            <summary>
+            Gets or sets the type of location.
+            </summary>
+            <value>The type.</value>
+        </member>
+        <member name="P:TweetSharp.TwitterGeoLocation.None">
+            <summary>
+            Gets an instance of <see cref="T:TweetSharp.TwitterGeoLocation" />
+            that represents nowhere.
+            </summary>
+            <value>The none.</value>
+        </member>
+        <member name="M:TweetSharp.TwitterGeoLocation.Equals(TweetSharp.TwitterGeoLocation)">
+            <summary>
+            Indicates whether the current object is equal to another object of the same type.
+            </summary>
+            <param name="other">An object to compare with this object.</param>
+            <returns>
+            true if the current object is equal to the <paramref name="other"/> parameter; otherwise, false.
+            </returns>
+        </member>
+        <member name="M:TweetSharp.TwitterGeoLocation.Equals(System.Object)">
+            <summary>
+            Determines whether the specified <see cref="T:System.Object"/> is equal to this instance.
+            </summary>
+            <param name="instance">The <see cref="T:System.Object"/> to compare with this instance.</param>
+            <returns>
+            	<c>true</c> if the specified <see cref="T:System.Object"/> is equal to this instance; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:TweetSharp.TwitterGeoLocation.op_Equality(TweetSharp.TwitterGeoLocation,TweetSharp.TwitterGeoLocation)">
+            <summary>
+            Implements the operator ==.
+            </summary>
+            <param name="left">The left.</param>
+            <param name="right">The right.</param>
+            <returns>The result of the operator.</returns>
+        </member>
+        <member name="M:TweetSharp.TwitterGeoLocation.op_Inequality(TweetSharp.TwitterGeoLocation,TweetSharp.TwitterGeoLocation)">
+            <summary>
+            Implements the operator !=.
+            </summary>
+            <param name="left">The left.</param>
+            <param name="right">The right.</param>
+            <returns>The result of the operator.</returns>
+        </member>
+        <member name="M:TweetSharp.TwitterGeoLocation.GetHashCode">
+            <summary>
+            Returns a hash code for this instance.
+            </summary>
+            <returns>
+            A hash code for this instance, suitable for use in hashing algorithms and data structures like a hash table. 
+            </returns>
+        </member>
+        <member name="T:TweetSharp.TwitterGeoLocationSearch">
+            <summary>
+                Used for Twitter searches where it takes a geocode paramater
+            </summary>
+        </member>
+        <member name="T:TweetSharp.TwitterGeoLocationSearch.RadiusType">
+            <summary>
+            Radius type in Miles or Kilometers
+            </summary>
+        </member>
+        <member name="M:TweetSharp.TwitterGeoLocationSearch.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:TweetSharp.TwitterGeoLocationSearch"/> struct.
+            </summary>
+        </member>
+        <member name="M:TweetSharp.TwitterGeoLocationSearch.#ctor(System.Double,System.Double,System.Int32,TweetSharp.TwitterGeoLocationSearch.RadiusType)">
+            <summary>
+            /// <summary>
+            Initializes a new instance of the <see cref="T:TweetSharp.TwitterGeoLocation"/> struct.
+            </summary>
+            </summary>
+            <param name="latitutde">The latitude of search location.</param>
+            <param name="longitude">The longitude of search location.</param>
+            <param name="radius">The radius of search location.</param>
+            <param name="unitOfMeasurement">The unit of measurement (Mi or Km).</param>
+        </member>
+        <member name="P:TweetSharp.TwitterGeoLocationSearch.Radius">
+            <summary>
+                Radius in specified <see cref="T:TweetSharp.TwitterGeoLocationSearch.RadiusType" />
+            </summary>
+            <seealso cref="P:TweetSharp.TwitterGeoLocationSearch.UnitOfMeasurement" />
+        </member>
+        <member name="T:TweetSharp.TwitterList">
+            <summary>
+            Represents a user-curated list of Twitter members, 
+            that other users can subscribe to and see the aggregated 
+            list of member tweets in a dedicated timeline.
+            </summary>
+        </member>
+        <member name="P:TweetSharp.TwitterList.Id">
+            <summary>
+            Gets or sets the ID of the list.
+            </summary>
+            <value>The list ID.</value>
+        </member>
+        <member name="P:TweetSharp.TwitterList.Name">
+            <summary>
+            Gets or sets the descriptive name of the list.
+            </summary>
+            <value>The name.</value>
+        </member>
+        <member name="P:TweetSharp.TwitterList.FullName">
+            <summary>
+            Gets or sets the full name of the list including the list owner.
+            </summary>
+            <value>The full name of the list.</value>
+        </member>
+        <member name="P:TweetSharp.TwitterList.Description">
+            <summary>
+            Gets or sets the user-supplied list description.
+            </summary>
+            <value>The list description.</value>
+        </member>
+        <member name="P:TweetSharp.TwitterList.Slug">
+            <summary>
+            Gets or sets the list URL slug.
+            </summary>
+            <value>The list slug.</value>
+        </member>
+        <member name="P:TweetSharp.TwitterList.CreatedAt">
+            <summary>
+            Gets or sets the date the list was created.
+            </summary>
+        </member>
+        <member name="P:TweetSharp.TwitterList.SubscriberCount">
+            <summary>
+            Gets or sets the subscriber count.
+            A subscriber follows the list's updates.
+            </summary>
+            <value>The subscriber count.</value>
+        </member>
+        <member name="P:TweetSharp.TwitterList.MemberCount">
+            <summary>
+            Gets or sets the member count.
+            A member's updates appear in the list.
+            </summary>
+            <value>The member count.</value>
+        </member>
+        <member name="P:TweetSharp.TwitterList.Uri">
+            <summary>
+            Gets or sets the URI of the list.
+            </summary>
+            <value>The URI of the list.</value>
+        </member>
+        <member name="P:TweetSharp.TwitterList.Mode">
+            <summary>
+            Gets or sets the mode.
+            The list can be "public", visible to everyone,
+            or "private", visible only to the authenticating user.
+            </summary>
+            <value>The mode.</value>
+        </member>
+        <member name="P:TweetSharp.TwitterList.User">
+            <summary>
+            Gets or sets the user who created the list.
+            </summary>
+            <value>The user.</value>
+        </member>
+        <member name="P:TweetSharp.TwitterRateLimitStatus.RemainingHits">
+            <summary>
+            Gets or sets the remaining API hits allowed.
+            </summary>
+            <value>The remaining API hits allowed.</value>
+        </member>
+        <member name="P:TweetSharp.TwitterRateLimitStatus.HourlyLimit">
+            <summary>
+            Gets or sets the API hits hourly limit.
+            You can compare this to <see cref="P:TweetSharp.TwitterRateLimitStatus.RemainingHits" /> to get a 
+            percentage of usage remaining.
+            </summary>
+            <value>The hourly limit.</value>
+        </member>
+        <member name="P:TweetSharp.TwitterRateLimitStatus.ResetTimeInSeconds">
+            <summary>
+            Gets or sets the UNIX time representing the time
+            this rate limit will reset.
+            This is not the number of seconds until the rate limit
+            resets.
+            </summary>
+            <value>The reset time in seconds.</value>
+        </member>
+        <member name="P:TweetSharp.TwitterRateLimitStatus.ResetTime">
+            <summary>
+            Gets or sets the reset time for this rate limit constraint.
+            </summary>
+            <value>The reset time.</value>
+        </member>
+        <member name="M:TweetSharp.TwitterRateLimitStatus.CompareTo(TweetSharp.TwitterRateLimitStatus)">
+            <summary>
+            Compares the current object with another object of the same type.
+            </summary>
+            <param name="other">An object to compare with this object.</param>
+            <returns>
+            A value that indicates the relative order of the objects being compared. The return value has the following meanings: Value Meaning Less than zero This object is less than the <paramref name="other"/> parameter.Zero This object is equal to <paramref name="other"/>. Greater than zero This object is greater than <paramref name="other"/>.
+            </returns>
+        </member>
+        <member name="M:TweetSharp.TwitterRateLimitStatus.Equals(System.Object)">
+            <summary>
+            Determines whether the specified <see cref="T:System.Object"/> is equal to the current <see cref="T:System.Object"/>.
+            </summary>
+            <param name="obj">The <see cref="T:System.Object"/> to compare with the current <see cref="T:System.Object"/>.</param>
+            <returns>
+            true if the specified <see cref="T:System.Object"/> is equal to the current <see cref="T:System.Object"/>; otherwise, false.
+            </returns>
+        </member>
+        <member name="M:TweetSharp.TwitterRateLimitStatus.GetHashCode">
+            <summary>
+            Serves as a hash function for a particular type.
+            </summary>
+            <returns>
+            A hash code for the current <see cref="T:System.Object"/>.
+            </returns>
+        </member>
+        <member name="M:TweetSharp.TwitterRateLimitStatus.Equals(TweetSharp.TwitterRateLimitStatus)">
+            <summary>
+            Indicates whether the current object is equal to another object of the same type.
+            </summary>
+            <param name="other">An object to compare with this object.</param>
+            <returns>
+            true if the current object is equal to the <paramref name="other"/> parameter; otherwise, false.
+            </returns>
+        </member>
+        <member name="P:TweetSharp.TwitterRateLimitStatus.Hammock#Tasks#IRateLimitStatus#NextReset">
+            <summary>
+            Gets the next reset time.
+            </summary>
+            <value>The next reset time.</value>
+        </member>
+        <member name="P:TweetSharp.TwitterRateLimitStatus.Hammock#Tasks#IRateLimitStatus#RemainingUses">
+            <summary>
+            Gets the remaining API uses.
+            </summary>
+            <value>The remaining API uses.</value>
+        </member>
+        <member name="T:TweetSharp.TwitterRelationship">
+            <summary>
+            Represents the relationship between two users on Twitter
+            as they related to each <see cref="T:TweetSharp.TwitterFriend" /> representation.
+            </summary>
+        </member>
+        <member name="P:TweetSharp.TwitterRelationship.Source">
+            <summary>
+            Gets or sets the relative source of the relationship.
+            </summary>
+            <value>The source.</value>
+        </member>
+        <member name="P:TweetSharp.TwitterRelationship.Target">
+            <summary>
+            Gets or sets the relative target of the relationship.
+            </summary>
+            <value>The target.</value>
+        </member>
+        <member name="T:TweetSharp.TwitterSavedSearch">
+            <summary>
+            Represents a user's saved search query, for convenient re-querying of the Search API.
+            </summary>
+        </member>
+        <member name="P:TweetSharp.TwitterSavedSearch.Id">
+            <summary>
+            Gets the ID of this saved search.
+            </summary>
+            <value>The saved search ID.</value>
+        </member>
+        <member name="P:TweetSharp.TwitterSavedSearch.Name">
+            <summary>
+            Gets or sets the user-provided name for this saved search.
+            </summary>
+            <value>The saved search name.</value>
+        </member>
+        <member name="P:TweetSharp.TwitterSavedSearch.Query">
+            <summary>
+            Gets or sets the Search API query used for this saved search.
+            </summary>
+            <value>The search query.</value>
+        </member>
+        <member name="P:TweetSharp.TwitterSavedSearch.Position">
+            <summary>
+            Gets or sets the saved search's position in the user's list of saved searches.
+            </summary>
+            <value>The saved search position.</value>
+        </member>
+        <member name="P:TweetSharp.TwitterSavedSearch.CreatedDate">
+            <summary>
+            Gets the created date.
+            </summary>
+            <value>The created date.</value>
+        </member>
+        <member name="M:TweetSharp.TwitterSavedSearch.CompareTo(TweetSharp.TwitterSavedSearch)">
+            <summary>
+            Compares the current object with another object of the same type.
+            </summary>
+            <param name="other">An object to compare with this object.</param>
+            <returns>
+            A 32-bit signed integer that indicates the relative order of the objects being compared. The return value has the following meanings: Value Meaning Less than zero This object is less than the <paramref name="other"/> parameter.Zero This object is equal to <paramref name="other"/>. Greater than zero This object is greater than <paramref name="other"/>.
+            </returns>
+        </member>
+        <member name="M:TweetSharp.TwitterSavedSearch.Equals(TweetSharp.TwitterSavedSearch)">
+            <summary>
+            Indicates whether the current object is equal to another object of the same type.
+            </summary>
+            <param name="savedSearch">The saved search.</param>
+            <returns>
+            true if the current object is equal to the <paramref name="savedSearch"/> parameter; otherwise, false.
+            </returns>
+        </member>
+        <member name="M:TweetSharp.TwitterSavedSearch.Equals(System.Object)">
+            <summary>
+            Determines whether the specified <see cref="T:System.Object"/> is equal to the current <see cref="T:System.Object"/>.
+            </summary>
+            <param name="status">The <see cref="T:System.Object"/> to compare with the current <see cref="T:System.Object"/>.</param>
+            <returns>
+            true if the specified <see cref="T:System.Object"/> is equal to the current <see cref="T:System.Object"/>; otherwise, false.
+            </returns>
+            <exception cref="T:System.NullReferenceException">The <paramref name="status"/> parameter is null.</exception>
+        </member>
+        <member name="M:TweetSharp.TwitterSavedSearch.GetHashCode">
+            <summary>
+            Serves as a hash function for a particular type. 
+            </summary>
+            <returns>
+            A hash code for the current <see cref="T:System.Object"/>.
+            </returns>
+            <filterpriority>2</filterpriority>
+        </member>
+        <member name="M:TweetSharp.TwitterSavedSearch.op_Equality(TweetSharp.TwitterSavedSearch,TweetSharp.TwitterSavedSearch)">
+            <summary>
+            Implements the operator ==.
+            </summary>
+            <param name="left">The left.</param>
+            <param name="right">The right.</param>
+            <returns>The result of the operator.</returns>
+        </member>
+        <member name="M:TweetSharp.TwitterSavedSearch.op_Inequality(TweetSharp.TwitterSavedSearch,TweetSharp.TwitterSavedSearch)">
+            <summary>
+            Implements the operator !=.
+            </summary>
+            <param name="left">The left.</param>
+            <param name="right">The right.</param>
+            <returns>The result of the operator.</returns>
+        </member>
+        <member name="T:TweetSharp.TwitterService">
+            <summary>
+            Defines a contract for a <see cref="T:TweetSharp.TwitterService" /> implementation.
+            </summary>
+            <seealso href="http://dev.twitter.com/doc" />
+        </member>
+        <member name="P:TweetSharp.TwitterStatus.RetrievedAt">
+            <summary>
+            Returns the UTC date and time (from the local system clock) at which this item was deserialised, usually equivalent to the time it was retrieved from Twitter. 
+            </summary>
+        </member>
+        <member name="P:TweetSharp.TwitterUser.Email">
+            <summary>
+            This property is only returned if it was specifically enabled in the options when the profile was requested AND your app has been white listed for access to email by Twitter (https://dev.twitter.com/rest/reference/get/account/verify_credentials).
+            </summary>
+        </member>
+        <member name="M:TweetSharp.TwitterUser.CompareTo(TweetSharp.TwitterUser)">
+            <summary>
+            Compares the current object with another object of the same type.
+            </summary>
+            <param name="user">The user.</param>
+            <returns>
+            A value that indicates the relative order of the objects being compared. 
+            The return value has the following meanings: 
+            Less than zero: This object is less than the <paramref name="user"/> parameter.
+            Zero: This object is equal to <paramref name="user"/>. 
+            Greater than zero: This object is greater than <paramref name="user"/>.
+            </returns>
+        </member>
+        <member name="M:TweetSharp.TwitterUser.Equals(TweetSharp.TwitterUser)">
+            <summary>
+            Indicates whether the current object is equal to another object of the same type.
+            </summary>
+            <param name="user">The user.</param>
+            <returns>
+            true if the current object is equal to the <paramref name="user"/> parameter; otherwise, false.
+            </returns>
+        </member>
+        <member name="M:TweetSharp.TwitterUser.Equals(System.Object)">
+            <summary>
+            Determines whether the specified <see cref="T:System.Object"/> is equal to the current <see cref="T:System.Object"/>.
+            </summary>
+            <param name="user">The <see cref="T:System.Object"/> to compare with this instance.</param>
+            <returns>
+            true if the specified <see cref="T:System.Object"/> is equal to the current <see cref="T:System.Object"/>; otherwise, false.
+            </returns>
+        </member>
+        <member name="M:TweetSharp.TwitterUser.GetHashCode">
+            <summary>
+            Serves as a hash function for a particular type. 
+            </summary>
+            <returns>
+            A hash code for the current <see cref="T:System.Object"/>.
+            </returns>
+            <filterpriority>2</filterpriority>
+        </member>
+        <member name="M:TweetSharp.TwitterUser.op_Equality(TweetSharp.TwitterUser,TweetSharp.TwitterUser)">
+            <summary>
+            Implements the operator ==.
+            </summary>
+            <param name="left">The left.</param>
+            <param name="right">The right.</param>
+            <returns>The result of the operator.</returns>
+        </member>
+        <member name="M:TweetSharp.TwitterUser.op_Inequality(TweetSharp.TwitterUser,TweetSharp.TwitterUser)">
+            <summary>
+            Implements the operator !=.
+            </summary>
+            <param name="left">The left.</param>
+            <param name="right">The right.</param>
+            <returns>The result of the operator.</returns>
+        </member>
+        <member name="T:TweetSharp.TwitterUserSuggestions">
+            <summary>
+            Represents a suggested user category from the Twitter API. 
+            </summary>
+        </member>
+        <member name="T:TweetSharp.TwitterWonkyBooleanConverter">
+            <summary>
+            Sometimes Twitter returns "0" for "true", instead of true, and we've even seen
+            "13" for true. For those, and possibly future issues, this converter exists.
+            </summary>
+        </member>
+        <member name="M:TweetSharp.TwitterWonkyBooleanConverter.WriteJson(Newtonsoft.Json.JsonWriter,System.Object,Newtonsoft.Json.JsonSerializer)">
+            <summary>
+            Writes the JSON.
+            </summary>
+            <param name="writer">The writer.</param>
+            <param name="value">The value.</param>
+            <param name="serializer">The serializer.</param>
+        </member>
+        <member name="M:TweetSharp.TwitterWonkyBooleanConverter.ReadJson(Newtonsoft.Json.JsonReader,System.Type,System.Object,Newtonsoft.Json.JsonSerializer)">
+            <summary>
+            Reads the JSON.
+            </summary>
+            <param name="reader">The reader.</param>
+            <param name="objectType">Type of the object.</param>
+            <param name="existingValue">The existing value.</param>
+            <param name="serializer">The serializer.</param>
+            <returns></returns>
+        </member>
+        <member name="M:TweetSharp.TwitterWonkyBooleanConverter.CanConvert(System.Type)">
+            <summary>
+            Determines whether this instance can convert the specified object type.
+            </summary>
+            <param name="objectType">Type of the object.</param>
+            <returns>
+            	<c>true</c> if this instance can convert the specified object type; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="T:TweetSharp.WhereOnEarthLocation">
+            <summary>
+            Represents a location in the Yahoo! WOE specification.
+            </summary>
+            <seealso>"http://developer.yahoo.com/geo/geoplanet/"</seealso>
+        </member>
+        <member name="T:TweetSharp.Model.WhereOnEarthPlaceType">
+            <summary>
+            Represents a place type for a <see cref="T:TweetSharp.WhereOnEarthLocation" /> in the Yahoo! WOE specification.
+            </summary>
+            <seealso>http://developer.yahoo.com/geo/geoplanet/"</seealso>
+        </member>
+    </members>
+</doc>

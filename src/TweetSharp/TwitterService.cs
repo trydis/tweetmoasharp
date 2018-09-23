@@ -41,8 +41,6 @@ namespace TweetSharp
 			set
 			{
 				_client.UserAgent = value;
-				_publicStreamsClient.UserAgent = value;
-				_userStreamsClient.UserAgent = value;
 				_oauth.UserAgent = value;
 			}
 		}
@@ -53,8 +51,6 @@ namespace TweetSharp
 			set
 			{
 				_client.Deserializer = value;
-				_userStreamsClient.Deserializer = value;
-				_publicStreamsClient.Deserializer = value;
 			}
 		}
 
@@ -64,8 +60,6 @@ namespace TweetSharp
 			set
 			{
 				_client.Serializer = value;
-				_userStreamsClient.Serializer = value;
-				_publicStreamsClient.Serializer = value;
 			}
 		}
 
@@ -189,41 +183,6 @@ namespace TweetSharp
 				GetErrorResponseEntityType = (request, @base) => typeof(TwitterErrors),
 				UserAgent = userAgent,
 				Proxy = Proxy,
-#if !SILVERLIGHT && !WINRT
-				FollowRedirects = true,
-#endif
-#if SILVERLIGHT
-                HasElevatedPermissions = true
-#endif
-			};
-
-			_userStreamsClient = new RestClient
-			{
-				Authority = Globals.UserStreamsAuthority,
-				Proxy = Proxy,
-				VersionPath = "1.1",
-				Serializer = serializer ?? jsonSerializer,
-				Deserializer = deserializer ?? jsonSerializer,
-				DecompressionMethods = DecompressionMethods.GZip,
-				GetErrorResponseEntityType = (request, @base) => typeof(TwitterErrors),
-				UserAgent = userAgent,
-#if !SILVERLIGHT && !WINRT
-				FollowRedirects = true,
-#endif
-#if SILVERLIGHT
-                HasElevatedPermissions = true
-#endif
-			};
-
-			_publicStreamsClient = new RestClient
-			{
-				Authority = Globals.PublicStreamsAuthority,
-				Proxy = Proxy,
-				VersionPath = "1.1",
-				Serializer = serializer ?? jsonSerializer,
-				Deserializer = deserializer ?? jsonSerializer,
-				DecompressionMethods = DecompressionMethods.GZip,
-				UserAgent = userAgent,
 #if !SILVERLIGHT && !WINRT
 				FollowRedirects = true,
 #endif
@@ -495,6 +454,16 @@ namespace TweetSharp
 			return WithHammockImpl(client, request, action);
 		}
 
+		private IAsyncResult WithHammock<T>(RestClient client, WebMethod method, Action<T, TwitterResponse> action, string path, byte[] bodyContent, string contentType) where T : class
+		{
+			var request = PrepareHammockQuery(path);
+			request.Method = method;
+			request.AddPostContent(bodyContent);
+			request.AddHeader("content-type", contentType);
+
+			return WithHammockImpl(client, request, action);
+		}
+
 		private IAsyncResult WithHammock<T>(RestClient client, WebMethod method, Action<T, TwitterResponse> action, MediaFile media, string path) where T : class
 		{
 			var request = PrepareHammockQuery(path);
@@ -580,6 +549,9 @@ namespace TweetSharp
 			var request = PrepareHammockQuery(path);
 			request.Method = method;
 			var result = _client.BeginRequest(request);
+			var response = _client.EndRequest(result);
+			SetResponse(response);
+
 			return result;
 		}
 
@@ -671,6 +643,16 @@ namespace TweetSharp
 			return WithHammockImpl<T>(client, request);
 		}
 
+		private T WithHammock<T>(RestClient client, WebMethod method, string path, byte[] bodyContent, string contentType)
+		{
+			var request = PrepareHammockQuery(path);
+			request.Method = method;
+			request.AddPostContent(bodyContent);
+			request.AddHeader("content-type", contentType);
+
+			return WithHammockImpl<T>(client, request);
+		}
+
 		private T WithHammock<T>(RestClient client, WebMethod method, string path, IDictionary<string, Stream> files, params object[] segments)
 		{
 			var url = ResolveUrlSegments(path, segments.ToList());
@@ -749,148 +731,94 @@ namespace TweetSharp
 		}
 #endif
 
-#if WINDOWS_PHONE
-        private void WithHammock<T>(IRestClient restClient, Action<T, TwitterResponse> action, string path) where T : class
-        {
-            var request = PrepareHammockQuery(path);
-            
-            WithHammockImpl(restClient, request, action);
-        }
-
-				private void WithHammock<T>(IRestClient restClient, Action<T, TwitterResponse> action, string path, params object[] segments) where T : class
-        {
-            WithHammock(restClient, action, ResolveUrlSegments(path, segments.ToList()));
-        }
-
-				private void WithHammock<T>(IRestClient restClient, WebMethod method, Action<T, TwitterResponse> action, string path) where T : class
-        {
-            var request = PrepareHammockQuery(path);
-            request.Method = method;
-
-            WithHammockImpl(restClient, request, action);
-        }
-
-				private void WithHammock<T>(IRestClient restClient, WebMethod method, Action<T, TwitterResponse> action, MediaFile media, string path) where T : class
-				{
-					var request = PrepareHammockQuery(path);
-					request.Method = method;
-					request.AddFile("media", media.FileName, media.Content);
-
-					WithHammockImpl(restClient, request, action);
-				}
-
-				private void WithHammock<T>(IRestClient restClient, WebMethod method, Action<T, TwitterResponse> action, string path, params object[] segments) where T : class
-        {
-            WithHammock(restClient, method, action, ResolveUrlSegments(path, segments.ToList()));
-        }
-
-				private void WithHammockNoResponse(IRestClient restClient, WebMethod method, Action<TwitterResponse> action, string path, params object[] segments) 
-				{
-						var request = PrepareHammockQuery(ResolveUrlSegments(path, segments.ToList()));
-						request.Method = method;
-
-						WithHammockImpl(restClient, request, action);
-				}
-
-				private void WithHammockImpl(IRestClient restClient, RestRequest request, Action<TwitterResponse> action)
-				{
-					restClient.BeginRequest(
-							request, new Action<RestRequest, TwitterResponse, object>((req, response, state) =>
-							{
-								if (response == null)
-								{
-									return;
-								}
-								action.Invoke(response);
-							}));
-				}
-
-				private void WithHammockImpl<T>(IRestClient restClient, RestRequest request, Action<T, TwitterResponse> action) where T : class
-        {
-            restClient.BeginRequest(
-                request, new RestCallback<T>((req, response, state) =>
-                {
-                    if (response == null)
-                    {
-                        return;
-                    }
-                    var entity = response.ContentEntity;
-                    action.Invoke(entity, new TwitterResponse(response));
-                }));
-        }
-
-				private void WithHammock<T>(IRestClient restClient, WebMethod method, Action<T, TwitterResponse> action, string path, IDictionary<string, Stream> files, params object[] segments) where T : class
-        {
-            var url = ResolveUrlSegments(path, segments.ToList());
-            var request = PrepareHammockQuery(url);
-            request.Method = method;
-            request.QueryHandling = QueryHandling.AppendToParameters;
-            foreach (var file in files)
-            {
-                request.AddFile("media", file.Key, file.Value);
-            }
-            WithHammockImpl(restClient, request, action);
-        }
-#endif
-
 #if PLATFORM_SUPPORTS_ASYNC_AWAIT
-				private Task<TwitterAsyncResult<T1>> WithHammockTask<T1>(RestClient client, string path, params object[] segments) where T1 : class
-				{
-					var tcs = new TaskCompletionSource<TwitterAsyncResult<T1>>();
-					try
+		private Task<TwitterAsyncResult<T1>> WithHammockTask<T1>(RestClient client, string path, params object[] segments) where T1 : class
+		{
+			var tcs = new TaskCompletionSource<TwitterAsyncResult<T1>>();
+			try
+			{
+				WithHammock(client,
+					(Action<T1, TwitterResponse>)((v, r) =>
 					{
-						WithHammock(client,
-							(Action<T1, TwitterResponse>)((v, r) =>
-							{
-								try
-								{
-									tcs.SetResult(new TwitterAsyncResult<T1>(v, r));
-								}
-								catch (Exception ex)
-								{
-									tcs.SetException(ex);
-								}
-							}),
-							path,
-							segments
-						);
-					}
-					catch (Exception ex)
-					{
-						tcs.SetException(ex);
-					}
-
-					return tcs.Task;
-				}
-
-				private Task<TwitterAsyncResult<T1>> WithHammockTask<T1>(RestClient client, WebMethod method, string path, params object[] segments) where T1 : class
-				{
-					var tcs = new TaskCompletionSource<TwitterAsyncResult<T1>>();
-					try
-					{
-					WithHammock(client, method,
-						(Action<T1, TwitterResponse>)((v, r) =>
+						try
 						{
-							try
-							{
-								tcs.SetResult(new TwitterAsyncResult<T1>(v, r));
-							}
-							catch (Exception ex)
-							{
-								tcs.SetException(ex);
-							}
-						}),
-						path,
-						segments
-					);
+							tcs.SetResult(new TwitterAsyncResult<T1>(v, r));
+						}
+						catch (Exception ex)
+						{
+							tcs.SetException(ex);
+						}
+					}),
+					path,
+					segments
+				);
+			}
+			catch (Exception ex)
+			{
+				tcs.SetException(ex);
+			}
+
+			return tcs.Task;
+		}
+
+		private Task<TwitterAsyncResult<T1>> WithHammockTask<T1>(RestClient client, string path, byte[] bodyContent, string contentType) where T1 : class
+		{
+			var tcs = new TaskCompletionSource<TwitterAsyncResult<T1>>();
+			try
+			{
+				WithHammock(client,
+					(Action<T1, TwitterResponse>)((v, r) =>
+					{
+						try
+						{
+							tcs.SetResult(new TwitterAsyncResult<T1>(v, r));
+						}
+						catch (Exception ex)
+						{
+							tcs.SetException(ex);
+						}
+					}),
+					path,
+					bodyContent,
+					contentType
+				);
+			}
+			catch (Exception ex)
+			{
+				tcs.SetException(ex);
+			}
+
+			return tcs.Task;
+		}
+
+		private Task<TwitterAsyncResult<T1>> WithHammockTask<T1>(RestClient client, WebMethod method, string path, params object[] segments) where T1 : class
+		{
+			var tcs = new TaskCompletionSource<TwitterAsyncResult<T1>>();
+			try
+			{
+			WithHammock(client, method,
+				(Action<T1, TwitterResponse>)((v, r) =>
+				{
+					try
+					{
+						tcs.SetResult(new TwitterAsyncResult<T1>(v, r));
 					}
 					catch (Exception ex)
 					{
 						tcs.SetException(ex);
 					}
+				}),
+				path,
+				segments
+			);
+			}
+			catch (Exception ex)
+			{
+				tcs.SetException(ex);
+			}
 
-					return tcs.Task;
-				}
+			return tcs.Task;
+		}
 
 		private Task WithHammockNoResponseTask(RestClient client, WebMethod method, string path, params object[] segments) 
 		{

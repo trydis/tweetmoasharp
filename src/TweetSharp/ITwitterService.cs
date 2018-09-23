@@ -32,7 +32,6 @@ namespace TweetSharp
 		ISerializer Serializer { get; set; }
 		T Deserialize<T>(ITwitterModel model) where T : ITwitterModel;
 		T Deserialize<T>(string content);
-		void CancelStreaming();
 #endif
 	}
 }

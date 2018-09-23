@@ -87,6 +87,9 @@
     <Compile Include="..\TweetSharp\Properties\AssemblyInfoVersion.cs">
       <Link>Properties\AssemblyInfoVersion.cs</Link>
     </Compile>
+    <Compile Include="..\TweetSharp\SendDirectMessageBodyGenerator.cs">
+      <Link>SendDirectMessageBodyGenerator.cs</Link>
+    </Compile>
     <Compile Include="..\TweetSharp\SerializerBase.cs">
       <Link>SerializerBase.cs</Link>
     </Compile>
@@ -101,6 +104,9 @@
     </Compile>
     <Compile Include="..\TweetSharp\TwitterAsyncResult.cs">
       <Link>TwitterAsyncResult.cs</Link>
+    </Compile>
+    <Compile Include="..\TweetSharp\TwitterBodyGenerator.cs">
+      <Link>TwitterBodyGenerator.cs</Link>
     </Compile>
     <Compile Include="..\TweetSharp\TwitterChunkedMedia.cs">
       <Link>TwitterChunkedMedia.cs</Link>
@@ -129,8 +135,11 @@
     <Compile Include="..\TweetSharp\TwitterDeliveryDevice.cs">
       <Link>TwitterDeliveryDevice.cs</Link>
     </Compile>
-    <Compile Include="..\TweetSharp\TwitterDirectMessage.cs">
-      <Link>TwitterDirectMessage.cs</Link>
+    <Compile Include="..\TweetSharp\TwitterDirectMessageEvent.cs">
+      <Link>TwitterDirectMessageEvent.cs</Link>
+    </Compile>
+    <Compile Include="..\TweetSharp\TwitterDirectMessageModels.cs">
+      <Link>TwitterDirectMessageModels.cs</Link>
     </Compile>
     <Compile Include="..\TweetSharp\TwitterEntities.cs">
       <Link>TwitterEntities.cs</Link>
@@ -168,6 +177,9 @@
     <Compile Include="..\TweetSharp\TwitterPlace.cs">
       <Link>TwitterPlace.cs</Link>
     </Compile>
+    <Compile Include="..\TweetSharp\TwitterQuickReplyOption.cs">
+      <Link>TwitterQuickReplyOption.cs</Link>
+    </Compile>
     <Compile Include="..\TweetSharp\TwitterRateLimitStatus.cs">
       <Link>TwitterRateLimitStatus.cs</Link>
     </Compile>
@@ -192,9 +204,6 @@
     <Compile Include="..\TweetSharp\TwitterService.OAuth.cs">
       <Link>TwitterService.OAuth.cs</Link>
     </Compile>
-    <Compile Include="..\TweetSharp\TwitterService.Streaming.cs">
-      <Link>TwitterService.Streaming.cs</Link>
-    </Compile>
     <Compile Include="..\TweetSharp\TwitterSleepTime.cs">
       <Link>TwitterSleepTime.cs</Link>
     </Compile>
@@ -215,9 +224,6 @@
     </Compile>
     <Compile Include="..\TweetSharp\TwitterUser.cs">
       <Link>TwitterUser.cs</Link>
-    </Compile>
-    <Compile Include="..\TweetSharp\TwitterUserStreams.cs">
-      <Link>TwitterUserStreams.cs</Link>
     </Compile>
     <Compile Include="..\TweetSharp\TwitterUserSuggestions.cs">
       <Link>TwitterUserSuggestions.cs</Link>
@@ -251,10 +257,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.8.0.1\lib\portable-net45+wp80+win8+wpa81+dnxcore50\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\portable-net45+win8+wp8+wpa81\Newtonsoft.Json.dll</HintPath>
       <SpecificVersion>False</SpecificVersion>
-      <Private>True</Private>
     </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
