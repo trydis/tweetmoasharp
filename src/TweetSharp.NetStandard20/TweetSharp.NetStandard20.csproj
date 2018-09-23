@@ -91,9 +91,4 @@
     <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
   </ItemGroup>
 
-
-  <ItemGroup>
-    <ProjectReference Include="..\..\..\hammock\src\NetStandard20\Hammock.NetStandard20.csproj" />
-  </ItemGroup>
-
 </Project>
