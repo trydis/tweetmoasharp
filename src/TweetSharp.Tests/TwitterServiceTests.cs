@@ -1305,7 +1305,7 @@ namespace TweetSharp.Tests.Service
 		public void Can_update_profile_image()
 		{
 			var service = GetAuthenticatedService();
-			var user = service.UpdateProfileImage(new UpdateProfileImageOptions { ImagePath = "daniel_8bit.png" });
+			var user = service.UpdateProfileImage(new UpdateProfileImageOptions { ImagePath = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "daniel_8bit.png") });
 			Assert.IsNotNull(user);
 			Assert.AreEqual(HttpStatusCode.OK, service.Response.StatusCode);
 		}
