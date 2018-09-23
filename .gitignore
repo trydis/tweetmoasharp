@@ -33,6 +33,9 @@ Examples*/
 *.testrunconfig
 publish.xml
 TestResults
+.vs
+src/.vs
+
 src/net40/TweetSharp.Next/obj/
 src/_ReSharper.TweetSharp.WindowsPhone/
 src/_ReSharper.TweetSharp.WindowsPhone/
