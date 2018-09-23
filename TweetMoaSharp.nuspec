@@ -2,7 +2,7 @@
 <package>
 	<metadata>
 		<id>TweetMoaSharp</id>
-		<version>5.0.0-beta</version>
+		<version>5.0.0</version>
 		<dependencies>
 			<group>
 				<dependency id="Newtonsoft.Json" version="11.0.2" />
