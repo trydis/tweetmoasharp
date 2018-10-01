@@ -761,7 +761,38 @@ namespace TweetSharp
 			return tcs.Task;
 		}
 
-		private Task<TwitterAsyncResult<T1>> WithHammockTask<T1>(RestClient client, string path, byte[] bodyContent, string contentType) where T1 : class
+        private Task<TwitterAsyncResult<T1>> WithHammockTask<T1>(RestClient client, WebMethod method, string path, byte[] bodyContent, string contentType) where T1 : class
+        {
+            var tcs = new TaskCompletionSource<TwitterAsyncResult<T1>>();
+            try
+            {
+                WithHammock(client, method,
+                    (Action<T1, TwitterResponse>)((v, r) =>
+                    {
+                        try
+                        {
+                            tcs.SetResult(new TwitterAsyncResult<T1>(v, r));
+                        }
+                        catch (Exception ex)
+                        {
+                            tcs.SetException(ex);
+                        }
+                    }),
+                    path,
+                    bodyContent,
+                    contentType
+                );
+            }
+            catch (Exception ex)
+            {
+                tcs.SetException(ex);
+            }
+
+            return tcs.Task;
+        }
+
+
+        private Task<TwitterAsyncResult<T1>> WithHammockTask<T1>(RestClient client, string path, byte[] bodyContent, string contentType) where T1 : class
 		{
 			var tcs = new TaskCompletionSource<TwitterAsyncResult<T1>>();
 			try
